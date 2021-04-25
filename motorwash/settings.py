@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'drf_yasg',
+    'phonenumber_field',
+    
+    'accounts',
+    'common'
+
 ]
 
 MIDDLEWARE = [
@@ -75,6 +80,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'motorwash.wsgi.application'
 
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -95,6 +102,10 @@ DATABASES = {
 #         'PORT': '5432',
 #     }
 # }
+
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 
 # Password validation

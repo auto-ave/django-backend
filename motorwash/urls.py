@@ -8,7 +8,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="NewEra API",
+        title="MotorWash API (All)",
         default_version='v1'
     ),
     public=True,
