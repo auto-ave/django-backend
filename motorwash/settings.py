@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'phonenumber_field',
     
     'accounts',
-    'common'
+    'common',
+    'store',
+    'booking',
 
 ]
 
