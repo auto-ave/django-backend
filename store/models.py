@@ -1,9 +1,8 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
-from accounts.models import Partner, Consumer
+from accounts.models import Partner
 from common.models import Model
-from booking.models import Booking
 # Create your models here.
 
 class VehicleType(Model):
@@ -33,16 +32,15 @@ class Store(Model):
 
 
 class StoreImage(Model):
-    store = models.ForeignKey(Store, on_delete= models.CASCADE)
+    store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="store_images")
     image = models.ImageField()
-    related
     def __str__(self):
         return "{}: Image #{}".format(self.store.name, self.pk)
 
 
 class Bay(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE)
-    vehicle_type = models.ManyToManyField(Vehicle)
+    vehicle_type = models.ManyToManyField(VehicleType)
     #per_vehicle_time_interval = models.ManyToManyField(Time)
 
     def __str__(self):
@@ -58,10 +56,10 @@ class ServiceType(Model):
 
     def __str__(self):
         return "Service: " + self.name
-    
+
 
 class PriceTime(Model):
-    vehicle_type = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE)
     service = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField()
@@ -69,7 +67,7 @@ class PriceTime(Model):
 
 class Event(Model):
     event_type = models.CharField(max_length=10)
-    bay = models.ForeignKey(Bay)
+    bay = models.ForeignKey(Bay, on_delete= models.CASCADE)
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
 
@@ -77,16 +75,5 @@ class Event(Model):
         return self.event_type + " #" + self.pk
 
 
-class Review(Model):
-    user = models.ForeignKey(Consumer)
-    booking = models.OneToOneField(Booking)
-    store = models.ForeignKey(Store)
-    is_only_rating = models.BooleanField(default=True)
-    review_description = models.TextField(max_length=250, blank=True, null=True)
-    images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
-    created_at = models.DateTimeField()
-    rating = models.FloatField(default=0.0)
 
-    def __str__(self):
-        return "Review #{}".format(self.pk) 
     

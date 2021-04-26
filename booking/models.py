@@ -7,13 +7,13 @@ from store.models import Store, PriceTime, Event, VehicleType
 
 class Booking(Model):
     booking_id = models.CharField(max_length=8)
-    booked_by = models.ForeignKey(Consumer)
-    store = models.ForeignKey(Store)
+    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT)
+    store = models.ForeignKey(Store, on_delete=models.PROTECT)
     status = models.IntegerField()
     otp = models.IntegerField()
-    price_time = models.ForeignKey(PriceTime)
-    event = models.ForeignKey(Event)
-    vehicle_type = models.ForeignKey(VehicleType)
+    price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
+    event = models.ForeignKey(Event, on_delete=models.PROTECT)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT)
     # invoice (File Field: To be completed by subodh)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class Booking(Model):
 
 
 class Payment(Model):
-    booking = models.OneToOneField(Booking)
+    booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
     payment_status = models.IntegerField()
     transaction_id = models.CharField(max_length=10)
     mode_of_payment = models.CharField(max_length=20)
@@ -34,5 +34,18 @@ class Payment(Model):
 class Refund(Model):
     refund_status = models.IntegerField()
     # details = returned from payment gateway
-    booking = models.OneToOneField(Booking)
+    booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
     pass
+
+class Review(Model):
+    user = models.ForeignKey(Consumer, on_delete=models.PROTECT)
+    booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    is_only_rating = models.BooleanField(default=True)
+    review_description = models.TextField(max_length=250, blank=True, null=True)
+    images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
+    created_at = models.DateTimeField()
+    rating = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return "Review #{}".format(self.pk)
