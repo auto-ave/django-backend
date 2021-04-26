@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
-from accounts.models import Partner
+from accounts.models import Partner, Consumer
 from common.models import Model
+from booking.models import Booking
 # Create your models here.
 
 class VehicleType(Model):
@@ -66,4 +67,26 @@ class PriceTime(Model):
     time_interval = models.PositiveIntegerField()
     bay = models.ManyToManyField(Bay)
 
+class Event(Model):
+    event_type = models.CharField(max_length=10)
+    bay = models.ForeignKey(Bay)
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
 
+    def __str__(self):
+        return self.event_type + " #" + self.pk
+
+
+class Review(Model):
+    user = models.ForeignKey(Consumer)
+    booking = models.OneToOneField(Booking)
+    store = models.ForeignKey(Store)
+    is_only_rating = models.BooleanField(default=True)
+    review_description = models.TextField(max_length=250, blank=True, null=True)
+    images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
+    created_at = models.DateTimeField()
+    rating = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return "Review #{}".format(self.pk) 
+    
