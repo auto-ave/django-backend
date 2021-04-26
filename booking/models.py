@@ -1,5 +1,6 @@
 from django.db import models
 from common.models import Model
+from django.contrib.postgres.fields import ArrayField
 from accounts.models import Consumer
 from store.models import Store, PriceTime, Event, VehicleType
 # Create your models here.
