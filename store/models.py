@@ -14,11 +14,10 @@ class VehicleType(Model):
 class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
-    email = models.EmailField()
+    emails = ArrayField(base_field=models.EmailField())
     address = models.TextField()
     latitude = models.DecimalField(max_digits=22, decimal_places=16)
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
@@ -47,7 +46,7 @@ class Bay(Model):
         return "{}: Image {}".format(self.store.name, self.pk)
 
 
-class ServiceType(Model):
+class Service(Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     description = models.TextField()
@@ -60,13 +59,13 @@ class ServiceType(Model):
 
 class PriceTime(Model):
     vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE)
-    service = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField()
-    bay = models.ManyToManyField(Bay)
+    bays = models.ManyToManyField(Bay)
 
 class Event(Model):
-    event_type = models.CharField(max_length=10)
+    is_blocking = models.BooleanField()
     bay = models.ForeignKey(Bay, on_delete= models.CASCADE)
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
