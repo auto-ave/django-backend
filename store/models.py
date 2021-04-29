@@ -25,6 +25,11 @@ class Store(Model):
     store_registration_number = models.CharField(max_length=20)
     owner = models.OneToOneField(Partner, on_delete = models.CASCADE)
     vehicles_allowed = models.ManyToManyField(VehicleType)  # Non-Controllable Field
+    contact_person_name = models.CharField(max_length=30)
+    contact_person_number = PhoneNumberField()
+    contact_person_photo = models.ImageField(null=True, blank =True)
+    store_opening_time = models.TimeField()
+    store_closing_time = models.TimeField()
 
     def __str__(self):
         return self.name
