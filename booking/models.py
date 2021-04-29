@@ -3,8 +3,9 @@ from common.models import Model
 from django.contrib.postgres.fields import ArrayField
 from accounts.models import Consumer
 from store.models import Store, PriceTime, Event, VehicleType
-from static import BOOKING_STATUS, PAYMENT_STATUS
+from .static import BOOKING_STATUS, PAYMENT_STATUS
 from common.utils import otp_generator
+import datetime
 # Create your models here.
 
 
@@ -13,7 +14,7 @@ class Booking(Model):
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT)
     store = models.ForeignKey(Store, on_delete=models.PROTECT)
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
-    status_changed_time = models.DateTimeField()
+    status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     otp = models.CharField(max_length=4)
     price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
     event = models.ForeignKey(Event, on_delete=models.PROTECT)
@@ -52,10 +53,10 @@ class Refund(Model):
 
 class Review(Model):
     user = models.ForeignKey(Consumer, on_delete=models.CASCADE)
-    booking = models.OneToOneField(Booking, on_delete=models.SET_NULL)
+    booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     is_only_rating = models.BooleanField(default=True)
-    review_description = models.CharField(blank=True, null=True)
+    review_description = models.CharField(max_length=250, blank=True, null=True)
     images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
     rating = models.FloatField()
 
