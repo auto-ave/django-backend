@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'drf_yasg',
+    'django_filters',
     'phonenumber_field',
     
     'accounts',
@@ -90,10 +91,10 @@ AUTH_USER_MODEL = 'accounts.User'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '1822',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }

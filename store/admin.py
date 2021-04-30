@@ -5,7 +5,13 @@ from .models import *
 admin.site.register(VehicleType)
 admin.site.register(Store)
 admin.site.register(StoreImage)
-admin.site.register(Bay)
-admin.site.register(Service)
 admin.site.register(PriceTime)
 admin.site.register(Event)
+
+@admin.register(Bay)
+class BayAdmin(admin.ModelAdmin):
+    readonly_fields = ("supported_vehicle_types", )
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    readonly_fields = ("supported_vehicle_types", )

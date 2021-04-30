@@ -3,7 +3,9 @@ from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import Partner
 from common.models import Model
-# Create your models here.
+
+from django.core.exceptions import ValidationError
+from django.db import transaction
 
 class VehicleType(Model):
     vehicle_type = models.CharField(max_length=30)
@@ -39,11 +41,12 @@ class StoreImage(Model):
 
 class Bay(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE)
-    vehicle_type = models.ManyToManyField(VehicleType)
-    #per_vehicle_time_interval = models.ManyToManyField(Time)
+
+    # Cannot interpret the need of this field
+    supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True) # Display field (not for validation), updated after everything gets saved
 
     def __str__(self):
-        return "{}: Image {}".format(self.store.name, self.pk)
+        return "{}: {}".format(self.pk, self.store)
 
 
 class Service(Model):
@@ -51,10 +54,11 @@ class Service(Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     image = models.ImageField(blank=True, null=True)
-    vehicles_allowed = models.ManyToManyField(VehicleType)
+
+    supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True) # Display field (not for validation), updated after everything gets saved
 
     def __str__(self):
-        return "Service: " + self.name
+        return self.name
 
 
 class PriceTime(Model):
@@ -64,6 +68,27 @@ class PriceTime(Model):
     time_interval = models.PositiveIntegerField()
     bays = models.ManyToManyField(Bay)
 
+    class Meta():
+        unique_together = ('vehicle_type', 'service')
+
+    def __str__(self):
+        return "{} | {}".format(self.service, self.vehicle_type)
+
+    # @transaction.atomic
+    # def save(self, *args, **kwargs):
+    #     super(PriceTime, self).save(*args, **kwargs)
+    #     print("save(): ", self.id, self.bays.all(), self.service)
+    #     self.updateBays()
+    #     self.updateService()
+    
+    # def updateBays(self):
+    #     print("updateBays: ", self.id, self.bays.all(), self.service)
+    #     pass
+
+    # def updateService(self):
+    #     print("updateService: ", self.id, self.bays.all(), self.service)
+    #     pass
+
 class Event(Model):
     is_blocking = models.BooleanField()
     bay = models.ForeignKey(Bay, on_delete= models.CASCADE)
@@ -71,8 +96,5 @@ class Event(Model):
     end_datetime = models.DateTimeField()
 
     def __str__(self):
-        return self.event_type + " #" + self.pk
+        return "{} | {}=>{}".format(self.bay, self.start_datetime, self.end_datetime)
 
-
-
-    
