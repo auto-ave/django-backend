@@ -50,7 +50,7 @@ class Refund(Model):
         if self.refund_status == 2:
             self.booking.is_refunded=True
         super(Refund, self).save()
-
+        
 class Review(Model):
     user = models.ForeignKey(Consumer, on_delete=models.CASCADE)
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)

@@ -18,6 +18,7 @@ class VehicleType(Model):
             super(VehicleType, self).save(*args, **kwargs)
         elif self.vehicle_type == "four" and self.vehicle_model[-4:] == "four":
             super(VehicleType, self).save(*args, **kwargs)
+
 class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField()
@@ -41,13 +42,11 @@ class Store(Model):
     def __str__(self):
         return self.name
 
-
 class StoreImage(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="store_images")
     image = models.ImageField()
     def __str__(self):
         return "{}: Image #{}".format(self.store.name, self.pk)
-
 
 class Bay(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE)
@@ -56,7 +55,6 @@ class Bay(Model):
 
     def __str__(self):
         return "{}: Image {}".format(self.store.name, self.pk)
-
 
 class Service(Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -74,7 +72,7 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField()
-
+    bays = models.ManyToManyField(Bay)
     class Meta:
         unique_together = ('vehicle_type', 'service')
 
@@ -90,7 +88,3 @@ class Event(Model):
 
     def __str__(self):
         return self.event_type + " #" + self.pk
-
-
-
-    
