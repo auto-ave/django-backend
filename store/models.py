@@ -3,16 +3,22 @@ from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import Partner
 from common.models import Model
-
 from django.core.exceptions import ValidationError
 from django.db import transaction
+from .static import VEHICLE_MODELS, VEHICLE_TYPES
 
 class VehicleType(Model):
-    vehicle_type = models.CharField(max_length=30)
-    vehicle_model = models.CharField(max_length=30)
+    vehicle_type = models.CharField(max_length=30, choices=VEHICLE_TYPES)
+    vehicle_model = models.CharField(max_length=30, choices=VEHICLE_MODELS)
 
     def __str__(self):
         return self.vehicle_type + ": " + self.vehicle_model
+
+    def save(self, *args, **kwargs):
+        if self.vehicle_type == "two" and self.vehicle_model[-3:] == "two":
+            super(VehicleType, self).save(*args, **kwargs)
+        elif self.vehicle_type == "four" and self.vehicle_model[-4:] == "four":
+            super(VehicleType, self).save(*args, **kwargs)
 class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField()
@@ -27,6 +33,11 @@ class Store(Model):
     store_registration_number = models.CharField(max_length=20)
     owner = models.OneToOneField(Partner, on_delete = models.CASCADE)
     vehicles_allowed = models.ManyToManyField(VehicleType)  # Non-Controllable Field
+    contact_person_name = models.CharField(max_length=30)
+    contact_person_number = PhoneNumberField()
+    contact_person_photo = models.ImageField(null=True, blank =True)
+    store_opening_time = models.TimeField()
+    store_closing_time = models.TimeField()
 
     def __str__(self):
         return self.name
@@ -66,7 +77,13 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField()
-    bays = models.ManyToManyField(Bay)
+
+    class Meta:
+        unique_together = ('vehicle_type', 'service')
+
+    def save(self, *args, **kwargs):
+        if self.vehicle_type in self.service.vehicles_allowed:
+            super(PriceTime, self).save(*args, **kwargs)
 
     class Meta():
         unique_together = ('vehicle_type', 'service')
