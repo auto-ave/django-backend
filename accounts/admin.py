@@ -9,7 +9,12 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('first_name', 'last_name', 'email', 'phone')
         }
     )
-    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet) + UserAdmin.fieldsets[2:]
+    customPermissionsSet = (
+        'Custom Permissions', {
+            'fields': ('is_consumer', 'is_partner', 'is_salesman', 'is_support', 'is_sub_admin')
+        }
+    )
+    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet, customPermissionsSet) + UserAdmin.fieldsets[2:]
 
 admin.site.register(User, CustomUserAdmin)
 

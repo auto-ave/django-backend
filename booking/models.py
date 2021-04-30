@@ -17,8 +17,8 @@ class Booking(Model):
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     otp = models.CharField(max_length=4)
     price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
-    event = models.ForeignKey(Event, on_delete=models.PROTECT)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT)
+    event = models.OneToOneField(Event, on_delete=models.PROTECT)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT) # why is this needed? - subodh
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
@@ -52,7 +52,7 @@ class Refund(Model):
         super(Refund, self).save()
         
 class Review(Model):
-    user = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     is_only_rating = models.BooleanField(default=True)
