@@ -18,8 +18,6 @@ class User(AbstractUser):
 
 class Consumer(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    test = models.CharField(max_length=50,default=True)
-
     def __str__(self):
         return "Consumer: {} {}".format(self.user.first_name, self.user.last_name)
 
