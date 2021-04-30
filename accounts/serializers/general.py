@@ -10,7 +10,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     # is_phone_verified = serializers.SerializerMethodField()
     class Meta:
         model = get_user_model()
-        fields = ['id','phone', 'is_sub_admin' ,'is_support','is_consumer','is_salesman','is_partner']
+        exclude = ('password', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'user_permissions', 'groups' )
         depth = 1
     
     def get_id(self, obj):
