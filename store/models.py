@@ -32,7 +32,7 @@ class Store(Model):
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
     store_registration_type = models.CharField(max_length=30)
     store_registration_number = models.CharField(max_length=20)
-    owner = models.OneToOneField(Partner, on_delete = models.CASCADE)
+    owner = models.ForeignKey(Partner, on_delete = models.CASCADE)
     vehicles_allowed = models.ManyToManyField(VehicleType)  # Non-Controllable Field
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
