@@ -36,9 +36,9 @@ class StoreList(generics.ListAPIView):
         loc1=(23.3045, 77.4219)
         vehicle_type = get_object_or_404(VehicleType, vehicle_model = "2_four")
         queryset = []
-        stores =Store.objects.all()
+        stores = vehicle_type.store_set.all()
         for store in stores:
             loc2 = (store.latitude, store.longitude)
-            if hs.haversine(loc1, loc2, Unit.METERS) <= 100000 and vehicle_type.store_set.filter(pk = store.pk).exists():
-                    queryset.append(store)
+            if hs.haversine(loc1, loc2, Unit.METERS) <= 100000:
+                queryset.append(store)
         return queryset
