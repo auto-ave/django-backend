@@ -11,4 +11,4 @@ class StoreSerializer(ModelSerializer):
 class StoreListSerializer(ModelSerializer):
     class Meta():
         model = Store
-        fields = ("pk", "name",)
+        fields = ("pk", "name", "thumbnail", "address", "store_opening_time", "store_closing_time")

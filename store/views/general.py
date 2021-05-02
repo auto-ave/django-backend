@@ -33,8 +33,11 @@ class StoreList(generics.ListAPIView):
         return StoreListSerializer
 
     def get_queryset(self):
-        loc1=(23.3045, 77.4219)
-        vehicle_type = get_object_or_404(VehicleType, vehicle_model = "2_four")
+        longitude = float(self.request.query_params.get('longitude'))
+        latitude= float(self.request.query_params.get('latitude'))
+        vehicle_model = self.request.query_params.get('vehicle')
+        loc1 = (latitude, longitude)
+        vehicle_type = get_object_or_404(VehicleType, vehicle_model = vehicle_model)
         queryset = []
         stores = vehicle_type.store_set.all()
         for store in stores:
