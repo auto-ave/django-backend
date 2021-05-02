@@ -6,7 +6,6 @@ from common.models import Model
 from django.core.exceptions import ValidationError
 from django.db import transaction
 from .static import VEHICLE_MODELS, VEHICLE_TYPES
-
 class VehicleType(Model):
     vehicle_type = models.CharField(max_length=30, choices=VEHICLE_TYPES)
     vehicle_model = models.CharField(max_length=30, choices=VEHICLE_MODELS)
@@ -39,7 +38,6 @@ class Store(Model):
     contact_person_photo = models.ImageField(null=True, blank =True)
     store_opening_time = models.TimeField()
     store_closing_time = models.TimeField()
-
     def __str__(self):
         return self.name
 

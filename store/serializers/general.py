@@ -7,3 +7,8 @@ class StoreSerializer(ModelSerializer):
     class Meta():
         model = Store
         fields = "__all__"
+
+class StoreListSerializer(ModelSerializer):
+    class Meta():
+        model = Store
+        fields = ("pk", "name",)
