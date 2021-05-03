@@ -19,6 +19,12 @@ class VehicleType(Model):
         elif self.vehicle_type == "four" and self.vehicle_model[-4:] == "four":
             super(VehicleType, self).save(*args, **kwargs)
 
+class City(Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+    
 class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField()
@@ -32,12 +38,14 @@ class Store(Model):
     store_registration_type = models.CharField(max_length=30)
     store_registration_number = models.CharField(max_length=20)
     owner = models.OneToOneField(Partner, on_delete = models.CASCADE)
-    vehicles_allowed = models.ManyToManyField(VehicleType)  # Non-Controllable Field
+    vehicles_allowed = models.ManyToManyField(VehicleType, related_name= "stores")  # Non-Controllable Field
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)
     store_opening_time = models.TimeField()
     store_closing_time = models.TimeField()
+    city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
 

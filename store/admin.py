@@ -7,6 +7,7 @@ admin.site.register(Store)
 admin.site.register(StoreImage)
 admin.site.register(PriceTime)
 admin.site.register(Event)
+admin.site.register(City)
 
 @admin.register(Bay)
 class BayAdmin(admin.ModelAdmin):
