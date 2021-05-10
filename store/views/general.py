@@ -54,9 +54,12 @@ class CityStoreList(generics.ListAPIView):
     serializer_class = StoreListSerializer
 
     def get_queryset(self):
-        city_name= self.request.query_params.get('city')
-        vehicle_model = self.request.query_params.get('vehicle')
-        city = get_object_or_404(City, name=city_name)
-        vehicle_type = get_object_or_404(VehicleType, vehicle_model = vehicle_model)
-        queryset = vehicle_type.stores.filter(city=city)
+        city_name = self.kwargs['city']
+        city = get_object_or_404(City, name__iexact=city_name)
+        try:
+            vehicle_model = self.request.query_params.get('vehicle')
+            vehicle_type = get_object_or_404(VehicleType, vehicle_model = vehicle_model)
+            queryset = vehicle_type.stores.filter(city=city)
+        except:
+            queryset = city.stores.all()
         return queryset
