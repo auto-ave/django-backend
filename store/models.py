@@ -87,15 +87,6 @@ class PriceTime(Model):
     class Meta:
         unique_together = ('vehicle_type', 'service')
 
-    def save(self, *args, **kwargs):
-        if self.vehicle_type.services.filter(name=self.service.name).exists():
-            super(PriceTime, self).save(*args, **kwargs)
-        else:
-            raise ValidationError("skjdk")
-
-    class Meta():
-        unique_together = ('vehicle_type', 'service')
-
     def __str__(self):
         return "{} | {}".format(self.service, self.vehicle_type)
 
