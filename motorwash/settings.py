@@ -89,26 +89,27 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'aryaman',
-        'USER': 'aryaman',
-        'PASSWORD': '1822',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd10gv9mlauf22i',
-#         'USER': 'dkdfprvrmlvhyi',
-#         'PASSWORD': '42dacefc82a7fb67f786aa2c2ceae29d9f256b0b9d4976d634df559a1efba098',
-#         'HOST': 'ec2-100-25-100-81.compute-1.amazonaws.com',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'aryaman',
+#         'USER': 'aryaman',
+#         'PASSWORD': '1822',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
+# postgres://hscjwpzccfszfl:b1af0a0eb331ca8d03761b33681f51ad3b88ab8c4bde8de12dac830ec7929416@ec2-18-214-140-149.compute-1.amazonaws.com:5432/d62897bd4mggni
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd62897bd4mggni',
+        'USER': 'hscjwpzccfszfl',
+        'PASSWORD': 'b1af0a0eb331ca8d03761b33681f51ad3b88ab8c4bde8de12dac830ec7929416',
+        'HOST': 'ec2-18-214-140-149.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
