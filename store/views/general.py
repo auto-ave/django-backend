@@ -9,26 +9,17 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
-class StoreDetail(generics.RetrieveUpdateAPIView):
-    # permission_classes = ( ReadOnly,)
+
+
+class StoreDetail(generics.RetrieveAPIView):
     lookup_field = 'slug'
     serializer_class = StoreSerializer
+
     def get_queryset(self):
-        store_slug = self.kwargs['slug']
-        if store_slug:
-            try:
-                store = Store.objects.filter(slug = store_slug)
-                return store
-            except:
-                return Response({
-                    "error": "Store not found."
-                }, status=status.HTTP_404_NOT_FOUND)
-        return Response({
-            "error": "Invalid Slug."
-        }, status=status.HTTP_400_BAD_REQUEST)
+        return Store.objects.all()
 
 class StoreList(generics.ListAPIView):
-    permission_classes = (ReadOnly | (IsConsumer),)
+    permission_classes = (ReadOnly | IsConsumer, )
     serializer_class = StoreListSerializer
 
     def get_queryset(self):
@@ -54,16 +45,16 @@ class StoreList(generics.ListAPIView):
 
 
 class CityStoreList(generics.ListAPIView):
-    permission_classes = (ReadOnly | (IsConsumer),)
+    permission_classes = (ReadOnly | IsConsumer,)   
     serializer_class = StoreListSerializer
+    filterset_fields = ['supported_vehicle_types',]
 
     def get_queryset(self):
-        city_name = self.kwargs['city']
-        city = get_object_or_404(City, name__iexact=city_name)
-        try:
-            vehicle_model = self.request.query_params.get('vehicle')
-            vehicle_type = get_object_or_404(VehicleType, vehicle_model = vehicle_model)
-            queryset = vehicle_type.stores.filter(city=city)
-        except:
-            queryset = city.stores.all()
+        citycode = self.kwargs['citycode']
+        city = get_object_or_404(City, code__iexact=citycode)
+        queryset = city.stores.all()
+        # if self.request.query_params.get('vehicle_model'):
+        #     vehicle_model = self.request.query_params.get('vehicle_model')
+        #     vehicle_type = get_object_or_404(VehicleType, model = vehicle_model)
+        #     queryset = queryset.filter(supported_vehicle_types__in=[vehicle_type])
         return queryset

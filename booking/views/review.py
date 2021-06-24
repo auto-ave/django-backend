@@ -25,10 +25,3 @@ class ReviewListCreate(generics.ListCreateAPIView):
         user = self.request.user
         return serializer.save(consumer=user.consumer)
 
-class StoreReviewList(generics.ListAPIView):
-    serializer_class = ReviewSerializer
-
-    def get_queryset(self):
-        slug = self.kwargs['slug']
-        store = get_object_or_404(Store, slug=slug)
-        return Review.objects.filter(store=store)

@@ -2,32 +2,34 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import Partner
-from accounts.utils import *
+from common.utils import *
 from common.models import Model
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from store.static import VEHICLE_MODELS, VEHICLE_TYPES
+from store.constants import VEHICLE_MODELS, VEHICLE_TYPES
+
 class VehicleType(Model):
-    vehicle_type = models.CharField(max_length=50, choices=VEHICLE_TYPES)
-    vehicle_model = models.CharField(max_length=50, choices=VEHICLE_MODELS)
+    wheel = models.CharField(max_length=50, choices=VEHICLE_TYPES)
+    model = models.CharField(max_length=50, choices=VEHICLE_MODELS, unique=True)
 
     def __str__(self):
-        return self.vehicle_type + ": " + self.vehicle_model
+        return '{} : {}'.format(self.wheel, self.model)
 
-    def save(self, *args, **kwargs):
-        if self.vehicle_type == "two" and self.vehicle_model[-3:] == "two":
-            super(VehicleType, self).save(*args, **kwargs)
-        elif self.vehicle_type == "four" and self.vehicle_model[-4:] == "four":
-            super(VehicleType, self).save(*args, **kwargs)
-        else:
-            raise ValidationError("Please select correct vehicle type and vehicle model")
+    # def save(self, *args, **kwargs):
+    #     if self.wheel == "two" and self.model[-3:] == "two":
+    #         super(VehicleType, self).save(*args, **kwargs)
+    #     elif self.wheel == "four" and self.model[-4:] == "four":
+    #         super(VehicleType, self).save(*args, **kwargs)
+    #     else:
+    #         raise ValidationError("Please select correct vehicle type and vehicle model")
 
 
 class City(Model):
-    name = models.CharField(max_length=30)
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.name
+        return '{} {}'.format(self.code, self.name)
     
 class Store(Model):
     thumbnail = models.ImageField()
@@ -48,6 +50,7 @@ class Store(Model):
     contact_person_photo = models.ImageField(null=True, blank =True)
     store_opening_time = models.TimeField()
     store_closing_time = models.TimeField()
+    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
     supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True, related_name= "stores") # Non-Controllable Field
 

@@ -1,3 +1,4 @@
+from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from store.models import *
@@ -15,6 +16,15 @@ class StoreSerializer(ModelSerializer):
         return instance
 
 class StoreListSerializer(ModelSerializer):
+    distance = serializers.SerializerMethodField()
+    services_start = serializers.SerializerMethodField()
     class Meta():
         model = Store
-        fields = ("pk", "name", "thumbnail", "address", "store_opening_time", "store_closing_time")
+        fields = ("pk", "name", "thumbnail", "rating", "distance", "services_start")
+
+    def get_distance(self, obj):
+        return '3 km'
+    
+    def get_services_start(self, obj):
+        return 499
+    
