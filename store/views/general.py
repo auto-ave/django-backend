@@ -16,16 +16,8 @@ class StoreDetail(generics.RetrieveUpdateAPIView):
     def get_queryset(self):
         store_slug = self.kwargs['slug']
         if store_slug:
-            try:
-                store = Store.objects.filter(slug = store_slug)
-                return store
-            except:
-                return Response({
-                    "error": "Store not found."
-                }, status=status.HTTP_404_NOT_FOUND)
-        return Response({
-            "error": "Invalid Slug."
-        }, status=status.HTTP_400_BAD_REQUEST)
+            store = get_object_or_404(Store, slug = store_slug)
+            return store
 
 class StoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | (IsConsumer),)
