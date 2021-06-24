@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import Partner
+from accounts.utils import *
 from common.models import Model
 from django.core.exceptions import ValidationError
 from django.db import transaction
@@ -32,6 +33,7 @@ class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, editable=False, null=True)
     description = models.TextField(max_length=300)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
     emails = ArrayField(base_field=models.EmailField())
@@ -51,6 +53,11 @@ class Store(Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = get_unique_slug(self, "name")
+        super(Store, self).save(*args, **kwargs)
 
 class StoreImage(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="store_images")

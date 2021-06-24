@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from common.permissions import *
 
 from store.models import *
@@ -9,24 +9,23 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
-class StoreDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = ( ReadOnly | ( IsPartner & IsStoreOwner ) , )
+class StoreDetail(generics.RetrieveUpdateAPIView):
+    # permission_classes = ( ReadOnly,)
+    lookup_field = 'slug'
+    serializer_class = StoreSerializer
     def get_queryset(self):
-        # user = self.request.user
-        # params = self.request.query_params
-
-        # partner_query =  params.get('partner')
-
-        # if partner_query:
-        #     partners = Partner.objects.filter(pk=partner_query)
-        #     if not partners:
-        #         return []
-        #     return Store.objects.filter(owner=partner)
-        
-        return Store.objects.all()
-
-    def get_serializer_class(self):
-        return StoreSerializer
+        store_slug = self.kwargs['slug']
+        if store_slug:
+            try:
+                store = Store.objects.filter(slug = store_slug)
+                return store
+            except:
+                return Response({
+                    "error": "Store not found."
+                }, status=status.HTTP_404_NOT_FOUND)
+        return Response({
+            "error": "Invalid Slug."
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 class StoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | (IsConsumer),)
@@ -51,7 +50,7 @@ class StoreList(generics.ListAPIView):
                     queryset.append(store)
             return queryset
         except:
-            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class CityStoreList(generics.ListAPIView):

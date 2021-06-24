@@ -18,7 +18,7 @@ class Booking(Model):
     otp = models.CharField(max_length=4)
     price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
     event = models.OneToOneField(Event, on_delete=models.PROTECT)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT) # why is this needed? - subodh
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT)
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
