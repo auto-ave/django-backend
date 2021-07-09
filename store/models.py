@@ -3,34 +3,11 @@ from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 from accounts.models import Partner
 from common.utils import *
-from common.models import Model
+from common.models import Model, City
+from vehicle.models import VehicleType
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from store.constants import VEHICLE_MODELS, VEHICLE_TYPES
 
-class VehicleType(Model):
-    wheel = models.CharField(max_length=50, choices=VEHICLE_TYPES)
-    model = models.CharField(max_length=50, choices=VEHICLE_MODELS, unique=True)
-
-    def __str__(self):
-        return '{} : {}'.format(self.wheel, self.model)
-
-    # def save(self, *args, **kwargs):
-    #     if self.wheel == "two" and self.model[-3:] == "two":
-    #         super(VehicleType, self).save(*args, **kwargs)
-    #     elif self.wheel == "four" and self.model[-4:] == "four":
-    #         super(VehicleType, self).save(*args, **kwargs)
-    #     else:
-    #         raise ValidationError("Please select correct vehicle type and vehicle model")
-
-
-class City(Model):
-    code = models.CharField(max_length=20)
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return '{} {}'.format(self.code, self.name)
-    
 class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField(default=True)
@@ -62,11 +39,7 @@ class Store(Model):
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
 
-class StoreImage(Model):
-    store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="store_images")
-    image = models.ImageField()
-    def __str__(self):
-        return "{}: Image #{}".format(self.store.name, self.pk)
+
 
 class Bay(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE)
@@ -78,27 +51,30 @@ class Bay(Model):
         return "{}: {}".format(self.pk, self.store)
 
 class Service(Model):
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     description = models.TextField()
-    image = models.ImageField(blank=True, null=True)
-    supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True, related_name="services") # Display field (not for validation), updated after everything gets saved
+
+    def save(self, *args, **kwargs):
+        self.code = self.code.lower()
+        super(Service, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return '{} : {}'.format(self.code, self.name)
 
 
 class PriceTime(Model):
     vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="vehicles")
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
-    time_interval = models.PositiveIntegerField()
+    time_interval = models.PositiveIntegerField() # Number of minutes
     bays = models.ManyToManyField(Bay)
+    
     class Meta:
         unique_together = ('vehicle_type', 'service')
 
     def __str__(self):
-        return "{} | {}".format(self.service, self.vehicle_type)
+        return "{} | {}".format(self.vehicle_type, self.service)
 
     # @transaction.atomic
     # def save(self, *args, **kwargs):

@@ -20,7 +20,7 @@ class StoreListSerializer(ModelSerializer):
     services_start = serializers.SerializerMethodField()
     class Meta():
         model = Store
-        fields = ("pk", "name", "thumbnail", "rating", "distance", "services_start")
+        fields = ("pk", "slug", "name", "thumbnail", "rating", "distance", "services_start")
 
     def get_distance(self, obj):
         return '3 km'
