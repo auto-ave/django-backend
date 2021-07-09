@@ -25,3 +25,26 @@ def get_unique_slug(model_instance, slugable_field_name, slug_field_name="slug")
         extension += 1
     print(unique_slug)
     return unique_slug
+
+def addToAverage(currentAverage, currentCount, newValue):
+    '''
+    Returns new average after adding another value
+    '''
+    oldSum = currentAverage * currentCount
+    newSum = oldSum + newValue
+
+    newAverage = newSum / (currentCount + 1)
+    return newAverage
+
+def removeFromAverage(currentAverage, currentCount, removeValue):
+    '''
+    Returns new average after removing a value
+    '''
+    if currentCount == 1:
+        return 0
+    
+    oldSum = currentAverage * currentCount
+    newSum = oldSum - removeValue
+    
+    newAverage = newSum / (currentCount - 1)
+    return newAverage

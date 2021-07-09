@@ -52,13 +52,18 @@ class Refund(Model):
         super(Refund, self).save()
         
 class Review(Model):
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="reviews")
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="reviews")
     is_only_rating = models.BooleanField(default=True)
     review_description = models.CharField(max_length=250, blank=True, null=True)
     images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1)
+
+    def save(self):
+        if not self.id:
+            self.store.updateRating(self.rating)
+        super(Review, self).save()
 
     def __str__(self):
         return "Review #{} : {}".format(self.pk, self.store)

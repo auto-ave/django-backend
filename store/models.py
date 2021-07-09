@@ -12,21 +12,21 @@ class Store(Model):
     thumbnail = models.ImageField()
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True, editable=False, null=True)
+    slug = models.SlugField(unique=True, null=True)
     description = models.TextField(max_length=300)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
     emails = ArrayField(base_field=models.EmailField())
     address = models.TextField()
     latitude = models.DecimalField(max_digits=22, decimal_places=16)
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
-    store_registration_type = models.CharField(max_length=30)
-    store_registration_number = models.CharField(max_length=20)
+    registration_type = models.CharField(max_length=30)
+    registration_number = models.CharField(max_length=20)
     owner = models.OneToOneField(Partner, on_delete = models.CASCADE)
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)
-    store_opening_time = models.TimeField()
-    store_closing_time = models.TimeField()
+    opening_time = models.TimeField()
+    closing_time = models.TimeField()
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
     supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True, related_name= "stores") # Non-Controllable Field
@@ -38,6 +38,22 @@ class Store(Model):
         if not self.slug:
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
+    
+    def updateRating(self, rating, isRemove = False):
+        count = self.reviews.all().count()
+
+        if self.rating:
+            if isRemove:
+                newRating = removeFromAverage(self.rating, count, rating)
+            else:
+                newRating = addToAverage(self.rating, count, rating)
+        else:
+            newRating = rating
+        
+        self.rating = newRating or None
+        self.save()
+        
+
 
 
 

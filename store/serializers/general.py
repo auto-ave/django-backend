@@ -5,6 +5,8 @@ from store.models import *
 
 
 class StoreSerializer(ModelSerializer):
+    rating_count = serializers.SerializerMethodField()
+
     class Meta():
         model = Store
         fields = "__all__"
@@ -14,6 +16,9 @@ class StoreSerializer(ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
         return instance
+    
+    def get_rating_count(self, obj):
+        return obj.reviews.all().count()
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
