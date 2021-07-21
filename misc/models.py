@@ -1,7 +1,8 @@
 from django.db import models
 from common.models import Model
 
-from store.models import Store, Service
+from store.models import Store
+from common.models import Service
 
 class StoreImage(Model):
     store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="images")
@@ -15,5 +16,5 @@ class ServiceImage(Model):
     image = models.ImageField()
 
     def __str__(self):
-        return "{}: Image #{}".format(self.store.name, self.pk)
+        return "{}: Image #{}".format(self.service.name, self.pk)
 

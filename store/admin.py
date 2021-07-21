@@ -8,8 +8,3 @@ admin.site.register(Event)
 @admin.register(Bay)
 class BayAdmin(admin.ModelAdmin):
     readonly_fields = ("supported_vehicle_types", )
-
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
-    pass
-    # readonly_fields = ("supported_vehicle_types", )

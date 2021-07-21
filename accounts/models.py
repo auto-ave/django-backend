@@ -26,6 +26,9 @@ class Consumer(Model):
             self.user.is_consumer = True
             self.user.save()
         super(Consumer, self).save(*args, **kwargs)
+    
+    def getCart(self):
+        return self.carts.filter(completed=False).first()
 
 class Partner(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
