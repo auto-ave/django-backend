@@ -21,6 +21,10 @@ urlpatterns = [
     path("rest/", include("rest_framework.urls", namespace="rest_framework")),
     path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
-    # path('', include('accounts.urls')),
+    path('', include('cart.urls')),
+    path('', include('store.urls')),
+    path('', include('booking.urls')),
+    path('', include('misc.urls')),
+    path('', include('accounts.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
