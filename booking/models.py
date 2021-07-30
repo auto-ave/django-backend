@@ -10,7 +10,7 @@ import datetime
 
 
 class Booking(Model):
-    booking_id = models.CharField(max_length=8)
+    booking_id = models.CharField(max_length=20)
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT)
     store = models.ForeignKey(Store, on_delete=models.PROTECT)
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
@@ -18,7 +18,7 @@ class Booking(Model):
     otp = models.CharField(max_length=4)
     price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
     event = models.OneToOneField(Event, on_delete=models.PROTECT)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT) # why is this needed? - subodh
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT)
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
@@ -52,13 +52,18 @@ class Refund(Model):
         super(Refund, self).save()
         
 class Review(Model):
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="reviews")
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="reviews")
     is_only_rating = models.BooleanField(default=True)
     review_description = models.CharField(max_length=250, blank=True, null=True)
     images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
-    rating = models.FloatField()
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
+
+    def save(self):
+        if not self.id:
+            self.store.updateRating(self.rating)
+        super(Review, self).save()
 
     def __str__(self):
-        return "Review #{}".format(self.pk)
+        return "Review #{} : {}".format(self.pk, self.store)
