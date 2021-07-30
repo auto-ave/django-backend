@@ -5,7 +5,13 @@ from common.models import Model
 from phonenumber_field.modelfields import PhoneNumberField
 
 class User(AbstractUser):
-    phone = PhoneNumberField(blank=True)
+    phone = PhoneNumberField(unique=True)
+
+    # TODO: something about the default value
+    otp = models.CharField(max_length=4, default=0000)
+
+    # True after first otp validation
+    is_verified = models.BooleanField(default=False)
 
     is_consumer = models.BooleanField(default=False)
     is_partner = models.BooleanField(default=False)
@@ -15,6 +21,19 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+    
+    def generate_otp(self):
+        # TODO: abra ka dabra, OTP bhejdo
+        self.otp = 1234
+        self.save()
+    
+    def check_otp(self, otp):
+        if self.otp == otp:
+            if not self.is_verified:
+                self.is_verified = True
+                self.save()
+            return True
+        return False
 
 class Consumer(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

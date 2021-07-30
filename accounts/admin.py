@@ -6,7 +6,7 @@ from .models import *
 class CustomUserAdmin(UserAdmin):
     personalInfoSet = (
         'Personal info', {
-            'fields': ('first_name', 'last_name', 'email', 'phone')
+            'fields': ('first_name', 'last_name', 'email', 'phone', 'otp')
         }
     )
     customPermissionsSet = (
