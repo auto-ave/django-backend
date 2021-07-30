@@ -2,12 +2,11 @@ from store.models import Store
 from django.db import models
 from common.models import Model
 
-from accounts.models import User, Consumer
 from store.models import Store, PriceTime
 
 class Cart(Model):
-    user = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="carts")
-    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="carts")
+    consumer = models.OneToOneField('accounts.Consumer', on_delete=models.CASCADE, related_name="cart")
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="carts", null=True)
     items = models.ManyToManyField(PriceTime, related_name="carts")
 
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -35,3 +34,14 @@ class Cart(Model):
     def complete(self):
         self.completed = True
         self.save()
+    
+    def isValid(self):
+        if self.store is None:
+            return False
+        return True
+    
+    def total_time(self):
+        time = 0
+        for item in self.items.all():
+            time += item.time_interval
+        return time

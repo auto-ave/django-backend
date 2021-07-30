@@ -4,6 +4,8 @@ from common.models import Model
 
 from phonenumber_field.modelfields import PhoneNumberField
 
+from cart.models import Cart
+
 class User(AbstractUser):
     phone = PhoneNumberField(blank=True)
 
@@ -28,7 +30,12 @@ class Consumer(Model):
         super(Consumer, self).save(*args, **kwargs)
     
     def getCart(self):
-        return self.carts.filter(completed=False).first()
+        if hasattr(self, 'cart'):
+            return self.cart
+        else:
+            cart = Cart(consumer=self)
+            cart.save()
+            return cart
 
 class Partner(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -37,9 +44,7 @@ class Partner(Model):
         return "Partner: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        print("in save()")
         if not self.pk:
-            print("not pk")
             self.user.is_partner = True
             self.user.save()
         super(Partner, self).save(*args, **kwargs)
