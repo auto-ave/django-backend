@@ -1,3 +1,4 @@
+from cart.models import Cart
 from django.db import models
 from common.models import Model
 from django.contrib.postgres.fields import ArrayField
@@ -67,3 +68,11 @@ class Review(Model):
 
     def __str__(self):
         return "Review #{} : {}".format(self.pk, self.store)
+
+class Slot(Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
+    def __str__(self):
+        return "Slot #{}".format(self.id)
