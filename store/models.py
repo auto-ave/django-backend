@@ -69,6 +69,7 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="pricetimes")
     price = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField() # Number of minutes
+    description = models.TextField()
     bays = models.ManyToManyField(Bay, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:

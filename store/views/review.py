@@ -11,4 +11,4 @@ class StoreReviewList(generics.ListAPIView):
     def get_queryset(self):
         slug = self.kwargs['slug']
         store = get_object_or_404(Store, slug=slug)
-        return Review.objects.filter(store=store)
+        return store.reviews.all()

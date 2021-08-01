@@ -14,9 +14,12 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
         phone = data.get('phone')
 
         user, created = User.objects.get_or_create(phone=phone, username=phone)
+
         user.generate_otp()
 
-        return response.Response(status=status.HTTP_200_OK)
+        return response.Response({
+            "created": created
+        }, status=status.HTTP_200_OK)
 
 class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CheckOTPSerializer
