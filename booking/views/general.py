@@ -11,3 +11,8 @@ class BookingsList(generics.ListAPIView):
 
     def get_queryset(self):
         return Booking.objects.filter(booked_by=self.request.user.consumer)
+
+class BookingDetail(generics.RetrieveAPIView):
+    lookup_field = 'booking_id'
+    serializer_class = BookingDetailSerializer
+    permission_classes = ( IsConsumer, )
