@@ -5,9 +5,13 @@ from cart.models import Cart
 from store.models import PriceTime
 
 class CartItemSerializer(serializers.ModelSerializer):
+    service = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         exclude = ("description", )
+    
+    def get_service(self, obj):
+        return obj.service.name
 
 class CartSerializer(serializers.ModelSerializer):
     item_objs = serializers.SerializerMethodField()

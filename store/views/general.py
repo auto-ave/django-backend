@@ -1,4 +1,4 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, filters
 from common.permissions import *
 
 from store.models import *
@@ -48,6 +48,9 @@ class CityStoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | IsConsumer,)   
     serializer_class = StoreListSerializer
     filterset_fields = ['supported_vehicle_types',]
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ['question_text']
+    
 
     def get_queryset(self):
         citycode = self.kwargs['citycode']
