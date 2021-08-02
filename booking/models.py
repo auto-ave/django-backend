@@ -17,9 +17,9 @@ class Booking(Model):
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     otp = models.CharField(max_length=4)
-    price_time = models.ForeignKey(PriceTime, on_delete=models.PROTECT)
+    price_times = models.ManyToManyField(PriceTime, on_delete=models.PROTECT, related_name='bookings')
     event = models.OneToOneField(Event, on_delete=models.PROTECT)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings")
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
