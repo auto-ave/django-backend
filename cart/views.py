@@ -25,7 +25,10 @@ class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
 
         cart.addItem(item)
 
-        return response.Response(status=status.HTTP_200_OK)
+        serializer = CartSerializer(cart)
+        data = serializer.data
+
+        return response.Response(data, status=status.HTTP_200_OK)
 
 class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
     serializer_class = ItemSerializer
@@ -38,7 +41,10 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
 
         cart.removeItem(item)
 
-        return response.Response(status=status.HTTP_200_OK)
+        serializer = CartSerializer(cart)
+        data = serializer.data
+
+        return response.Response(data, status=status.HTTP_200_OK)
 
 class ClearCart(ValidateSerializerMixin, generics.GenericAPIView):
 
