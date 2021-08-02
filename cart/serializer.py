@@ -19,7 +19,7 @@ class FullCartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        exclude = ("description", )
+        fields = "__all__"
 
 
 class CartCallSerializer(serializers.Serializer):
