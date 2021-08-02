@@ -11,6 +11,11 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
         model = PriceTime
         fields = "__all__"
 
+class PriceTimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PriceTime
+        fields = "__all__"
+
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
