@@ -8,13 +8,15 @@ from store.models import PriceTime
 from common.mixins import ValidateSerializerMixin
 
 class GetCart(ValidateSerializerMixin, generics.GenericAPIView):
-    serializer_class = FullCartSerializer
+    permission_classes = (permissions.IsAuthenticated, )
+    serializer_class = CartSerializer
 
     def get(self, request):
         cart = request.user.consumer.getCart()
         return response.Response(self.serializer_data(cart))
 
 class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated, )
     serializer_class = CartCallSerializer
 
     def post(self, request):
@@ -31,6 +33,7 @@ class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
         return response.Response(data, status=status.HTTP_200_OK)
 
 class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated, )
     serializer_class = CartCallSerializer
 
     def post(self, request):
@@ -47,6 +50,7 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
         return response.Response(data, status=status.HTTP_200_OK)
 
 class ClearCart(ValidateSerializerMixin, generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request):
         cart = request.user.consumer.getCart()

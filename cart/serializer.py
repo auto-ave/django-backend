@@ -4,15 +4,21 @@ from rest_framework import serializers
 from cart.models import Cart
 from store.models import PriceTime
 
-class CartSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cart
-        fields = "__all__"
-
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = PriceTime
         exclude = ("description", )
+
+class CartSerializer(serializers.ModelSerializer):
+    item_objs = serializers.SerializerMethodField()
+    class Meta:
+        model = Cart
+        fields = "__all__"
+    
+    def get_item_objs(self, obj):
+        serializer = CartItemSerializer(obj.items, many=True)
+        return serializer.data
+
 
 class FullCartSerializer(serializers.ModelSerializer):
     items = CartItemSerializer(many=True)
