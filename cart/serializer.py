@@ -9,5 +9,18 @@ class CartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = "__all__"
 
-class ItemSerializer(serializers.Serializer):
+class CartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PriceTime
+        exclude = ("description", )
+
+class FullCartSerializer(serializers.ModelSerializer):
+    items = CartItemSerializer(many=True)
+
+    class Meta:
+        model = Cart
+        exclude = ("description", )
+
+
+class CartCallSerializer(serializers.Serializer):
     item = serializers.PrimaryKeyRelatedField(queryset=PriceTime.objects.all())

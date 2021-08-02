@@ -8,14 +8,14 @@ from store.models import PriceTime
 from common.mixins import ValidateSerializerMixin
 
 class GetCart(ValidateSerializerMixin, generics.GenericAPIView):
-    serializer_class = CartSerializer
+    serializer_class = FullCartSerializer
 
     def get(self, request):
         cart = request.user.consumer.getCart()
         return response.Response(self.serializer_data(cart))
 
 class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
-    serializer_class = ItemSerializer
+    serializer_class = CartCallSerializer
 
     def post(self, request):
         self.validate(request)
@@ -31,7 +31,7 @@ class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
         return response.Response(data, status=status.HTTP_200_OK)
 
 class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
-    serializer_class = ItemSerializer
+    serializer_class = CartCallSerializer
 
     def post(self, request):
         self.validate(request)
