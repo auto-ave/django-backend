@@ -92,26 +92,26 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'motorwash',
-        'USER': 'motorwash',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd10gv9mlauf22i',
-#         'USER': 'dkdfprvrmlvhyi',
-#         'PASSWORD': '42dacefc82a7fb67f786aa2c2ceae29d9f256b0b9d4976d634df559a1efba098',
-#         'HOST': 'ec2-100-25-100-81.compute-1.amazonaws.com',
+#         'NAME': 'motorwash',
+#         'USER': 'motorwash',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2dp3lk3a5fd88',
+        'USER': 'ipdsrwgbrteopp',
+        'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
+        'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
