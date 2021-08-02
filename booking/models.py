@@ -12,8 +12,8 @@ import datetime
 
 class Booking(Model):
     booking_id = models.CharField(max_length=20)
-    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT)
-    store = models.ForeignKey(Store, on_delete=models.PROTECT)
+    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
+    store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     otp = models.CharField(max_length=4)
