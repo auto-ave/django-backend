@@ -12,6 +12,7 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 class BookingListSerializer(serializers.ModelSerializer):
     price_times = serializers.SerializerMethodField()
+    amount = serializers.SerializerMethodField()
     class Meta:
         model = Booking
         fields = "__all__"
@@ -21,6 +22,9 @@ class BookingListSerializer(serializers.ModelSerializer):
         for price_time in obj.price_times.all():
             price_times.append(price_time.service.name)
         return price_times
+    
+    def get_amount(self, obj):
+        return obj.payment.amount
 
 class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)
