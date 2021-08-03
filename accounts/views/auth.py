@@ -14,8 +14,11 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
         data = self.validate(request)
         phone = data.get('phone')
 
-        user, created = User.objects.get_or_create(Q(phone=phone) | Q(username=phone))
-        if created:
+        user = User.objects.filter(Q(phone=phone) | Q(username=phone)).first()
+        created = False
+        if not user:
+            created = True
+            user = User.objects.create(phone=phone, username=phone)
             Consumer.objects.create(user=user)
 
         user.generate_otp()
