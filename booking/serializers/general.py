@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.utils import field_mapping
 
 from booking.models import *
+from booking.serializers.review import ReviewSerializer
 from store.serializers.services import PriceTimeSerializer
 
 
@@ -13,6 +14,9 @@ class PaymentSerializer(serializers.ModelSerializer):
 class BookingListSerializer(serializers.ModelSerializer):
     price_times = serializers.SerializerMethodField()
     amount = serializers.SerializerMethodField()
+    review = serializers.SerializerMethodField()
+    store = serializers.SerializerMethodField()
+
     class Meta:
         model = Booking
         fields = "__all__"
@@ -25,7 +29,17 @@ class BookingListSerializer(serializers.ModelSerializer):
     
     def get_amount(self, obj):
         return obj.payment.amount
-
+    
+    def get_review(self, obj):
+        serializer = ReviewSerializer(obj.review)
+        return serializer.data
+    
+    def get_store(self, obj):
+        store = obj.store
+        return {
+            "name": store.name,
+            "address": store.address
+        }
 class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
