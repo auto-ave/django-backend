@@ -15,6 +15,7 @@ class Model(models.Model):
 class City(Model):
     code = models.CharField(max_length=20)
     name = models.CharField(max_length=50)
+    upcoming = models.BooleanField(max_length=True)
 
     def save(self, *args, **kwargs):
         self.code = self.code.lower()
