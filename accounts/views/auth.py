@@ -1,5 +1,6 @@
 from rest_framework import generics, response, status
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from accounts.models import User, Consumer
 from accounts.serializers.auth import *
 from common.mixins import ValidateSerializerMixin
@@ -13,7 +14,7 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
         data = self.validate(request)
         phone = data.get('phone')
 
-        user, created = User.objects.get_or_create(phone=phone, username=phone)
+        user, created = User.objects.get_or_create(Q(phone=phone) | Q(username=phone))
         if created:
             Consumer.objects.create(user=user)
 

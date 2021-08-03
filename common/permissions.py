@@ -1,3 +1,4 @@
+from typing_extensions import ParamSpecArgs
 from rest_framework import permissions
 
 class ReadOnly(permissions.BasePermission):
@@ -36,7 +37,3 @@ class IsStoreOwner(permissions.BasePermission):
         print(obj, request.user.partner)
         return obj.owner == request.user.partner
 
-class HasABooking(permissions.BasePermission):
-    """
-    Allows access if Consumer has a booking.
-    """
