@@ -102,44 +102,17 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     # Update slot times
                     slot_start_time = add_mins_to_time(slot_start_time, total_time)
                     slot_end_time = add_mins_to_time(slot_end_time, total_time)
-            # print("events:")
-            # for event in events:
-            #     print(event.start_datetime.time(), event.end_datetime.time())
-            #     events.append(event)
-            
-            # while(start < store.closing_time):
-            #     # print(start, add_mins_to_time(start, store.slot_length))
-            #     end = add_mins_to_time(start, store.slot_length)
-
-            #     string = "{} from {}".format(start, end)
-
-            #     for event in events:
-            #         event_start = event.start_datetime.time()
-            #         event_end = event.end_datetime.time()
-            #         if event_end < start or event_start > end:
-            #             print(start, end)
-                        
-            #             if final_slots.get(string):
-            #                 final_slots[string] = final_slots[string] + 1
-            #             else:
-            #                 final_slots[string] = 1
-            #             # final_slots.append(start)            
-            #     start = add_mins_to_time(start, store.slot_length)
         
+        key = 1
         final_response = []
         for key in final_slots:
             final_response.append({
+                'key': key,
                 'start': key.split(' to ')[0],
                 'end': key.split(' to ')[1],
                 'count': final_slots[key]
             })
+            key = key + 1
             print('{} slots for {}'.format(final_slots[key], key))
-        
-        
-        # print(timeDiff(store.closing_time, store.opening_time))
-
-        # slot = Slot(cart=cart, start_time="12:00", end_time="1:00")
-        # slot.save()
-
 
         return response.Response(final_response, status=status.HTTP_200_OK)
