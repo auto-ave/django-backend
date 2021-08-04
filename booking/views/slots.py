@@ -103,16 +103,16 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     slot_start_time = add_mins_to_time(slot_start_time, total_time)
                     slot_end_time = add_mins_to_time(slot_end_time, total_time)
         
-        key = 1
+        count = 1
         final_response = []
         for key in final_slots:
             final_response.append({
-                'key': key,
+                'key': count,
                 'start': key.split(' to ')[0],
                 'end': key.split(' to ')[1],
                 'count': final_slots[key]
             })
-            key = key + 1
+            count = count + 1
             print('{} slots for {}'.format(final_slots[key], key))
 
         return response.Response(final_response, status=status.HTTP_200_OK)
