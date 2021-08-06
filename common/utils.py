@@ -1,5 +1,6 @@
 import random
 import string
+import datetime
 
 from django.utils.text import slugify
 
@@ -48,3 +49,13 @@ def removeFromAverage(currentAverage, currentCount, removeValue):
     
     newAverage = newSum / (currentCount - 1)
     return newAverage
+
+
+
+# Time Functions
+def dateAndTimeStringsToDateTime(date, time):
+    return datetime.datetime.strptime('{} {}'.format(date, time), '%Y-%m-%d %H:%M:%S')
+
+def dateTimeDiffInMinutes(datetime1, datetime2):
+    newTime = datetime1 - datetime2
+    return newTime.seconds/60

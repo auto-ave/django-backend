@@ -12,7 +12,7 @@ class GetCart(ValidateSerializerMixin, generics.GenericAPIView):
     serializer_class = CartSerializer
 
     def get(self, request):
-        cart = request.user.consumer.getCart()
+        cart = request.user.consumer.get_cart()
         return response.Response(self.serializer_data(cart))
 
 class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
@@ -23,7 +23,7 @@ class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
         self.validate(request)
 
         item = PriceTime.objects.get(pk=request.data['item'])
-        cart = request.user.consumer.getCart()
+        cart = request.user.consumer.get_cart()
 
         cart.addItem(item)
 
@@ -40,7 +40,7 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
         self.validate(request)
 
         item = PriceTime.objects.get(pk=request.data['item'])
-        cart = request.user.consumer.getCart()
+        cart = request.user.consumer.get_cart()
 
         cart.removeItem(item)
 
@@ -53,7 +53,7 @@ class ClearCart(ValidateSerializerMixin, generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request):
-        cart = request.user.consumer.getCart()
+        cart = request.user.consumer.get_cart()
         cart.clear()
 
         return response.Response(status=status.HTTP_200_OK)

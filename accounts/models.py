@@ -48,7 +48,7 @@ class Consumer(Model):
             self.user.save()
         super(Consumer, self).save(*args, **kwargs)
     
-    def getCart(self):
+    def get_cart(self):
         if hasattr(self, 'cart'):
             return self.cart
         else:

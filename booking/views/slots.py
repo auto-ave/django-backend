@@ -1,25 +1,20 @@
-from rest_framework import generics, response, status
+from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
 from common.mixins import ValidateSerializerMixin
 from booking.models import Slot
 from cart.models import Cart
 from store.models import Event
+from common.permissions import IsConsumer
    
 from collections import defaultdict
 import datetime
 
 class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
+    permission_classes = (IsConsumer,)
     serializer_class = SlotCreateSerializer
 
-    def post(self, request):
-        def timeDiff(time1,time2):
-            timeA = datetime.datetime.strptime(time1, "%H:%M")
-            timeB = datetime.datetime.strptime(time2, "%H:%M")
-            print(timeA, timeB, type(timeA), type(time2))
-            newTime = timeA - timeB
-            return newTime.seconds/60
-        
+    def post(self, request):        
         def add_mins_to_time(timeval, mins_to_add):
             dummy_date = datetime.date(1, 1, 1)
             full_datetime = datetime.datetime.combine(dummy_date, timeval)
@@ -39,11 +34,12 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 return False
         
         data = self.validate(request)
-        cart = Cart.objects.get(pk=data.get('cart'))
-        
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
 
+        user = request.user
+        cart = user.consumer.get_cart()
+        
         store = cart.store
 
         if not cart.isValid():
@@ -61,7 +57,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         bays_count = bays.count()
         events = []
 
-        final_slots = defaultdict(lambda : bays_count)
+        # final_slots = defaultdict(lambda : bays_count)
+        final_slots = {}
         # print('initial slots: ', final_slots)
 
         # Reset slot times
@@ -71,7 +68,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
         while(slot_end_time < store.closing_time):
             string = '{} to {}'.format(slot_start_time, slot_end_time)
-            final_slots[string] = final_slots[string]
+            # final_slots[string] = final_slots[string]
+            final_slots[string] = [ bay.id for bay in bays ]
             
             # Update slot times
             slot_start_time = add_mins_to_time(slot_start_time, total_time)
@@ -94,10 +92,12 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     string = '{} to {}'.format(slot_start_time, slot_end_time)
                     # print('slots----> ', slot_start_time, slot_end_time)
                     if timeCollideCheck(event_start_time, event_end_time, slot_start_time, slot_end_time):
-                        final_slots[string] = final_slots[string] - 1 
+                        # final_slots[string] = final_slots[string] - 1
+                        if bay.id in final_slots[string]:
+                            final_slots[string].remove(bay.id)
                         print('event and slot collided: ', event, slot_start_time, slot_end_time)
-                    else:
-                        final_slots[string] = final_slots[string]
+                    # else:
+                    #     final_slots[string] = final_slots[string]
                     
                     # Update slot times
                     slot_start_time = add_mins_to_time(slot_start_time, total_time)
@@ -108,9 +108,10 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         for key in final_slots:
             final_response.append({
                 'key': count,
+                'bay_ids': final_slots[key],
                 'start': key.split(' to ')[0],
                 'end': key.split(' to ')[1],
-                'count': final_slots[key]
+                # 'count': len(final_slots[key])
             })
             count = count + 1
             print('{} slots for {}'.format(final_slots[key], key))

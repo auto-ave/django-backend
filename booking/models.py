@@ -7,28 +7,26 @@ from store.models import Store, PriceTime, Event, VehicleType
 from .static import BOOKING_STATUS, PAYMENT_STATUS
 from common.utils import otp_generator
 import datetime
-# Create your models here.
-
-
 class Booking(Model):
-    booking_id = models.CharField(max_length=20)
-    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
-    store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
+    booking_id = models.CharField(primary_key=True, max_length=50)
+    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings', editable=False)
+    store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings', editable=False)
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
-    otp = models.CharField(max_length=4)
-    price_times = models.ManyToManyField(PriceTime, related_name='bookings')
-    event = models.OneToOneField(Event, on_delete=models.PROTECT)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings")
+    otp = models.CharField(max_length=4, editable=False)
+    price_times = models.ManyToManyField(PriceTime, related_name='bookings', editable=False)
+    event = models.OneToOneField(Event, on_delete=models.PROTECT, editable=False)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings", editable=False)
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
     def __str__(self):
         return "Booking: #" + self.booking_id
 
-    def save(self):
-        self.otp = otp_generator()
-        super(Booking, self).save()
+    def save(self, *args, **kwargs):
+        if not self.otp:
+            self.otp = otp_generator()
+        super(Booking, self).save(*args, **kwargs)
     
 
 
@@ -47,10 +45,10 @@ class Refund(Model):
     # details = returned from payment gateway
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if self.refund_status == 2:
             self.booking.is_refunded=True
-        super(Refund, self).save()
+        super(Refund, self).save(*args, **kwargs)
         
 class Review(Model):
     consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="reviews")
@@ -61,10 +59,10 @@ class Review(Model):
     images = ArrayField(base_field=models.ImageField(), blank= True, null=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.id:
             self.store.updateRating(self.rating)
-        super(Review, self).save()
+        super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return "Review #{} : {}".format(self.pk, self.store)

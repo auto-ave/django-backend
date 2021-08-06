@@ -1,5 +1,15 @@
-BOOKING_STATUS = ((0, 'Started'), (1, 'Done'), (2, 'Error'))
+BOOKING_STATUS = (
+    (0, 'Not Paid'),
+    (1, 'Payment Done'),
+    (2, 'Not Attended'),
+    (3, 'Service Started'),
+    (4, 'Service Completed')
+)
 BOOKING_STATUS_DICT = dict((v, k) for k, v in BOOKING_STATUS)
 
-PAYMENT_STATUS = ((0, 'Started'), (1, 'COMPLETED'), (2, 'Error'))
+PAYMENT_STATUS = (
+    (0, 'Pending'),
+    (1, 'Paid'),
+    (2, 'Cancelled')
+)
 PAYMENT_STATUS_DICT = dict((v, k) for k, v in PAYMENT_STATUS)
