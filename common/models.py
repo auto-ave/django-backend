@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 # from common.constants import VEHICLE_MODELS, VEHICLE_TYPES
 
 class Model(models.Model):
@@ -32,6 +33,7 @@ class Service(Model):
     code = models.CharField(max_length=20)
     name = models.CharField(max_length=50)
     description = models.TextField()
+    images = ArrayField(base_field=models.URLField(), null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.code = self.code.lower()

@@ -1,3 +1,4 @@
+from store.serializers.general import EventSerializer
 from rest_framework import serializers
 from rest_framework.utils import field_mapping
 
@@ -31,8 +32,9 @@ class BookingListSerializer(serializers.ModelSerializer):
         return obj.payment.amount
     
     def get_review(self, obj):
-        serializer = ReviewSerializer(obj.review)
-        return serializer.data
+        if hasattr(obj, 'review'):
+            return ReviewSerializer(obj.review).data
+        return None
     
     def get_store(self, obj):
         store = obj.store
@@ -40,6 +42,34 @@ class BookingListSerializer(serializers.ModelSerializer):
             "name": store.name,
             "address": store.address
         }
+
+
+class BookingListOwnerSerializer(serializers.ModelSerializer):
+    booked_by = serializers.SerializerMethodField()
+    price_times = PriceTimeSerializer(many=True)
+    payment = PaymentSerializer()
+    review = serializers.SerializerMethodField()
+    event = EventSerializer()
+
+    class Meta:
+        model = Booking
+        fields = "__all__"
+    
+    def get_amount(self, obj):
+        return obj.payment.amount
+    
+    def get_review(self, obj):
+        if hasattr(obj, 'review'):
+            return ReviewSerializer(obj.review).data
+        return None
+
+
+    def get_booked_by(self, obj):
+        return {
+            "name": obj.booked_by.user.full_name(),
+            "phone": str(obj.booked_by.user.phone)
+        }
+
 class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()

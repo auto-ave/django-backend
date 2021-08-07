@@ -9,14 +9,14 @@ from common.utils import otp_generator
 import datetime
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
-    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings', editable=False)
-    store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings', editable=False)
+    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
+    store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
-    otp = models.CharField(max_length=4, editable=False)
-    price_times = models.ManyToManyField(PriceTime, related_name='bookings', editable=False)
-    event = models.OneToOneField(Event, on_delete=models.PROTECT, editable=False)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings", editable=False)
+    otp = models.CharField(max_length=4)
+    price_times = models.ManyToManyField(PriceTime, related_name='bookings')
+    event = models.OneToOneField(Event, on_delete=models.PROTECT)
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings")
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 

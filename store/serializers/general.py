@@ -33,3 +33,7 @@ class StoreListSerializer(ModelSerializer):
     def get_services_start(self, obj):
         return 499
     
+class EventSerializer(ModelSerializer):
+    class Meta():
+        model = Event
+        fields = "__all__"

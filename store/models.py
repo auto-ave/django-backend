@@ -9,11 +9,15 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 
 class Store(Model):
-    thumbnail = models.ImageField()
+    owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.CASCADE)
+    partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.CASCADE, blank=True, null=True)
+
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
     description = models.TextField(max_length=300)
+    thumbnail = models.URLField() # should be square
+    images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
     emails = ArrayField(base_field=models.EmailField())
     address = models.TextField()
@@ -21,7 +25,6 @@ class Store(Model):
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
     registration_type = models.CharField(max_length=30)
     registration_number = models.CharField(max_length=20)
-    owner = models.ForeignKey('accounts.Partner', on_delete = models.CASCADE, related_name="stores")
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)

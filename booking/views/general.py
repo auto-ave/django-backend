@@ -1,22 +1,31 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from django.http import HttpResponse
 
 from booking.models import *
 from booking.serializers.general import *
 
-from common.permissions import IsConsumer
+from common.permissions import IsAuthenticated, IsConsumer, IsStoreOwner
 
 from paytmchecksum import PaytmChecksum
 import json, requests
 
 from django.conf import settings
 
-class BookingsList(generics.ListAPIView):
+class BookingsListConsumer(generics.ListAPIView):
     serializer_class = BookingListSerializer
-    permission_classes = ( IsConsumer, )
+    permission_classes = ( permissions.IsAuthenticated, )
 
     def get_queryset(self):
-        return self.request.user.consumer.bookings.all()
+        user = self.request.user
+        return user.consumer.bookings.all()
+            
+class BookingListOwner(generics.ListAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = BookingListOwnerSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return user.storeowner.store.bookings.all()
 
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'

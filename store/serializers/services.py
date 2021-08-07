@@ -12,9 +12,13 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class PriceTimeSerializer(serializers.ModelSerializer):
+    service = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         fields = "__all__"
+    
+    def get_service(self, obj):
+        return obj.service.name
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:

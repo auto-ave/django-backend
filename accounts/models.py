@@ -16,12 +16,16 @@ class User(AbstractUser):
     is_verified = models.BooleanField(default=False)
 
     is_consumer = models.BooleanField(default=False)
+    is_store_owner = models.BooleanField(default=False)
     is_partner = models.BooleanField(default=False)
     is_salesman = models.BooleanField(default=False)
     is_support = models.BooleanField(default=False)
     is_sub_admin = models.BooleanField(default=False)
 
     def __str__(self):
+        return self.first_name + " " + self.last_name
+    
+    def full_name(self):
         return self.first_name + " " + self.last_name
     
     def generate_otp(self):
@@ -55,6 +59,18 @@ class Consumer(Model):
             cart = Cart(consumer=self)
             cart.save()
             return cart
+
+class StoreOwner(Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "StoreOwner: {} {}".format(self.user.first_name, self.user.last_name)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user.is_store_owner = True
+            self.user.save()
+        super(StoreOwner, self).save(*args, **kwargs)
 
 class Partner(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -1,60 +1,39 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 
-from rest_framework import parsers, views, exceptions, response, status, generics
-from misc.models import StoreImage, ServiceImage
-from misc.serializers import StoreImageSerializer, ServiceImageSerializer
+from rest_framework import parsers, permissions, serializers, views, exceptions, response, status, generics
+
+from misc.serializers import ImageSerializer
 from store.models import Store
 from common.models import Service
+from common.permissions import IsStoreOwner, IsPartner, IsSalesman, IsSubAdmin
 
 class ImageUploadParser(parsers.FileUploadParser):
     media_type = 'image/*'
 
 class StoreImageUpload(views.APIView):
-    serializer_class = StoreImageSerializer
+    serializer_class = ImageSerializer
+    permission_classes = ((IsStoreOwner | IsSalesman | IsPartner | IsSubAdmin | permissions.IsAdminUser) ,)
     parser_class = (ImageUploadParser,)
     # TODO: permissions
     # permission_classes = 
 
     def put(self, request, format=None):
-        if 'image' not in request.data:
-            raise exceptions.ParseError("No image found")
 
-        image = request.data['image']
-        store = request.data['store']
+        # if 'image' not in request.data:
+        #     raise exceptions.ParseError("No image found")
 
-        instance = StoreImage()
-        instance.store = Store.objects.get(pk=store)
-        instance.image.save(image.name, image, save=True)
-        instance.save()
+        # image = request.data['image']
+        # store = request.data['store']
 
-        return response.Response(
-            data={
-                "url": instance.image.url
-            },
-            status=status.HTTP_201_CREATED
-        )
-
-class ServiceImageUpload(views.APIView):
-    serializer_class = ServiceImageSerializer
-    parser_class = (ImageUploadParser,)
-    # TODO: permissions
-    # permission_classes = 
-
-    def put(self, request, format=None):
-        if 'image' not in request.data:
-            raise exceptions.ParseError("No image found")
-
-        image = request.data['image']
-        service = request.data['service']
-
-        instance = ServiceImage()
-        instance.service = Service.objects.get(pk=service)
-        instance.image.save(image.name, image, save=True)
-        instance.save()
+        # instance = StoreImage()
+        # instance.store = Store.objects.get(pk=store)
+        # instance.image.save(image.name, image, save=True)
+        # instance.save()
 
         return response.Response(
             data={
-                "url": instance.image.url
+                "url": "https://static.toiimg.com/thumb/msid-83539139,width-1200,height-900,resizemode-4/.jpg"
             },
             status=status.HTTP_201_CREATED
         )

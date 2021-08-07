@@ -19,6 +19,7 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(User, CustomUserAdmin)
 
 admin.site.register(Consumer)
+admin.site.register(StoreOwner)
 admin.site.register(Partner)
 admin.site.register(Salesman)
 admin.site.register(Support)

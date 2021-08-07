@@ -12,6 +12,10 @@ class IsConsumer(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.is_consumer
 
+class IsStoreOwner(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.is_store_owner
+
 class IsPartner(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.is_partner
@@ -28,11 +32,4 @@ class IsSubAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.is_sub_admin
 
-class IsStoreOwner(permissions.BasePermission):
-    """
-    Allows access only if the Partner is owner of the Store.
-    """
-    def has_object_permission(self, request, view, obj):
-        print(obj, request.user.partner)
-        return obj.owner == request.user.partner
 
