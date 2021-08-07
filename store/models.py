@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.db.models import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
 # from accounts.models import Partner
 from common.utils import *
@@ -28,8 +29,9 @@ class Store(Model):
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)
-    opening_time = models.TimeField()
-    closing_time = models.TimeField()
+    # TODO: json schema validation, change slot api, also frontend validation
+    # Starts from sunday
+    store_times = ArrayField(base_field=JSONField())
     slot_length = models.PositiveIntegerField() # Number of minutes
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
@@ -74,7 +76,7 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="pricetimes")
     price = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField() # Number of minutes
-    description = models.TextField()
+    description = models.TextField() # same descp for each type of vehicle
     bays = models.ManyToManyField(Bay, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:
