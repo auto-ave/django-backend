@@ -62,6 +62,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # booking.price_times.set([cart.items.all()])
         # booking.save()
 
+        print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
 
         paytmParams = dict()
@@ -72,16 +73,16 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "orderId": ORDER_ID,
             "callbackUrl": "http://127.0.0.1:8000/payment/callback/",
             "txnAmount": {
-                    "value": cart.total,
-                    "currency": "INR",
-                },
+                "value": str(cart.total),
+                "currency": "INR",
+            },
             "userInfo": {
-                    "consumerId": user.consumer.id,
-                    "name": "{} {}".format(user.first_name, user.last_name),
-                    "mobileNumber": user.phone,
-                    "store": bay.store.name,
-                },
-            }
+                "custId": user.consumer.id,
+                "name": "{} {}".format(user.first_name, user.last_name),
+                "mobileNumber": str(user.phone),
+                "store": bay.store.name,
+            },
+        }
 
         # Generate checksum by parameters we have in body
         # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
@@ -99,5 +100,13 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # for Production
         # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
-        print(resp, type(resp))
-        return response.Response({"message": "Hello, world!"})
+        body = resp["body"]
+
+        if body['resultInfo']['resultStatus'] == "S":
+            return response.Response({
+                "txn_token": body['txnToken']
+            })
+        else:
+            return response.Response({
+                "detail": body['resultInfo']['resultMessage']
+            })
