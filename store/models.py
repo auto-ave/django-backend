@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
+from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db.models import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
 # from accounts.models import Partner

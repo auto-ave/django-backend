@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'phonenumber_field',
+    'django_better_admin_arrayfield',
     
     'accounts',
     'common',
@@ -176,7 +177,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
