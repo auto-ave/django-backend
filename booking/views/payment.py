@@ -1,5 +1,5 @@
 from vehicle.models import VehicleType
-from common.utils import dateAndTimeStringsToDateTime, dateTimeDiffInMinutes
+from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
 from booking.serializers.payment import InitiateTransactionSerializer
 from rest_framework import generics, permissions, response
 from django.conf import settings
@@ -20,7 +20,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
     def post(self, request):
         user = request.user
-        data = request.data
+        data = self.validate(request)
 
         date = data.get('date')
         bay = data.get('bay')
@@ -110,3 +110,49 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "detail": body['resultInfo']['resultMessage']
             })
+
+class PaymentCallback(ValidateSerializerMixin, generics.GenericAPIView):
+
+    def post(self, request):
+        user = request.user
+        data = self.validate(request)
+        
+        resp = dict()
+        order = None
+
+        return response.Response({
+            "detail": "Payment Successful"
+        })
+
+        checksum = ""
+        # the request.POST is coming from paytm
+        form = request.POST
+
+        response_dict = {}
+        order = None  # initialize the order varible with None
+
+        for i in form.keys():
+            response_dict[i] = form[i]
+            if i == 'CHECKSUMHASH':
+                # 'CHECKSUMHASH' is coming from paytm and we will assign it to checksum variable to verify our paymant
+                checksum = form[i]
+
+            if i == 'ORDERID':
+                # we will get an order with id==ORDERID to turn isPaid=True when payment is successful
+                order = Order.objects.get(id=form[i])
+
+        # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
+        verify = Checksum.verify_checksum(response_dict, env('MERCHANTKEY'), checksum)
+
+        if verify:
+            if response_dict['RESPCODE'] == '01':
+                # if the response code is 01 that means our transaction is successfull
+                print('order successful')
+                # after successfull payment we will make isPaid=True and will save the order
+                order.isPaid = True
+                order.save()
+                # we will render a template to display the payment status
+                return render(request, 'paytm/paymentstatus.html', {'response': response_dict})
+            else:
+                print('order was not successful because' + response_dict['RESPMSG'])
+                return render(request, 'paytm/paymentstatus.html', {'response': response_dict})
