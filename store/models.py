@@ -12,7 +12,8 @@ from django.db import transaction
 class Store(Model):
     owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.CASCADE)
     partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.CASCADE, blank=True, null=True)
-
+    #pincode field
+    pincode = models.CharField(max_length=6, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)

@@ -1,4 +1,6 @@
-from rest_framework import generics, status, filters
+from common.mixins import ValidateSerializerMixin
+from vehicle.serializers import VehicleTypeSerializer
+from rest_framework import generics, status, filters, response
 from common.permissions import *
 
 from store.models import *
@@ -9,6 +11,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
+from store.serializers.services import *
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -61,3 +64,31 @@ class CityStoreList(generics.ListAPIView):
         #     vehicle_type = get_object_or_404(VehicleType, model = vehicle_model)
         #     queryset = queryset.filter(supported_vehicle_types__in=[vehicle_type])
         return queryset
+
+class CreateStoreGeneral(generics.CreateAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    serializer_class = StoreGeneralSerializer
+    
+    def post(self, request):
+
+        data = self.validate(request)
+        serializedData = self.get_serializer(data=data)
+        serializedData.save()
+        
+        return response.Response({
+            'message': 'Created Store'
+        },status=status.HTTP_200_OK)
+
+class ServiceCreationDetails(generics.GenericAPIView):
+    # permission_classes = (IsSalesman | is)   
+    # serializer_class = ServiceCreationDetailsSerializer
+    
+
+    def get(self, request):
+        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True) 
+        services = ServiceSerializer(Service.objects.all(),many=True)
+    
+        return response.Response({
+            'vehicle_types': vehicle_types.data,
+            'services' : services.data
+        },status=status.HTTP_200_OK)        

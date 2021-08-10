@@ -95,8 +95,8 @@ AUTH_USER_MODEL = 'accounts.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'motorwash',
-        'USER': 'motorwash',
+        'NAME': 'motor',
+        'USER': 'paradox',
         'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
