@@ -1,3 +1,4 @@
+from cart import serializer
 from common.mixins import ValidateSerializerMixin
 from vehicle.serializers import VehicleTypeSerializer
 from rest_framework import generics, status, filters, response
@@ -69,7 +70,7 @@ class CreateStoreGeneral(generics.CreateAPIView, ValidateSerializerMixin):
     permission_classes = (IsSalesman,)   
     serializer_class = StoreGeneralSerializer
     
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
 
         data = self.validate(request)
         serializedData = self.get_serializer(data=data)
@@ -92,3 +93,63 @@ class ServiceCreationDetails(generics.GenericAPIView):
             'vehicle_types': vehicle_types.data,
             'services' : services.data
         },status=status.HTTP_200_OK)        
+
+class CreateStorePriceTimes(generics.GenericAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    serializer_class = CreatePriceTimeSerializer
+    
+
+    def post(self, request, *args, **kwargs):
+        data = self.validate(request)
+        serializer = CreatePriceTimeSerializer(data= data,many=True)
+        serializer.save()
+        return response.Response({
+            "detail": "PriceTimes created" 
+        }, status=status.HTTP_200_OK)
+
+
+class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    # serializer_class = StoreServiceListSerializer
+    lookup_field = 'store'
+    
+
+    def get(self, request,store):
+
+        store = Store.objects.get(id=store)
+        pricetimes = store.pricetimes.all()
+        services = []
+        store_price_times = {}
+        for pricetime in pricetimes:
+            service = pricetime.service
+            if not  service in services:
+                services.insert(service)
+        for service in services:
+            store_price_times.add(service.id,{'max_price':0,'min_price':float("inf"), 'max_slot_length':0,'min_slot_length':float("inf")})
+        for pricetime in pricetimes:
+            price = pricetime.price
+            slot_length = pricetime.time_interval
+            max_price = store_price_times[pricetime.service.id]['max_price']
+            min_price = store_price_times[pricetime.service.id]['min_price']
+            min_slot_length = store_price_times[pricetime.service.id]['min_slot_length']
+            max_slot_length = store_price_times[pricetime.service.id]['max_slot_length']
+            
+            if slot_length > max_slot_length:
+                store_price_times[pricetime.service.id]['max_slot_length'] = slot_length
+            if slot_length < min_slot_length:
+                store_price_times[pricetime.service.id]['min_slot_length'] = slot_length    
+            if price > max_price:
+                store_price_times[pricetime.service.id]['max_price'] = price
+            if price < min_price:
+                store_price_times[pricetime.service.id]['min_price'] = price    
+        response = {'results':[]}      
+        for key in store_price_times:
+            service = {}
+            service.add('service',ServiceSerializer(Service.objects.get(id=key).data))
+            service.add('max_price',store_price_times[key]['max_price'])
+            service.add('min_price',store_price_times[key]['min_price'])
+            service.add('min_slot_length',store_price_times[key]['min_slot_length'])
+            service.add('max_slot_length',store_price_times[key]['max_slot_length'])
+            response['results'].insert(service)
+#Yahan pe serializer use krna tha but samajh nahi aaya kese
+        return response.Response(response, status=status.HTTP_200_OK)

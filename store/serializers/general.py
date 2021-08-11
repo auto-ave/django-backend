@@ -54,6 +54,3 @@ class StoreGeneralSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class ServiceCreationDetailsSerializer(serializers.Serializer):
-    services = serializers.SerializerMethodField()
-    vehicle_types = serializers.SerializerMethodField()

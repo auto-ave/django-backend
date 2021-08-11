@@ -1,5 +1,7 @@
+from vehicle.models import VehicleType
+import vehicle
 from rest_framework import serializers
-from store.models import PriceTime, Service
+from store.models import PriceTime, Service,Store
 
 class PriceTimeListSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
@@ -24,3 +26,35 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = "__all__"
+
+class CreatePriceTimeSerializer(serializers.ModelSerializer):
+    service = serializers.SerializerMethodField()
+    store = serializers.SerializerMethodField()
+    vehicle = serializers.SerializerMethodField()
+    class Meta:
+        model = PriceTime
+        fields = "__all__"
+    
+    def get_service(self, obj):
+        return Service.objects.get(id=obj.service) 
+    def get_store(self, obj):
+        return Store.objects.get(id=obj.store)
+    def get_vehicle(self, obj):
+        return VehicleType.objects.get(id=obj.vehicle_type)  
+                 
+# class StoreServiceListSerializer(serializers.Serializer):
+#     service = ServiceSerializer()
+#     min_price = serializers.SerializerMethodField()
+#     max_price = serializers.SerializerMethodField()
+#     min_slot_length = serializers.SerializerMethodField()
+#     max_slot_length = serializers.SerializerMethodField()
+    
+    
+#     def get_min_price(self, obj):
+#         return self.context['min_price']
+#     def get_max_price(self, obj):
+#         return self.context['max_price']
+#     def get_min_slot_length(self, obj):
+#         return self.context['min_slot_length']
+#     def get_max_slot_length(self, obj):
+#         return self.context['max_slot_length']                    

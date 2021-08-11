@@ -10,5 +10,7 @@ urlpatterns = [
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
         path('salesman/store/create/',general.CreateStoreGeneral.as_view()),
         path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
+        path('salesman/createpricetimes/',general.CreateStorePriceTimes.as_view()),
+        path('salesman/<int:store>/services/',general.StoreServicesListOverview.as_view()),
 
 ]
