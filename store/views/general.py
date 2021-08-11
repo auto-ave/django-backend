@@ -13,6 +13,7 @@ from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
 from store.serializers.services import *
+import json
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -123,9 +124,9 @@ class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin
         for pricetime in pricetimes:
             service = pricetime.service
             if not  service in services:
-                services.insert(service)
+                services.append(service)
         for service in services:
-            store_price_times.add(service.id,{'max_price':0,'min_price':float("inf"), 'max_slot_length':0,'min_slot_length':float("inf")})
+            store_price_times[service.id] = {'max_price':0,'min_price':float("inf"), 'max_slot_length':0,'min_slot_length':float("inf")}
         for pricetime in pricetimes:
             price = pricetime.price
             slot_length = pricetime.time_interval
@@ -142,14 +143,14 @@ class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin
                 store_price_times[pricetime.service.id]['max_price'] = price
             if price < min_price:
                 store_price_times[pricetime.service.id]['min_price'] = price    
-        response = {'results':[]}      
+        res = {'results':[]}      
         for key in store_price_times:
             service = {}
-            service.add('service',ServiceSerializer(Service.objects.get(id=key).data))
-            service.add('max_price',store_price_times[key]['max_price'])
-            service.add('min_price',store_price_times[key]['min_price'])
-            service.add('min_slot_length',store_price_times[key]['min_slot_length'])
-            service.add('max_slot_length',store_price_times[key]['max_slot_length'])
-            response['results'].insert(service)
+            service['service']=ServiceSerializer(Service.objects.get(id=key)).data
+            service['max_price']=store_price_times[key]['max_price']
+            service['min_price']=store_price_times[key]['min_price']
+            service['min_slot_length']=store_price_times[key]['min_slot_length']
+            service['max_slot_length']=store_price_times[key]['max_slot_length']
+            res['results'].append(service)
 #Yahan pe serializer use krna tha but samajh nahi aaya kese
-        return response.Response(response, status=status.HTTP_200_OK)
+        return response.Response(json.dumps(res), status=status.HTTP_200_OK)
