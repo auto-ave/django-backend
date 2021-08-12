@@ -105,6 +105,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
                 "mid": settings.PAYTM_MID,
+                "order_id": ORDER_ID,
+                "amount": str(cart.total),
+                "callback_url": "http://127.0.0.1:8000/payment/callback/",
                 "txn_token": body['txnToken']
             })
         else:
