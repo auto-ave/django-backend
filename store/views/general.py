@@ -1,4 +1,7 @@
-from rest_framework import generics, status, filters
+from cart import serializer
+from common.mixins import ValidateSerializerMixin
+from vehicle.serializers import VehicleTypeSerializer
+from rest_framework import generics, status, filters, response
 from common.permissions import *
 
 from store.models import *
@@ -9,6 +12,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
+from store.serializers.services import *
+import json
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -61,3 +66,91 @@ class CityStoreList(generics.ListAPIView):
         #     vehicle_type = get_object_or_404(VehicleType, model = vehicle_model)
         #     queryset = queryset.filter(supported_vehicle_types__in=[vehicle_type])
         return queryset
+
+class CreateStoreGeneral(generics.CreateAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    serializer_class = StoreGeneralSerializer
+    
+    def post(self, request, *args, **kwargs):
+
+        data = self.validate(request)
+        serializedData = self.get_serializer(data=data)
+        serializedData.save()
+        
+        return response.Response({
+            'message': 'Created Store'
+        },status=status.HTTP_200_OK)
+
+class ServiceCreationDetails(generics.GenericAPIView):
+    # permission_classes = (IsSalesman | is)   
+    # serializer_class = ServiceCreationDetailsSerializer
+    
+
+    def get(self, request):
+        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True) 
+        services = ServiceSerializer(Service.objects.all(),many=True)
+    
+        return response.Response({
+            'vehicle_types': vehicle_types.data,
+            'services' : services.data
+        },status=status.HTTP_200_OK)        
+
+class CreateStorePriceTimes(generics.GenericAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    serializer_class = CreatePriceTimeSerializer
+    
+
+    def post(self, request, *args, **kwargs):
+        data = self.validate(request)
+        serializer = CreatePriceTimeSerializer(data= data,many=True)
+        serializer.save()
+        return response.Response({
+            "detail": "PriceTimes created" 
+        }, status=status.HTTP_200_OK)
+
+
+class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin):
+    permission_classes = (IsSalesman,)   
+    # serializer_class = StoreServiceListSerializer
+    lookup_field = 'store'
+    
+
+    def get(self, request,store):
+
+        store = Store.objects.get(id=store)
+        pricetimes = store.pricetimes.all()
+        services = []
+        store_price_times = {}
+        for pricetime in pricetimes:
+            service = pricetime.service
+            if not  service in services:
+                services.append(service)
+        for service in services:
+            store_price_times[service.id] = {'max_price':0,'min_price':float("inf"), 'max_slot_length':0,'min_slot_length':float("inf")}
+        for pricetime in pricetimes:
+            price = pricetime.price
+            slot_length = pricetime.time_interval
+            max_price = store_price_times[pricetime.service.id]['max_price']
+            min_price = store_price_times[pricetime.service.id]['min_price']
+            min_slot_length = store_price_times[pricetime.service.id]['min_slot_length']
+            max_slot_length = store_price_times[pricetime.service.id]['max_slot_length']
+            
+            if slot_length > max_slot_length:
+                store_price_times[pricetime.service.id]['max_slot_length'] = slot_length
+            if slot_length < min_slot_length:
+                store_price_times[pricetime.service.id]['min_slot_length'] = slot_length    
+            if price > max_price:
+                store_price_times[pricetime.service.id]['max_price'] = price
+            if price < min_price:
+                store_price_times[pricetime.service.id]['min_price'] = price    
+        res = {'results':[]}      
+        for key in store_price_times:
+            service = {}
+            service['service']=ServiceSerializer(Service.objects.get(id=key)).data
+            service['max_price']=store_price_times[key]['max_price']
+            service['min_price']=store_price_times[key]['min_price']
+            service['min_slot_length']=store_price_times[key]['min_slot_length']
+            service['max_slot_length']=store_price_times[key]['max_slot_length']
+            res['results'].append(service)
+#Yahan pe serializer use krna tha but samajh nahi aaya kese
+        return response.Response(json.dumps(res), status=status.HTTP_200_OK)

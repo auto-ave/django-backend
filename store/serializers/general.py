@@ -37,3 +37,20 @@ class EventSerializer(ModelSerializer):
     class Meta():
         model = Event
         fields = "__all__"
+
+
+class StoreGeneralSerializer(ModelSerializer):
+
+    # name = serializers.CharField(max_length=100)
+    # store_times = ArrayField(base_field=JSONField())
+    # images = ArrayField(base_field=models.URLField(), null=True, blank=True)
+    # address = serializers.CharField(max_length=200) #doubt
+    # pincode = serializers.CharField(max_length=5)
+    # description = serializers.CharField(max_length=300)
+    # latitude = serializers.DecimalField(max_digits=22, decimal_places=16)
+    # longitude = serializers.DecimalField(max_digits=22, decimal_places=16)
+    class Meta():
+        model = Store
+        fields = "__all__"
+
+
