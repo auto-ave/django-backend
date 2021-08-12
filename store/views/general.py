@@ -67,19 +67,19 @@ class CityStoreList(generics.ListAPIView):
         #     queryset = queryset.filter(supported_vehicle_types__in=[vehicle_type])
         return queryset
 
-class CreateStoreGeneral(generics.CreateAPIView, ValidateSerializerMixin):
+class StoreCreateView(generics.CreateAPIView, ValidateSerializerMixin):
     permission_classes = (IsSalesman,)   
-    serializer_class = StoreGeneralSerializer
+    serializer_class = StoreCreateSerializer
     
-    def post(self, request, *args, **kwargs):
+    # def post(self, request, *args, **kwargs):
 
-        data = self.validate(request)
-        serializedData = self.get_serializer(data=data)
-        serializedData.save()
+    #     data = self.validate(request)
+    #     serializedData = self.get_serializer(data=data)
+    #     serializedData.save()
         
-        return response.Response({
-            'message': 'Created Store'
-        },status=status.HTTP_200_OK)
+    #     return response.Response({
+    #         'message': 'Created Store'
+    #     },status=status.HTTP_200_OK)
 
 class ServiceCreationDetails(generics.GenericAPIView):
     # permission_classes = (IsSalesman | is)   
@@ -153,4 +153,4 @@ class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin
             service['max_slot_length']=store_price_times[key]['max_slot_length']
             res['results'].append(service)
 #Yahan pe serializer use krna tha but samajh nahi aaya kese
-        return response.Response(json.dumps(res), status=status.HTTP_200_OK)
+        return response.Response(res, status=status.HTTP_200_OK)

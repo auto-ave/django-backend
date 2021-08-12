@@ -8,9 +8,11 @@ urlpatterns = [
 
     path('store/list/',general.StoreList.as_view()),
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
-        path('salesman/store/create/',general.CreateStoreGeneral.as_view()),
-        path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
-        path('salesman/pricetimes/',general.CreateStorePriceTimes.as_view()),
-        path('salesman/<int:store>/services/',general.StoreServicesListOverview.as_view()),
+
+
+    path('salesman/store/create/',general.StoreCreateView.as_view()),
+    path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
+    path('salesman/pricetimes/',general.CreateStorePriceTimes.as_view()),
+    path('salesman/<int:store>/services/',general.StoreServicesListOverview.as_view()),
 
 ]

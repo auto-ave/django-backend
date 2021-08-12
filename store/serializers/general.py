@@ -1,3 +1,4 @@
+from common import fields
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
@@ -39,7 +40,7 @@ class EventSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class StoreGeneralSerializer(ModelSerializer):
+class StoreCreateSerializer(ModelSerializer):
 
     # name = serializers.CharField(max_length=100)
     # store_times = ArrayField(base_field=JSONField())
@@ -51,6 +52,6 @@ class StoreGeneralSerializer(ModelSerializer):
     # longitude = serializers.DecimalField(max_digits=22, decimal_places=16)
     class Meta():
         model = Store
-        fields = "__all__"
+        exclude = ('is_active', )
 
 

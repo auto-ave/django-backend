@@ -104,6 +104,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
+                "mid": settings.PAYTM_MID,
                 "txn_token": body['txnToken']
             })
         else:
