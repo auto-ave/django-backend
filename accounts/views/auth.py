@@ -46,3 +46,25 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 "detail": "Invalid OTP"
             }, status=status.HTTP_400_BAD_REQUEST)
+
+class SalesmanLogin(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = SalesmanLoginSerializer
+
+    def post(self, request):
+        data = self.validate(request)
+        email = data.get('email')
+        password = data.get('password')
+
+        user = get_object_or_404(User, email=email)
+
+        if not user.is_salesman():
+            return response.Response({
+                "detail": "User is not a salesman"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        if not user.check_password(password):
+            return response.Response({
+                "detail": "Invalid Password"
+            }, status=status.HTTP_400_BAD_REQUEST)
+            
+        return response.Response(user.get_auth_tokens(), status=status.HTTP_200_OK)

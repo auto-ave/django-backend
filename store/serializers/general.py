@@ -54,4 +54,3 @@ class StoreCreateSerializer(ModelSerializer):
         model = Store
         exclude = ('is_active', )
 
-

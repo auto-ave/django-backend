@@ -1,3 +1,4 @@
+from store.constants import VEHICLE_TYPES
 from cart import serializer
 from common.mixins import ValidateSerializerMixin
 from vehicle.serializers import VehicleTypeSerializer
@@ -88,9 +89,11 @@ class ServiceCreationDetails(generics.GenericAPIView):
 
     def get(self, request):
         vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True) 
+        wheel_types = VEHICLE_TYPES
         services = ServiceSerializer(Service.objects.all(),many=True)
     
         return response.Response({
+            'wheel_types': wheel_types,
             'vehicle_types': vehicle_types.data,
             'services' : services.data
         },status=status.HTTP_200_OK)        
@@ -109,15 +112,18 @@ class CreateStorePriceTimes(generics.GenericAPIView, ValidateSerializerMixin):
         }, status=status.HTTP_200_OK)
 
 
-class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin):
+class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
     permission_classes = (IsSalesman,)   
     # serializer_class = StoreServiceListSerializer
-    lookup_field = 'store'
+    lookup_field = 'slug'
+
+    def get_queryset(self):
+        return self.request.user.salesman.stores.all()
     
 
-    def get(self, request,store):
-
-        store = Store.objects.get(id=store)
+    def get(self, request, slug):
+        # TODO: send pricetime description too
+        store = self.get_object()
         pricetimes = store.pricetimes.all()
         services = []
         store_price_times = {}
@@ -143,7 +149,7 @@ class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin
                 store_price_times[pricetime.service.id]['max_price'] = price
             if price < min_price:
                 store_price_times[pricetime.service.id]['min_price'] = price    
-        res = {'results':[]}      
+        res = []
         for key in store_price_times:
             service = {}
             service['service']=ServiceSerializer(Service.objects.get(id=key)).data
@@ -151,6 +157,6 @@ class StoreServicesListOverview(generics.GenericAPIView, ValidateSerializerMixin
             service['min_price']=store_price_times[key]['min_price']
             service['min_slot_length']=store_price_times[key]['min_slot_length']
             service['max_slot_length']=store_price_times[key]['max_slot_length']
-            res['results'].append(service)
+            res.append(service)
 #Yahan pe serializer use krna tha but samajh nahi aaya kese
         return response.Response(res, status=status.HTTP_200_OK)

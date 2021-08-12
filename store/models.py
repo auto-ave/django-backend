@@ -10,8 +10,9 @@ from django.core.exceptions import ValidationError
 from django.db import transaction
 
 class Store(Model):
-    owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.CASCADE)
-    partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.CASCADE, blank=True, null=True)
+    owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.SET_NULL, blank=True, null=True)
+    partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
+    salesman = models.ForeignKey('accounts.Salesman', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
     #pincode field
     pincode = models.CharField(max_length=6, blank=True, null=True)
     is_active = models.BooleanField(default=True)
@@ -32,7 +33,7 @@ class Store(Model):
     contact_person_photo = models.ImageField(null=True, blank =True)
     # TODO: json schema validation, change slot api, also frontend validation
     # Starts from sunday
-    store_times = ArrayField(base_field=JSONField())
+    store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}')
     slot_length = models.PositiveIntegerField() # Number of minutes
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)

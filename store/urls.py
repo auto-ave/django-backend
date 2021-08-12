@@ -11,8 +11,9 @@ urlpatterns = [
 
 
     path('salesman/store/create/',general.StoreCreateView.as_view()),
-    path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
     path('salesman/pricetimes/',general.CreateStorePriceTimes.as_view()),
-    path('salesman/<int:store>/services/',general.StoreServicesListOverview.as_view()),
+
+    path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
+    path('salesman/<slug:slug>/pricetimes/',general.StorePriceTimeList.as_view()),
 
 ]

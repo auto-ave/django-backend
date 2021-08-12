@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
 
 from phonenumber_field.modelfields import PhoneNumberField
@@ -40,6 +41,19 @@ class User(AbstractUser):
                 self.save()
             return True
         return False
+    
+    def get_auth_tokens(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }
+    
+    def is_salesman(self):
+        if hasattr(self, 'salesman'):
+            return True
+        else:
+            return False
 
 class Consumer(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
