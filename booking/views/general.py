@@ -5,6 +5,7 @@ from booking.models import *
 from booking.serializers.general import *
 
 from common.permissions import IsAuthenticated, IsConsumer, IsStoreOwner
+from django.db.models import Q
 
 from paytmchecksum import PaytmChecksum
 import json, requests
@@ -27,10 +28,18 @@ class BookingListOwner(generics.ListAPIView):
         user = self.request.user
         return user.storeowner.store.bookings.all()
 
+class PastBookingListOwner(generics.ListAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = BookingListOwnerSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return user.storeowner.store.bookings.filter(Q(status=4) | Q(status=5))
+
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'
     serializer_class = BookingDetailSerializer
-    permission_classes = ( IsConsumer, )
+    permission_classes = ( IsConsumer,IsStoreOwner )
 
     def get_queryset(self):
         return self.request.user.consumer.bookings.all()

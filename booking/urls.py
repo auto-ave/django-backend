@@ -7,7 +7,7 @@ urlpatterns = [
     path('booking/<str:booking_id>', general.BookingDetail.as_view()),
     path('booking/list/consumer', general.BookingsListConsumer.as_view()),
     path('booking/list/owner', general.BookingListOwner.as_view()),
-
+    path('owner/bookings/past', general.PastBookingListPastOwner.as_view()),
     path('slots/create', slots.SlotCreate.as_view()),
 
     path('paytm', general.Paytm),
