@@ -14,7 +14,7 @@ class Model(models.Model):
 
 
 class City(Model):
-    code = models.CharField(max_length=20)
+    code = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=50)
     upcoming = models.BooleanField(max_length=True)
 

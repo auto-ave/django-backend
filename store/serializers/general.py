@@ -33,6 +33,11 @@ class StoreListSerializer(ModelSerializer):
     
     def get_services_start(self, obj):
         return 499
+
+class SalesmanStoreListSerializer(ModelSerializer):
+    class Meta:
+        model = Store
+        fields = ('name', 'address', 'thumbnail')
     
 class EventSerializer(ModelSerializer):
     class Meta():
@@ -41,7 +46,7 @@ class EventSerializer(ModelSerializer):
 
 
 class StoreCreateSerializer(ModelSerializer):
-
+    city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all())
     # name = serializers.CharField(max_length=100)
     # store_times = ArrayField(base_field=JSONField())
     # images = ArrayField(base_field=models.URLField(), null=True, blank=True)

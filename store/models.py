@@ -13,8 +13,7 @@ class Store(Model):
     owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.SET_NULL, blank=True, null=True)
     partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
     salesman = models.ForeignKey('accounts.Salesman', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
-    #pincode field
-    pincode = models.CharField(max_length=6, blank=True, null=True)
+
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
@@ -22,12 +21,12 @@ class Store(Model):
     thumbnail = models.URLField() # should be square
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
-    emails = ArrayField(base_field=models.EmailField())
+    # emails = ArrayField(base_field=models.EmailField())
     address = models.TextField()
     latitude = models.DecimalField(max_digits=22, decimal_places=16)
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
-    registration_type = models.CharField(max_length=30)
-    registration_number = models.CharField(max_length=20)
+    # registration_type = models.CharField(max_length=30)
+    # registration_number = models.CharField(max_length=20)
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)

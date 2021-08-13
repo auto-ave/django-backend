@@ -1,5 +1,5 @@
 from django.urls import path
-from store.views import general, review, services
+from store.views import general, review, services, salesman
 
 urlpatterns = [
     path('store/<slug:slug>/', general.StoreDetail.as_view()),
@@ -10,10 +10,11 @@ urlpatterns = [
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
 
 
-    path('salesman/store/create/',general.StoreCreateView.as_view()),
-    path('salesman/pricetimes/',general.CreateStorePriceTimes.as_view()),
+    path('salesman/store/list/', salesman.SalesmanStoreList.as_view()),
+    path('salesman/store/create/', salesman.StoreCreateView.as_view()),
+    path('salesman/pricetimes/', salesman.CreateStorePriceTimes.as_view()),
 
-    path('salesman/servicecreationdetails/',general.ServiceCreationDetails.as_view()),
-    path('salesman/<slug:slug>/pricetimes/',general.StorePriceTimeList.as_view()),
+    path('salesman/servicecreationdetails/', salesman.ServiceCreationDetails.as_view()),
+    path('salesman/<slug:slug>/pricetimes/', salesman.StorePriceTimeList.as_view()),
 
 ]
