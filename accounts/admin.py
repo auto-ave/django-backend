@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
     )
     customPermissionsSet = (
         'Custom Permissions', {
-            'fields': ('is_consumer', 'is_partner', 'is_salesman', 'is_support', 'is_sub_admin')
+            'fields': ('is_consumer', 'is_partner', 'is_support', 'is_sub_admin')
         }
     )
     fieldsets = (UserAdmin.fieldsets[0], personalInfoSet, customPermissionsSet) + UserAdmin.fieldsets[2:]
