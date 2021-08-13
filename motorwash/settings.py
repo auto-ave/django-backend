@@ -202,3 +202,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Lauda Paytm
 PAYTM_MID = "erKfbl49402655016816"
 PAYTM_MKEY = "y1RPZDGVbo0ySQ2S"
+PAYTM_CURRENCY = "INR"

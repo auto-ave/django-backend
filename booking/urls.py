@@ -14,4 +14,5 @@ urlpatterns = [
     path('initial', general.initiateTransaction),
 
     path('payment/initiate/', payment.InitiateTransactionView.as_view()),
+    path('payment/callback/', payment.PaymentCallbackView.as_view()),
 ]

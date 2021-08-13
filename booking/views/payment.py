@@ -1,7 +1,7 @@
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
 from booking.serializers.payment import InitiateTransactionSerializer
-from rest_framework import generics, permissions, response
+from rest_framework import generics, permissions, response,views
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
 
@@ -64,6 +64,8 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
+        AMOUNT = str(cart.total)
+        CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host())
 
         paytmParams = dict()
         paytmParams["body"] = {
@@ -71,10 +73,10 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "mid": settings.PAYTM_MID,
             "websiteName": "WEBSTAGING",
             "orderId": ORDER_ID,
-            "callbackUrl": "http://127.0.0.1:8000/payment/callback/",
+            "callbackUrl": CALLBACK_URL,
             "txnAmount": {
-                "value": str(cart.total),
-                "currency": "INR",
+                "value": AMOUNT,
+                "currency": settings.PAYTM_CURRENCY,
             },
             "userInfo": {
                 "custId": user.consumer.id,
@@ -106,7 +108,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "mid": settings.PAYTM_MID,
                 "order_id": ORDER_ID,
-                "amount": str(cart.total),
+                "amount": AMOUNT,
                 "callback_url": "http://127.0.0.1:8000/payment/callback/",
                 "txn_token": body['txnToken']
             })
@@ -115,25 +117,20 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "detail": body['resultInfo']['resultMessage']
             })
 
-class PaymentCallback(ValidateSerializerMixin, generics.GenericAPIView):
+class PaymentCallbackView(views.APIView):
 
     def post(self, request):
-        user = request.user
-        data = self.validate(request)
-        
-        resp = dict()
-        order = None
+        # data = self.validate(request)
+        data = request.data
+        print(data)
 
-        return response.Response({
-            "detail": "Payment Successful"
-        })
+        resp = dict()
+        booking = None
 
         checksum = ""
-        # the request.POST is coming from paytm
-        form = request.POST
+        form = data
 
         response_dict = {}
-        order = None  # initialize the order varible with None
 
         for i in form.keys():
             response_dict[i] = form[i]
@@ -143,20 +140,26 @@ class PaymentCallback(ValidateSerializerMixin, generics.GenericAPIView):
 
             if i == 'ORDERID':
                 # we will get an order with id==ORDERID to turn isPaid=True when payment is successful
-                order = Order.objects.get(id=form[i])
+                booking = Booking.objects.get(booking_id=form[i])
 
         # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
-        verify = Checksum.verify_checksum(response_dict, env('MERCHANTKEY'), checksum)
+        verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
 
         if verify:
             if response_dict['RESPCODE'] == '01':
                 # if the response code is 01 that means our transaction is successfull
                 print('order successful')
                 # after successfull payment we will make isPaid=True and will save the order
-                order.isPaid = True
-                order.save()
+                booking.status = 1
+                booking.save()
                 # we will render a template to display the payment status
-                return render(request, 'paytm/paymentstatus.html', {'response': response_dict})
+                return response.Response(response_dict)
             else:
                 print('order was not successful because' + response_dict['RESPMSG'])
-                return render(request, 'paytm/paymentstatus.html', {'response': response_dict})
+                return response.Response(response_dict)
+        else:
+            print('checksum verification failed')
+            return response.Response({
+                "you are": "a rendi"
+            })
+        
