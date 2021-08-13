@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'phonenumber_field',
     'django_better_admin_arrayfield',
+    'dbbackup',
     
     'accounts',
     'common',
