@@ -77,8 +77,9 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="pricetimes")
     price = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField() # Number of minutes
+    images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     description = models.TextField() # same descp for each type of vehicle
-    bays = models.ManyToManyField(Bay, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
+    bays = models.ManyToManyField(Bay,  blank=True, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:
         unique_together = ('vehicle_type', 'service')

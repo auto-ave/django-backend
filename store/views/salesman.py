@@ -1,4 +1,4 @@
-from rest_framework import generics, response, status
+from rest_framework import generics, response, status, views
 from common.permissions import *
 from store.models import *
 from store.serializers.general import *
@@ -7,6 +7,15 @@ from store.serializers.services import *
 from cart import serializer
 from common.mixins import ValidateSerializerMixin
 from vehicle.serializers import VehicleTypeSerializer
+
+class SalesmanStoreRetrieve(generics.RetrieveAPIView):
+    serializer_class = SalesmanStoreListSerializer
+    permission_classes = (IsSalesman, )
+    lookup_field = 'slug'
+    
+    def get_queryset(self):
+        user = self.request.user
+        return user.salesman.stores.all()
 
 class SalesmanStoreList(generics.ListAPIView):
     serializer_class = SalesmanStoreListSerializer
@@ -53,15 +62,36 @@ class ServiceCreationDetails(generics.GenericAPIView):
             'services' : services.data
         },status=status.HTTP_200_OK)        
 
-class CreateStorePriceTimes(generics.GenericAPIView, ValidateSerializerMixin):
+class CreateStorePriceTimes(views.APIView):
     permission_classes = (IsSalesman,)   
-    serializer_class = CreatePriceTimeSerializer
+    # serializer_class = CreatePriceTimeSerializer
     
 
     def post(self, request, *args, **kwargs):
-        data = self.validate(request)
-        serializer = CreatePriceTimeSerializer(data= data,many=True)
-        serializer.save()
+        # data = self.validate(request)
+        data = request.data
+        # print(data)
+
+        store = Store.objects.get(slug=data.get('storeslug'))
+        service = Service.objects.get(pk=data.get('service'))
+
+        for item in data.get('pricetime_data'):
+            vehicle = VehicleType.objects.get(model=item.get('vehicle_type'))
+            print(item.get('vehicle_type'), vehicle)
+            price_time = {
+                'store': store.pk,
+                'service': service.pk,
+                'vehicle_type': vehicle.pk,
+                'price': int(item.get('price')),
+                'time_interval': int(item.get('time_interval')),
+                'images': item.get('images'),
+                'description': item.get('description')
+            }
+            print(price_time)
+            serializer = CreatePriceTimeSerializer(data=price_time)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+        
         return response.Response({
             "detail": "PriceTimes created" 
         }, status=status.HTTP_200_OK)

@@ -9,8 +9,8 @@ urlpatterns = [
     path('store/list/',general.StoreList.as_view()),
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
 
-
-    path('salesman/store/list/', salesman.SalesmanStoreList.as_view()),
+    path('salesman/store/<slug:slug>/', salesman.SalesmanStoreRetrieve.as_view()),
+    path('salesman/store/list/all/', salesman.SalesmanStoreList.as_view()),
     path('salesman/store/create/', salesman.StoreCreateView.as_view()),
     path('salesman/pricetimes/', salesman.CreateStorePriceTimes.as_view()),
 

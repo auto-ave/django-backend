@@ -1,3 +1,4 @@
+from django.db.models import query
 from vehicle.models import VehicleType
 import vehicle
 from rest_framework import serializers
@@ -28,19 +29,20 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class CreatePriceTimeSerializer(serializers.ModelSerializer):
-    service = serializers.SerializerMethodField()
-    store = serializers.SerializerMethodField()
-    vehicle = serializers.SerializerMethodField()
+    vehicle_type = serializers.PrimaryKeyRelatedField(queryset=VehicleType.objects.all())
+    # service = serializers.SerializerMethodField()
+    # store = serializers.SerializerMethodField()
+    # vehicle = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         fields = "__all__"
     
-    def get_service(self, obj):
-        return Service.objects.get(id=obj.service) 
-    def get_store(self, obj):
-        return Store.objects.get(id=obj.store)
-    def get_vehicle(self, obj):
-        return VehicleType.objects.get(id=obj.vehicle_type)  
+    # def get_service(self, obj):
+    #     return Service.objects.get(id=obj.service) 
+    # def get_store(self, obj):
+    #     return Store.objects.get(id=obj.store)
+    # def get_vehicle(self, obj):
+    #     return VehicleType.objects.get(id=obj.vehicle_type)  
                  
 # class StoreServiceListSerializer(serializers.Serializer):
 #     service = ServiceSerializer()

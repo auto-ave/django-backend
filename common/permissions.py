@@ -22,7 +22,7 @@ class IsPartner(permissions.BasePermission):
 
 class IsSalesman(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.is_salesman
+        return request.user.is_authenticated and request.user.is_salesman()
 
 class IsSupport(permissions.BasePermission):
     def has_permission(self, request, view):
