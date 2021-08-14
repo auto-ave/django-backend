@@ -15,6 +15,9 @@ class Store(Model):
     salesman = models.ForeignKey('accounts.Salesman', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
+    is_verified_by_admin = models.BooleanField(default=False, verbose_name="Verified by admin")
+    is_locked_for_salesman = models.BooleanField(default=False, verbose_name="Locked for salesmanm if True salesman cannot edit this")
+
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
     description = models.TextField(max_length=300)
@@ -77,8 +80,11 @@ class PriceTime(Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="pricetimes")
     price = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField() # Number of minutes
+
+    # images and description is redundant data and will be same for all the price times of same service
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     description = models.TextField() # same descp for each type of vehicle
+
     bays = models.ManyToManyField(Bay,  blank=True, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:

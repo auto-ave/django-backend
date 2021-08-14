@@ -53,9 +53,9 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
         store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
 
-        if not cart.isValid():
+        if not cart.is_valid():
             return response.Response({
-                'message': 'No Items in cart'
+                'detail': 'No Items in cart'
             }, status=status.HTTP_400_BAD_REQUEST)
 
         total_time = int(cart.total_time())

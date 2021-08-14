@@ -9,12 +9,13 @@ urlpatterns = [
     path('store/list/',general.StoreList.as_view()),
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
 
+    path('salesman/store/<slug:slug>/service/<int:pk>/', salesman.SalesmanStoreServiceRetrieve.as_view()),
     path('salesman/store/<slug:slug>/', salesman.SalesmanStoreRetrieve.as_view()),
     path('salesman/store/list/all/', salesman.SalesmanStoreList.as_view()),
     path('salesman/store/create/', salesman.StoreCreateView.as_view()),
     path('salesman/pricetimes/', salesman.CreateStorePriceTimes.as_view()),
 
-    path('salesman/servicecreationdetails/', salesman.ServiceCreationDetails.as_view()),
+    path('salesman/servicecreationdetails/<slug:slug>/', salesman.ServiceCreationDetails.as_view()),
     path('salesman/<slug:slug>/pricetimes/', salesman.StorePriceTimeList.as_view()),
 
 ]

@@ -35,8 +35,8 @@ class Cart(Model):
         self.completed = True
         self.save()
     
-    def isValid(self):
-        if self.store is None:
+    def is_valid(self):
+        if not self.store:
             return False
         return True
     

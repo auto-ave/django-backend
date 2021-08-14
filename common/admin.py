@@ -29,10 +29,11 @@ class JsonAdmin(admin.ModelAdmin):
 
 
 from common.models import City, Service
+from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 admin.site.register(City)
 
 @admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+class ServiceAdmin(admin.ModelAdmin , DynamicArrayMixin):
     pass
     # readonly_fields = ("supported_vehicle_types", )
