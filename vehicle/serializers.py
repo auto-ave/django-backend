@@ -5,4 +5,4 @@ from vehicle.models import VehicleType
 class VehicleTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = VehicleType
-        exclude = ('id', 'created_at', 'updated_at')
+        exclude = ('created_at', 'updated_at')

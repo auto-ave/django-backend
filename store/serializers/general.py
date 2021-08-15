@@ -57,5 +57,5 @@ class StoreCreateSerializer(ModelSerializer):
     # longitude = serializers.DecimalField(max_digits=22, decimal_places=16)
     class Meta():
         model = Store
-        exclude = ('is_active', )
+        exclude = ('is_active', 'created_at', 'updated_at', 'is_verified_by_admin', 'is_locked_for_salesman', 'partner', 'owner', 'salesman', 'supported_vehicle_types', 'rating', 'slug')
 

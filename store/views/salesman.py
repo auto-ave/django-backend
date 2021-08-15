@@ -94,16 +94,20 @@ class SalesmanStoreList(generics.ListAPIView):
         user = self.request.user
         return user.salesman.stores.all()
 
-class StoreCreateView(generics.CreateAPIView, ValidateSerializerMixin):
+class StoreCreateView(generics.CreateAPIView):
     permission_classes = (IsSalesman,)   
     serializer_class = StoreCreateSerializer
 
     def perform_create(self, serializer):
+        print('hell;o')
         user = self.request.user
         serializer.save(
             salesman=user.salesman,
         )
         serializer.save()
+    
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
     
     # def post(self, request, *args, **kwargs):
 

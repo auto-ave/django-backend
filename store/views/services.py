@@ -7,7 +7,7 @@ from store.serializers.services import *
 class StoreServicesList(generics.ListAPIView):
     serializer_class = PriceTimeListSerializer
     # filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['vehicle_type', 'vehicle_type__model']
+    filterset_fields = ['vehicle_type',]
 
     def get_queryset(self):
         print(self.request.data)
