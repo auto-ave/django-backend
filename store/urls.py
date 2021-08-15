@@ -14,7 +14,7 @@ urlpatterns = [
     path('salesman/store/<slug:slug>/service/<int:pk>/', salesman.SalesmanStoreServiceRetrieve.as_view()),
     path('salesman/store/<slug:slug>/', salesman.SalesmanStoreRetrieve.as_view()),
     path('salesman/store/list/all/', salesman.SalesmanStoreList.as_view()),
-    path('salesman/store/create/', salesman.StoreCreateView.as_view()),
+    path('salesman/store/create', salesman.StoreCreateView.as_view()),
     path('salesman/pricetimes/', salesman.CreateStorePriceTimes.as_view()),
 
     path('salesman/servicecreationdetails/<slug:slug>/', salesman.ServiceCreationDetails.as_view()),

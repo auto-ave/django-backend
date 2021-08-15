@@ -106,9 +106,6 @@ class StoreCreateView(generics.CreateAPIView):
         )
         serializer.save()
     
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
-    
     # def post(self, request, *args, **kwargs):
 
     #     data = self.validate(request)

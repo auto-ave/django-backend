@@ -16,6 +16,8 @@ class Model(models.Model):
 class City(Model):
     code = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=50)
+    latitude = models.DecimalField(max_digits=22, decimal_places=16)
+    longitude = models.DecimalField(max_digits=22, decimal_places=16)
     upcoming = models.BooleanField(max_length=True)
 
     def save(self, *args, **kwargs):
