@@ -16,12 +16,6 @@ class User(AbstractUser):
     # True after first otp validation
     is_verified = models.BooleanField(default=False)
 
-    is_store_owner = models.BooleanField(default=False)
-    is_partner = models.BooleanField(default=False)
-    is_salesman = models.BooleanField(default=False)
-    is_support = models.BooleanField(default=False)
-    is_sub_admin = models.BooleanField(default=False)
-
     def __str__(self):
         return self.first_name + " " + self.last_name
     
@@ -50,6 +44,8 @@ class User(AbstractUser):
     
     def is_consumer(self):
         return True if hasattr(self, 'consumer') else False
+    def is_store_owner(self):
+        return True if hasattr(self, 'storeowner') else False
     def is_partner(self):
         return True if hasattr(self, 'partner') else False
     def is_salesman(self):

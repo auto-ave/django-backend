@@ -92,6 +92,9 @@ class PriceTime(Model):
 
     def __str__(self):
         return "{} | {}".format(self.vehicle_type, self.service)
+    
+    def save(self, *args, **kwargs):
+        super(PriceTime, self).save(*args, **kwargs)
 
 class Event(Model):
     is_blocking = models.BooleanField()

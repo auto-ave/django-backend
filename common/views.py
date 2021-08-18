@@ -1,4 +1,4 @@
-from rest_framework import generics, response
+from rest_framework import generics, response, filters
 
 from common.models import *
 from common.serializers import *
@@ -16,3 +16,9 @@ class CityList(generics.GenericAPIView):
             'cities': city_serializer.data,
             'upcomings': upcoming_serializer.data
         })
+
+class ServiceList(generics.ListAPIView):
+    queryset = Service.objects.all()
+    serializer_class = ServiceSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'description']

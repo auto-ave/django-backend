@@ -6,15 +6,9 @@ from store.serializers.services import *
 
 class StoreServicesList(generics.ListAPIView):
     serializer_class = PriceTimeListSerializer
-    # filter_backends = [DjangoFilterBackend]
     filterset_fields = ['vehicle_type',]
 
     def get_queryset(self):
-        print(self.request.data)
-
         slug = self.kwargs['slug']
         store = get_object_or_404(Store, slug=slug)
-
-        service = None
-
         return store.pricetimes.all()
