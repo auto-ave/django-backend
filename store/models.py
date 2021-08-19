@@ -88,7 +88,7 @@ class PriceTime(Model):
     bays = models.ManyToManyField(Bay,  blank=True, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:
-        unique_together = ('vehicle_type', 'service')
+        unique_together = ('vehicle_type', 'service', 'store')
 
     def __str__(self):
         return "{} | {}".format(self.vehicle_type, self.service)
