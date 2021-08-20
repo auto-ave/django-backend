@@ -33,9 +33,9 @@ class Booking(Model):
 class Payment(Model):
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT, null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True)
-    transaction_id = models.CharField(max_length=10, null=True, blank=True)
-    mode_of_payment = models.CharField(max_length=20, null=True, blank=True)
-    amount = models.CharField(max_length=20, null=True, blank=True)
+    transaction_id = models.CharField(max_length=100, null=True, blank=True)
+    mode_of_payment = models.CharField(max_length=100, null=True, blank=True)
+    amount = models.CharField(max_length=30, null=True, blank=True)
     gateway_name = models.CharField(max_length=100, null=True, blank=True)
     bank_name = models.CharField(max_length=100, null=True, blank=True)
     payment_mode = models.CharField(max_length=100, null=True, blank=True)

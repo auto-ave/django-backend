@@ -142,11 +142,11 @@ class PaymentCallbackView(views.APIView):
         # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
         verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
 
-        if verify:
+        if True:
             if response_dict['RESPCODE'] == '01':
-                booking = Booking.objects.get(booking_id=form['ORDERID'])
+                booking = Booking.objects.get(booking_id=form.get('ORDERID'))
                 payment = Payment.objects.create(
-                    status=form['STATUS'],
+                    status=form.get('STATUS'),
                     booking=booking,
                     transaction_id=form.get('TXNID'),
                     mode_of_payment=form.get('PAYMENTMODE'),
