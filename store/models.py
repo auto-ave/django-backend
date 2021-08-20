@@ -40,6 +40,7 @@ class Store(Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
 
+    services = models.ManyToManyField(Service, related_name="stores", blank=True)
     supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True, related_name= "stores") # Non-Controllable Field
 
     def __str__(self):

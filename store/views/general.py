@@ -49,7 +49,7 @@ class StoreList(generics.ListAPIView):
 class CityStoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | IsConsumer,)   
     serializer_class = StoreListSerializer
-    # filterset_fields = ['supported_vehicle_types',]
+    filterset_fields = ['services', ]
     # filter_backends = (filters.SearchFilter,)
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', ]

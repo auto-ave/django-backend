@@ -65,7 +65,8 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
         AMOUNT = str(cart.total)
-        CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host())
+        CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
+        CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
         paytmParams = dict()
         paytmParams["body"] = {
@@ -109,7 +110,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "mid": settings.PAYTM_MID,
                 "order_id": ORDER_ID,
                 "amount": AMOUNT,
-                "callback_url": "http://127.0.0.1:8000/payment/callback/",
+                "callback_url": CALLBACK_URL,
                 "txn_token": body['txnToken']
             })
         else:
@@ -122,10 +123,6 @@ class PaymentCallbackView(views.APIView):
     def post(self, request):
         # data = self.validate(request)
         data = request.data
-        print(data)
-
-        resp = dict()
-        booking = None
 
         checksum = ""
         form = data
@@ -140,13 +137,24 @@ class PaymentCallbackView(views.APIView):
 
             if i == 'ORDERID':
                 # we will get an order with id==ORDERID to turn isPaid=True when payment is successful
-                booking = Booking.objects.get(booking_id=form[i])
+                print('paytm ki ma ki chut')
 
         # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
         verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
 
         if verify:
             if response_dict['RESPCODE'] == '01':
+                booking = Booking.objects.get(booking_id=form[i])
+                payment = Payment.objects.create(
+                    status=form['STATUS'],
+                    booking=booking,
+                    transaction_id=form.get('TXNID'),
+                    mode_of_payment=form.get('PAYMENTMODE'),
+                    amount=form.get('TXNAMOUNT'),
+                    gateway_name=form.get('GATEWAYNAME'),
+                    bank_name=form.get('BANKNAME'),
+                    payment_mode=form.get('PAYMENTMODE')
+                )
                 # if the response code is 01 that means our transaction is successfull
                 print('order successful')
                 # after successfull payment we will make isPaid=True and will save the order
@@ -156,6 +164,7 @@ class PaymentCallbackView(views.APIView):
                 return response.Response(response_dict)
             else:
                 print('order was not successful because' + response_dict['RESPMSG'])
+
                 return response.Response(response_dict)
         else:
             print('checksum verification failed')
