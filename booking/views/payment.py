@@ -54,7 +54,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             status = 0,
             event = event,
             # TODO:
-            vehicle_type = VehicleType.objects.all()[0],
+            vehicle_type = cart.items.all().first().vehicle_type,
         )
         # booking.event = event
         for item in cart.items.all():
@@ -144,7 +144,7 @@ class PaymentCallbackView(views.APIView):
 
         if verify:
             if response_dict['RESPCODE'] == '01':
-                booking = Booking.objects.get(booking_id=form[i])
+                booking = Booking.objects.get(booking_id=form['ORDERID'])
                 payment = Payment.objects.create(
                     status=form['STATUS'],
                     booking=booking,
