@@ -73,6 +73,7 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
 class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
+    event = EventSerializer()
     class Meta:
         model = Booking
         fields = "__all__"
