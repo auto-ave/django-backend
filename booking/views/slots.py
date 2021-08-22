@@ -45,7 +45,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
         day = date.weekday()
         
-        if len(store.store_times) < day:
+        if len(store.store_times) != 7:
             return response.Response({
                 "detail": "Invalid Store Timings"
             }, status=status.HTTP_400_BAD_REQUEST)

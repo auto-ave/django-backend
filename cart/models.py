@@ -20,6 +20,8 @@ class Cart(Model):
     def addItem(self, item):
         if self.store != item.store:
             self.clear()
+        if self.items.all().count() > 0 and self.items.all()[0].vehicle_type != item.vehicle_type:
+            self.clear()
         self.items.add(item)
         self.store = item.store
         self.save()
