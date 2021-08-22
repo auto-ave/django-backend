@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_better_admin_arrayfield',
     'dbbackup',
+    'djcelery_email',
     
     'accounts',
     'common',
@@ -204,3 +205,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PAYTM_MID = "erKfbl49402655016816"
 PAYTM_MKEY = "y1RPZDGVbo0ySQ2S"
 PAYTM_CURRENCY = "INR"
+
+# Email Setup
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = "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"
+EMAIL_USE_SSL = True
