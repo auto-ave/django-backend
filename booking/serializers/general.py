@@ -48,7 +48,7 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
     booked_by = serializers.SerializerMethodField()
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
-    review = serializers.SerializerMethodField()
+    is_reviewed = serializers.SerializerMethodField()
     event = EventSerializer()
 
     class Meta:
@@ -58,10 +58,10 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
     def get_amount(self, obj):
         return obj.payment.amount
     
-    def get_review(self, obj):
+    def get_is_reviewed(self, obj):
         if hasattr(obj, 'review'):
-            return ReviewSerializer(obj.review).data
-        return None
+            return True
+        return False
 
 
     def get_booked_by(self, obj):
