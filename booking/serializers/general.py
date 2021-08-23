@@ -74,7 +74,12 @@ class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
     event = EventSerializer()
+    review = serializers.SerializerMethodField()
     class Meta:
         model = Booking
         fields = "__all__"
 
+    def get_review(self, obj):
+        if hasattr(obj, 'review'):
+            return ReviewSerializer(obj.review).data
+        return None
