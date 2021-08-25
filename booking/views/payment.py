@@ -53,6 +53,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             store = bay.store,
             status = 0,
             event = event,
+            amount = cart.total,
             # TODO:
             vehicle_type = cart.items.all().first().vehicle_type,
         )
@@ -142,27 +143,29 @@ class PaymentCallbackView(views.APIView):
         # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
         verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
 
-        if True:
+        if verify:
+            booking = Booking.objects.get(booking_id=form.get('ORDERID'))
+            payment = Payment.objects.create(
+                status=form.get('STATUS'),
+                booking=booking,
+                transaction_id=form.get('TXNID'),
+                mode_of_payment=form.get('PAYMENTMODE'),
+                amount=form.get('TXNAMOUNT'),
+                gateway_name=form.get('GATEWAYNAME'),
+                bank_name=form.get('BANKNAME'),
+                payment_mode=form.get('PAYMENTMODE')
+            )
             if response_dict['RESPCODE'] == '01':
-                booking = Booking.objects.get(booking_id=form.get('ORDERID'))
-                payment = Payment.objects.create(
-                    status=form.get('STATUS'),
-                    booking=booking,
-                    transaction_id=form.get('TXNID'),
-                    mode_of_payment=form.get('PAYMENTMODE'),
-                    amount=form.get('TXNAMOUNT'),
-                    gateway_name=form.get('GATEWAYNAME'),
-                    bank_name=form.get('BANKNAME'),
-                    payment_mode=form.get('PAYMENTMODE')
-                )
                 # if the response code is 01 that means our transaction is successfull
                 print('order successful')
                 # after successfull payment we will make isPaid=True and will save the order
-                booking.status = 1
+                booking.status = 10
                 booking.save()
                 # we will render a template to display the payment status
                 return response.Response(response_dict)
             else:
+                booking.status = 20
+                booking.save()
                 print('order was not successful because' + response_dict['RESPMSG'])
 
                 return response.Response(response_dict)

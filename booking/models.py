@@ -10,6 +10,7 @@ import datetime
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
+    amount = models.CharField(max_length=30, null=True, blank=True)
     store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)

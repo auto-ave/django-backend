@@ -29,7 +29,7 @@ class BookingListSerializer(serializers.ModelSerializer):
         return price_times
     
     def get_amount(self, obj):
-        return obj.payment.amount
+        return obj.amount
     
     def get_review(self, obj):
         if hasattr(obj, 'review'):
