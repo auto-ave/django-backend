@@ -13,7 +13,7 @@ from django.conf import settings
 
 class BookingsListConsumer(generics.ListAPIView):
     serializer_class = BookingListSerializer
-    permission_classes = ( permissions.IsAuthenticated, )
+    permission_classes = ( IsConsumer, )
 
     def get_queryset(self):
         user = self.request.user
