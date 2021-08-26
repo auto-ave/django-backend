@@ -40,7 +40,8 @@ class BookingListSerializer(serializers.ModelSerializer):
         store = obj.store
         return {
             "name": store.name,
-            "address": store.address
+            "address": store.address,
+            "thumbnail": store.thumbnail,
         }
 
 
