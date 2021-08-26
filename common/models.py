@@ -22,7 +22,7 @@ class City(Model):
     upcoming = models.BooleanField(max_length=True)
 
     def save(self, *args, **kwargs):
-        self.code = self.code.lower()
+        # self.code = self.code.lower()
         super(City, self).save(*args, **kwargs)
 
     def __str__(self):
