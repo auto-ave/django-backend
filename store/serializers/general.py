@@ -26,7 +26,7 @@ class StoreListSerializer(ModelSerializer):
     services_start = serializers.SerializerMethodField()
     class Meta():
         model = Store
-        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start")
+        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address')
 
     def get_distance(self, obj):
         latitude = self.context['request'].query_params.get('latitude')
