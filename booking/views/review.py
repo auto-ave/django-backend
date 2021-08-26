@@ -5,23 +5,18 @@ from django.shortcuts import get_object_or_404
 from booking.models import *
 from booking.serializers.review import *
 
-class ReviewListCreate(generics.ListCreateAPIView):
+class ReviewListCreate(generics.CreateAPIView):
     permission_classes = ( IsConsumer, )
-    filter_backends = ( DjangoFilterBackend, )
-    filter_fields = ( 'store', )
+    serializer_class = ReviewCreateSerializer
+    lookup_field = 'booking_id'
 
-    def get_serializer_class(self):
-        if self.request.method == "POST":
-            return ReviewCreateSerializer
-        else:
-            return ReviewSerializer
-    
-    def get_queryset(self):
-        user = self.request.user
-        print(Review.objects.all())
-        return Review.objects.filter(consumer=user.consumer)
-    
     def perform_create(self, serializer):
         user = self.request.user
         return serializer.save(consumer=user.consumer)
 
+class ReviewRetrieve(generics.RetrieveAPIView):
+    permission_classes = ( IsConsumer, )
+    serializer_class = ReviewSerializer
+
+    def get_object(self):
+        return get_object_or_404(Review, booking_id=self.kwargs['booking_id'])

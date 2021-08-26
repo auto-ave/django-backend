@@ -1,4 +1,4 @@
-from rest_framework import generics, status, filters
+from rest_framework import generics, status, filters, response
 from common.permissions import *
 
 from store.models import *
@@ -9,6 +9,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
+from store.serializers.services import *
+import json
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -47,17 +49,15 @@ class StoreList(generics.ListAPIView):
 class CityStoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | IsConsumer,)   
     serializer_class = StoreListSerializer
-    filterset_fields = ['supported_vehicle_types',]
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ['question_text']
+    filterset_fields = ['services', ]
+    # filter_backends = (filters.SearchFilter,)
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', ]
     
 
     def get_queryset(self):
         citycode = self.kwargs['citycode']
         city = get_object_or_404(City, code__iexact=citycode)
         queryset = city.stores.all()
-        # if self.request.query_params.get('vehicle_model'):
-        #     vehicle_model = self.request.query_params.get('vehicle_model')
-        #     vehicle_type = get_object_or_404(VehicleType, model = vehicle_model)
-        #     queryset = queryset.filter(supported_vehicle_types__in=[vehicle_type])
         return queryset
+

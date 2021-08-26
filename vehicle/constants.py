@@ -1,6 +1,7 @@
 VEHICLE_TYPES = (
     ("two", 'Two Wheeler'),
-    ("four", 'Four Wheeler')
+    ("four", 'Four Wheeler'),
+    ("commercial", 'Commercial')
 )
 
 VEHICLE_MODELS = (
@@ -11,5 +12,8 @@ VEHICLE_MODELS = (
     ("sedan", 'Sedan'),
     ("h_back", 'H-Back'),
     ("suv", 'SUV'),
-    ("luxury", 'Luxury')
+    ("luxury", 'Luxury'),
+    ("limo", 'Limo'),
+    ("truck", 'trudk'),
+    ("bada_truck", 'bada trick'),
 )

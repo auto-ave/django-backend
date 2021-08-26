@@ -53,6 +53,12 @@ def removeFromAverage(currentAverage, currentCount, removeValue):
 
 
 # Time Functions
+def dateStringToDate(dateString):
+    return datetime.datetime.strptime(dateString, '%Y-%m-%d')
+
+def timeStringToTime(timeString):
+    return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
+
 def dateAndTimeStringsToDateTime(date, time):
     return datetime.datetime.strptime('{} {}'.format(date, time), '%Y-%m-%d %H:%M:%S')
 

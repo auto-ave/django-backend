@@ -9,12 +9,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('first_name', 'last_name', 'email', 'phone', 'otp')
         }
     )
-    customPermissionsSet = (
-        'Custom Permissions', {
-            'fields': ('is_consumer', 'is_partner', 'is_salesman', 'is_support', 'is_sub_admin')
-        }
-    )
-    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet, customPermissionsSet) + UserAdmin.fieldsets[2:]
+    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet) + UserAdmin.fieldsets[2:]
 
 admin.site.register(User, CustomUserAdmin)
 
@@ -23,3 +18,4 @@ admin.site.register(StoreOwner)
 admin.site.register(Partner)
 admin.site.register(Salesman)
 admin.site.register(Support)
+admin.site.register(SubAdmin)

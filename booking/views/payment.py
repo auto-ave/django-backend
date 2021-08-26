@@ -1,7 +1,7 @@
 from vehicle.models import VehicleType
-from common.utils import dateAndTimeStringsToDateTime, dateTimeDiffInMinutes
+from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
 from booking.serializers.payment import InitiateTransactionSerializer
-from rest_framework import generics, permissions, response
+from rest_framework import generics, permissions, response,views
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
 
@@ -20,7 +20,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
     def post(self, request):
         user = request.user
-        data = request.data
+        data = self.validate(request)
 
         date = data.get('date')
         bay = data.get('bay')
@@ -53,8 +53,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             store = bay.store,
             status = 0,
             event = event,
+            amount = cart.total,
             # TODO:
-            vehicle_type = VehicleType.objects.all()[0],
+            vehicle_type = cart.items.all().first().vehicle_type,
         )
         # booking.event = event
         for item in cart.items.all():
@@ -62,7 +63,11 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # booking.price_times.set([cart.items.all()])
         # booking.save()
 
+        print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
+        AMOUNT = str(cart.total)
+        CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
+        CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
         paytmParams = dict()
         paytmParams["body"] = {
@@ -70,18 +75,18 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "mid": settings.PAYTM_MID,
             "websiteName": "WEBSTAGING",
             "orderId": ORDER_ID,
-            "callbackUrl": "http://127.0.0.1:8000/payment/callback/",
+            "callbackUrl": CALLBACK_URL,
             "txnAmount": {
-                    "value": cart.total,
-                    "currency": "INR",
-                },
+                "value": AMOUNT,
+                "currency": settings.PAYTM_CURRENCY,
+            },
             "userInfo": {
-                    "consumerId": user.consumer.id,
-                    "name": "{} {}".format(user.first_name, user.last_name),
-                    "mobileNumber": user.phone,
-                    "store": bay.store.name,
-                },
-            }
+                "custId": user.consumer.id,
+                "name": "{} {}".format(user.first_name, user.last_name),
+                "mobileNumber": str(user.phone),
+                "store": bay.store.name,
+            },
+        }
 
         # Generate checksum by parameters we have in body
         # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
@@ -99,5 +104,74 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # for Production
         # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
-        print(resp, type(resp))
-        return response.Response({"message": "Hello, world!"})
+        body = resp["body"]
+
+        if body['resultInfo']['resultStatus'] == "S":
+            return response.Response({
+                "mid": settings.PAYTM_MID,
+                "order_id": ORDER_ID,
+                "amount": AMOUNT,
+                "callback_url": CALLBACK_URL,
+                "txn_token": body['txnToken']
+            })
+        else:
+            return response.Response({
+                "detail": body['resultInfo']['resultMessage']
+            })
+
+class PaymentCallbackView(views.APIView):
+
+    def post(self, request):
+        # data = self.validate(request)
+        data = request.data
+
+        checksum = ""
+        form = data
+
+        response_dict = {}
+
+        for i in form.keys():
+            response_dict[i] = form[i]
+            if i == 'CHECKSUMHASH':
+                # 'CHECKSUMHASH' is coming from paytm and we will assign it to checksum variable to verify our paymant
+                checksum = form[i]
+
+            if i == 'ORDERID':
+                # we will get an order with id==ORDERID to turn isPaid=True when payment is successful
+                print('paytm ki ma ki chut')
+
+        # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
+        verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
+
+        if verify:
+            booking = Booking.objects.get(booking_id=form.get('ORDERID'))
+            payment = Payment.objects.create(
+                status=form.get('STATUS'),
+                booking=booking,
+                transaction_id=form.get('TXNID'),
+                mode_of_payment=form.get('PAYMENTMODE'),
+                amount=form.get('TXNAMOUNT'),
+                gateway_name=form.get('GATEWAYNAME'),
+                bank_name=form.get('BANKNAME'),
+                payment_mode=form.get('PAYMENTMODE')
+            )
+            if response_dict['RESPCODE'] == '01':
+                # if the response code is 01 that means our transaction is successfull
+                print('order successful')
+                # after successfull payment we will make isPaid=True and will save the order
+                booking.status = 10
+                booking.save()
+                # we will render a template to display the payment status
+                return response.Response(response_dict)
+            else:
+                booking.status = 20
+                booking.save()
+                print('order was not successful because' + response_dict['RESPMSG'])
+
+                return response.Response(response_dict)
+        else:
+            print('checksum verification failed')
+            return response.Response({
+                "you are": "a rendi"
+            })
+        

@@ -10,12 +10,13 @@ import datetime
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
+    amount = models.CharField(max_length=30, null=True, blank=True)
     store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
     status = models.PositiveIntegerField(choices=BOOKING_STATUS)
     status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     otp = models.CharField(max_length=4)
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
-    event = models.OneToOneField(Event, on_delete=models.PROTECT)
+    event = models.OneToOneField(Event, on_delete=models.PROTECT, null=True, blank=True)
     vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings")
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
@@ -31,11 +32,14 @@ class Booking(Model):
 
 
 class Payment(Model):
-    booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
-    payment_status = models.IntegerField()
-    transaction_id = models.CharField(max_length=10)
-    mode_of_payment = models.CharField(max_length=20)
-    amount = models.PositiveIntegerField()
+    booking = models.OneToOneField(Booking, on_delete=models.PROTECT, null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True)
+    transaction_id = models.CharField(max_length=100, null=True, blank=True)
+    mode_of_payment = models.CharField(max_length=100, null=True, blank=True)
+    amount = models.CharField(max_length=30, null=True, blank=True)
+    gateway_name = models.CharField(max_length=100, null=True, blank=True)
+    bank_name = models.CharField(max_length=100, null=True, blank=True)
+    payment_mode = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return "#{} Payment".format(self.booking.booking_id)

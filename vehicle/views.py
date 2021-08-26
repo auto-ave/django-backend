@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from vehicle.serializers import VehicleTypeSerializer
 
-# Create your views here.
+from rest_framework import generics
+from vehicle.models import VehicleType
+
+
+class VehicleTypeListView(generics.ListAPIView):
+    serializer_class = VehicleTypeSerializer
+
+    def get_queryset(self):
+        return VehicleType.objects.all()

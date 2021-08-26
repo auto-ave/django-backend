@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
 
 from phonenumber_field.modelfields import PhoneNumberField
@@ -14,13 +15,6 @@ class User(AbstractUser):
 
     # True after first otp validation
     is_verified = models.BooleanField(default=False)
-
-    is_consumer = models.BooleanField(default=False)
-    is_store_owner = models.BooleanField(default=False)
-    is_partner = models.BooleanField(default=False)
-    is_salesman = models.BooleanField(default=False)
-    is_support = models.BooleanField(default=False)
-    is_sub_admin = models.BooleanField(default=False)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -40,6 +34,26 @@ class User(AbstractUser):
                 self.save()
             return True
         return False
+    
+    def get_auth_tokens(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }
+    
+    def is_consumer(self):
+        return True if hasattr(self, 'consumer') else False
+    def is_store_owner(self):
+        return True if hasattr(self, 'storeowner') else False
+    def is_partner(self):
+        return True if hasattr(self, 'partner') else False
+    def is_salesman(self):
+        return True if hasattr(self, 'salesman') else False
+    def is_support(self):
+        return True if hasattr(self, 'support') else False
+    def is_sub_admin(self):
+        return True if hasattr(self, 'subadmin') else False
 
 class Consumer(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -47,9 +61,6 @@ class Consumer(Model):
         return "Consumer: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_consumer = True
-            self.user.save()
         super(Consumer, self).save(*args, **kwargs)
     
     def get_cart(self):
@@ -67,9 +78,6 @@ class StoreOwner(Model):
         return "StoreOwner: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_store_owner = True
-            self.user.save()
         super(StoreOwner, self).save(*args, **kwargs)
 
 class Partner(Model):
@@ -79,9 +87,6 @@ class Partner(Model):
         return "Partner: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_partner = True
-            self.user.save()
         super(Partner, self).save(*args, **kwargs)
 
 class Salesman(Model):
@@ -91,9 +96,6 @@ class Salesman(Model):
         return "Salesman: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_salesman = True
-            self.user.save()
         super(Salesman, self).save(*args, **kwargs)
 
 class Support(Model):
@@ -103,9 +105,6 @@ class Support(Model):
         return "Support: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_support = True
-            self.user.save()
         super(Support, self).save(*args, **kwargs)
 
 class SubAdmin(Model):
@@ -115,7 +114,4 @@ class SubAdmin(Model):
         return "Sub Admin: {} {}".format(self.user.first_name, self.user.last_name)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.user.is_sub_admin = True
-            self.user.save()
         super(SubAdmin, self).save(*args, **kwargs)

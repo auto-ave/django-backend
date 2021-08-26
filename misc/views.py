@@ -13,9 +13,9 @@ class ImageUploadParser(parsers.FileUploadParser):
 
 class StoreImageUpload(views.APIView):
     serializer_class = ImageSerializer
-    permission_classes = ((IsStoreOwner | IsSalesman | IsPartner | IsSubAdmin | permissions.IsAdminUser) ,)
-    parser_class = (ImageUploadParser,)
-    # TODO: permissions
+    # permission_classes = ((IsStoreOwner | IsSalesman | IsPartner | IsSubAdmin | permissions.IsAdminUser) ,)
+    # parser_class = (ImageUploadParser,)
+    # TODO: everything
     # permission_classes = 
 
     def put(self, request, format=None):
