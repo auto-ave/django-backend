@@ -1,4 +1,4 @@
-from store.serializers.general import EventSerializer
+from store.serializers.general import EventSerializer, SalesmanStoreListSerializer
 from rest_framework import serializers
 from rest_framework.utils import field_mapping
 
@@ -75,6 +75,7 @@ class BookingDetailSerializer(serializers.ModelSerializer):
     payment = PaymentSerializer()
     event = EventSerializer()
     review = serializers.SerializerMethodField()
+    store = SalesmanStoreListSerializer()
     class Meta:
         model = Booking
         fields = "__all__"
