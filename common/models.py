@@ -22,7 +22,7 @@ class City(Model):
     upcoming = models.BooleanField(max_length=True)
 
     def save(self, *args, **kwargs):
-        # self.code = self.code.lower()
+        self.code = self.code.lower()
         super(City, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -39,7 +39,7 @@ class Service(Model):
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        self.code = self.code.lower()
+        # self.code = self.code.lower()
         if not self.slug:
             self.slug = get_unique_slug(self, "name")
         super(Service, self).save(*args, **kwargs)
