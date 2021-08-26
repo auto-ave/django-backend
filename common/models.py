@@ -37,6 +37,7 @@ class Service(Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
+    thumbnail = models.URLField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         # self.code = self.code.lower()
