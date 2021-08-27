@@ -15,8 +15,6 @@ import json, requests, datetime, uuid
 
 
 class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
-    c
-
     def post(self, request):
         user = request.user
         data = self.validate(request)
