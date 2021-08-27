@@ -190,6 +190,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://motorwash-salesman.netlify.app"
 ]
 
+TWILIO_ACCOUNT_SID = "AC45adcb12c870de63120cacd8c2dd14b8"
+TWILIO_AUTH_TOKEN = "bc8cb4921d6930d4b888102319565dc4"
+TWILIO_NUMBER = "+18508202747"
+
+SENDGRID_API_KEY = "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"
+SENDGRID_SENDER = "test@acadza.com"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

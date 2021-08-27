@@ -1,7 +1,7 @@
 from common import fields
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-
+from common.utils import distanceFromLatitudeAndLongitude
 from store.models import *
 
 
@@ -31,10 +31,14 @@ class StoreListSerializer(ModelSerializer):
     def get_distance(self, obj):
         latitude = self.context['request'].query_params.get('latitude')
         longitude = self.context['request'].query_params.get('longitude')
+        store_latitude = obj.latitude
+        store_longitude = obj.longitude
         if latitude and longitude:
-            return "69 km"
-            # return distance(latitude, longitude)
-        return '3 km'
+            distance = distanceFromLatitudeAndLongitude(latitude, longitude, store_latitude, store_longitude)
+            distance = int(distance)
+            return "{} km".format(str(distance))
+
+        return None
     
     def get_services_start(self, obj):
         return 499

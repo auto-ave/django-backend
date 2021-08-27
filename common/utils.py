@@ -1,7 +1,7 @@
 import random
 import string
 import datetime
-
+import math
 from django.utils.text import slugify
 
 def otp_generator(size=4, chars=string.ascii_uppercase + string.digits):
@@ -50,7 +50,19 @@ def removeFromAverage(currentAverage, currentCount, removeValue):
     newAverage = newSum / (currentCount - 1)
     return newAverage
 
-
+def distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2):
+    '''
+    Returns distance in kilo meters between two latitudes and longitudes
+    '''
+    radius = 6371
+    dLat = math.radians(latitude2 - latitude)
+    dLon = math.radians(longitude2 - longitude)
+    lat1 = math.radians(latitude)
+    lat2 = math.radians(latitude2)
+    a = math.sin(dLat/2) * math.sin(dLat/2) + math.sin(dLon/2) * math.sin(dLon/2) * math.cos(lat1) * math.cos(lat2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = radius * c
+    return d
 
 # Time Functions
 def dateStringToDate(dateString):
