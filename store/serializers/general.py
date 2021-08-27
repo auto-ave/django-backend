@@ -47,7 +47,7 @@ class StoreListSerializer(ModelSerializer):
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
         model = Store
-        fields = ('name', 'address', 'thumbnail', 'slug')
+        fields = ('id', 'name', 'address', 'thumbnail', 'slug')
     
 class EventSerializer(ModelSerializer):
     class Meta():
@@ -57,6 +57,7 @@ class EventSerializer(ModelSerializer):
 
 class StoreCreateSerializer(ModelSerializer):
     city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all())
+    bay_number = serializers.IntegerField(required=True)
     # name = serializers.CharField(max_length=100)
     # store_times = ArrayField(base_field=JSONField())
     # images = ArrayField(base_field=models.URLField(), null=True, blank=True)
