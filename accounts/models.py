@@ -58,7 +58,7 @@ class User(AbstractUser):
 class Consumer(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     def __str__(self):
-        return "Consumer: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Consumer: {}".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(Consumer, self).save(*args, **kwargs)
@@ -75,7 +75,7 @@ class StoreOwner(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "StoreOwner: {} {}".format(self.user.first_name, self.user.last_name)
+        return "StoreOwner: {}".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(StoreOwner, self).save(*args, **kwargs)
@@ -84,7 +84,7 @@ class Partner(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Partner: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Partner: {}".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(Partner, self).save(*args, **kwargs)
@@ -93,7 +93,7 @@ class Salesman(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Salesman: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Salesman: {} ".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(Salesman, self).save(*args, **kwargs)
@@ -102,7 +102,7 @@ class Support(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Support: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Support: {}".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(Support, self).save(*args, **kwargs)
@@ -111,7 +111,7 @@ class SubAdmin(Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Sub Admin: {} {}".format(self.user.first_name, self.user.last_name)
+        return "Sub Admin: {}".format(self.user.full_name())
 
     def save(self, *args, **kwargs):
         super(SubAdmin, self).save(*args, **kwargs)

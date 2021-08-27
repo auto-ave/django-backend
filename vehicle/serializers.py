@@ -1,6 +1,6 @@
-from rest_framework import serializers
+from rest_framework import fields, serializers
 
-from vehicle.models import VehicleType
+from vehicle.models import VehicleType, Wheel
 
 class VehicleTypeSerializer(serializers.ModelSerializer):
     wheel = serializers.SerializerMethodField()
@@ -12,3 +12,8 @@ class VehicleTypeSerializer(serializers.ModelSerializer):
         if obj.wheel:
             return obj.wheel.name
         return None
+
+class WheelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wheel
+        fields = "__all__"

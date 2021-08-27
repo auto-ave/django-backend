@@ -1,5 +1,5 @@
 from common import fields
-from rest_framework import serializers
+from rest_framework import serializers, response, status
 from rest_framework.serializers import ModelSerializer
 from common.utils import distanceFromLatitudeAndLongitude
 from store.models import *
@@ -7,6 +7,7 @@ from store.models import *
 
 class StoreSerializer(ModelSerializer):
     rating_count = serializers.SerializerMethodField()
+    services_start = serializers.SerializerMethodField()
 
     class Meta():
         model = Store
@@ -20,10 +21,14 @@ class StoreSerializer(ModelSerializer):
     
     def get_rating_count(self, obj):
         return obj.reviews.all().count()
+    
+    def get_services_start(self, obj):
+        return 499
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
     services_start = serializers.SerializerMethodField()
+
     class Meta():
         model = Store
         fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address')
@@ -46,7 +51,7 @@ class StoreListSerializer(ModelSerializer):
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
         model = Store
-        fields = ('name', 'address', 'thumbnail', 'slug')
+        fields = ('id', 'name', 'address', 'thumbnail', 'slug')
     
 class EventSerializer(ModelSerializer):
     class Meta():
@@ -56,6 +61,7 @@ class EventSerializer(ModelSerializer):
 
 class StoreCreateSerializer(ModelSerializer):
     city = serializers.PrimaryKeyRelatedField(queryset=City.objects.all())
+    bay_number = serializers.IntegerField(required=True)
     # name = serializers.CharField(max_length=100)
     # store_times = ArrayField(base_field=JSONField())
     # images = ArrayField(base_field=models.URLField(), null=True, blank=True)
@@ -68,3 +74,9 @@ class StoreCreateSerializer(ModelSerializer):
         model = Store
         exclude = ('is_active', 'created_at', 'updated_at', 'is_verified_by_admin', 'is_locked_for_salesman', 'partner', 'owner', 'salesman', 'supported_vehicle_types', 'rating')
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.validated_data)
+        return response.Response(serializer.validate_data, status=status.HTTP_201_CREATED, headers=headers)

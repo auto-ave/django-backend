@@ -1,3 +1,4 @@
+from vehicle.models import Wheel, VehicleType
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, response, status, views
 from uritemplate.api import partial
@@ -8,7 +9,7 @@ from store.constants import VEHICLE_TYPES
 from store.serializers.services import *
 from cart import serializer
 from common.mixins import ValidateSerializerMixin
-from vehicle.serializers import VehicleTypeSerializer
+from vehicle.serializers import VehicleTypeSerializer, WheelSerializer
 
 class SalesmanStoreRetrieve(generics.RetrieveAPIView):
     serializer_class = SalesmanStoreListSerializer
@@ -98,23 +99,29 @@ class StoreCreateView(generics.CreateAPIView):
     permission_classes = (IsSalesman,)   
     serializer_class = StoreCreateSerializer
 
-    def perform_create(self, serializer):
-        print('hell;o')
-        user = self.request.user
-        serializer.save(
-            salesman=user.salesman,
-        )
-        serializer.save()
-    
-    # def post(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        slug = self.perform_create(serializer)
+        return response.Response({
+            "slug": slug,
+        }, status=status.HTTP_201_CREATED)
 
-    #     data = self.validate(request)
-    #     serializedData = self.get_serializer(data=data)
-    #     serializedData.save()
+    def perform_create(self, serializer):
+        bay_number = serializer.validated_data['bay_number']
+        data = serializer.validated_data
+
+        user = self.request.user
+        data['salesman'] = user.salesman
+        del data['bay_number']
+
+        store = Store.objects.create(**data)
+        for index in range(bay_number):
+            print(index)
+            bay = Bay.objects.create(store=store)
+            print(bay)
         
-    #     return response.Response({
-    #         'detail': 'Created Store'
-    #     },status=status.HTTP_200_OK)
+        return store.slug
 
 class ServiceCreationDetails(generics.GenericAPIView):
     # permission_classes = (IsSalesman | is)   
@@ -123,7 +130,7 @@ class ServiceCreationDetails(generics.GenericAPIView):
 
     def get(self, request, slug):
         vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True).data
-        wheel_types = VEHICLE_TYPES
+        wheel_types = WheelSerializer(Wheel.objects.all(), many=True).data
 
         all_services = ServiceSerializer(Service.objects.all(),many=True).data
         final_services = []
