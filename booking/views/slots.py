@@ -62,7 +62,6 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         print('total time: ', total_time)
         print('store opening time: ', store_opening_time, add_mins_to_time(store_opening_time, total_time))
         print('store ending time: ', store_closing_time, add_mins_to_time(store_closing_time, total_time))
-        slot_length = store.slot_length
 
         bays = store.bays.all()
         bays_count = bays.count()
