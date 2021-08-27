@@ -20,9 +20,13 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
             created = True
             user = User.objects.create(phone=phone, username=phone)
             Consumer.objects.create(user=user)
-
-        user.send_otp()
-
+        try:
+            user.send_otp()
+        except Exception as e:
+            return response.Response(
+                {'error': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         return response.Response({
             "created": created
         }, status=status.HTTP_200_OK)
