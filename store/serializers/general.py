@@ -1,5 +1,5 @@
 from common import fields
-from rest_framework import serializers
+from rest_framework import serializers, response, status
 from rest_framework.serializers import ModelSerializer
 
 from store.models import *
@@ -70,3 +70,9 @@ class StoreCreateSerializer(ModelSerializer):
         model = Store
         exclude = ('is_active', 'created_at', 'updated_at', 'is_verified_by_admin', 'is_locked_for_salesman', 'partner', 'owner', 'salesman', 'supported_vehicle_types', 'rating')
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.validated_data)
+        return response.Response(serializer.validate_data, status=status.HTTP_201_CREATED, headers=headers)

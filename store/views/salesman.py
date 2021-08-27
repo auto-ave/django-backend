@@ -99,23 +99,29 @@ class StoreCreateView(generics.CreateAPIView):
     permission_classes = (IsSalesman,)   
     serializer_class = StoreCreateSerializer
 
-    def perform_create(self, serializer):
-        print('hell;o')
-        user = self.request.user
-        serializer.save(
-            salesman=user.salesman,
-        )
-        serializer.save()
-    
-    # def post(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        slug = self.perform_create(serializer)
+        return response.Response({
+            "slug": slug,
+        }, status=status.HTTP_201_CREATED)
 
-    #     data = self.validate(request)
-    #     serializedData = self.get_serializer(data=data)
-    #     serializedData.save()
+    def perform_create(self, serializer):
+        bay_number = serializer.validated_data['bay_number']
+        data = serializer.validated_data
+
+        user = self.request.user
+        data['salesman'] = user.salesman
+        del data['bay_number']
+
+        store = Store.objects.create(**data)
+        for index in range(bay_number):
+            print(index)
+            bay = Bay.objects.create(store=store)
+            print(bay)
         
-    #     return response.Response({
-    #         'detail': 'Created Store'
-    #     },status=status.HTTP_200_OK)
+        return store.slug
 
 class ServiceCreationDetails(generics.GenericAPIView):
     # permission_classes = (IsSalesman | is)   
