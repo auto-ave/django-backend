@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_better_admin_arrayfield',
     'dbbackup',
     'djcelery_email',
+    'background_task',
     
     'accounts',
     'common',

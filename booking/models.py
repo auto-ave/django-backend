@@ -7,6 +7,7 @@ from store.models import Store, PriceTime, Event, VehicleType
 from .static import BOOKING_STATUS, PAYMENT_STATUS
 from common.utils import otp_generator
 import datetime
+
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')

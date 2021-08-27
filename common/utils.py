@@ -54,6 +54,11 @@ def distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
     '''
     Returns distance in kilo meters between two latitudes and longitudes
     '''
+    latitude = float(latitude)
+    longitude = float(longitude)
+    latitude2 = float(latitude2)
+    longitude2 = float(longitude2)
+    
     radius = 6371
     dLat = math.radians(latitude2 - latitude)
     dLon = math.radians(longitude2 - longitude)

@@ -1,3 +1,4 @@
+from common.communication_provider import CommunicationProvider
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -26,6 +27,11 @@ class User(AbstractUser):
         # TODO: abra ka dabra, OTP bhejdo
         self.otp = 1234
         self.save()
+    
+    def send_otp(self):
+        self.generate_otp()
+        providor = CommunicationProvider()
+        providor.send_otp(otp=self.otp, number=str(self.phone))
     
     def check_otp(self, otp):
         if self.otp == otp:
