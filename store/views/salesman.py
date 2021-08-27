@@ -1,3 +1,4 @@
+from vehicle.models import Wheel, VehicleType
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, response, status, views
 from uritemplate.api import partial
@@ -8,7 +9,7 @@ from store.constants import VEHICLE_TYPES
 from store.serializers.services import *
 from cart import serializer
 from common.mixins import ValidateSerializerMixin
-from vehicle.serializers import VehicleTypeSerializer
+from vehicle.serializers import VehicleTypeSerializer, WheelSerializer
 
 class SalesmanStoreRetrieve(generics.RetrieveAPIView):
     serializer_class = SalesmanStoreListSerializer
@@ -123,7 +124,7 @@ class ServiceCreationDetails(generics.GenericAPIView):
 
     def get(self, request, slug):
         vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True).data
-        wheel_types = VEHICLE_TYPES
+        wheel_types = WheelSerializer(Wheel.objects.all(), many=True).data
 
         all_services = ServiceSerializer(Service.objects.all(),many=True).data
         final_services = []
