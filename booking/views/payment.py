@@ -15,8 +15,7 @@ import json, requests, datetime, uuid
 
 
 class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
-    serializer_class = InitiateTransactionSerializer
-    permission_classes = (IsConsumer,)
+    c
 
     def post(self, request):
         user = request.user
@@ -120,6 +119,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             })
 
 class PaymentCallbackView(views.APIView):
+    permission_classes = (IsConsumer,)
 
     def post(self, request):
         # data = self.validate(request)
