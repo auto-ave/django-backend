@@ -36,7 +36,6 @@ class Store(Model):
     # TODO: json schema validation, change slot api, also frontend validation
     # Starts from sunday
     store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}')
-    slot_length = models.PositiveIntegerField() # Number of minutes
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
 
