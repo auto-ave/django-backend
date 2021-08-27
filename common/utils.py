@@ -74,7 +74,10 @@ def dateStringToDate(dateString):
     return datetime.datetime.strptime(dateString, '%Y-%m-%d')
 
 def timeStringToTime(timeString):
-    return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
+    if len(timeString) == 5:
+        return datetime.datetime.strptime(timeString, '%H:%M').time()
+    else:
+        return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
 
 def dateAndTimeStringsToDateTime(date, time):
     return datetime.datetime.strptime('{} {}'.format(date, time), '%Y-%m-%d %H:%M:%S')
