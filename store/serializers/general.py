@@ -40,7 +40,7 @@ class StoreListSerializer(ModelSerializer):
         store_longitude = obj.longitude
         if latitude and longitude:
             distance = distanceFromLatitudeAndLongitude(latitude, longitude, store_latitude, store_longitude)
-            distance = int(distance)
+            distance = round(float(distance), 1)
             return "{} km".format(str(distance))
 
         return None
