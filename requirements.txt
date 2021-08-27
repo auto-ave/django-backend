@@ -15,8 +15,10 @@ coreschema==0.0.4
 dj-database-url==0.5.0
 Django==3.2
 django-appconf==1.0.4
+django-background-tasks==1.2.5
 django-better-admin-arrayfield==1.4.2
 django-celery-email==3.0.0
+django-compat==1.0.15
 django-cors-headers==3.7.0
 django-dbbackup==3.3.0
 django-filter==2.4.0
