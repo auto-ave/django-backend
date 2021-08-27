@@ -5,10 +5,10 @@ from django.conf import settings
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+def OTP_MESSAGE(otp):
+    return '{} is your OTP (One Time Password) to authenticate your login to The Motorwash'.format(otp)
 
 class CommunicationProvider:
-    otp_message = "Your login OTP is "
-
     def __init__(self):
         self.client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
         self.sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
@@ -23,7 +23,7 @@ class CommunicationProvider:
         return response
 
     def send_otp(self, otp, number):
-        message = self.otp_message+str(otp)
+        message = OTP_MESSAGE(otp)
         response = self.send_sms(number=number, message=message)
         return response
 
