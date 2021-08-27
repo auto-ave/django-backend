@@ -7,6 +7,7 @@ from store.models import *
 
 class StoreSerializer(ModelSerializer):
     rating_count = serializers.SerializerMethodField()
+    services_start = serializers.SerializerMethodField()
 
     class Meta():
         model = Store
@@ -20,10 +21,14 @@ class StoreSerializer(ModelSerializer):
     
     def get_rating_count(self, obj):
         return obj.reviews.all().count()
+    
+    def get_services_start(self, obj):
+        return 499
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
     services_start = serializers.SerializerMethodField()
+
     class Meta():
         model = Store
         fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address')
