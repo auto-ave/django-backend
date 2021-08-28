@@ -100,8 +100,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'motorwash',
-        'USER': 'motorwash',
-        'PASSWORD': 'root',
+        'USER': 'postgres',
+        'PASSWORD': '1822',
         'HOST': 'localhost',
         'PORT': '5432',
     }

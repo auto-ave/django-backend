@@ -8,8 +8,8 @@ from common.models import Model, City, Service
 from vehicle.models import VehicleType
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from booking.schema import STORE_TIMES_FIELD_SCHEMA
-from project.validators import JSONSchemaValidator
+from store.schema import STORE_TIMES_FIELD_SCHEMA
+from store.validators import JSONSchemaValidator
 class Store(Model):
     owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.SET_NULL, blank=True, null=True)
     partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)

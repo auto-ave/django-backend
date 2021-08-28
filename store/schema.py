@@ -1,12 +1,14 @@
 STORE_TIMES_FIELD_SCHEMA = {
-    'schema': 'http://json-schema.org/draft-07/schema#',
     'type': 'array',
-    'properties': {
-        'items': {
-            'type': 'object',
+    'minItems': 7,
+    'maxItems': 7,
+    'items': {
+        'type': 'object',
+        'properties': {
+            'opening_time': {'type': 'string'},
+            'closing_time': {'type': 'string'},
         },
-        'minItems': 7,
-        'maxItems': 7,
+        'additionalProperties': False,
     },
     'required': ['my_key']
 }
