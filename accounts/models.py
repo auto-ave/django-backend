@@ -29,8 +29,8 @@ class User(AbstractUser):
     
     def send_otp(self):
         self.generate_otp()
-        providor = CommunicationProvider()
-        providor.send_otp(otp=self.otp, number=str(self.phone))
+        # providor = CommunicationProvider()
+        # providor.send_otp(otp=self.otp, number=str(self.phone))
     
     def check_otp(self, otp):
         if self.otp == otp:
