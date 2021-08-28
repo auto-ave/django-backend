@@ -82,7 +82,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             },
             "userInfo": {
                 "custId": user.consumer.id,
-                "name": "{} {}".format(user.first_name, user.last_name),
+                "name": user.full_name(),
                 "mobileNumber": str(user.phone),
                 "store": bay.store.name,
             },
@@ -123,53 +123,49 @@ class PaymentCallbackView(views.APIView):
     permission_classes = (IsConsumer,)
 
     def post(self, request):
-        # data = self.validate(request)
         data = request.data
 
         checksum = ""
         form = data
+
+        booking = ""
 
         response_dict = {}
 
         for i in form.keys():
             response_dict[i] = form[i]
             if i == 'CHECKSUMHASH':
-                # 'CHECKSUMHASH' is coming from paytm and we will assign it to checksum variable to verify our paymant
                 checksum = form[i]
-
             if i == 'ORDERID':
-                # we will get an order with id==ORDERID to turn isPaid=True when payment is successful
                 print('paytm ki ma ki chut')
+                booking = Booking.objects.get(booking_id=form.get('ORDERID'))
+                if Payment.objects.filter(booking=booking).exists():
+                    return response.Response({
+                        "detail": "Payment already done"
+                    })
+                else:
+                    payment = Payment.objects.create(
+                        status=form.get('STATUS'),
+                        booking=booking,
+                        transaction_id=form.get('TXNID'),
+                        mode_of_payment=form.get('PAYMENTMODE'),
+                        amount=form.get('TXNAMOUNT'),
+                        gateway_name=form.get('GATEWAYNAME'),
+                        bank_name=form.get('BANKNAME'),
+                        payment_mode=form.get('PAYMENTMODE')
+                    )
 
-        # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
         verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
 
         if verify:
-            booking = Booking.objects.get(booking_id=form.get('ORDERID'))
-            payment = Payment.objects.create(
-                status=form.get('STATUS'),
-                booking=booking,
-                transaction_id=form.get('TXNID'),
-                mode_of_payment=form.get('PAYMENTMODE'),
-                amount=form.get('TXNAMOUNT'),
-                gateway_name=form.get('GATEWAYNAME'),
-                bank_name=form.get('BANKNAME'),
-                payment_mode=form.get('PAYMENTMODE')
-            )
             if response_dict['RESPCODE'] == '01':
-                # if the response code is 01 that means our transaction is successfull
-                print('order successful')
-                # after successfull payment we will make isPaid=True and will save the order
                 booking.status = 10
-                booking.save()
-                # we will render a template to display the payment status
-                return response.Response(response_dict)
+                print('order successful')
             else:
                 booking.status = 20
-                booking.save()
                 print('order was not successful because' + response_dict['RESPMSG'])
-
-                return response.Response(response_dict)
+            booking.save()
+            return response.Response(response_dict)  
         else:
             print('checksum verification failed')
             return response.Response({

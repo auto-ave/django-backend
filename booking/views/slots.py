@@ -87,8 +87,9 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
         for bay in bays:
             events = bay.events.filter(start_datetime__gte=convert_date_to_datetime(date), end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1)))
-            
             for event in events:
+                if hasattr(event, 'booking') and event.booking.status == 0:
+                    continue
                 # print('event: ', event)
                 event_start_time = event.start_datetime.time()
                 event_end_time = event.end_datetime.time()

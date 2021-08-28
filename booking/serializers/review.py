@@ -8,8 +8,6 @@ class ReviewCreateSerializer(ModelSerializer):
         exclude = ("consumer", )
 
 class ReviewSerializer(ModelSerializer):
-    # TODO After addiong Consumer serializer, uncomment this
-    # consumer = COnsumerSerializer()
     user = SerializerMethodField()
     image = SerializerMethodField()
     

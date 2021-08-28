@@ -24,7 +24,6 @@ class User(AbstractUser):
         return self.first_name + " " + self.last_name
     
     def generate_otp(self):
-        # TODO: abra ka dabra, OTP bhejdo
         self.otp = 1234
         self.save()
     
