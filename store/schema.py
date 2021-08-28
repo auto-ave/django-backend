@@ -5,8 +5,10 @@ STORE_TIMES_FIELD_SCHEMA = {
     'items': {
         'type': 'object',
         'properties': {
-            'opening_time': {'type': 'string'},
-            'closing_time': {'type': 'string'},
+            'opening_time': {'type': 'string',
+                            'pattern': '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'},
+            'closing_time': {'type': 'string',
+                            'pattern': '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'},
         },
         'additionalProperties': False,
     },
