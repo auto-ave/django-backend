@@ -27,7 +27,10 @@ class CartSerializer(serializers.ModelSerializer):
         return serializer.data
     
     def get_store(self, obj):
-        return obj.store.name
+        return {
+            "id": obj.store.id,
+            "name": obj.store.name,
+        }
     
     def get_vehicle_type(self, obj):
         if obj.items.all().first():
