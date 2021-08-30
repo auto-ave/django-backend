@@ -56,7 +56,7 @@ class StoreListSerializer(ModelSerializer):
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
         model = Store
-        fields = ('id', 'name', 'address', 'thumbnail', 'slug')
+        fields = ('id', 'name', 'address', 'thumbnail', 'slug', 'contact_person_name', 'contact_person_number')
     
 class EventSerializer(ModelSerializer):
     class Meta():
