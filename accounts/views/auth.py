@@ -2,6 +2,7 @@ from rest_framework import generics, response, status
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from accounts.models import User, Consumer
+from cart.models import Cart
 from accounts.serializers.auth import *
 from common.mixins import ValidateSerializerMixin
 
@@ -19,7 +20,8 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
         if not user:
             created = True
             user = User.objects.create(phone=phone, username=phone)
-            Consumer.objects.create(user=user)
+            consumer = Consumer.objects.create(user=user)
+            Cart.objects.create(consumer=consumer)
         try:
             user.send_otp()
         except Exception as e:
@@ -52,7 +54,7 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
             }, status=status.HTTP_400_BAD_REQUEST)
 
 class SalesmanLogin(generics.GenericAPIView, ValidateSerializerMixin):
-    serializer_class = SalesmanLoginSerializer
+    serializer_class = CredentialLoginSerializer
 
     def post(self, request):
         data = self.validate(request)
@@ -64,6 +66,28 @@ class SalesmanLogin(generics.GenericAPIView, ValidateSerializerMixin):
         if not user.is_salesman():
             return response.Response({
                 "detail": "User is not a salesman"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        if not user.check_password(password):
+            return response.Response({
+                "detail": "Invalid Password"
+            }, status=status.HTTP_400_BAD_REQUEST)
+            
+        return response.Response(user.get_auth_tokens(), status=status.HTTP_200_OK)
+
+class StoreOwnerLogin(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = CredentialLoginSerializer
+
+    def post(self, request):
+        data = self.validate(request)
+        email = data.get('email')
+        password = data.get('password')
+
+        user = get_object_or_404(User, email=email)
+
+        if not user.is_store_owner():
+            return response.Response({
+                "detail": "User is not a store owner"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         if not user.check_password(password):

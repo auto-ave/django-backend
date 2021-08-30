@@ -8,6 +8,6 @@ class CheckOTPSerializer(serializers.Serializer):
     phone = PhoneNumberField()
     otp = serializers.CharField(max_length=4)
 
-class SalesmanLoginSerializer(serializers.Serializer):
+class CredentialLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(max_length=128)
