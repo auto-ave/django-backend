@@ -8,7 +8,8 @@ from common.models import Model, City, Service
 from vehicle.models import VehicleType
 from django.core.exceptions import ValidationError
 from django.db import transaction
-
+from store.schema import STORE_TIMES_FIELD_SCHEMA
+from store.validators import JSONSchemaValidator
 class Store(Model):
     owner = models.OneToOneField('accounts.StoreOwner', on_delete=models.SET_NULL, blank=True, null=True)
     partner = models.ForeignKey('accounts.Partner', related_name="stores", on_delete=models.SET_NULL, blank=True, null=True)
@@ -35,7 +36,8 @@ class Store(Model):
     contact_person_photo = models.ImageField(null=True, blank =True)
     # TODO: json schema validation, change slot api, also frontend validation
     # Starts from sunday
-    store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}')
+    store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}',
+        validators=[JSONSchemaValidator(limit_value=STORE_TIMES_FIELD_SCHEMA)])
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
 
