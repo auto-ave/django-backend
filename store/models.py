@@ -36,7 +36,7 @@ class Store(Model):
     contact_person_photo = models.ImageField(null=True, blank =True)
     # TODO: json schema validation, change slot api, also frontend validation
     # Starts from sunday
-    store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}',
+    store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00", "opening_time": "09:00"}',
         validators=[JSONSchemaValidator(limit_value=STORE_TIMES_FIELD_SCHEMA)])
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
