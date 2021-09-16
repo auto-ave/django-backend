@@ -1,5 +1,7 @@
-from rest_framework import generics, permissions
-from django.http import HttpResponse
+from booking.static import BOOKING_STATUS_DICT
+from common.mixins import ValidateSerializerMixin
+from rest_framework import generics, permissions, response
+from django.db.models import Q
 
 from booking.models import *
 from booking.serializers.general import *
@@ -25,7 +27,7 @@ class BookingListOwner(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return user.storeowner.store.bookings.all()
+        return user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) | Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value)).order_by('-status_changed_time')
 
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'
@@ -35,35 +37,49 @@ class BookingDetail(generics.RetrieveAPIView):
     def get_queryset(self):
         return self.request.user.consumer.bookings.all()
 
-def Paytm(request):
-    # initialize an Hash/Array
-    paytmParams = {}
+class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = BookingStartSerializer
+    permission_classes = (IsStoreOwner, )
 
-    paytmParams["MID"] = "erKfbl49402655016816"
-    paytmParams["ORDERID"] = "YOUR_ORDER_ID_HERE"
+    def post(self, request, *args, **kwargs):
+        data = self.validate(request)
+        booking_id = data['booking_id']
+        otp = data['otp']
 
-    # Generate checksum by parameters we have
-    # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-    paytmChecksum = PaytmChecksum.generateSignature(paytmParams, "y1RPZDGVbo0ySQ2S")
-    print("generateSignature Returns:" + str(paytmChecksum))
-    return HttpResponse("<h1>Paytm</h1>")
+        booking = Booking.objects.get(booking_id=booking_id)
 
-    paytmParams = dict()
-    paytmParams = request.form.to_dict()
-    paytmChecksum = paytmChecksum
-    paytmChecksum = paytmParams['CHECKSUMHASH']
-    paytmParams.pop('CHECKSUMHASH', None)
+        if booking.store.owner.user != request.user:
+            return response.Response({
+                "error": "You are not allowed to start this booking"
+            }, status=403)
+        
+        if booking.otp != otp:
+            return response.Response({
+                "error": "Invalid OTP"
+            }, status=400)
 
-    # Verify checksum
-    # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-    isVerifySignature = PaytmChecksum.verifySignature(paytmParams, "YOUR_MERCHANT_KEY",paytmChecksum)
-    if isVerifySignature:
-        print("Checksum Matched")
-    else:
-        print("Checksum Mismatched")
+        booking.startService()
 
-def initiateTransaction(request):
+        return response.Response({
+            "success": "Booking started"
+        })
 
-    
+class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = BookingCompleteSerializer
+    permission_classes = (IsStoreOwner, )
 
-    return HttpResponse("<h1>Paytm fuck you</h1>")
+    def post(self, request):
+        data = self.validate(request)
+        booking_id = data['booking_id']
+        booking = Booking.objects.get(booking_id=booking_id)
+
+        if booking.store.owner.user != request.user:
+            return response.Response({
+                "error": "You are not allowed to complete this booking"
+            }, status=403)
+
+        booking.completeService()
+
+        return response.Response({
+            "success": "Booking Completed"
+        })

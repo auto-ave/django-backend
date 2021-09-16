@@ -4,7 +4,7 @@ from common.models import Model
 from django.contrib.postgres.fields import ArrayField
 from accounts.models import Consumer
 from store.models import Store, PriceTime, Event, VehicleType
-from .static import BOOKING_STATUS, PAYMENT_STATUS
+from .static import BOOKING_STATUS, BOOKING_STATUS_DICT, PAYMENT_STATUS
 from common.utils import otp_generator
 import datetime
 
@@ -29,6 +29,16 @@ class Booking(Model):
         if not self.otp:
             self.otp = otp_generator()
         super(Booking, self).save(*args, **kwargs)
+    
+    def startService(self):
+        self.status = BOOKING_STATUS_DICT.SERVICE_STARTED.value
+        self.status_changed_time = datetime.datetime.now()
+        self.save()
+    
+    def completeService(self):
+        self.status = BOOKING_STATUS_DICT.SERVICE_COMPLETED.value
+        self.status_changed_time = datetime.datetime.now()
+        self.save()
     
 
 
