@@ -59,5 +59,5 @@ class CityStoreList(generics.ListAPIView):
         citycode = self.kwargs['citycode']
         city = get_object_or_404(City, code__iexact=citycode)
         queryset = city.stores.all()
-        return queryset
+        return queryset 
 

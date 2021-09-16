@@ -85,3 +85,10 @@ class BookingDetailSerializer(serializers.ModelSerializer):
         if hasattr(obj, 'review'):
             return ReviewSerializer(obj.review).data
         return None
+
+class BookingStartSerializer(serializers.Serializer):
+    booking_id = serializers.CharField()
+    otp = serializers.CharField()
+
+class BookingCompleteSerializer(serializers.Serializer):
+    booking_id = serializers.CharField()

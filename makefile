@@ -1,4 +1,4 @@
 freeze:
 	pip freeze | grep -v "pkg-resources" > requirements.txt
 activate:
-	source venv/bin/activate
+	sudo /etc/init.d/postgresql restart && source venv/bin/activate
