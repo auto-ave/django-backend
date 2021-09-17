@@ -25,3 +25,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     if obj.is_support:
     #         return obj.support.id    
     #     return None
+
+class TopicsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotificationTopic
+        fields = "__all__"
+
+class AddTokenSerializer(serializers.Serializer):
+    token = serializers.CharField()
+
+class TopicsRegisterSerializer(serializers.Serializer):
+    topics = serializers.JSONField()

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
+from django_better_admin_arrayfield.models.fields import ArrayField
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -16,6 +17,9 @@ class User(AbstractUser):
 
     # True after first otp validation
     is_verified = models.BooleanField(default=False)
+    
+    # registered_topics = ArrayField(base_field=models.CharField(max_length=50, null=True, blank=True), null=True, blank=True)
+    fcm_tokens = ArrayField(base_field=models.CharField(max_length=230, null=True, blank=True), default=list)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -120,3 +124,12 @@ class SubAdmin(Model):
 
     def save(self, *args, **kwargs):
         super(SubAdmin, self).save(*args, **kwargs)
+
+class NotificationTopic(Model):
+    code = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, null=True, blank=True)
+    users = models.ManyToManyField(User, related_name='notification_topics', blank=True)
+    
+    def __str__(self):
+        return self.name
