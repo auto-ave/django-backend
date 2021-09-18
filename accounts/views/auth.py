@@ -1,4 +1,4 @@
-from rest_framework import generics, response, status
+from rest_framework import generics, response, status, permissions
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from accounts.models import User, Consumer
@@ -40,9 +40,16 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
         data = self.validate(request)
         phone = data.get('phone')
         otp = data.get('otp')
+        token = data.get('token')
 
         user = get_object_or_404(User, phone=phone)
         if user.check_otp(otp):
+            # Adding fcm token to user's tokens
+            user.fcm_tokens = list(set(user.fcm_tokens + [token]))
+            user.save()
+
+            # subsubscribing token to user's topics
+
             refresh = RefreshToken.for_user(user)
             return response.Response({
                 'refresh': str(refresh),
@@ -52,6 +59,26 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 "detail": "Invalid OTP"
             }, status=status.HTTP_400_BAD_REQUEST)
+
+class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
+    permission_classes = ( permissions.IsAuthenticated, )
+    serializer_class = AppLogoutSerializer
+
+    def post(self, request):
+        data = self.validate(request)
+        user = request.user
+        token = data['token']
+
+        # firebase messaging fcm token unsubscribe from all the topics of the user
+        
+
+        # remove token from users fcm token list
+        user.fcm_tokens = [t for t in user.fcm_tokens if t != token]
+        user.save()
+
+        return response.Response({
+            'success': True
+        })
 
 class SalesmanLogin(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CredentialLoginSerializer

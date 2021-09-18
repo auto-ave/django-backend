@@ -14,18 +14,6 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         user_modal = self.request.user
         return user_modal
-        user = model_to_dict(user_modal)
-        if user['is_consumer'] and user_modal.consumer:
-            return { **user, **model_to_dict(user_modal.consumer) }
-        if user['is_sub_admin'] and user_modal.subadmin:
-            return { **user, **model_to_dict(user_modal.subadmin) }
-        if user['is_partner'] and user_modal.partner:
-            return { **user, **model_to_dict(user_modal.partner) }
-        if user['is_support'] and user_modal.support:
-            return { **user, **model_to_dict(user_modal.support) }   
-        if user['is_salesman'] and user_modal.salesman:
-            return { **user, **model_to_dict(user_modal.salesman) }         
-        return user
 
 class RegisterTopicsView(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = TopicsRegisterSerializer
@@ -55,15 +43,31 @@ class TopicsList(generics.ListAPIView):
         user = self.request.user
         return user.notification_topics.all()
 
-class AddToken(generics.GenericAPIView, ValidateSerializerMixin):
-    serializer_class = AddTokenSerializer
-    permission_classes = ( permissions.IsAuthenticated, )
+# class AddToken(generics.GenericAPIView, ValidateSerializerMixin):
+#     serializer_class = AddTokenSerializer
+#     permission_classes = ( permissions.IsAuthenticated, )
     
-    def post(self, request):
-        data = self.validate(request)
-        user = request.user
-        user.fcm_tokens = user.fcm_tokens + [data['token']]
-        user.save()
-        return response.Response({
-            'success': 'Tokens Added'
-        })
+#     def post(self, request):
+#         data = self.validate(request)
+#         user = request.user
+        
+#         return response.Response({
+#             'success': 'Token Added'
+#         })
+
+# class RemoveToken(generics.GenericAPIView, ValidateSerializerMixin):
+#     serializer_class = AddTokenSerializer
+#     permission_classes = ( permissions.IsAuthenticated, )
+    
+#     def post(self, request):
+#         data = self.validate(request)
+#         user = request.user
+#         temp = user.fcm_tokens
+#         temp.remove(data['token'])
+#         temp = list(set(temp))
+#         print(temp)
+#         user.fcm_tokens = temp
+#         user.save()
+#         return response.Response({
+#             'success': 'Token Removed'
+#         })

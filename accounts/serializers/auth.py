@@ -7,6 +7,10 @@ class GetOTPSerializer(serializers.Serializer):
 class CheckOTPSerializer(serializers.Serializer):
     phone = PhoneNumberField()
     otp = serializers.CharField(max_length=4)
+    token = serializers.CharField()
+
+class AppLogoutSerializer(serializers.Serializer):
+    token = serializers.CharField()
 
 class CredentialLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
