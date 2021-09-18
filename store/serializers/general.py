@@ -23,7 +23,12 @@ class StoreSerializer(ModelSerializer):
         return obj.reviews.all().count()
     
     def get_services_start(self, obj):
-        return 499
+        pricetimes = obj.pricetimes.all()
+        min = 999999
+        for pricetime in pricetimes:
+            if pricetime.price <= min:
+                min = pricetime.price
+        return min
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
