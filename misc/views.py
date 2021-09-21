@@ -3,10 +3,15 @@ from django.shortcuts import render
 
 from rest_framework import parsers, permissions, serializers, views, exceptions, response, status, generics
 
-from misc.serializers import ImageSerializer
+from misc.serializers import *
 from store.models import Store
 from common.models import Service
 from common.permissions import IsStoreOwner, IsPartner, IsSalesman, IsSubAdmin
+
+class FeedbackView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    serializer_class = FeedbackSerializer
+
 
 class ImageUploadParser(parsers.FileUploadParser):
     media_type = 'image/*'
