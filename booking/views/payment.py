@@ -1,3 +1,4 @@
+from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
@@ -163,8 +164,10 @@ class PaymentCallbackView(views.APIView):
             if response_dict['RESPCODE'] == '01':
                 booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
             
+                
                 # Payment complete notification
-                user.send_notification(
+                CommunicationProvider.send_notification(
+                    user,
                     title="Booking Confirmed ho gai hai aapki",
                     body="Thank you sir aapni booking kari, aapke hum aabhari hai. Store chale jana time se ok, thank you.",
                     image="https://i.tribune.com.pk/media/images/1038308-MODI-1454343716/1038308-MODI-1454343716.jpg",

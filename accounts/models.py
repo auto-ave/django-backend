@@ -1,11 +1,9 @@
-from common.communication_provider import CommunicationProvider
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
 from django_better_admin_arrayfield.models.fields import ArrayField
 from fcm_django.models import FCMDevice
-from firebase_admin.messaging import Message, Notification
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -55,9 +53,12 @@ class User(AbstractUser):
         return devices if devices else None
     
     def sub_to_topic(self, topic):
-        devices = self.get_devices()
-        if devices:
-            devices.handle_topic_subscription(True, topic=topic)
+        instance = NotificationTopic.objects.filter(code=topic).first()
+        if instance:
+            instance.users.add(self)
+            devices = self.get_devices()
+            if devices:
+                devices.handle_topic_subscription(True, topic=topic)
     
     def register_fcm(self, token):
         user = self
@@ -76,18 +77,7 @@ class User(AbstractUser):
             for topic in user.notification_topics.all():
                 device.handle_topic_subscription(False, topic=topic.code)
             device.delete()
-    
-    def send_notification(self, title, body, image, data={}, topic=None):
-        devices = self.get_devices()
-        if devices:
-            notification = Notification(title=title, body=body, image=image)
-            message = Message(
-                notification=notification,
-                data=data,
-                topic=topic,
-            )
-            devices.send_message(message)
-        
+
     
     def is_consumer(self):
         return True if hasattr(self, 'consumer') else False
