@@ -5,6 +5,7 @@ from accounts.models import User, Consumer
 from cart.models import Cart
 from accounts.serializers.auth import *
 from common.mixins import ValidateSerializerMixin
+from fcm_django.models import FCMDevice
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -44,11 +45,14 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
 
         user = get_object_or_404(User, phone=phone)
         if user.check_otp(otp):
-            # Adding fcm token to user's tokens
-            user.fcm_tokens = list(set(user.fcm_tokens + [token]))
-            user.save()
-
-            # subsubscribing token to user's topics
+            # Registering user device and subscriptions
+            if token:
+                device = FCMDevice.objects.filter(registration_id=token).first()
+                if not device:
+                    device = FCMDevice.objects.create(user=user, registration_id=token)
+                # Subscribing device to push notifications
+                for topic in user.notification_topics.all():
+                    device.handle_topic_subscription(True, topic=topic.code)
 
             refresh = RefreshToken.for_user(user)
             return response.Response({
@@ -69,12 +73,15 @@ class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
         user = request.user
         token = data['token']
 
-        # firebase messaging fcm token unsubscribe from all the topics of the user
-        
-
-        # remove token from users fcm token list
-        user.fcm_tokens = [t for t in user.fcm_tokens if t != token]
-        user.save()
+        # Deregistering user device and subscriptions
+        if token:
+            device = FCMDevice.objects.filter(registration_id=token).first()
+            # Unsubscribing device to push notifications
+            if device:
+                for topic in user.notification_topics.all():
+                    device.handle_topic_subscription(False, topic=topic.code)
+                device.delete()
+                
 
         return response.Response({
             'success': True
