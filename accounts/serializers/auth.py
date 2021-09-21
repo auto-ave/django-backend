@@ -10,8 +10,9 @@ class CheckOTPSerializer(serializers.Serializer):
     token = serializers.CharField()
 
 class AppLogoutSerializer(serializers.Serializer):
-    token = serializers.CharField()
+    token = serializers.CharField(required=False)
 
 class CredentialLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(max_length=128)
+    token = serializers.CharField(required=False)

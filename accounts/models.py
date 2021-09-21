@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
 from django_better_admin_arrayfield.models.fields import ArrayField
+from fcm_django.models import FCMDevice
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -48,8 +49,25 @@ class User(AbstractUser):
             'access': str(refresh.access_token)
         }
     
-    def subscribe_to_registered_topics(self):
-        topics = self.notification_topics.all()
+    def get_devices(self):
+        devices = FCMDevice.objects.filter(user=self)
+        return devices if devices else None
+    
+    def register_fcm(self, token):
+        user = self
+        device = FCMDevice.objects.filter(registration_id=token).first()
+        if not device:
+            device = FCMDevice.objects.create(user=user, registration_id=token)
+        for topic in user.notification_topics.all():
+            device.handle_topic_subscription(True, topic=topic.code)
+    
+    def deregister_fcm(self, token):
+        user = self
+        device = FCMDevice.objects.filter(registration_id=token).first()
+        if device:
+            for topic in user.notification_topics.all():
+                device.handle_topic_subscription(False, topic=topic.code)
+            device.delete()
         
     
     def is_consumer(self):

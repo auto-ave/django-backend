@@ -45,14 +45,8 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
 
         user = get_object_or_404(User, phone=phone)
         if user.check_otp(otp):
-            # Registering user device and subscriptions
             if token:
-                device = FCMDevice.objects.filter(registration_id=token).first()
-                if not device:
-                    device = FCMDevice.objects.create(user=user, registration_id=token)
-                # Subscribing device to push notifications
-                for topic in user.notification_topics.all():
-                    device.handle_topic_subscription(True, topic=topic.code)
+                user.register_fcm(token)
 
             refresh = RefreshToken.for_user(user)
             return response.Response({
@@ -71,18 +65,11 @@ class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
     def post(self, request):
         data = self.validate(request)
         user = request.user
-        token = data['token']
+        token = data.get('token')
 
-        # Deregistering user device and subscriptions
         if token:
-            device = FCMDevice.objects.filter(registration_id=token).first()
-            # Unsubscribing device to push notifications
-            if device:
-                for topic in user.notification_topics.all():
-                    device.handle_topic_subscription(False, topic=topic.code)
-                device.delete()
+            user.deregister_fcm(token)
                 
-
         return response.Response({
             'success': True
         })
@@ -116,6 +103,7 @@ class StoreOwnerLogin(generics.GenericAPIView, ValidateSerializerMixin):
         data = self.validate(request)
         email = data.get('email')
         password = data.get('password')
+        token = data.get('token')
 
         user = get_object_or_404(User, email=email)
 
@@ -128,5 +116,8 @@ class StoreOwnerLogin(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 "detail": "Invalid Password"
             }, status=status.HTTP_400_BAD_REQUEST)
+        
+        if token:
+            user.register_fcm(token)
             
         return response.Response(user.get_auth_tokens(), status=status.HTTP_200_OK)
