@@ -189,7 +189,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://moterwash.netlify.app",
-    "https://motorwash-salesman.netlify.app"
+    "https://motorwash-salesman.netlify.app",
+    "https://owner-motorwash.netlify.app"
 ]
 
 TWILIO_ACCOUNT_SID = "AC45adcb12c870de63120cacd8c2dd14b8"
