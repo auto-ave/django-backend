@@ -10,12 +10,12 @@ class CustomUserAdmin(UserAdmin, DynamicArrayMixin):
             'fields': ('first_name', 'last_name', 'email', 'phone', 'otp')
         }
     )
-    notificationsInfoSet = (
-        'Notifications', {
-            'fields': ('fcm_tokens',)
-        }
-    )
-    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet, notificationsInfoSet) + UserAdmin.fieldsets[2:]
+    # notificationsInfoSet = (
+    #     'Notifications', {
+    #         'fields': ('fcm_tokens',)
+    #     }
+    # )
+    fieldsets = (UserAdmin.fieldsets[0], personalInfoSet) + UserAdmin.fieldsets[2:]
 
 admin.site.register(User, CustomUserAdmin)
 
