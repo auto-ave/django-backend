@@ -53,11 +53,17 @@ class User(AbstractUser):
         devices = FCMDevice.objects.filter(user=self)
         return devices if devices else None
     
+    def sub_to_topic(self, topic):
+        devices = self.get_devices()
+        if devices:
+            devices.handle_topic_subscription(True, topic=topic)
+    
     def register_fcm(self, token):
         user = self
         device = FCMDevice.objects.filter(registration_id=token).first()
         if not device:
             device = FCMDevice.objects.create(user=user, registration_id=token)
+        # Registering user to user's stored topics
         for topic in user.notification_topics.all():
             device.handle_topic_subscription(True, topic=topic.code)
     
@@ -65,6 +71,7 @@ class User(AbstractUser):
         user = self
         device = FCMDevice.objects.filter(registration_id=token).first()
         if device:
+            # Deregistering user from user's stored topics
             for topic in user.notification_topics.all():
                 device.handle_topic_subscription(False, topic=topic.code)
             device.delete()

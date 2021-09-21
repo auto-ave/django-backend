@@ -19,6 +19,15 @@ class StoreDetail(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Store.objects.all()
+    
+    def get_object(self):
+        instance = super().get_object()
+
+        # subscribe to store topic
+        user = self.request.user
+        user.sub_to_topic(instance.slug)\
+
+        return instance
 
 class StoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | IsConsumer, )
@@ -58,6 +67,11 @@ class CityStoreList(generics.ListAPIView):
     def get_queryset(self):
         citycode = self.kwargs['citycode']
         city = get_object_or_404(City, code__iexact=citycode)
+
+        # subscribe user to city topic
+        user = self.request.user
+        user.sub_to_topic(city.slug)
+
         queryset = city.stores.all()
         return queryset 
 

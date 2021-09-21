@@ -2,7 +2,6 @@ from django.db import models
 from django_better_admin_arrayfield.models.fields import ArrayField
 from django.db.models import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
-# from accounts.models import Partner
 from common.utils import *
 from common.models import Model, City, Service
 from vehicle.models import VehicleType
