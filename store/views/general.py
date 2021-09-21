@@ -25,7 +25,9 @@ class StoreDetail(generics.RetrieveAPIView):
 
         # subscribe to store topic
         user = self.request.user
-        user.sub_to_topic(instance.slug)\
+        if user and user.is_active:
+            user.sub_to_topic(instance.slug)
+        
 
         return instance
 
@@ -70,7 +72,8 @@ class CityStoreList(generics.ListAPIView):
 
         # subscribe user to city topic
         user = self.request.user
-        user.sub_to_topic(city.slug)
+        if user and user.is_active:
+            user.sub_to_topic(city.code)
 
         queryset = city.stores.all()
         return queryset 
