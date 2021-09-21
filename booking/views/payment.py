@@ -1,3 +1,4 @@
+from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
 from booking.serializers.payment import InitiateTransactionSerializer
@@ -124,6 +125,7 @@ class PaymentCallbackView(views.APIView):
 
     def post(self, request):
         data = request.data
+        user = request.user
 
         checksum = ""
         form = data
@@ -159,10 +161,19 @@ class PaymentCallbackView(views.APIView):
 
         if verify:
             if response_dict['RESPCODE'] == '01':
-                booking.status = 10
+                booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
+            
+                # Payment complete notification
+                user.send_notification(
+                    title="Booking Confirmed ho gai hai aapki",
+                    body="Thank you sir aapni booking kari, aapke hum aabhari hai. Store chale jana time se ok, thank you.",
+                    image="https://i.tribune.com.pk/media/images/1038308-MODI-1454343716/1038308-MODI-1454343716.jpg",
+                    data={}
+                )
+
                 print('order successful')
             else:
-                booking.status = 20
+                booking.status = BOOKING_STATUS_DICT.PAYMENT_FAILED.value
                 print('order was not successful because' + response_dict['RESPMSG'])
             booking.save()
             return response.Response(response_dict)  

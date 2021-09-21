@@ -5,6 +5,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
 from django_better_admin_arrayfield.models.fields import ArrayField
 from fcm_django.models import FCMDevice
+from firebase_admin.messaging import Message, Notification
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -75,6 +76,17 @@ class User(AbstractUser):
             for topic in user.notification_topics.all():
                 device.handle_topic_subscription(False, topic=topic.code)
             device.delete()
+    
+    def send_notification(self, title, body, image, data={}, topic=None):
+        devices = self.get_devices()
+        if devices:
+            notification = Notification(title=title, body=body, image=image)
+            message = Message(
+                notification=notification,
+                data=data,
+                topic=topic,
+            )
+            devices.send_message(message)
         
     
     def is_consumer(self):

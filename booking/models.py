@@ -34,11 +34,27 @@ class Booking(Model):
         self.status = BOOKING_STATUS_DICT.SERVICE_STARTED.value
         self.status_changed_time = datetime.datetime.now()
         self.save()
+        # Service start notification
+        user = self.booked_by.user
+        user.send_notification(
+            title="Service start ho gai sir, aaras se baitho aap",
+            body="Gadi dhul rahi hai aapni, please wait. Jab tak ek ciggi pi aao",
+            image="https://static.theprint.in/wp-content/uploads/2018/11/Narendra-Modi-4-e1542805056383-696x384.jpg",
+            data={}
+        )
     
     def completeService(self):
         self.status = BOOKING_STATUS_DICT.SERVICE_COMPLETED.value
         self.status_changed_time = datetime.datetime.now()
         self.save()
+        # Service complete notification
+        user = self.booked_by.user
+        user.send_notification(
+            title="Service khatam ho gai sir",
+            body="Nikal chal aab phatak se, jahli nikal",
+            image="https://i.ytimg.com/vi/YUwD1iwlLGU/hqdefault.jpg",
+            data={}
+        )
     
 
 
