@@ -174,6 +174,15 @@ class PaymentCallbackView(views.APIView):
                     data={}
                 )
 
+                CommunicationProvider.send_notification(
+                    user,
+                    title="6 hours to go!",
+                    body="hello bro, time aane wala hai",
+                    image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
+                    data={},
+                    schedule=datetime.now() + datetime.timedelta(hours=6)
+                )
+
                 print('order successful')
             else:
                 booking.status = BOOKING_STATUS_DICT.PAYMENT_FAILED.value
