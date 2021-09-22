@@ -16,6 +16,7 @@ urlpatterns = [
     path('owner/booking/list/', general.BookingListOwner.as_view()),
     path('owner/service/start/', general.OwnerBookingStart.as_view()),
     path('owner/service/complete/', general.OwnerBookingComplete.as_view()),
+    
     path('store-owner/revenue/', general.OwnerRevenue.as_view()),
     path('store-owner/new/bookings/',general.OwnerNewBookings.as_view()),
     path('store-owner/past/bookings/', general.OwnerPastBookings.as_view())
