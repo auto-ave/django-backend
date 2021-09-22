@@ -104,19 +104,19 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = NewBookingListOwnerSerializer
 
+    def get(self, request):
+        user = self.request.user
+        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)).order_by('-status_changed_time')
+        serializer = BookingListOwnerSerializer(queryset, many=True)
+        return response.Response(serializer.data)
+
     def post(self, request):
-        def convert_date_to_datetime(date):
-            dummy_time = datetime.time(0, 0)
-
-            full_datetime = datetime.datetime.combine(date, dummy_time)
-            return full_datetime
-
         user = self.request.user
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) & Q(event__start_datetime__contains=date.date())).order_by('-status_changed_time')
-        serializer = BookingListSerializer(queryset, many=True)
+        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) & Q(event__start_datetime__contains=date.date())).order_by('event__start_datetime')
+        serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
 class OwnerPastBookings(generics.GenericAPIView):
