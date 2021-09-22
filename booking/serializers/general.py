@@ -58,7 +58,7 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
     
     def get_amount(self, obj):
         return obj.payment.amount
-    
+
     def get_is_reviewed(self, obj):
         if hasattr(obj, 'review'):
             return True
@@ -70,6 +70,10 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
             "name": obj.booked_by.user.full_name(),
             "phone": str(obj.booked_by.user.phone)
         }
+
+class NewBookingListOwnerSerializer(serializers.Serializer):
+    date = serializers.DateField()
+
 
 class BookingDetailSerializer(serializers.ModelSerializer):
     price_times = PriceTimeSerializer(many=True)

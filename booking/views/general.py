@@ -12,6 +12,7 @@ from paytmchecksum import PaytmChecksum
 import json, requests
 
 from django.conf import settings
+import datetime
 
 class BookingsListConsumer(generics.ListAPIView):
     serializer_class = BookingListSerializer
@@ -83,3 +84,45 @@ class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
         return response.Response({
             "success": "Booking Completed"
         })
+
+class OwnerRevenue(generics.GenericAPIView):
+    permission_classes = (IsStoreOwner, )
+
+    def get(self, request):
+        user = self.request.user
+        bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
+        revenue = 0.0
+        for booking in bookings:
+            if hasattr(booking, "payment"):
+                amount = float(booking.payment.amount)
+                revenue += amount
+        return response.Response({
+            "revenue": revenue
+        })
+
+class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = NewBookingListOwnerSerializer
+
+    def post(self, request):
+        def convert_date_to_datetime(date):
+            dummy_time = datetime.time(0, 0)
+
+            full_datetime = datetime.datetime.combine(date, dummy_time)
+            return full_datetime
+
+        user = self.request.user
+        data = self.validate(request)
+        date = data.get('date')
+        date = datetime.datetime.strptime(date, '%Y-%m-%d')
+        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) & Q(event__start_datetime__contains=date.date())).order_by('-status_changed_time')
+        serializer = BookingListSerializer(queryset, many=True)
+        return response.Response(serializer.data)
+
+class OwnerPastBookings(generics.GenericAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = BookingListOwnerSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) | Q(status=BOOKING_STATUS_DICT.NOT_ATTENDED.value)).order_by('-status_changed_time')
