@@ -167,7 +167,7 @@ class PaymentCallbackView(views.APIView):
                 
                 # Payment complete notification
                 CommunicationProvider.send_notification(
-                    user,
+                    userid=user.id,
                     title="Booking Confirmed ho gai hai aapki",
                     body="Thank you sir aapni booking kari, aapke hum aabhari hai. Store chale jana time se ok, thank you.",
                     image="https://i.tribune.com.pk/media/images/1038308-MODI-1454343716/1038308-MODI-1454343716.jpg",
@@ -175,18 +175,30 @@ class PaymentCallbackView(views.APIView):
                 )
 
                 CommunicationProvider.send_notification(
-                    user,
-                    title="6 hours to go!",
+                    userid=user.id,
+                    title="after 40secxs",
                     body="hello bro, time aane wala hai",
                     image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
                     data={},
-                    schedule=datetime.now() + datetime.timedelta(hours=6)
+                    schedule=40
+                )
+
+                CommunicationProvider.send_notification(
+                    userid=user.id,
+                    title="after 60sexs",
+                    body="hello bro, time aane wala hai",
+                    image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
+                    data={},
+                    schedule=60
                 )
 
                 print('order successful')
             else:
                 booking.status = BOOKING_STATUS_DICT.PAYMENT_FAILED.value
                 print('order was not successful because' + response_dict['RESPMSG'])
+            
+            # clear cart
+            user.consumer.cart.clear()
             booking.save()
             return response.Response(response_dict)  
         else:

@@ -1,5 +1,6 @@
 
 
+from accounts.models import User
 from django.conf import settings
 from background_task import background
 
@@ -41,8 +42,9 @@ class CommunicationProvider:
         response = self.send_sms(number=number, message=message)
         return response
     
-    @background(schedule=20)    
-    def send_notification(self, user, title, body, image, data={}, topic=None):
+    @background(schedule=0)
+    def send_notification(userid, title, body, image="", data={}, topic=None):
+        user = User.objects.get(id=userid)
         devices = user.get_devices()
         if devices:
             notification = Notification(title=title, body=body, image=image)

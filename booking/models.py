@@ -38,7 +38,7 @@ class Booking(Model):
         # Service start notification
         user = self.booked_by.user
         CommunicationProvider.send_notification(
-            user, 
+            userid=user.id,
             title="Service start ho gai sir, aaras se baitho aap",
             body="Gadi dhul rahi hai aapni, please wait. Jab tak ek ciggi pi aao",
             image="https://static.theprint.in/wp-content/uploads/2018/11/Narendra-Modi-4-e1542805056383-696x384.jpg",
@@ -52,7 +52,7 @@ class Booking(Model):
         # Service complete notification
         user = self.booked_by.user
         CommunicationProvider.send_notification(
-            user, 
+            userid=user.id,
             title="Service khatam ho gai sir",
             body="Nikal chal aab phatak se, jahli nikal",
             image="https://i.ytimg.com/vi/YUwD1iwlLGU/hqdefault.jpg",
