@@ -119,7 +119,7 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
-class OwnerPastBookings(generics.GenericAPIView):
+class OwnerPastBookings(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = BookingListOwnerSerializer
 
