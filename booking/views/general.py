@@ -96,10 +96,40 @@ class OwnerRevenue(generics.GenericAPIView):
             if hasattr(booking, "payment"):
                 amount = float(booking.payment.amount)
                 revenue += amount
-        return response.Response({
+        today = datetime.datetime.today()
+        revenue_response = {
             "revenue": revenue
-        })
+        }
+        days = [0,1,2,3,4,5,6]
+        for day in days:
+            date = today-datetime.timedelta(days=day)
+            print(date.date())
+            day_bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) & Q(event__start_datetime__contains=date.date()))
+            day_revenue = 0.0
+            for booking in day_bookings:
+                if hasattr(booking, "payment"):
+                    amount = float(booking.payment.amount)
+                    day_revenue += amount
+            revenue_response[str(date)] = day_revenue
+        return response.Response(revenue_response)
 
+class OwnerStoreVehicleTypes(generics.GenericAPIView):
+    permission_classes = (IsStoreOwner,)
+
+    def get(self, request):
+        vehicles = {}
+        user = self.request.user
+        bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
+        for booking in bookings:
+            booking1 = BookingDetailSerializer(booking)
+            print(booking1["booking_id"])
+            vehicle = booking1["vehicle_type"]
+            if hasattr(vehicles, vehicle.value):
+                vehicles[vehicle.value] += 1
+            else:
+                vehicles[vehicle.value] = 1
+
+        return response.Response(vehicles)
 class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = NewBookingListOwnerSerializer
