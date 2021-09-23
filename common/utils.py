@@ -2,6 +2,7 @@ import random
 import string
 import datetime
 import math
+import time
 from django.utils.text import slugify
 
 def otp_generator(size=4, chars=string.ascii_uppercase + string.digits):
@@ -85,3 +86,13 @@ def dateAndTimeStringsToDateTime(date, time):
 def dateTimeDiffInMinutes(datetime1, datetime2):
     newTime = datetime1 - datetime2
     return newTime.seconds/60
+
+def secondsToTimeString(seconds):
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    result = []
+    if hours:
+        result.append('{} hour{}'.format(hours, 's' if hours > 1 else ''))
+    if minutes:
+        result.append('{} minute{}'.format(minutes, 's' if minutes > 1 else ''))
+    return ' '.join(result)

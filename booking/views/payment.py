@@ -1,3 +1,4 @@
+from misc.notification_contents import NOTIFICATION_BOOKING_COMPLETE
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
@@ -168,9 +169,7 @@ class PaymentCallbackView(views.APIView):
                 # Payment complete notification
                 CommunicationProvider.send_notification(
                     userid=user.id,
-                    title="Booking Confirmed ho gai hai aapki",
-                    body="Thank you sir aapni booking kari, aapke hum aabhari hai. Store chale jana time se ok, thank you.",
-                    image="https://i.tribune.com.pk/media/images/1038308-MODI-1454343716/1038308-MODI-1454343716.jpg",
+                    **NOTIFICATION_BOOKING_COMPLETE(booking.store, booking.vehicle_type, booking.event),
                     data={}
                 )
 
@@ -181,15 +180,6 @@ class PaymentCallbackView(views.APIView):
                     image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
                     data={},
                     schedule=40
-                )
-
-                CommunicationProvider.send_notification(
-                    userid=user.id,
-                    title="after 60sexs",
-                    body="hello bro, time aane wala hai",
-                    image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
-                    data={},
-                    schedule=60
                 )
 
                 print('order successful')
