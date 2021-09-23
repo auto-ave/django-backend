@@ -17,6 +17,7 @@ class BookingListSerializer(serializers.ModelSerializer):
     amount = serializers.SerializerMethodField()
     review = serializers.SerializerMethodField()
     store = serializers.SerializerMethodField()
+    event = EventSerializer()
 
     class Meta:
         model = Booking
