@@ -93,8 +93,8 @@ class OwnerRevenue(generics.GenericAPIView):
         bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
         revenue = 0.0
         for booking in bookings:
-            if hasattr(booking, "payment"):
-                amount = float(booking.payment.amount)
+            if hasattr(booking, "amount"):
+                amount = float(booking.amount)
                 revenue += amount
         today = datetime.datetime.today()
         revenue_response = {
@@ -107,8 +107,8 @@ class OwnerRevenue(generics.GenericAPIView):
             day_bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) & Q(event__start_datetime__contains=date.date()))
             day_revenue = 0.0
             for booking in day_bookings:
-                if hasattr(booking, "payment"):
-                    amount = float(booking.payment.amount)
+                if hasattr(booking, "amount"):
+                    amount = float(booking.amount)
                     day_revenue += amount
             revenue_response[str(date)] = day_revenue
         return response.Response(revenue_response)
