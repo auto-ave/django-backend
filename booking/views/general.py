@@ -59,7 +59,7 @@ class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
                 "error": "Invalid OTP"
             }, status=400)
 
-        booking.startService()
+        booking.start_service()
 
         return response.Response({
             "success": "Booking started"
@@ -79,7 +79,7 @@ class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
                 "error": "You are not allowed to complete this booking"
             }, status=403)
 
-        booking.completeService()
+        booking.complete_service()
 
         return response.Response({
             "success": "Booking Completed"

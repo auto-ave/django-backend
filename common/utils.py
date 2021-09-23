@@ -3,6 +3,7 @@ import string
 import datetime
 import math
 import time
+import random
 from django.utils.text import slugify
 
 def otp_generator(size=4, chars=string.ascii_uppercase + string.digits):
@@ -69,6 +70,13 @@ def distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = radius * c
     return d
+
+
+# random item from array
+def random_item(array):
+    return array[random.randint(0, len(array) - 1)]
+
+
 
 # Time Functions
 def dateStringToDate(dateString):

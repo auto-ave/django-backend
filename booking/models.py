@@ -1,3 +1,4 @@
+from misc.notification_contents import NOTIFICATION_BOOKING_COMPLETE, NOTIFICATION_SERVICE_UNATTENDED, NOTIFICATION_SERVICE_STARTED
 from common.communication_provider import CommunicationProvider
 from cart.models import Cart
 from django.db import models
@@ -8,6 +9,7 @@ from store.models import Store, PriceTime, Event, VehicleType
 from .static import BOOKING_STATUS, BOOKING_STATUS_DICT, PAYMENT_STATUS
 from common.utils import otp_generator
 import datetime
+from background_task import background
 
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
@@ -31,7 +33,7 @@ class Booking(Model):
             self.otp = otp_generator()
         super(Booking, self).save(*args, **kwargs)
     
-    def startService(self):
+    def start_service(self):
         self.status = BOOKING_STATUS_DICT.SERVICE_STARTED.value
         self.status_changed_time = datetime.datetime.now()
         self.save()
@@ -39,13 +41,11 @@ class Booking(Model):
         user = self.booked_by.user
         CommunicationProvider.send_notification(
             userid=user.id,
-            title="Service start ho gai sir, aaras se baitho aap",
-            body="Gadi dhul rahi hai aapni, please wait. Jab tak ek ciggi pi aao",
-            image="https://static.theprint.in/wp-content/uploads/2018/11/Narendra-Modi-4-e1542805056383-696x384.jpg",
+            **NOTIFICATION_SERVICE_STARTED(self),
             data={}
         )
     
-    def completeService(self):
+    def complete_service(self):
         self.status = BOOKING_STATUS_DICT.SERVICE_COMPLETED.value
         self.status_changed_time = datetime.datetime.now()
         self.save()
@@ -53,11 +53,26 @@ class Booking(Model):
         user = self.booked_by.user
         CommunicationProvider.send_notification(
             userid=user.id,
-            title="Service khatam ho gai sir",
-            body="Nikal chal aab phatak se, jahli nikal",
-            image="https://i.ytimg.com/vi/YUwD1iwlLGU/hqdefault.jpg",
+            **NOTIFICATION_BOOKING_COMPLETE(self),
             data={}
         )
+
+    @background(schedule=0)
+    def booking_unattended_check(bookingid):
+        # Cannot take self as an argument in background tasks, therefore used bookingid
+        booking = Booking.objects.get(booking_id=bookingid)
+        print('ho raha haiiiiii', booking, booking.status, BOOKING_STATUS_DICT.PAYMENT_DONE.value)
+        if booking.status == BOOKING_STATUS_DICT.PAYMENT_DONE.value:
+            booking.status = BOOKING_STATUS_DICT.NOT_ATTENDED.value
+            print('ho raha hai')
+            CommunicationProvider.send_notification(
+                userid=booking.booked_by.user.id,
+                **NOTIFICATION_SERVICE_UNATTENDED(booking),
+                data={},
+            )
+            booking.save()
+            return True
+        return False
     
 
 

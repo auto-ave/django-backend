@@ -1,4 +1,4 @@
-from misc.notification_contents import NOTIFICATION_BOOKING_COMPLETE
+from misc.notification_contents import NOTIFICATION_2_HOURS_LEFT, NOTIFICATION_BOOKING_COMPLETE
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
@@ -164,23 +164,22 @@ class PaymentCallbackView(views.APIView):
         if verify:
             if response_dict['RESPCODE'] == '01':
                 booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
-            
                 
                 # Payment complete notification
                 CommunicationProvider.send_notification(
                     userid=user.id,
-                    **NOTIFICATION_BOOKING_COMPLETE(booking.store, booking.vehicle_type, booking.event),
+                    **NOTIFICATION_BOOKING_COMPLETE(booking),
                     data={}
                 )
 
                 CommunicationProvider.send_notification(
                     userid=user.id,
-                    title="after 40secxs",
-                    body="hello bro, time aane wala hai",
-                    image="https://pbs.twimg.com/media/Dtb9LYCXQAAqBE6.jpg",
+                    **NOTIFICATION_2_HOURS_LEFT(booking),
                     data={},
-                    schedule=40
+                    schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
+
+                booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
 
                 print('order successful')
             else:
