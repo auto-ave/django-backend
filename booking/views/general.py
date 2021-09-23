@@ -124,7 +124,7 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
             booking1 = BookingDetailSerializer(booking)
             print(booking1["booking_id"])
             vehicle = booking1["vehicle_type"]
-            if hasattr(vehicles, vehicle.value):
+            if vehicle.value in vehicles:
                 vehicles[vehicle.value] += 1
             else:
                 vehicles[vehicle.value] = 1
