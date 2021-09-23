@@ -97,26 +97,26 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'motorwash',
-#         'USER': 'motorwash',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2dp3lk3a5fd88',
-        'USER': 'ipdsrwgbrteopp',
-        'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
-        'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+        'NAME': 'motorwash',
+        'USER': 'motorwash',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd2dp3lk3a5fd88',
+#         'USER': 'ipdsrwgbrteopp',
+#         'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
+#         'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 # if 'RDS_DB_NAME' in os.environ:
 #     DATABASES = {
 #         'default': {
