@@ -145,7 +145,7 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) & Q(event__start_datetime__contains=date.date())).order_by('event__start_datetime')
+        queryset = user.storeowner.store.bookings.filter((Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)| Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value)) & Q(event__start_datetime__contains=date.date())).order_by('event__start_datetime')
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
