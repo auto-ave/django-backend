@@ -10,6 +10,12 @@ class VehicleTypeListView(generics.ListAPIView):
     def get_queryset(self):
         return VehicleType.objects.all()
 
+class WheelListView(generics.ListAPIView):
+    serializer_class = WheelSerializer
+
+    def get_queryset(self):
+        return Wheel.objects.all()
+
 class VehicleBrandsListView(generics.ListAPIView):
     serializer_class = VehicleBrandSerializer
 

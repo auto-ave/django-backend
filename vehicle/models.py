@@ -16,6 +16,7 @@ class VehicleType(Model):
 class Wheel(Model):
     code = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=50, help_text='Two Wheeler, Three Wheeler, Four Wheeler, Commercial')
+    image = image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
 
     def __str__(self):
         return self.name
