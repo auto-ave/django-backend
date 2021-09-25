@@ -18,7 +18,7 @@ class StoreDetail(generics.RetrieveAPIView):
     serializer_class = StoreSerializer
 
     def get_queryset(self):
-        return Store.objects.all()
+        return Store.objects.filter(is_active=True)
     
     def get_object(self):
         instance = super().get_object()
@@ -75,6 +75,6 @@ class CityStoreList(generics.ListAPIView):
         if user and user.is_active:
             user.sub_to_topic(city.code)
 
-        queryset = city.stores.all()
+        queryset = city.stores.filter(is_active=True)
         return queryset 
 

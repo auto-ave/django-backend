@@ -108,18 +108,17 @@ class StoreCreateView(generics.CreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):
-        bay_number = serializer.validated_data['bay_number']
         data = serializer.validated_data
-
+        bay_number = data['bay_number']
+        
         user = self.request.user
         data['salesman'] = user.salesman
+        data['is_active'] = False
         del data['bay_number']
 
         store = Store.objects.create(**data)
         for index in range(bay_number):
-            print(index)
             bay = Bay.objects.create(store=store)
-            print(bay)
         
         return store.slug
 
