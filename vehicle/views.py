@@ -20,7 +20,15 @@ class VehicleBrandsListView(generics.ListAPIView):
     serializer_class = VehicleBrandSerializer
 
     def get_queryset(self):
-        return VehicleBrand.objects.all()
+        wheel = self.request.query_params.get('wheel', None)
+        queryset = VehicleBrand.objects.all()
+        result = []
+        for brand in queryset:
+            for model in brand.vehicle_models.all():
+                if model.vehicle_type.wheel.code == wheel:
+                    result.append(brand)
+                    break
+        return result
 
 class VehicleModelsListView(generics.ListAPIView):
     serializer_class = VehicleModelSerializer
