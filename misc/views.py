@@ -11,6 +11,7 @@ from common.permissions import IsStoreOwner, IsPartner, IsSalesman, IsSubAdmin
 class FeedbackView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny, )
     serializer_class = FeedbackSerializer
+    throttle_scope = "public_post_api"
 
 
 class ImageUploadParser(parsers.FileUploadParser):

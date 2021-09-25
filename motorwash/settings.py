@@ -165,15 +165,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Django Rest Framework
 REST_FRAMEWORK = {
+    # Authentication
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+
+    # Filtering
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ],
+
+    # Pagination
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': 100,
+
+    # Thottling
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'public_post_api': '3/hour',
+        'public_get_api': '100/day' # TODO: yet to be decided
+    }
 }
 
 # JWT Authentication
