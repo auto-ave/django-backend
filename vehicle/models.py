@@ -19,3 +19,21 @@ class Wheel(Model):
 
     def __str__(self):
         return self.name
+
+class VehicleBrand(Model):
+    name = models.CharField(max_length=50, primary_key=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+
+    def __str__(self):
+        return self.name
+
+class VehicleModel(Model):
+    brand = models.ForeignKey(VehicleBrand, on_delete=models.CASCADE, related_name='vehicle_models')
+    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="vehicle_models")
+    model = models.CharField(max_length=50, primary_key=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+
+    def __str__(self):
+        return '{} : {}'.format(self.brand, self.model)
