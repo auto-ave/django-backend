@@ -6,8 +6,8 @@ import time
 import random
 from django.utils.text import slugify
 
-def otp_generator(size=4, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
+def otp_generator(size=4, scope=[i for i in range(10)]):
+    return ''.join(str(random.choice(scope)) for _ in range(size))
 
 
 def get_unique_slug(model_instance, slugable_field_name, slug_field_name="slug"):
