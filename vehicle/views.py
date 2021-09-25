@@ -36,8 +36,8 @@ class VehicleModelsListView(generics.ListAPIView):
     search_fields = ['=brand__name', ]
 
     def get_queryset(self):
-        query = self.request.query_params
-        if query:
-            return VehicleModel.objects.all()
+        brand = self.request.query_params.get('brand')
+        if brand:
+            return VehicleModel.objects.filter(brand__name__iexact=brand)
         else:
             return VehicleModel.objects.none()
