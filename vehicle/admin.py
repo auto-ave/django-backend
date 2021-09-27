@@ -6,4 +6,9 @@ admin.site.register(VehicleType)
 admin.site.register(Wheel)
 
 admin.site.register(VehicleBrand)
-admin.site.register(VehicleModel)
+
+
+class VehicleModelAdmin(admin.ModelAdmin):
+    list_filter = ('vehicle_type',)
+
+admin.site.register(VehicleModel, VehicleModelAdmin)
