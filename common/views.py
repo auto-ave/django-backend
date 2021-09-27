@@ -2,6 +2,7 @@ from rest_framework import generics, response, filters
 
 from common.models import *
 from common.serializers import *
+from common.mixins import ValidateSerializerMixin
 
 class CityList(generics.GenericAPIView):
     
@@ -22,3 +23,20 @@ class ServiceList(generics.ListAPIView):
     serializer_class = ServiceSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'description']
+
+class CouponVerify(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = CouponVerifySerializer
+
+    def post(self, request):
+        data = self.validate(request)
+        coupon = Coupon.objects.filter(code=data['code']).first()
+        if coupon:
+            return response.Response({
+                'success': True,
+                'message': 'Coupon is valid'
+            })
+        else:
+            return response.Response({
+                'success': False,
+                'message': 'Coupon is invalid'
+            })
