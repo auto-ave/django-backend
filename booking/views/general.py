@@ -92,25 +92,21 @@ class OwnerRevenue(generics.GenericAPIView):
         user = self.request.user
         bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
         revenue = 0.0
-        for booking in bookings:
-            if hasattr(booking, "amount"):
-                amount = float(booking.amount)
-                revenue += amount
-        today = datetime.datetime.today()
-        revenue_response = {
-            "revenue": revenue
-        }
-        days = [0,1,2,3,4,5,6]
-        for day in days:
-            date = today-datetime.timedelta(days=day)
-            print(date.date())
-            day_bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) & Q(event__start_datetime__contains=date.date()))
-            day_revenue = 0.0
+        today = datetime.datetime.today().date()
+        begin_date = today.replace(day=1)
+        delta = datetime.timedelta(days=1)
+        revenue_response = {}
+        while begin_date <= today:
+            day_bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) & Q(event__start_datetime__contains=begin_date))
+            begin_date += delta
             for booking in day_bookings:
                 if hasattr(booking, "amount"):
                     amount = float(booking.amount)
-                    day_revenue += amount
-            revenue_response[str(date)] = day_revenue
+                    revenue += amount
+            revenue_response[str(begin_date)] = revenue
+
+        revenue_response["revenue"] = revenue
+
         return response.Response(revenue_response)
 
 class OwnerStoreVehicleTypes(generics.GenericAPIView):
