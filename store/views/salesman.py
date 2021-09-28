@@ -200,7 +200,7 @@ class CreateStorePriceTimes(views.APIView):
 
 
 class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
-    permission_classes = (IsSalesman,)   
+    permission_classes = (IsSalesman,)
     # serializer_class = StoreServiceListSerializer
     lookup_field = 'slug'
 
