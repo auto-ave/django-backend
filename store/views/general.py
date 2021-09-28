@@ -12,7 +12,6 @@ from rest_framework.response import Response
 from store.serializers.services import *
 import json
 from common.communication_provider import *
-from common.mixins import ValidateSerializerMixin
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -80,7 +79,7 @@ class CityStoreList(generics.ListAPIView):
         queryset = city.stores.filter(is_active=True)
         return queryset 
 
-class StoreRegistrationEmail(generics.GenericAPIView, ValidateSerializerMixin):
+class StoreRegistrationEmail(generics.GenericAPIView):
     permission_classes = (IsSalesman,)
     lookup_field = 'slug'
 
