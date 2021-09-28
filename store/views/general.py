@@ -11,7 +11,6 @@ from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
 from store.serializers.services import *
 import json
-from common.communication_provider import *
 
 
 class StoreDetail(generics.RetrieveAPIView):
@@ -77,25 +76,4 @@ class CityStoreList(generics.ListAPIView):
             user.sub_to_topic(city.code)
 
         queryset = city.stores.filter(is_active=True)
-        return queryset 
-
-class StoreRegistrationEmail(generics.GenericAPIView):
-    permission_classes = (IsSalesman,)
-    lookup_field = 'slug'
-
-    def get_queryset(self):
-        return self.request.user.salesman.stores.all()
-
-    def get(self, request, slug):
-        store = self.get_object()
-        if store.email is not None:
-            email = store.email
-            subject = "Subject"
-            html_content = "<div>Hello <b>" + store.name +"</b></div>"
-            cp = CommunicationProvider()
-            cp.send_email(email, subject, html_content)
-            return response.Response({
-                "sent": True
-            })
-        else:
-            return response.Response('Email Not Found.')
+        return queryset
