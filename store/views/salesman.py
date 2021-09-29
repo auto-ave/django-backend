@@ -10,6 +10,8 @@ from store.serializers.services import *
 from cart import serializer
 from common.mixins import ValidateSerializerMixin
 from vehicle.serializers import VehicleTypeSerializer, WheelSerializer
+from common.communication_provider import *
+from django.template.loader import get_template
 
 class SalesmanStoreRetrieve(generics.RetrieveAPIView):
     serializer_class = SalesmanStoreListSerializer
@@ -200,7 +202,7 @@ class CreateStorePriceTimes(views.APIView):
 
 
 class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
-    permission_classes = (IsSalesman,)   
+    permission_classes = (IsSalesman,)
     # serializer_class = StoreServiceListSerializer
     lookup_field = 'slug'
 
@@ -248,3 +250,30 @@ class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
             res.append(service)
 #Yahan pe serializer use krna tha but samajh nahi aaya kese
         return response.Response(res, status=status.HTTP_200_OK)
+
+
+class StoreRegistrationEmail(generics.GenericAPIView):
+    permission_classes = (IsSalesman,)
+    lookup_field = 'slug'
+
+    def get_queryset(self):
+        return self.request.user.salesman.stores.all()
+
+    def get(self, request, slug):
+        store = self.get_object()
+        if store.email is not None:
+            email = store.email
+            subject = "Store Registration"
+
+            html_template = get_template('store_registration.html')
+            html_content = html_template.render({ 'storeName': store.name })
+
+            cp = CommunicationProvider()
+            cp.send_email(email, subject, html_content)
+            return response.Response({
+                "success": "Mail Sent Successfully."
+            }, status=200)
+        else:
+            return response.Response({
+                "error": 'Email Not Found.'
+            }, status=400)

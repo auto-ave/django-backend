@@ -76,5 +76,4 @@ class CityStoreList(generics.ListAPIView):
             user.sub_to_topic(city.code)
 
         queryset = city.stores.filter(is_active=True)
-        return queryset 
-
+        return queryset

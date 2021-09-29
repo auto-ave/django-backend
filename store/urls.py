@@ -19,5 +19,5 @@ urlpatterns = [
 
     path('salesman/servicecreationdetails/<slug:slug>/', salesman.ServiceCreationDetails.as_view()),
     path('salesman/<slug:slug>/pricetimes/', salesman.StorePriceTimeList.as_view()),
-
+    path('salesman/<slug:slug>/registration/email/', salesman.StoreRegistrationEmail.as_view()),
 ]
