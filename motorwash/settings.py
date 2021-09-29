@@ -199,15 +199,20 @@ SIMPLE_JWT = {
 }
 
 # Cross-Origin Resource Sharing (CORS)
-CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "https://moterwash.netlify.app",
+#     "https://motorwash-salesman.netlify.app",
+#     "https://owner-motorwash.netlify.app",
+# ]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://moterwash.netlify.app",
     "https://motorwash-salesman.netlify.app",
     "https://owner-motorwash.netlify.app",
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://\w+\.netlify\.app$",
 ]
 
