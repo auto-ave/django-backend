@@ -19,8 +19,14 @@ class ReviewSerializer(ModelSerializer):
         full_name = obj.consumer.user.full_name()
         if full_name.split():
             return full_name
+        elif obj.booking.vehicle_model:
+            return 'Owner of {}'.format(obj.booking.vehicle_model.model)
         else:
-            return 'Owner of {}'.format(obj.booking.vehicle_type.model)
+            return 'Subodh is god, bow before him please'
     
     def get_image(self, obj):
-        return obj.booking.vehicle_type.image
+        if obj.booking.vehicle_model:
+            return obj.booking.vehicle_model.image
+        else:
+            return 'https://sc04.alicdn.com/kf/Ha82ad175ce684ea69331b07c244895f87.jpg'
+
