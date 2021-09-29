@@ -205,7 +205,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://moterwash.netlify.app",
     "https://motorwash-salesman.netlify.app",
     "https://owner-motorwash.netlify.app",
-    "https://netlify.app"
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.netlify\.app$",
 ]
 
 TWILIO_ACCOUNT_SID = "AC45adcb12c870de63120cacd8c2dd14b8"
