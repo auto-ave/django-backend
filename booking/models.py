@@ -21,7 +21,7 @@ class Booking(Model):
     otp = models.CharField(max_length=4)
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
     event = models.OneToOneField(Event, on_delete=models.PROTECT, null=True, blank=True)
-    vehicle_type = models.ForeignKey(VehicleType, on_delete=models.PROTECT, related_name="bookings")
+    vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.PROTECT, related_name='bookings', null=True)
     is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 

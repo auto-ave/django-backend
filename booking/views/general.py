@@ -1,3 +1,4 @@
+from vehicle.models import VehicleModel
 from booking.static import BOOKING_STATUS_DICT
 from common.mixins import ValidateSerializerMixin
 from rest_framework import generics, permissions, response
@@ -118,12 +119,14 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
         bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
         for booking in bookings:
             booking1 = BookingDetailSerializer(booking)
-            print(booking1["booking_id"])
-            vehicle = booking1["vehicle_type"]
-            if vehicle.value in vehicles:
-                vehicles[vehicle.value] += 1
-            else:
-                vehicles[vehicle.value] = 1
+            vehicle_model = booking1["vehicle_model"]
+            vehicle_model = VehicleModel.objects.filter(pk=vehicle_model).first()
+            if vehicle_model:
+                vehicle = vehicle_model.vehicle_type.name
+                if vehicle.value in vehicles:
+                    vehicles[vehicle.value] += 1
+                else:
+                    vehicles[vehicle.value] = 1
 
         return response.Response(vehicles)
 class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):

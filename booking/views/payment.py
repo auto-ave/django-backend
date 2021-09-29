@@ -57,8 +57,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             status = 0,
             event = event,
             amount = cart.total,
-            # TODO:
-            vehicle_type = cart.items.all().first().vehicle_type,
+            vehicle_model = cart.vehicle_model,
         )
         # booking.event = event
         for item in cart.items.all():
