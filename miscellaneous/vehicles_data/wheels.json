@@ -1,0 +1,20 @@
+[{
+    "model": "vehicle.wheel",
+    "pk": "four_wheeler",
+    "fields": {
+        "created_at": "2021-09-11T15:11:16.982",
+        "updated_at": "2021-09-11T15:11:16.982",
+        "name": "Four Wheeler",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png"
+    }
+},
+{
+    "model": "vehicle.wheel",
+    "pk": "two_wheeler",
+    "fields": {
+        "created_at": "2021-09-11T15:09:43.891",
+        "updated_at": "2021-09-11T15:09:43.891",
+        "name": "Two Wheeler",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png"
+    }
+}]

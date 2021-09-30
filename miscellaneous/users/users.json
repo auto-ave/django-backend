@@ -1,0 +1,84 @@
+[{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$d2ZX3ETG8Wkz7e0kXQsVFc$hFpBmo4ykIAfdZTqZIVPaFb8yC8hz/2YQ8BMcuerW7o=",
+        "last_login": "2021-09-30T02:30:18.080",
+        "is_superuser": true,
+        "username": "subodhk",
+        "first_name": "Subodh",
+        "last_name": "Verma",
+        "email": "vermasubodhk@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2021-09-11T14:48:23",
+        "phone": "+918989820993",
+        "otp": "1234",
+        "is_verified": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$oRexyGMnxlvjj85KLRbz2p$jRafpwu1Dhbs8MGWcPmodbYQBIAKDNZ1OjwLNDbK+Q4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "partner",
+        "first_name": "Partner",
+        "last_name": "",
+        "email": "partner@motorwash.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-09-11T14:53:34",
+        "phone": "+913344556677",
+        "otp": "0",
+        "is_verified": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$TxpEmNyw78Lj70YANCal18$6c/OFXp1XqBypXgSXlz+TuhSjvgncW8liJIZbKiFGUw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "salesman",
+        "first_name": "Salesman",
+        "last_name": "",
+        "email": "salesman@motorwash.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-09-11T14:54:48",
+        "phone": "+917777777777",
+        "otp": "1234",
+        "is_verified": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$SXs83wzaCsrzLHEnmjtsVy$dfuydtTjeqgWJU8YYx+lVMTAeo6uPXWL0j6nlsqP/G0=",
+        "last_login": "2021-09-28T19:19:18.217",
+        "is_superuser": true,
+        "username": "aryaman",
+        "first_name": "Aryaman",
+        "last_name": "Gupta",
+        "email": "aryaman@motorwash.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2021-09-11T15:36:22",
+        "phone": "+917355929950",
+        "otp": "1234",
+        "is_verified": true,
+        "groups": [],
+        "user_permissions": []
+    }
+}]

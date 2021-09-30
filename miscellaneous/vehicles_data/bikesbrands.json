@@ -1,0 +1,247 @@
+[
+  {
+    "Name": "TVS",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/tvs20200508193203.jpg",
+    "HREF": "https://www.bikewale.com/tvs-bikes/"
+  },
+  {
+    "Name": "Yamaha",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/yamaha20200508193220.jpg",
+    "HREF": "https://www.bikewale.com/yamaha-bikes/"
+  },
+  {
+    "Name": "Royal Enfield",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/royal-enfield20200508193112.jpg",
+    "HREF": "https://www.bikewale.com/royalenfield-bikes/"
+  },
+  {
+    "Name": "Hero",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/hero20200508192826.jpg",
+    "HREF": "https://www.bikewale.com/hero-bikes/"
+  },
+  {
+    "Name": "Honda Bikes",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/honda20200511152343.jpg",
+    "HREF": "https://www.bikewale.com/honda-bikes/"
+  },
+  {
+    "Name": "Bajaj",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/bajaj20200508192534.jpg",
+    "HREF": "https://www.bikewale.com/bajaj-bikes/"
+  },
+  {
+    "Name": "Suzuki",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/suzuki20200508193118.jpg",
+    "HREF": "https://www.bikewale.com/suzuki-bikes/"
+  },
+  {
+    "Name": "KTM",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/ktm20200518163508.jpg",
+    "HREF": "https://www.bikewale.com/ktm-bikes/"
+  },
+  {
+    "Name": "Hero Electric",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/hero-electric20200508192834.jpg",
+    "HREF": "https://www.bikewale.com/heroelectric-bikes/"
+  },
+  {
+    "Name": "Jawa",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/jawa20200508192940.jpg",
+    "HREF": "https://www.bikewale.com/jawa-bikes/"
+  },
+  {
+    "Name": "22Kymco",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/22kymco20200508192432.jpg",
+    "HREF": "https://www.bikewale.com/22kymco-bikes/"
+  },
+  {
+    "Name": "Ampere",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/ampere20200722153827.jpg",
+    "HREF": "https://www.bikewale.com/ampere-bikes/"
+  },
+  {
+    "Name": "Aprilia",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/aprilia20200508192455.jpg",
+    "HREF": "https://www.bikewale.com/aprilia-bikes/"
+  },
+  {
+    "Name": "Ather",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/ather20200518163442.jpg",
+    "HREF": "https://www.bikewale.com/ather-bikes/"
+  },
+  {
+    "Name": "Benelli",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/benelli20200508192543.jpg",
+    "HREF": "https://www.bikewale.com/benelli-bikes/"
+  },
+  {
+    "Name": "Benling",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/benling20201027111846.jpg",
+    "HREF": "https://www.bikewale.com/benling-bikes/"
+  },
+  {
+    "Name": "BGauss",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/bgauss20201014113347.jpg",
+    "HREF": "https://www.bikewale.com/bgauss-bikes/"
+  },
+  {
+    "Name": "BMW Bikes",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/bmw20200508192553.jpg",
+    "HREF": "https://www.bikewale.com/bmw-bikes/"
+  },
+  {
+    "Name": "CFMoto",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/cfmoto20200508192601.jpg",
+    "HREF": "https://www.bikewale.com/cfmoto-bikes/"
+  },
+  {
+    "Name": "Ducati",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/ducati20200511152332.jpg",
+    "HREF": "https://www.bikewale.com/ducati-bikes/"
+  },
+  {
+    "Name": "EeVe",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/eeve20201014113401.jpg",
+    "HREF": "https://www.bikewale.com/eeve-bikes/"
+  },
+  {
+    "Name": "Emflux Motors",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/emflux-motors20200508192730.jpg",
+    "HREF": "https://www.bikewale.com/emfluxmotors-bikes/"
+  },
+  {
+    "Name": "Evolet",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/evolet20200508192755.jpg",
+    "HREF": "https://www.bikewale.com/evolet-bikes/"
+  },
+  {
+    "Name": "Gemopai",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/gemopai20201014113421.jpg",
+    "HREF": "https://www.bikewale.com/gemopai-bikes/"
+  },
+  {
+    "Name": "Harley-Davidson",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/harleydavidson20200508192816.jpg",
+    "HREF": "https://www.bikewale.com/harleydavidson-bikes/"
+  },
+  {
+    "Name": "Husqvarna",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/husqvarna20200508192901.jpg",
+    "HREF": "https://www.bikewale.com/husqvarna-bikes/"
+  },
+  {
+    "Name": "Hyosung",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/hyosung20200511152353.jpg",
+    "HREF": "https://www.bikewale.com/hyosung-bikes/"
+  },
+  {
+    "Name": "Indian",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/indian20200508192932.jpg",
+    "HREF": "https://www.bikewale.com/indian-bikes/"
+  },
+  {
+    "Name": "Joy e-bike",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/joy-ebike20210106103732.jpg",
+    "HREF": "https://www.bikewale.com/joyebike-bikes/"
+  },
+  {
+    "Name": "Kawasaki",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/kawasaki20200508192950.jpg",
+    "HREF": "https://www.bikewale.com/kawasaki-bikes/"
+  },
+  {
+    "Name": "Lambretta",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/lambretta20200508193016.jpg",
+    "HREF": "https://www.bikewale.com/lambretta-bikes/"
+  },
+  {
+    "Name": "Lectro",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/lectro20200508193007.jpg",
+    "HREF": "https://www.bikewale.com/lectro-bikes/"
+  },
+  {
+    "Name": "Mahindra Bikes",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/mahindra20200508193036.jpg",
+    "HREF": "https://www.bikewale.com/mahindra-bikes/"
+  },
+  {
+    "Name": "Moto Guzzi",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/moto-guzzi20200518163528.jpg",
+    "HREF": "https://www.bikewale.com/motoguzzi-bikes/"
+  },
+  {
+    "Name": "MV Agusta",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/mv-agusta20200508193049.jpg",
+    "HREF": "https://www.bikewale.com/mvagusta-bikes/"
+  },
+  {
+    "Name": "Norton",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/norton20200508193055.jpg",
+    "HREF": "https://www.bikewale.com/norton-bikes/"
+  },
+  {
+    "Name": "Odysse",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/odysse20210404205603.jpg",
+    "HREF": "https://www.bikewale.com/odysse-bikes/"
+  },
+  {
+    "Name": "Okinawa",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/okinawa20200508193101.jpg",
+    "HREF": "https://www.bikewale.com/okinawa-bikes/"
+  },
+  {
+    "Name": "OLA",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/n/cw/ec/101/brands/logos/ola.jpg?v=1626954594142",
+    "HREF": "https://www.bikewale.com/ola-bikes/"
+  },
+  {
+    "Name": "PURE EV",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/pure-ev20201014113440.jpg",
+    "HREF": "https://www.bikewale.com/pureev-bikes/"
+  },
+  {
+    "Name": "Revolt",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/revolt20200508193107.jpg",
+    "HREF": "https://www.bikewale.com/revolt-bikes/"
+  },
+  {
+    "Name": "Simple Energy",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/n/cw/ec/103/brands/logos/simple energy.jpg?v=1629381889557",
+    "HREF": "https://www.bikewale.com/simpleenergy-bikes/"
+  },
+  {
+    "Name": "SWM",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/swm20200508193124.jpg",
+    "HREF": "https://www.bikewale.com/swm-bikes/"
+  },
+  {
+    "Name": "Techo Electra",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/techo-electra20200508193138.jpg",
+    "HREF": "https://www.bikewale.com/techoelectra-bikes/"
+  },
+  {
+    "Name": "Tork",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/tork20200508193146.jpg",
+    "HREF": "https://www.bikewale.com/tork-bikes/"
+  },
+  {
+    "Name": "Triumph",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/triumph20200508193154.jpg",
+    "HREF": "https://www.bikewale.com/triumph-bikes/"
+  },
+  {
+    "Name": "Vespa",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/vespa20200508193212.jpg",
+    "HREF": "https://www.bikewale.com/vespa-bikes/"
+  },
+  {
+    "Name": "Yezdi",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/n/cw/ec/107/brands/logos/yezdi.jpg?v=1632722736288",
+    "HREF": "https://www.bikewale.com/yezdi-bikes/"
+  },
+  {
+    "Name": "Yo",
+    "Thumbnail": "https://imgd.aeplcdn.com/110x61/bw/makes/yo20200508193225.jpg",
+    "HREF": "https://www.bikewale.com/yo-bikes/"
+  }
+]

@@ -1,0 +1,174 @@
+[
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+        "name": "Honda"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-7.jpeg",
+        "name": "Hyundai"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-9.jpeg",
+        "name": "Maruti Suzuki"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-1.jpeg",
+        "name": "Chevrolet"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-2.jpeg",
+        "name": "Daewoo"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-3.jpeg",
+        "name": "Datsun"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-4.jpeg",
+        "name": "Fiat"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-5.jpeg",
+        "name": "Ford"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8.jpeg",
+        "name": "Mahindra"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-10.jpeg",
+        "name": "Mitsubishi"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-11.jpeg",
+        "name": "Nissan"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-12.jpeg",
+        "name": "Renault"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-13.jpeg",
+        "name": "Skoda"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-14.jpeg",
+        "name": "Tata"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15.jpeg",
+        "name": "Toyota"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-16.jpeg",
+        "name": "Volkswagen"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-17.jpeg",
+        "name": "Aston Martin"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18.jpeg",
+        "name": "Audi"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-19.jpeg",
+        "name": "Bentley"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-20.jpeg",
+        "name": "BMW"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-21.jpeg",
+        "name": "Ferrari"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-22.jpeg",
+        "name": "Jaguar"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-23.jpeg",
+        "name": "Lamborghini"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-24.jpeg",
+        "name": "Land Rover"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-25.jpeg",
+        "name": "Maserati"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-26.jpeg",
+        "name": "Mercedes"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-27.jpeg",
+        "name": "Mini"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-28.jpeg",
+        "name": "Porsche"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-29.jpeg",
+        "name": "Rolls Royce"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-30.jpeg",
+        "name": "Volvo"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-31.jpeg",
+        "name": "Force"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-32.jpeg",
+        "name": "Isuzu"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-33.jpeg",
+        "name": "Hindustan Motors"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-34.jpeg",
+        "name": "Jeep"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-35.jpeg",
+        "name": "Opel"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-36.jpeg",
+        "name": "Ssangyong"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-37.jpeg",
+        "name": "Kia"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-38.jpeg",
+        "name": "MG"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-39.jpeg",
+        "name": "Foton"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-40.jpeg",
+        "name": "Jayem"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-41.jpeg",
+        "name": "DC"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42.jpeg",
+        "name": "Lexus"
+    },
+    {
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-43.jpeg",
+        "name": "Citroen"
+    }
+]

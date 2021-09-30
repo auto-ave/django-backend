@@ -195,6 +195,9 @@ class CreateStorePriceTimes(views.APIView):
                 serializer = CreatePriceTimeSerializer(data=price_time)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
+
+        store.updated_at = datetime.datetime.now()
+        store.save()
         
         return response.Response({
             "detail": "PriceTimes created" 
