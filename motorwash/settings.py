@@ -279,3 +279,16 @@ FCM_DJANGO_SETTINGS = {
     "ONE_DEVICE_PER_USER": False,
     "DELETE_INACTIVE_DEVICES": False,
 }
+
+# Django Storages
+AWS_ACCESS_KEY_ID = 'AKIAVFDW7UCVKEHHNJBO'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'autoave-backend-staticfiles'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+DEFAULT_FILE_STORAGE = 'motorwash.storage_backends.MediaStorage'
