@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import datetime
+import datetime, os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,16 +97,16 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'motorwash',
-        'USER': 'motorwash',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'motorwash',
+#         'USER': 'motorwash',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -117,28 +117,28 @@ DATABASES = {
 #         'PORT': '5432',
 #     }
 # }
-# if 'RDS_DB_NAME' in os.environ:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': os.environ['RDS_DB_NAME'],
-#             'USER': os.environ['RDS_USERNAME'],
-#             'PASSWORD': os.environ['RDS_PASSWORD'],
-#             'HOST': os.environ['RDS_HOSTNAME'],
-#             'PORT': os.environ['RDS_PORT'],
-#         }
-#     }
-# else:
-#     DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd2dp3lk3a5fd88',
-#         'USER': 'ipdsrwgbrteopp',
-#         'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
-#         'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2dp3lk3a5fd88',
+        'USER': 'ipdsrwgbrteopp',
+        'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
+        'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
