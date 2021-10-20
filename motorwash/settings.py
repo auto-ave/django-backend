@@ -217,8 +217,13 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     "https://motorwash-salesman.netlify.app",
     "https://owner-motorwash.netlify.app",
 
+    "https://autoave.care",
     "https://sales.autoave.care",
     "https://owner.autoave.care",
+
+    "https://autoave.in",
+    "https://sales.autoave.in",
+    "https://owner.autoave.in",
 
     ".netlify\.app",
 ]
