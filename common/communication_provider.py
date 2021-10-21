@@ -11,7 +11,7 @@ from fcm_django.models import FCMDevice
 from firebase_admin.messaging import Message, Notification
 
 def OTP_MESSAGE(otp):
-    return '{} is your OTP (One Time Password) to authenticate your login to The Motorwash'.format(otp)
+    return '{} is your OTP (One Time Password) to authenticate your login to Autoave'.format(otp)
 
 class CommunicationProvider:
     def __init__(self):
