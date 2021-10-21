@@ -1,0 +1,17 @@
+{
+  apps: [
+        {
+            name: "djnago_background_tasks",
+            script: "manage.py",
+            args:[
+                    "process_tasks"
+                ],
+            exec_mode: "fork",
+            instances: "1",
+            wait_ready: true,
+            autorestart: false,
+            max_restarts: 5,
+            interpreter : "python3"
+        }
+    ]
+}

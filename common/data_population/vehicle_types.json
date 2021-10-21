@@ -1,0 +1,68 @@
+[
+    {
+        "description": "",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png",
+        "wheel": "two_wheeler",
+        "model": "Bike"
+    },
+    {
+        "description": "",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png",
+        "wheel": "two_wheeler",
+        "model": "Gearless"
+    },
+    {
+        "description": "Vehicles like Alto 800, Renault Kwid, Grand i10, Tata Tiago, Swift, Volkswagen Polo, Tata Altroz, Baleno, Toyota Glanza and Ford Figo",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/a14254d9-be18-4934-8e6b-9717c024e6c8.jpg",
+        "wheel": "four_wheeler",
+        "model": "Hatchback"
+    },
+    {
+        "description": "Vehicles like Porsche 911, Ford Mustang, Audi, Mercedes, BMW, Jaguar, Aston Martin, and Land rover.",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/9de44eb0-dc62-4980-9c55-33533da9ed07.jpg",
+        "wheel": "four_wheeler",
+        "model": "Luxury"
+    },
+    {
+        "description": "",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png",
+        "wheel": "two_wheeler",
+        "model": "Premium"
+    },
+    {
+        "description": "Vehicles like Porsche 911, Ford Mustang, Audi, Mercedes, BMW, Jaguar, Aston Martin, and Land rover.",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/9de44eb0-dc62-4980-9c55-33533da9ed07.jpg",
+        "wheel": "four_wheeler",
+        "model": "Premium Cars"
+    },
+    {
+        "description": "Vehicles like Alto 800, Renault Kwid, Grand i10, Tata Tiago, Swift, Volkswagen Polo, Tata Altroz, Baleno, Toyota Glanza and Ford Figo",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/a14254d9-be18-4934-8e6b-9717c024e6c8.jpg",
+        "wheel": "four_wheeler",
+        "model": "Premium Hatchback"
+    },
+    {
+        "description": "Vehicles like Ciaz, Elantra, Honda city, Aura, Honda Amaze, Verna, Yaris and Civic",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg",
+        "wheel": "four_wheeler",
+        "model": "Premium Sedan"
+    },
+    {
+        "description": "Vehicles like Fortuner, Jeep Compass, MG Hector, Mahindra XUV, Scorpio, Renault Duster, Ford Ecosport, Thar, Creta, Vitara Brezza and Harrier",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/05bd6b26-2971-4081-b472-604d4f0d9146.jpg",
+        "wheel": "four_wheeler",
+        "model": "Premium SUV"
+    },
+    {
+        "description": "Vehicles like Ciaz, Elantra, Honda city, Aura, Honda Amaze, Verna, Yaris and Civic",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg",
+        "wheel": "four_wheeler",
+        "model": "Sedan"
+    },
+    {
+        "description": "Vehicles like Fortuner, Jeep Compass, MG Hector, Mahindra XUV, Scorpio, Renault Duster, Ford Ecosport, Thar, Creta, Vitara Brezza and Harrier",
+        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/05bd6b26-2971-4081-b472-604d4f0d9146.jpg",
+        "wheel": "four_wheeler",
+        "model": "SUV"
+    }
+]

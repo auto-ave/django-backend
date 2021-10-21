@@ -1,1 +1,1 @@
-CONTACT_EMAIL = "care@themotorwash.com"
+CONTACT_EMAIL = "info@autoave.in"

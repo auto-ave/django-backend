@@ -1,0 +1,114 @@
+[
+    {
+        "slug": "vacuum-cleaning",
+        "name": "Vacuum Cleaning",
+        "description": "We use powerful dry vacuuming to suck dirt and dust from Seats, Carpets, Boot, Floor Matts, and rear Speaker Tray together with light brushing for the best output in the least time.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630220400/Vacuuming/Vacuuming.jpg?_i=AA"
+    },
+    {
+        "slug": "intensive-classic-interior-cleaning",
+        "name": "Intensive Classic Interior Cleaning",
+        "description": "Complete dry cleaning of an interior including seats (carpet/leather), roof, mats, and boot, Dressings to all vinyl, plastic, rubber giving your car spotless, shiny, glossy interior.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219740/Antiooxidant-Interior-Cleaning/Antiooxidant-Interior-Cleaning.jpg?_i=AA"
+    },
+    {
+        "slug": "intensive-premium-interior-cleaning",
+        "name": "Intensive Premium Interior Cleaning",
+        "description": "Complete dry cleaning of an interior including seats (carpet/leather), roof, mats, and boot, Dressings to all vinyl, plastic, rubber giving your car spotless, shiny, glossy interior.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219740/Antiooxidant-Interior-Cleaning/Antiooxidant-Interior-Cleaning.jpg?_i=AA"
+    },
+    {
+        "slug": "quick-wash",
+        "name": "Quick Wash",
+        "description": "We provide a quick glow to your Car by doing Shampoo Wash with rinse and wipe.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219912/Quick-Wash_24461cec4/Quick-Wash_24461cec4.jpg?_i=AA"
+    },
+    {
+        "slug": "full-body-wash",
+        "name": "Full Body Wash",
+        "description": "High-pressure wash with the best accessories + Dashboard cleaning & polishing + Interior Vacuum + Dashboard Dressing + Tire Dressing + Rim Shine + Underbody wash",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630220401/Snow-Foam-Wash/Snow-Foam-Wash.jpg?_i=AA"
+    },
+    {
+        "slug": "green-wash",
+        "name": "Green Wash",
+        "description": "Eco Exterior Wash + Interior Vacuum + Dashboard Dressing + Tire Dressing + Rim Shine",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219913/Green-wash/Green-wash.jpg?_i=AA"
+    },
+    {
+        "slug": "wax-rubbing",
+        "name": "Wax Rubbing",
+        "description": "We give a NEW LOOK TO PAINTED SURFACES by repairing the paint scratches, swirls marks, dullness, etc by using special rubbing compounds and imported polishes approved by the car manufacturers",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630238895/Wax-Application/Wax-Application.jpg?_i=AA"
+    },
+    {
+        "slug": "teflon-coating",
+        "name": "Teflon Coating",
+        "description": "Our PTFE-based Polymer paint sealant creates a slippery, slick barrier that protects the paint finishes, reduces fading & oxidation of the paint. It repels dirt & grime, accelerates water run-off to reduce spotting, smoothness weathered surface, and removes scratches giving depth to the paint.",
+        "images": [],
+        "thumbnail": "https://www.speedcarwash.com/images/services/teflon-coating.jpg"
+    },
+    {
+        "slug": "paint-protection-coating",
+        "name": "Paint Protection Coating",
+        "description": "Complete car body wash + Tar removal + Claying + Rubbing & Machine Polishing + Paint Sealant + Interior Vacuuming + Tyre Dressing + Glassing Cleaning",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630220588/PaintCement-Spot-Removal/PaintCement-Spot-Removal.jpg?_i=AA"
+    },
+    {
+        "slug": "12h-ceramic-coating",
+        "name": "12 H ceramic coating",
+        "description": "It offers unbeatable gloss, swirl resistance, and contaminant and dirt repellency when compared to other ceramic coatings with 5 years guarantee programme.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219738/ceramic-coat-4/ceramic-coat-4.png?_i=AA"
+    },
+    {
+        "slug": "9h-ceramic-coating",
+        "name": "9 H ceramic coating",
+        "description": "It offers unbeatable gloss, swirl resistance, and contaminant and dirt repellency when compared to other ceramic coatings with 5-year guarantee program.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219738/ceramic-coat-4/ceramic-coat-4.png?_i=AA"
+    },
+    {
+        "slug": "allow-wheel-ceramic-coating",
+        "name": "Allow wheel ceramic coating",
+        "description": "It offers unbeatable gloss and dirt repellency for 2 years.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219917/alloy-wheel-cleaning/alloy-wheel-cleaning.jpg?_i=AA"
+    },
+    {
+        "slug": "leather-coating",
+        "name": "Leather/Fabric Coating",
+        "description": "L1 Leather Guard forms a durable abrasion resistant matte finish which offers the best ever protection against abrasion damage, UV rays, dye transfer, and other discoloration, for 1 year",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630222682/seat-coat/seat-coat.png?_i=AA"
+    },
+    {
+        "slug": "super-detailing",
+        "name": "Super Detailing",
+        "description": "This comprehensive detailed car clean service for both the interior and exterior of the car.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630220293/Super-Detailing/Super-Detailing.jpg?_i=AA"
+    },
+    {
+        "slug": "glass-coating",
+        "name": "Glass Coating",
+        "description": "This service is aimed at protecting all the exterior glass surfaces(windscreen, rear glass, door glasses) of the car by layering it with Nanoparticle chemicals.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219915/Glass-Coating-Nanotechnology-All-Glasses_24375f772/Glass-Coating-Nanotechnology-All-Glasses_24375f772.jpg?_i=AA"
+    },
+    {
+        "slug": "engine-cleaning",
+        "name": "Engine Cleaning",
+        "description": "This is a basic waterless cleaning of the Engine Compartment to maintain hygiene of the car.",
+        "images": [],
+        "thumbnail": "https://res.cloudinary.com/thecarlaundry/images/f_auto,q_auto/v1630219916/engine-cleaning_2435b4235/engine-cleaning_2435b4235.jpg?_i=AA"
+    }
+]

@@ -1,8 +1,11 @@
 from django.urls import path
 from accounts.views import general, auth
+from rest_framework_simplejwt.views import TokenRefreshView
+
 
 urlpatterns = [
     path('account', general.ProfileView.as_view()),
+    path('account/token/refresh', TokenRefreshView.as_view()),
     
     # path('account/topics/register/', general.RegisterTopicsView.as_view()),
     # path('account/topics/list/', general.TopicsList.as_view()),

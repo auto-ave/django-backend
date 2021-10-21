@@ -212,9 +212,19 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGIN_REGEXES = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+
     "https://moterwash.netlify.app",
     "https://motorwash-salesman.netlify.app",
     "https://owner-motorwash.netlify.app",
+
+    "https://autoave.care",
+    "https://sales.autoave.care",
+    "https://owner.autoave.care",
+
+    "https://autoave.in",
+    "https://sales.autoave.in",
+    "https://owner.autoave.in",
+
     ".netlify\.app",
 ]
 

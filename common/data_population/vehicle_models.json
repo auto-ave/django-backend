@@ -1,0 +1,2168 @@
+[
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-beat-petrol-tilted.jpg",
+        "model": "Beat"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-spark-petrol-tilted.jpg",
+        "model": "Spark"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-aveo-uva-tilted.jpg",
+        "model": "UVA"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-sail-hatchback-diesel-tilted.jpg",
+        "model": "Sail Hatchback"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-optra-srv-diesel-tilted.jpg",
+        "model": "Optra SRV"
+    },
+    {
+        "brand": "Daewoo",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/daewoo-Matiz-tilted.jpg",
+        "model": "Matiz"
+    },
+    {
+        "brand": "Datsun",
+        "vehicle_type": "Hatchback",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-3-model-472.jpeg",
+        "model": "Redi Go"
+    },
+    {
+        "brand": "Datsun",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/datsun-go-petrol-tilted.jpg",
+        "model": "GO"
+    },
+    {
+        "brand": "Datsun",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/datsun-go-plus-petrol-tilted.jpg",
+        "model": "GO Plus"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-punto-tilted.png",
+        "model": "Punto"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-punto-evo-tilted.jpg",
+        "model": "Punto Evo"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-petrol-tilted.jpg",
+        "model": "Palio D"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-avventura-petrol-tilted.jpg",
+        "model": "Avventura"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-stile-tilted.jpg",
+        "model": "Palio Stile"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-avventura-diesel-tilted.jpg",
+        "model": "Adventure"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-petrol-tilted.jpg",
+        "model": "Palio NV"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-urbancross-ilted.png",
+        "model": "Urban Cross"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-uno-tilted.png",
+        "model": "Uno"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-figo-petrol-tilted.jpg",
+        "model": "Figo"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ford_Freestyle.png",
+        "model": "Freestyle"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-fusion-petrol-tilted.jpg",
+        "model": "Fusion"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-brio-petrol-tilted.jpg",
+        "model": "Brio"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i10-petrol-tilted.jpg",
+        "model": "i10"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-grandi10-petrol-tilted.jpg",
+        "model": "Grand i10"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-santro-petrol-tilted.jpg",
+        "model": "Santro Xing"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-eon-petrol-tilted.jpg",
+        "model": "Eon"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20Santro.png",
+        "model": "Santro"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Getz_tilted.png",
+        "model": "Getz"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20i10%20NIOS.png",
+        "model": "Grand i10 Nios"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Getz_tilted.png",
+        "model": "Getz Prime"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-kuv100-petrol-tilted.jpg",
+        "model": "KUV 100"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-verito-vibe-diesel-tilted.jpg",
+        "model": "Verito Vibe CS"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra+E20+Plus.jpg",
+        "model": "E20 Plus"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-swift-diesel-tilted.jpg",
+        "model": "Swift"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-wagonr-petrol-tilted.jpg",
+        "model": "WagonR"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-Alto-800-tilted.jpg",
+        "model": "Alto"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ritz-petrol-tilted.jpg",
+        "model": "Ritz"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-celerio-petrol-tilted.jpg",
+        "model": "Celerio"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-altok10-petrol-tilted.jpg",
+        "model": "Alto K10"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-alto800-petrol-tilted.jpg",
+        "model": "Alto 800"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-zen-estilo-tilted.jpg",
+        "model": "Estilo"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-800-tilted.png",
+        "model": 800
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti-Suzuki-Zen-tilted.jpg",
+        "model": "Zen"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-astar-petrol-tilted.jpg",
+        "model": "A-Star"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ignis-diesel-tilted.jpg",
+        "model": "Ignis"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-eeco-petrol-tilted.jpg",
+        "model": "Eeco"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-omni-petrol-tilted.jpg",
+        "model": "Omni"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti%20Suzuki%20S-Presso.png",
+        "model": "S-Presso"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-versa-tilted.png",
+        "model": "Versa"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-micra-petrol-tilted.jpg",
+        "model": "Micra"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-micra-diesel-tilted.jpg",
+        "model": "Micra Active"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-kwid-petrol-tilted.jpg",
+        "model": "Kwid"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-pulse-petrol-tilted.jpg",
+        "model": "Pulse"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-tiago-petrol-tilted.jpg",
+        "model": "Tiago"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata+Nano_tilted.jpg",
+        "model": "Nano"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-vista-petrol-tilted.jpg",
+        "model": "Indica Vista"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indica-petrol-tilted.jpg",
+        "model": "Indica"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indica-v2-tilted.png",
+        "model": "Indica V2"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-bolt-petrol-tilted.jpg",
+        "model": "Bolt"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-nano-cng-tilted.jpg",
+        "model": "Nano Genx"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata-Indica-ev2-tilted.png",
+        "model": "Indica eV2"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-liva-petrol-tilted.jpg",
+        "model": "Etios Liva"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-cross-petrol-tilted.jpg",
+        "model": "Etios Cross"
+    },
+    {
+        "brand": "Opel",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Opel+Astra_Tilted.jpg",
+        "model": "Corsa"
+    },
+    {
+        "brand": "Opel",
+        "vehicle_type": "Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Opel+Astra_Tilted.jpg",
+        "model": "Astra"
+    },
+    {
+        "brand": "Jayem",
+        "vehicle_type": "Hatchback",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-40-model-525.jpeg",
+        "model": "Neo"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-mustang-tilted.png",
+        "model": "Mustang"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-gtr-tilted.png",
+        "model": "GTR"
+    },
+    {
+        "brand": "Aston Martin",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-Martin-V12-Vantage-tilted.png",
+        "model": "Vantage"
+    },
+    {
+        "brand": "Aston Martin",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-martin-rapide-tilted.jpg",
+        "model": "Rapide"
+    },
+    {
+        "brand": "Aston Martin",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston_Martin-Vanquish-tilted.png",
+        "model": "Vanquish"
+    },
+    {
+        "brand": "Aston Martin",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-martin-db9-tilted.png",
+        "model": "DB9"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a4-petrol-tilted.jpg",
+        "model": "A4"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a6-petrol-tilted.jpg",
+        "model": "A6"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q3-tilted.jpg",
+        "model": "Q3"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-565.jpeg",
+        "model": "Q2"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q7-tilted.jpg",
+        "model": "Q7"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a3-petrol-tilted.jpg",
+        "model": "A3"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q5-tilted.jpg",
+        "model": "Q5"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a8l-petrol-tilted.jpg",
+        "model": "A8 L"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a7-petrol-tilted.jpg",
+        "model": "A7"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a8-diesel-tilted.jpg",
+        "model": "A8"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-tt-tilted.jpg",
+        "model": "TT"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-r8-tilted.jpg",
+        "model": "R8"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-555.jpeg",
+        "model": "RS5"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-556.jpeg",
+        "model": "RS3"
+    },
+    {
+        "brand": "Audi",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-557.jpeg",
+        "model": "RS7"
+    },
+    {
+        "brand": "Bentley",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-mulsanne-tilted.png",
+        "model": "Mulsanne"
+    },
+    {
+        "brand": "Bentley",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-continental-gt-tilted.jpg",
+        "model": "Continental"
+    },
+    {
+        "brand": "Bentley",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-flying-spur-tilted.png",
+        "model": "Flying Spur"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x1-diesel-tilted.jpg",
+        "model": "X1"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-3-series-diesel-tilted.jpg",
+        "model": "3 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-20-model-566.jpeg",
+        "model": "2 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-5-series-diesel-tilted.jpg",
+        "model": "5 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/BMW+3+series+GT-tilted.png",
+        "model": "3 Series GT"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x3-diesel-tilted.jpg",
+        "model": "X3"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-7-series-diesel-tilted.jpg",
+        "model": "7 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-1-series-diesel-tilted.jpg",
+        "model": "1 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-z4-petrol-tilted.jpg",
+        "model": "Z4"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-5-series-gt-diesel-tilted.jpg",
+        "model": "5 Series GT"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x5-diesel-tilted.jpg",
+        "model": "X5"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x6-diesel-tilted.jpg",
+        "model": "X6"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-6-series-diesel-tilted.jpg",
+        "model": "6 Series"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-m5-petrol-tilted.jpg",
+        "model": "M5"
+    },
+    {
+        "brand": "BMW",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-m3-petrol-tilted.jpg",
+        "model": "M3"
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-458-Speciale-tilted.png",
+        "model": "458 Speciale"
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-458-tilted.png",
+        "model": "458 Italia"
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferarri-488-tilted.png",
+        "model": 488
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-california-tilted.png",
+        "model": "California"
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-f12-berlinitta-tilted.png",
+        "model": "F12 Berlinetta"
+    },
+    {
+        "brand": "Ferrari",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ferrari-FF-titlted.png",
+        "model": "FF"
+    },
+    {
+        "brand": "Jaguar",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xf-petrol-tilted.jpg",
+        "model": "XF"
+    },
+    {
+        "brand": "Jaguar",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xe-petrol-tilted.jpg",
+        "model": "XE"
+    },
+    {
+        "brand": "Jaguar",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xj-petrol-tilted.jpg",
+        "model": "XJ"
+    },
+    {
+        "brand": "Jaguar",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-f-type-petrol-tilted.jpg",
+        "model": "F Type"
+    },
+    {
+        "brand": "Jaguar",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Jaguar%20F%20Pace.jpg",
+        "model": "F Pace"
+    },
+    {
+        "brand": "Lamborghini",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-huracan-tilted.png",
+        "model": "Huracan"
+    },
+    {
+        "brand": "Lamborghini",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-aventador-tilted.png",
+        "model": "Aventador"
+    },
+    {
+        "brand": "Lamborghini",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-gallardo-tilted.png",
+        "model": "Gallardo"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-discovery-sport-diesel-tilted.jpg",
+        "model": "Discovery Sport"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-evoque-petrol-tilted.jpg",
+        "model": "Range Rover Evoque"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-freelander-2-diesel-tilted.jpg",
+        "model": "Freelander 2"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-sport-petrol-tilted.jpg",
+        "model": "Range Rover Sport"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-discovery-4-diesel-tilted.jpg",
+        "model": "Discovery 4"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-24-model-574.jpeg",
+        "model": "Defender"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-diesel-tilted.jpg",
+        "model": "Land Rover"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Range%20Rover%20Vogue.jpg",
+        "model": "Range Rover Vogue"
+    },
+    {
+        "brand": "Land Rover",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Land%20Rover%20Velar.jpg",
+        "model": "Range Rover Velar"
+    },
+    {
+        "brand": "Maserati",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maserati-Ghibli-tilted.jpg",
+        "model": "Ghibli"
+    },
+    {
+        "brand": "Maserati",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-quattroporte-tilted.png",
+        "model": "Quattroporte"
+    },
+    {
+        "brand": "Maserati",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-grancabrio-tilted.jpg",
+        "model": "GranCabrio"
+    },
+    {
+        "brand": "Maserati",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-granturismo-tilted.png",
+        "model": "GranTurismo"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-c-class-petrol-tilted.jpg",
+        "model": "C-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-e-class-diesel-tilted.jpg",
+        "model": "E-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-cla-class-diesel-tilted.jpg",
+        "model": "CLA Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-a-class-petrol-tilted.jpg",
+        "model": "A-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-s-class-diesel-tilted.jpg",
+        "model": "S-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-26-model-567.jpeg",
+        "model": "V-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-ml-class-petrol-tilted.jpg",
+        "model": "ML Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-b-class-petrol-tilted.jpg",
+        "model": "B-Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gla-class-diesel-tilted.jpg",
+        "model": "GLA Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gle-class-diesel-tilted.jpg",
+        "model": "GLE Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-sl-500-amg-petrol-tilted.jpg",
+        "model": "SL 500 AMG"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-amg-gt-petrol-tilted.jpg",
+        "model": "AMG GT"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-g63-amg-petrol-tilted.jpg",
+        "model": "G63 AMGr"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gl-class-diesel-tilted.jpg",
+        "model": "GL Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-slk-class-petrol-tilted.jpg",
+        "model": "SLK Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-cls-class-petrol-tilted.png",
+        "model": "CLS Class"
+    },
+    {
+        "brand": "Mercedes",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Mercedes%20R%20Class.jpg",
+        "model": "R Class"
+    },
+    {
+        "brand": "Mini",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mini-cooper-tilted.png",
+        "model": "Cooper"
+    },
+    {
+        "brand": "Mini",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mini-countryman-tilted.png",
+        "model": "Countryman"
+    },
+    {
+        "brand": "Mini",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Mini%20Clubman.jpg",
+        "model": "Clubman"
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-911-tilted.png",
+        "model": 911
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-cayenne-tilted.png",
+        "model": "Cayenne"
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-macan-tilted.jpg",
+        "model": "Macan"
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-cayman-tilted.png",
+        "model": "Cayman"
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-pabrandra-tilted.png",
+        "model": "Pabrandra"
+    },
+    {
+        "brand": "Porsche",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Porsche-Boxter-tilted.png",
+        "model": "Boxter"
+    },
+    {
+        "brand": "Rolls Royce",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/rolls_royce_Phantom-tilted.png",
+        "model": "Phantom"
+    },
+    {
+        "brand": "Rolls Royce",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Rolls-Royce-Ghost-tilted.png",
+        "model": "Ghost"
+    },
+    {
+        "brand": "Rolls Royce",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Rolls-Royce-wraith-tilted.png",
+        "model": "Wraith"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s60-petrol-tilted.jpg",
+        "model": "S60"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-v40-petrol-tilted.jpg",
+        "model": "V40"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s80-diesel-tilted.jpg",
+        "model": "S80"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-xc60-diesel-tilted.jpg",
+        "model": "XC60"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-xc90-diesel-tilted.jpg",
+        "model": "XC90"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s60-cross-country-diesel-tilted.jpg",
+        "model": "S60 Cross Country"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-v40-cross-country-petrol-tilted.jpg",
+        "model": "V40 Cross Country"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S40.jpg",
+        "model": "S40"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20XC40.jpg",
+        "model": "XC 40"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20V60.jpg",
+        "model": "V60"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S90.jpg",
+        "model": "V90"
+    },
+    {
+        "brand": "Volvo",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S90.jpg",
+        "model": "S90"
+    },
+    {
+        "brand": "DC",
+        "vehicle_type": "Luxury",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/DC%20Avanti.jpg",
+        "model": "Avanti"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-571.jpeg",
+        "model": "ES"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-568.jpeg",
+        "model": "NX"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-572.jpeg",
+        "model": "LS"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-569.jpeg",
+        "model": "RX"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-573.jpeg",
+        "model": "LC"
+    },
+    {
+        "brand": "Lexus",
+        "vehicle_type": "Luxury",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-570.jpeg",
+        "model": "LX"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-Abarth-Punto-tilted.jpg",
+        "model": "Abarth Punto"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-jazz-petrol-tilted.jpg",
+        "model": "Jazz"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i20-petrol-tilted.jpg",
+        "model": "i20"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-elite-i20-tilted.png",
+        "model": "Elite i20"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i20active-petrol-tilted.jpg",
+        "model": "i20 Active"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-baleno-petrol-tilted.jpg",
+        "model": "Baleno"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-fabia-petrol-tilted.jpg",
+        "model": "Fabia"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Fabia-Scout-tilted.png",
+        "model": "Fabia Scout"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-14-model-581.jpeg",
+        "model": "Tiago NRG"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-altroz.png",
+        "model": "Altroz"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Glanza.png",
+        "model": "Glanza"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-polo-diesel-tilted.jpg",
+        "model": "Polo"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-polo-cross-diesel-tilted.jpg",
+        "model": "Cross Polo"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Hatchback",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-beetle-tilted.png",
+        "model": "Beetle"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-cruze-diesel-tilted.jpg",
+        "model": "Cruze"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "model": "City IVTEC"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-civic-petrol-tilted.jpg",
+        "model": "Civic"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-accord-petrol-tilted.jpg",
+        "model": "Accord"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-diesel-tilted.jpg",
+        "model": "City IDTEC"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Honda-Accord-Hybrid-tilted.png",
+        "model": "Accord Hybrid"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-fluidic-verna-petrol-tilted.jpg",
+        "model": "Verna Fluidic"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-elantra-petrol-tilted.jpg",
+        "model": "Elantra"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-sonata-petrol-tilted.jpg",
+        "model": "Sonata"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-sonata-embera-tilted.jpg",
+        "model": "Sonata Embera"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai-Sonata-Transform-Tilted.jpg",
+        "model": "Sonata Transform"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ciaz-diesel-tilted%20(1).jpg",
+        "model": "Ciaz"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-kizashi-petrol-tilted.jpg",
+        "model": "Kizashi"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-sunny-diesel-tilted.jpg",
+        "model": "Sunny"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-teana-petrol-tilted.jpg",
+        "model": "Teana"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-scala-diesel-tilted.jpg",
+        "model": "Scala"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-fluence-diesel-tilted.jpg",
+        "model": "Fluence"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-rapid-petrol-tilted.jpg",
+        "model": "Rapid"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda-Superb-titled.png",
+        "model": "Superb"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda-laura-diesel-tilted.png",
+        "model": "Laura"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-octavia-petrol-tilted.jpg",
+        "model": "Octavia"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15-model-564.jpeg",
+        "model": "Sera"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota-Corolla-Altis-Tilted.png",
+        "model": "Corolla Altis"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Yaris.jpg",
+        "model": "Yaris"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-camry-tilted.jpg",
+        "model": "Camry"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-vento-petrol-tilted.jpg",
+        "model": "Vento"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-jetta-petrol-tilted.jpg",
+        "model": "Jetta"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-passat-tilted.jpg",
+        "model": "Passat"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Chevrolet+Captiva_tilted.png",
+        "model": "Captiva"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-traiblazer-tilted.png",
+        "model": "Trailblazer"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-endeavour-tilted.jpg",
+        "model": "Endeavour"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-crv-petrol-tilted.jpg",
+        "model": "CRV"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-7-model-578.jpeg",
+        "model": "Alcazar"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-santafe-petrol-tilted.jpg",
+        "model": "SantaFE"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-tucson-diesel-tilted.jpg",
+        "model": "Tucson"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-xuv500-diesel-tilted.jpg",
+        "model": "XUV 500"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-580.jpeg",
+        "model": "XUV 700"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/Mahindra+Alturas+G4.jpg",
+        "model": "Alturas G4"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-grand-vitara-tilted.png",
+        "model": "Grand Vitara"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi-Pajero-Sport-tilted.png",
+        "model": "Pajero Sport"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mitsubishi-outlander-diesel-tilted.jpg",
+        "model": "Outlander"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mitsubishi-pajero-tilted.png",
+        "model": "Pajero"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi-Montero-tilted.png",
+        "model": "Montero"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-koleos-diesel-tilted.jpg",
+        "model": "Koleos"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-yeti-tilted.jpg",
+        "model": "Yeti"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda_Kodiaq.png",
+        "model": "Kodiaq"
+    },
+    {
+        "brand": "Skoda",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-13-model-577.jpeg",
+        "model": "Kushaq"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-aria-diesel-tilted.jpg",
+        "model": "Aria"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata+Harrier+_Tilted.jpg",
+        "model": "harrier"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-hexa-diesel-tilted.jpg",
+        "model": "Hexa"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-fortuner-tilted.jpg",
+        "model": "Fortuner"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-innova-crysta-tilted.jpg",
+        "model": "Innova Crysta"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-land-cruiser-200-diesel-tilted.jpg",
+        "model": "Land Cruiser"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-land-cruiser-prado-diesel-tilted.jpg",
+        "model": "Land Cruiser Prado"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-16-model-579.jpeg",
+        "model": "T-Roc"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Volkswagen_Tiguannew.png",
+        "model": "Tiguan"
+    },
+    {
+        "brand": "Isuzu",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Isuzu_MU7.jpg",
+        "model": "MU7"
+    },
+    {
+        "brand": "Jeep",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Jeep+Compass.1440.jpg",
+        "model": "Compass"
+    },
+    {
+        "brand": "Ssangyong",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ssangyong+Rexton_Titlted.jpg",
+        "model": "Rexton"
+    },
+    {
+        "brand": "MG",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-37-model-559.jpeg",
+        "model": "Gloster"
+    },
+    {
+        "brand": "MG",
+        "vehicle_type": "Premium SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hector.png",
+        "model": "Hector"
+    },
+    {
+        "brand": "Kia",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-38-model-558.jpeg",
+        "model": "Carnival"
+    },
+    {
+        "brand": "Citroen",
+        "vehicle_type": "Premium SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-43-model-582.jpeg",
+        "model": "C5 Aircross"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-aveo-petrol-tilted.jpg",
+        "model": "Aveo"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-sail-diesel-tilted.jpg",
+        "model": "Sail"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-optra-petrol-tilted.jpg",
+        "model": "Optra"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Chevrolet-Optra-Magnum-tilted.png",
+        "model": "Optra Magnum"
+    },
+    {
+        "brand": "Daewoo",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/daewoo-nexia-tilted.png",
+        "model": "Nexia"
+    },
+    {
+        "brand": "Daewoo",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Daewoo_Cielo_tilted.png",
+        "model": "Cielo"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-linea-diesel-tilted.jpg",
+        "model": "Linea"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-linea-diesel-tilted.jpg",
+        "model": "Linea Classic"
+    },
+    {
+        "brand": "Fiat",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Fiat_Petra_tilted.png",
+        "model": "Petra"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-figo-aspire-petrol-tilted.jpg",
+        "model": "Figo Aspire"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-fiesta-petrol-tilted.jpg",
+        "model": "Fiesta"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-classic-petrol-tilted.jpg",
+        "model": "Fiesta Classic"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-Ikon-tilted.jpg",
+        "model": "Ikon"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-escort-tilted.jpg",
+        "model": "Escort"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-mondeo-tilted.png",
+        "model": "Mondeo"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-amaze-petrol-tilted.jpg",
+        "model": "Amaze"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "model": "City"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "model": "City ZX"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-xcent-petrol-tilted.jpg",
+        "model": "Xcent"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-verna-petrol-tilted.jpg",
+        "model": "Verna"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-accent-petrol-tilted.jpg",
+        "model": "Accent"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-verna-transform-tilted.jpg",
+        "model": "Verna Transform"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-accent-petrol-tilted.jpg",
+        "model": "Accent Viva"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20Aura.png",
+        "model": "Aura"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-logan-petrol-tilted.jpg",
+        "model": "Logan"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-verito-diesel-tilted.jpg",
+        "model": "Verito"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-swift-dzire-petrol-tilted.jpg",
+        "model": "Swift Dzire"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-sx4-diesel-tilted.jpg",
+        "model": "SX4"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-esteem-tilted.jpg",
+        "model": "Esteem"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi%20Lancer.png",
+        "model": "Lancer"
+    },
+    {
+        "brand": "Mitsubishi",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi%20Cedia.png",
+        "model": "Cedia"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-zest-petrol-tilted.jpg",
+        "model": "Zest"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-tigor-tilted.png",
+        "model": "Tigor"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-manza-petrol-tilted.jpg",
+        "model": "Manza"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata-Indigo-Tilted.png",
+        "model": "Indigo"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/TATA_Indigo-ecs.jpg",
+        "model": "Indigo eCS"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indigo-cs.jpg",
+        "model": "Indigo CS"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-marina-tilted.jpg",
+        "model": "Indigo Marina"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indigo-xl-tilted.jpg",
+        "model": "Indigo XL"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-petrol-tilted.jpg",
+        "model": "Etios"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-corolla-petrol-tilted.jpg",
+        "model": "Corolla"
+    },
+    {
+        "brand": "Volkswagen",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-ameo-petrol-tilted.jpg",
+        "model": "Ameo"
+    },
+    {
+        "brand": "Hindustan Motors",
+        "vehicle_type": "Sedan",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/HM_Ambassador.jpg",
+        "model": "Ambassador"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-enjoy-petrol-tilted.jpg",
+        "model": "Enjoy"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-tavera-diesel-tilted.jpg",
+        "model": "Tavera"
+    },
+    {
+        "brand": "Chevrolet",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-forrester-diesel-tilted.jpg",
+        "model": "Forester"
+    },
+    {
+        "brand": "Ford",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-ecosport-diesel-tilted.jpg",
+        "model": "Eco Sport"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-wrv-tilted.png",
+        "model": "WRV"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-mobilio-petrol-tilted.jpg",
+        "model": "Mobilio"
+    },
+    {
+        "brand": "Honda",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-brv-tilted.jpg",
+        "model": "BRV"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-creta-petrol-tilted.jpg",
+        "model": "Creta"
+    },
+    {
+        "brand": "Hyundai",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Venue.png",
+        "model": "Venue"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-scorpio-diesel-tilted.jpg",
+        "model": "Scorpio"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-xylo-diesel-tilted.jpg",
+        "model": "Xylo"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-tuv300-diesel-tilted.jpg",
+        "model": "TUV 300"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-576.jpeg",
+        "model": "Bolero Neo"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-quanto-diesel-tilted.jpg",
+        "model": "Quanto"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-bolero-diesel-tilted.jpg",
+        "model": "Bolero"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-563.jpeg",
+        "model": "Imperio"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/mahindra-XUV300.png",
+        "model": "XUV 300"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-thar-diesel-tilted.jpg",
+        "model": "Thar"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra%20Bolero%20Camper.png",
+        "model": "Bolero Camper"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-nuovo-sport-tilted.png",
+        "model": "NuvoSport"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra_Marazzo.png",
+        "model": "Marazzo"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra%20Bolero%20Pickup.png",
+        "model": "Bolero Pickup"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-scorpio-getaway-tilted.jpg",
+        "model": "Scorpio Getaway"
+    },
+    {
+        "brand": "Mahindra",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-575.jpeg",
+        "model": "TUV 300 Plus"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ertiga-petrol-tilted.jpg",
+        "model": "Ertiga"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-vitara-brezza-diesel-tilted.jpg",
+        "model": "Vitara Brezza"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-s-cross-diesel-tilted.jpg",
+        "model": "S-Cross"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-gypsy-tilted.jpg",
+        "model": "Gypsy"
+    },
+    {
+        "brand": "Maruti Suzuki",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti%20Suzuki%20XL%206.jpg",
+        "model": "XL6"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-terrano-tilted.png",
+        "model": "Terrano"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "SUV",
+        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Nissan%20Kicks.jpg",
+        "model": "Kicks"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-evalia-diesel-tilted.jpg",
+        "model": "Evalia"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-x-trail-diesel-tilted.jpg",
+        "model": "X-Trail"
+    },
+    {
+        "brand": "Nissan",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-11-model-560.jpeg",
+        "model": "Magnite"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-duster-petrol-tilted.jpg",
+        "model": "Duster"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Renault_Triber.png",
+        "model": "Triber"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-lodgy-diesel-tilted.jpg",
+        "model": "Lodgy"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Renault_Captur.png",
+        "model": "Captur"
+    },
+    {
+        "brand": "Renault",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-12-model-561.jpeg",
+        "model": "Kiger"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-nexon-tilted.png",
+        "model": "Nexon"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-safari-diesel-tilted.jpg",
+        "model": "Safari"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-safari-diesel-tilted.jpg",
+        "model": "Safari Storme"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "model": "Sumo Grande"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "model": "Sumo Gold"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "model": "Sumo Grande MK II"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-venture-tilted.png",
+        "model": "Venture"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-movus-diesel-tilted.jpg",
+        "model": "Sumo Spacio"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata_Winger.jpg",
+        "model": "Winger"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/tata_xenon.png",
+        "model": "Xenon"
+    },
+    {
+        "brand": "Tata",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-movus-diesel-tilted.jpg",
+        "model": "Sumo Victa"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-innova-diesel-tilted.jpg",
+        "model": "Innova"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Qualis.png",
+        "model": "Qualis"
+    },
+    {
+        "brand": "Toyota",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15-model-562.jpeg",
+        "model": "Urban Cruiser"
+    },
+    {
+        "brand": "Force",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force-Motors-Force-One-tilted.png",
+        "model": "One"
+    },
+    {
+        "brand": "Force",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20traveller.png",
+        "model": "Traveller 3350"
+    },
+    {
+        "brand": "Force",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20motor%20trax.png",
+        "model": "Trax"
+    },
+    {
+        "brand": "Force",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20Motors%20Gurkha.png",
+        "model": "Gurkha"
+    },
+    {
+        "brand": "Isuzu",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Isuzu%20Dmax%20Vcross.png",
+        "model": "Dmax V Cross"
+    },
+    {
+        "brand": "Kia",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Seltos.png",
+        "model": "Seltos"
+    },
+    {
+        "brand": "Kia",
+        "vehicle_type": "SUV",
+        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/Kia+sonet.jpg",
+        "model": "Sonet"
+    },
+    {
+        "brand": "Foton",
+        "vehicle_type": "SUV",
+        "image": "https://s3.ap-south-1.amazonaws.com/carimagepath/general/logo/Foton_View_CS2.png",
+        "model": "VIW CS2"
+    }
+]

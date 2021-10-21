@@ -19,7 +19,7 @@ class City(Model):
     name = models.CharField(max_length=50)
     latitude = models.DecimalField(max_digits=22, decimal_places=16)
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
-    upcoming = models.BooleanField(max_length=True)
+    upcoming = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         self.code = self.code.lower()

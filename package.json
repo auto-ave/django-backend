@@ -1,0 +1,23 @@
+{
+    "name": "django-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "pm2 start ecosystem.config.json",
+        "kill": "pm2 kill",
+        "status": "pm2 status",
+        "logs": "pm2 logs --lines 100"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Motor-Wash/django-backend.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Motor-Wash/django-backend/issues"
+    },
+    "homepage": "https://autoave.care"
+}
