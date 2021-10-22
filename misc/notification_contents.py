@@ -14,7 +14,7 @@ MODI_IMAGES = [
 
 def NOTIFICATION_BOOKING_COMPLETE(booking):
     store = booking.store
-    vehicle_type = booking.vehicle_type
+    vehicle_type = booking.vehicle_model.vehicle_type
     event = booking.event
     return {
         'title': 'Booking confirmed at {}'.format(store.name),
@@ -24,7 +24,7 @@ def NOTIFICATION_BOOKING_COMPLETE(booking):
 
 def NOTIFICATION_BOOKING_CANCELLED(booking):
     store = booking.store
-    vehicle_type = booking.vehicle_type
+    vehicle_type = booking.vehicle_model.vehicle_type
     event = booking.event
     return {
         'title': 'Booking cancelled at {}'.format(store.name),
