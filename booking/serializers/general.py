@@ -5,6 +5,7 @@ from rest_framework.utils import field_mapping
 from booking.models import *
 from booking.serializers.review import ReviewSerializer
 from store.serializers.services import PriceTimeSerializer
+from vehicle.serializers import VehicleModelSerializer
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -82,6 +83,7 @@ class BookingDetailSerializer(serializers.ModelSerializer):
     event = EventSerializer()
     review = serializers.SerializerMethodField()
     store = SalesmanStoreListSerializer()
+    vehicle_model = VehicleModelSerializer()
     class Meta:
         model = Booking
         fields = "__all__"
