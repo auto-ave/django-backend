@@ -33,12 +33,12 @@ class DynamicArrayWidget(forms.TextInput):
         try:
             getter = data.getlist
             return_value = [value for value in getter(name) if value]
-            print(len(return_value) and return_value[0][0] == "{")
+            
+            # Assuming the string's content is json/dict if first letter is '{'
             if len(return_value) and return_value[0][0] == "{":
-                print('remplacing values')
                 for index, value in enumerate(return_value):
                     return_value[index] = value.replace("'", '"')
-            return return_value
+            
             return return_value
         except AttributeError:
             return data.get(name)
