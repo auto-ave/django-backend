@@ -9,6 +9,7 @@ class VehicleType(Model):
     wheel = models.ForeignKey('Wheel', on_delete=models.CASCADE, related_name='vehicle_types', null=True)
     description = models.TextField(blank=True, null=True)
     image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+    position = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return '{} : {}'.format(self.wheel, self.model)

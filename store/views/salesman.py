@@ -130,7 +130,7 @@ class ServiceCreationDetails(generics.GenericAPIView):
     
 
     def get(self, request, slug):
-        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True).data
+        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all().order_by('position'),many=True).data
         wheel_types = WheelSerializer(Wheel.objects.all(), many=True).data
 
         all_services = ServiceSerializer(Service.objects.all(),many=True).data
