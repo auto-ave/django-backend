@@ -2,7 +2,7 @@ from common.admin import JsonAdmin
 from django.contrib import admin
 from store.models import *
 
-from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 class StoreAdmin(admin.ModelAdmin, DynamicArrayMixin):
     pass

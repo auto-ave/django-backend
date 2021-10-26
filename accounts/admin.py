@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import *
-from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 
 class CustomUserAdmin(UserAdmin, DynamicArrayMixin):

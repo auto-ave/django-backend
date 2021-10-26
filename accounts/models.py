@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
-from django_better_admin_arrayfield.models.fields import ArrayField
 from fcm_django.models import FCMDevice
 
 from phonenumber_field.modelfields import PhoneNumberField

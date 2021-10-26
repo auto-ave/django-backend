@@ -29,7 +29,7 @@ class JsonAdmin(admin.ModelAdmin):
 
 
 from common.models import City, Service
-from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 admin.site.register(City)
 

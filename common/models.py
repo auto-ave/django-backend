@@ -1,6 +1,6 @@
 from common.utils import get_unique_slug
 from django.db import models
-from django_better_admin_arrayfield.models.fields import ArrayField
+from custom_admin_arrayfield.models.fields import ArrayField
 # from common.constants import VEHICLE_MODELS, VEHICLE_TYPES
 
 class Model(models.Model):
