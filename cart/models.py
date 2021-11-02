@@ -79,3 +79,7 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+
+
+    def __str__(self):
+        return "Cart: {}".format(self.consumer)

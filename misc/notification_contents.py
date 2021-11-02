@@ -14,21 +14,21 @@ MODI_IMAGES = [
 
 def NOTIFICATION_BOOKING_COMPLETE(booking):
     store = booking.store
-    vehicle_type = booking.vehicle_model.vehicle_type
+    vehicle_model = booking.vehicle_model
     event = booking.event
     return {
         'title': 'Booking confirmed at {}'.format(store.name),
-        'body': 'Your booking for {} {} on {} has been confirmed. Be sure to reach the store on time.'.format(vehicle_type.wheel, vehicle_type.model, event.start_datetime.strftime('%d %b')),
+        'body': 'Your booking for {} {} on {} has been confirmed. Be sure to reach the store on time.'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
         'image': random_item(MODI_IMAGES)
     }
 
 def NOTIFICATION_BOOKING_CANCELLED(booking):
     store = booking.store
-    vehicle_type = booking.vehicle_model.vehicle_type
+    vehicle_model = booking.vehicle_model
     event = booking.event
     return {
         'title': 'Booking cancelled at {}'.format(store.name),
-        'body': 'Your booking for {} {} on {} has been cancelled. If you are not sure why this happened, feel free to contact us at {}'.format(vehicle_type.wheel, vehicle_type.model, event.start_datetime.strftime('%d %b'), CONTACT_EMAIL),
+        'body': 'Your booking for {} {} on {} has been cancelled. If you are not sure why this happened, feel free to contact us at {}'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b'), CONTACT_EMAIL),
         'image': 'https://indianmemetemplates.com/wp-content/uploads/narendra-modi-angry-look.jpg'
     }
 

@@ -34,6 +34,11 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             else:
                 return False
         
+        def rounded_to_the_last_30th_minute_epoch():
+            now = datetime.datetime.now()
+            delta30 = ( datetime.timedelta(minutes=30) - (now - datetime.datetime.min) % datetime.timedelta(minutes=30) ) 
+            return now + delta30
+        
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
@@ -72,7 +77,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # print('initial slots: ', final_slots)
 
         # Reset slot times
-        slot_start_time = store_opening_time
+        slot_start_time =  rounded_to_the_last_30th_minute_epoch().time() # .strftime("%H:%M:%S") # store_opening_time
         slot_end_time = add_mins_to_time(slot_start_time, total_time)
         # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
