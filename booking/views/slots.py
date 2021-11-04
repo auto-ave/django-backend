@@ -42,6 +42,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
+        print(date.date(), datetime.datetime.today().date())
+        is_today = date.date() == datetime.datetime.today().date()
 
         user = request.user
         cart = user.consumer.get_cart()
@@ -77,7 +79,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # print('initial slots: ', final_slots)
 
         # Reset slot times
-        slot_start_time =  rounded_to_the_last_30th_minute_epoch().time() # .strftime("%H:%M:%S") # store_opening_time
+        slot_start_time =  rounded_to_the_last_30th_minute_epoch().time() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
         slot_end_time = add_mins_to_time(slot_start_time, total_time)
         # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
