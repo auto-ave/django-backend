@@ -83,7 +83,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         slot_end_time = add_mins_to_time(slot_start_time, total_time)
         # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
-        while(slot_end_time <= store_closing_time):
+        while(slot_end_time < store_closing_time):
             string = '{} to {}'.format(slot_start_time, slot_end_time)
             # final_slots[string] = final_slots[string]
             final_slots[string] = [ bay.id for bay in bays ]
@@ -106,7 +106,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 slot_end_time = add_mins_to_time(slot_start_time, total_time)
                 # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
-                while(slot_end_time <= store_closing_time):
+                while(slot_end_time < store_closing_time):
                     string = '{} to {}'.format(slot_start_time, slot_end_time)
                     # print('slots----> ', slot_start_time, slot_end_time)
                     if timeCollideCheck(event_start_time, event_end_time, slot_start_time, slot_end_time):
