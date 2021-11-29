@@ -135,7 +135,9 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
 
     def get(self, request):
         user = self.request.user
-        queryset = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)).order_by('-status_changed_time')
+        queryset = user.storeowner.store.bookings.filter(
+            Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)
+        ).order_by('-status_changed_time')
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
@@ -144,7 +146,11 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        queryset = user.storeowner.store.bookings.filter((Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)| Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value)) & Q(event__start_datetime__contains=date.date())).order_by('event__start_datetime')
+        queryset = user.storeowner.store.bookings.filter(
+            (Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) | Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value))
+            & 
+            Q(event__start_datetime__contains=date.date())
+        ).order_by('event__start_datetime')
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
@@ -154,4 +160,10 @@ class OwnerPastBookings(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) | Q(status=BOOKING_STATUS_DICT.NOT_ATTENDED.value)).order_by('-status_changed_time')
+        return user.storeowner.store.bookings.filter(
+            event__start_datetime__lt=datetime.datetime.today().date()
+        ).order_by('-status_changed_time')
+        return user.storeowner.store.bookings.filter(
+            Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) | Q(status=BOOKING_STATUS_DICT.NOT_ATTENDED.value)
+        ).order_by('-status_changed_time')
+
