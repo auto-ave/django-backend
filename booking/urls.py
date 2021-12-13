@@ -20,5 +20,6 @@ urlpatterns = [
     path('store-owner/revenue/', general.OwnerRevenue.as_view()),
     path('store-owner/new/bookings/',general.OwnerNewBookings.as_view()),
     path('store-owner/past/bookings/', general.OwnerPastBookings.as_view()),
-    path('store-owner/store/vehicles/', general.OwnerStoreVehicleTypes.as_view())
+    path('store-owner/store/vehicles/', general.OwnerStoreVehicleTypes.as_view()),
+    path('store-owner/calender/', general.OwnerDayWiseCalender.as_view()),
 ]

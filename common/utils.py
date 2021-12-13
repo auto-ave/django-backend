@@ -4,10 +4,15 @@ import datetime
 import math
 import time
 import random
+import uuid
 from django.utils.text import slugify
+from django.utils import timezone
 
 def otp_generator(size=4, scope=[i for i in range(10)]):
     return ''.join(str(random.choice(scope)) for _ in range(size))
+
+def randomUUID():
+    return uuid.uuid4().hex[:6].upper()
 
 
 def get_unique_slug(model_instance, slugable_field_name, slug_field_name="slug"):
@@ -104,3 +109,7 @@ def secondsToTimeString(seconds):
     if minutes:
         result.append('{} minute{}'.format(minutes, 's' if minutes > 1 else ''))
     return ' '.join(result)
+
+
+TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)
+TODAY_END = timezone.now().replace(hour=23, minute=59, second=59)

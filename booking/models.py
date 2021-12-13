@@ -38,11 +38,8 @@ class Booking(Model):
         self.status_changed_time = datetime.datetime.now()
         self.save()
         # Service start notification
-        user = self.booked_by.user
         CommunicationProvider.send_notification(
-            userid=user.id,
             **NOTIFICATION_SERVICE_STARTED(self),
-            data={}
         )
     
     def complete_service(self):
@@ -50,11 +47,8 @@ class Booking(Model):
         self.status_changed_time = datetime.datetime.now()
         self.save()
         # Service complete notification
-        user = self.booked_by.user
         CommunicationProvider.send_notification(
-            userid=user.id,
             **NOTIFICATION_BOOKING_COMPLETE(self),
-            data={}
         )
 
     @background(schedule=0)
@@ -66,9 +60,7 @@ class Booking(Model):
             booking.status = BOOKING_STATUS_DICT.NOT_ATTENDED.value
             print('ho raha hai')
             CommunicationProvider.send_notification(
-                userid=booking.booked_by.user.id,
                 **NOTIFICATION_SERVICE_UNATTENDED(booking),
-                data={},
             )
             booking.save()
             return True
@@ -88,6 +80,18 @@ class Payment(Model):
 
     def __str__(self):
         return "#{} Payment".format(self.booking.booking_id)
+
+
+class PartialPayment(Model):
+    payment = models.ForeignKey(Payment, on_delete=models.PROTECT, related_name='partial_payments')
+    status = models.CharField(max_length=100, null=True, blank=True)
+    transaction_id = models.CharField(max_length=100, null=True, blank=True)
+    mode_of_payment = models.CharField(max_length=100, null=True, blank=True)
+    amount = models.CharField(max_length=30, null=True, blank=True)
+    gateway_name = models.CharField(max_length=100, null=True, blank=True)
+    bank_name = models.CharField(max_length=100, null=True, blank=True)
+    payment_mode = models.CharField(max_length=100, null=True, blank=True)
+
 
 class Refund(Model):
     refund_status = models.IntegerField(choices=PAYMENT_STATUS)

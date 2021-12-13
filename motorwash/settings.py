@@ -232,9 +232,6 @@ TWILIO_ACCOUNT_SID = "AC45adcb12c870de63120cacd8c2dd14b8"
 TWILIO_AUTH_TOKEN = "bc8cb4921d6930d4b888102319565dc4"
 TWILIO_NUMBER = "+18508202747"
 
-SENDGRID_API_KEY = "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"
-SENDGRID_SENDER = "test@acadza.com"
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -304,3 +301,8 @@ AWS_LOCATION = 'static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 DEFAULT_FILE_STORAGE = 'motorwash.storage_backends.MediaStorage'
+
+
+# SendGrid Email
+SENDGRID_API_KEY = "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"
+SENDGRID_SENDER="care@autoave.in"

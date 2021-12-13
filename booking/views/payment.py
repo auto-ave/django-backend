@@ -1,8 +1,10 @@
+from booking.utils import check_event_collide
+from misc.email_contents import EMAIL_BOOKING_COMPLETE
 from misc.notification_contents import NOTIFICATION_2_HOURS_LEFT, NOTIFICATION_BOOKING_COMPLETE
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
-from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
+from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.serializers.payment import InitiateTransactionSerializer
 from rest_framework import generics, permissions, response,views
 from django.conf import settings
@@ -28,6 +30,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         date = data.get('date')
         bay = data.get('bay')
         bay = Bay.objects.get(id=bay)
+
         slot_start = data.get('slot_start')
         slot_end = data.get('slot_end')
 
@@ -42,6 +45,11 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
             })
+        
+        if check_event_collide(start=start_datetime, end=end_datetime, store=bay.store):
+            return response.Response({
+                "detail": "Slot colliding with other event"
+            })
 
         event = Event.objects.create(
             is_blocking=False,
@@ -51,10 +59,10 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         )
 
         booking = Booking.objects.create(
-            booking_id=uuid.uuid4().hex[:6].upper(),
+            booking_id=randomUUID(),
             booked_by = user.consumer,
             store = bay.store,
-            status = 0,
+            status = BOOKING_STATUS_DICT.NOT_PAID.value,
             event = event,
             amount = cart.total,
             vehicle_model = cart.vehicle_model,
@@ -166,15 +174,15 @@ class PaymentCallbackView(views.APIView):
                 
                 # Payment complete notification
                 CommunicationProvider.send_notification(
-                    userid=user.id,
                     **NOTIFICATION_BOOKING_COMPLETE(booking),
-                    data={}
                 )
+                if user.email:
+                    CommunicationProvider.send_email(
+                        **EMAIL_BOOKING_COMPLETE(booking)
+                    )
 
                 CommunicationProvider.send_notification(
-                    userid=user.id,
                     **NOTIFICATION_2_HOURS_LEFT(booking),
-                    data={},
                     schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
 

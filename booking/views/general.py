@@ -1,3 +1,4 @@
+from common.utils import TODAY_END, TODAY_START
 from vehicle.models import VehicleModel
 from booking.static import BOOKING_STATUS_DICT
 from common.mixins import ValidateSerializerMixin
@@ -66,6 +67,13 @@ class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
             "success": "Booking started"
         })
 
+
+
+
+
+####################
+## STORE OWNER VIEWS
+####################
 class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = BookingCompleteSerializer
     permission_classes = (IsStoreOwner, )
@@ -167,3 +175,20 @@ class OwnerPastBookings(generics.ListAPIView):
             Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) | Q(status=BOOKING_STATUS_DICT.NOT_ATTENDED.value)
         ).order_by('-status_changed_time')
 
+
+class OwnerDayWiseCalender(generics.ListAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        store = user.storeowner.store
+        events = []
+        bays = store.bays.all()
+        for bay in bays:
+            events.extend(bay.events.filter(
+            start_datetime__gte=TODAY_START,
+            end_datetime__lte=TODAY_END
+        ).order_by('start_datetime'))
+        return events
+        
