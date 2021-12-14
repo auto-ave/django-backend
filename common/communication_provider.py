@@ -27,7 +27,7 @@ class CommunicationProvider:
 
         return response
 
-    @background(schedule=1)
+    @background(schedule=0)
     def send_email(self, email, subject, html_content):
         message = Mail(
             from_email= settings.SENDGRID_SENDER,
@@ -40,7 +40,7 @@ class CommunicationProvider:
         print(response.body)
         return response
     
-    @background(schedule=1)
+    @background(schedule=0)
     def send_otp(self, otp, number):
         message = OTP_MESSAGE(otp)
         response = self.send_sms(number=number, message=message)
