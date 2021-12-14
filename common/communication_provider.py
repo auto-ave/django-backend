@@ -14,36 +14,31 @@ def OTP_MESSAGE(otp):
     return '{} is your OTP (One Time Password) to authenticate your login to Autoave'.format(otp)
 
 class CommunicationProvider:
-    def __init__(self):
-        self.client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        self.sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
-
-    def send_sms(self, number, message):
-
-        response = self.client.messages.create(
-            to=number,
-            from_=settings.TWILIO_NUMBER,
-            body=message)
-
-        return response
 
     @background(schedule=0)
-    def send_email(self, email, subject, html_content):
+    def send_email(email, subject, html_content):
+        sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
+
         message = Mail(
             from_email= settings.SENDGRID_SENDER,
             to_emails=email,
             subject=subject,
             html_content=html_content
         )
-        response = self.sendgrid_client.send(message)
+        response = sendgrid_client.send(message)
         print("sendgrid response status code: ", response.status_code)
         print(response.body)
-        return response
     
     @background(schedule=0)
     def send_otp(self, otp, number):
+        sms_client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
         message = OTP_MESSAGE(otp)
-        response = self.send_sms(number=number, message=message)
+        response = sms_client.messages.create(
+            to=number,
+            from_=settings.TWILIO_NUMBER,
+            body=message
+        )
         return response
     
     @background(schedule=0)

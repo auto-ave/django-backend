@@ -1,5 +1,5 @@
 from booking.utils import check_event_collide
-from misc.email_contents import EMAIL_BOOKING_COMPLETE
+from misc.email_contents import EMAIL_BOOKING_COMPLETE, EMAIL_BOOKING_INITIATED
 from misc.notification_contents import NOTIFICATION_2_HOURS_LEFT, NOTIFICATION_BOOKING_COMPLETE
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
@@ -115,6 +115,11 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
         body = resp["body"]
+
+        if user.email:
+            CommunicationProvider.send_email(
+                **EMAIL_BOOKING_INITIATED(booking)
+            )
 
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
