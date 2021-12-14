@@ -54,17 +54,20 @@ class Booking(Model):
     @background(schedule=0)
     def booking_unattended_check(bookingid):
         # Cannot take self as an argument in background tasks, therefore used bookingid
-        booking = Booking.objects.get(booking_id=bookingid)
-        print('ho raha haiiiiii', booking, booking.status, BOOKING_STATUS_DICT.PAYMENT_DONE.value)
-        if booking.status == BOOKING_STATUS_DICT.PAYMENT_DONE.value:
-            booking.status = BOOKING_STATUS_DICT.NOT_ATTENDED.value
-            print('ho raha hai')
-            CommunicationProvider.send_notification(
-                **NOTIFICATION_SERVICE_UNATTENDED(booking),
-            )
-            booking.save()
-            return True
-        return False
+        print('Starting booking unattended check: ', booking, booking.status, BOOKING_STATUS_DICT.PAYMENT_DONE.value)
+        try:
+            booking = Booking.objects.get(booking_id=bookingid)
+            if booking.status == BOOKING_STATUS_DICT.PAYMENT_DONE.value:
+                booking.status = BOOKING_STATUS_DICT.NOT_ATTENDED.value
+                print('ho raha hai')
+                CommunicationProvider.send_notification(
+                    **NOTIFICATION_SERVICE_UNATTENDED(booking),
+                )
+                booking.save()
+                return True
+            return False
+        except Exception as e:
+            print("Error at Booking unattended check: ", e)
     
 
 
