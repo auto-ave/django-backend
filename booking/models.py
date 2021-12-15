@@ -1,4 +1,4 @@
-from misc.notification_contents import NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED
+from misc.notification_contents import NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETE
 from common.communication_provider import CommunicationProvider
 from cart.models import Cart
 from django.db import models
@@ -48,7 +48,7 @@ class Booking(Model):
         self.save()
         # Service complete notification
         CommunicationProvider.send_notification(
-            **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(self),
+            **NOTIFICATION_CONSUMER_SERVICE_COMPLETE(self),
         )
 
     @background(schedule=0)
