@@ -68,9 +68,14 @@ class User(AbstractUser):
     
     def register_fcm(self, token):
         user = self
-        device = FCMDevice.objects.filter(registration_id=token).first()
-        if not device:
-            device = FCMDevice.objects.create(user=user, registration_id=token)
+
+        # Delete every device related to that token
+        devices = FCMDevice.objects.filter(registration_id=token)
+        devices.delete()
+
+        # Register the token to the user
+        FCMDevice.objects.create(user=user, registration_id=token)    
+        
         # Registering user to user's stored topics
         for topic in user.notification_topics.all():
             device.handle_topic_subscription(True, topic=topic.code)
