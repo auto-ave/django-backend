@@ -12,7 +12,7 @@ MODI_IMAGES = [
 
 ]
 
-def NOTIFICATION_BOOKING_COMPLETE(booking):
+def NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event
@@ -23,7 +23,7 @@ def NOTIFICATION_BOOKING_COMPLETE(booking):
         'userid': booking.booked_by.user.id
     }
 
-def NOTIFICATION_BOOKING_CANCELLED(booking):
+def NOTIFICATION_CONSUMER_BOOKING_CANCELLED(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event
@@ -34,7 +34,7 @@ def NOTIFICATION_BOOKING_CANCELLED(booking):
         'userid': booking.booked_by.user.id
     }
 
-def NOTIFICATION_2_HOURS_LEFT(booking):
+def NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking):
     store = booking.store
     return {
         'title': '2 Hours to go!',
@@ -43,7 +43,7 @@ def NOTIFICATION_2_HOURS_LEFT(booking):
         'userid': booking.booked_by.user.id
     }
 
-def NOTIFICATION_SERVICE_STARTED(booking):
+def NOTIFICATION_CONSUMER_SERVICE_STARTED(booking):
     store = booking.store
     event = booking.event
     seconds = (event.end_datetime - event.start_datetime).seconds
@@ -54,7 +54,7 @@ def NOTIFICATION_SERVICE_STARTED(booking):
         'userid': booking.booked_by.user.id
     }
 
-def NOTIFICATION_SERVICE_COMPLETED(booking):
+def NOTIFICATION_CONSUMER_SERVICE_COMPLETED(booking):
     store = booking.store
     return {
         'title': 'You service at {} has been completed'.format(store.name),
@@ -63,11 +63,22 @@ def NOTIFICATION_SERVICE_COMPLETED(booking):
         'userid': booking.booked_by.user.id
     }
 
-def NOTIFICATION_SERVICE_UNATTENDED(booking):
+def NOTIFICATION_CONSUMER_SERVICE_UNATTENDED(booking):
     store = booking.store
     return {
         'title': 'Service Missed'.format(store.name),
         'body': 'No one appeared for your booking at {}. We hope that everything is fine and you are in good health.'.format(store.name),
         'image': 'https://media.millichronicle.com/2018/12/12121521/1432038380-1048.jpg',
         'userid': booking.booked_by.user.id
+    }
+
+def NOTIFICATION_OWNER_BOOKING_COMPLETE(booking):
+    store = booking.store
+    vehicle_model = booking.vehicle_model
+    event = booking.event
+    return {
+        'title': 'New booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
+        'body': 'Booking for {} {} on {} has been confirmed. # TODO: content'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
+        'image': random_item(MODI_IMAGES),
+        'userid': store.owner.user.id
     }

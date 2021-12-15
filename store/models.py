@@ -53,6 +53,12 @@ class Store(Model):
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
     
+    def has_owner(self):
+        if hasattr(self, owner):
+            return True
+        else:
+            return False
+    
     def updateRating(self, rating, isRemove = False):
         count = self.reviews.all().count()
 

@@ -1,4 +1,4 @@
-from misc.notification_contents import NOTIFICATION_BOOKING_COMPLETE, NOTIFICATION_SERVICE_UNATTENDED, NOTIFICATION_SERVICE_STARTED
+from misc.notification_contents import NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED
 from common.communication_provider import CommunicationProvider
 from cart.models import Cart
 from django.db import models
@@ -39,7 +39,7 @@ class Booking(Model):
         self.save()
         # Service start notification
         CommunicationProvider.send_notification(
-            **NOTIFICATION_SERVICE_STARTED(self),
+            **NOTIFICATION_CONSUMER_SERVICE_STARTED(self),
         )
     
     def complete_service(self):
@@ -48,7 +48,7 @@ class Booking(Model):
         self.save()
         # Service complete notification
         CommunicationProvider.send_notification(
-            **NOTIFICATION_BOOKING_COMPLETE(self),
+            **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(self),
         )
 
     @background(schedule=0)
@@ -61,7 +61,7 @@ class Booking(Model):
                 booking.status = BOOKING_STATUS_DICT.NOT_ATTENDED.value
                 print('ho raha hai')
                 CommunicationProvider.send_notification(
-                    **NOTIFICATION_SERVICE_UNATTENDED(booking),
+                    **NOTIFICATION_CONSUMER_SERVICE_UNATTENDED(booking),
                 )
                 booking.save()
                 return True

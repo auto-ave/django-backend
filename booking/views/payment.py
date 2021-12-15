@@ -1,6 +1,6 @@
 from booking.utils import check_event_collide
-from misc.email_contents import EMAIL_BOOKING_COMPLETE, EMAIL_BOOKING_INITIATED
-from misc.notification_contents import NOTIFICATION_2_HOURS_LEFT, NOTIFICATION_BOOKING_COMPLETE
+from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
@@ -118,7 +118,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         if user.email:
             CommunicationProvider.send_email(
-                **EMAIL_BOOKING_INITIATED(booking)
+                **EMAIL_CONSUMER_BOOKING_INITIATED(booking)
             )
 
         if body['resultInfo']['resultStatus'] == "S":
@@ -177,17 +177,28 @@ class PaymentCallbackView(views.APIView):
             if response_dict['RESPCODE'] == '01':
                 booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
                 
-                # Payment complete notification
+                # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
-                    **NOTIFICATION_BOOKING_COMPLETE(booking),
+                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking),
                 )
                 if user.email:
                     CommunicationProvider.send_email(
-                        **EMAIL_BOOKING_COMPLETE(booking)
+                        **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
                     )
+                
+                # Payment confirmation notification for Store Owner
+                if booking.has_owner():
+                    CommunicationProvider.send_notification(
+                        **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
+                    )
+                    if user.email:
+                        CommunicationProvider.send_email(
+                            **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+                        )
+
 
                 CommunicationProvider.send_notification(
-                    **NOTIFICATION_2_HOURS_LEFT(booking),
+                    **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
                     schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
 
@@ -200,6 +211,7 @@ class PaymentCallbackView(views.APIView):
             
             # clear cart
             user.consumer.cart.clear()
+
             booking.save()
             return response.Response(response_dict)  
         else:
