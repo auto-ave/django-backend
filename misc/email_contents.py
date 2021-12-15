@@ -25,7 +25,7 @@ def EMAIL_OWNER_BOOKING_COMPLETE(booking):
     vehicle_model = booking.vehicle_model
     event = booking.event
     return {
-        'email': store.owner.user.email,
+        'email': [store.owner.user.email, store.email],
         'subject': 'New booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
         'html_content': 'Booking for {} {} on {} has been confirmed. Be sure to reach the store on time.'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
         

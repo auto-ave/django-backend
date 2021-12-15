@@ -187,11 +187,12 @@ class PaymentCallbackView(views.APIView):
                     )
                 
                 # Payment confirmation notification for Store Owner
-                if booking.store.has_owner():
+                store = booking.store
+                if store.has_owner():
                     CommunicationProvider.send_notification(
                         **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
                     )
-                    if user.email:
+                    if store.email or store.owner.user.email:
                         CommunicationProvider.send_email(
                             **EMAIL_OWNER_BOOKING_COMPLETE(booking)
                         )
