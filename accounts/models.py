@@ -10,13 +10,19 @@ from cart.models import Cart
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(blank=True, null= True, unique= True)
 
     # TODO: something about the default value
     otp = models.CharField(max_length=4, default=0000)
 
     # True after first otp validation
     is_verified = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.email = self.email.lower().strip()
+        if self.email == "":
+            self.email = None
+        super(User, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
