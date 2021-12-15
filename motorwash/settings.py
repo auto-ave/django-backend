@@ -280,11 +280,11 @@ EMAIL_USE_SSL = True
 # Firebase Admin
 from firebase_admin import initialize_app
 from firebase_admin import credentials
-cred = credentials.Certificate("./motorwashapp-firebase-adminsdk.json")
+cred = credentials.Certificate("./autoave-global-firebase-adminsdk.json")
 FIREBASE_APP = initialize_app(cred)
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
-    "APP_VERBOSE_NAME": "Motorwash Notifications",
+    "APP_VERBOSE_NAME": "Autoave Notifications",
     "ONE_DEVICE_PER_USER": False,
     "DELETE_INACTIVE_DEVICES": False,
 }
