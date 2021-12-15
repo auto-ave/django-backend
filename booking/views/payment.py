@@ -116,11 +116,6 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
         body = resp["body"]
 
-        if user.email:
-            CommunicationProvider.send_email(
-                **EMAIL_CONSUMER_BOOKING_INITIATED(booking)
-            )
-
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
                 "mid": settings.PAYTM_MID,
