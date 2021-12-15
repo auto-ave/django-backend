@@ -1,6 +1,6 @@
 from booking.utils import check_event_collide
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
-from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
 from booking.static import BOOKING_STATUS_DICT
 from vehicle.models import VehicleType
@@ -72,6 +72,19 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             booking.price_times.add(item)
         # booking.price_times.set([cart.items.all()])
         # booking.save()
+
+
+        # Just testing notifis
+        # Payment confirmation notification for Store Owner
+        store = booking.store
+        if store.has_owner():
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
+            )
+            # if store.email or store.owner.user.email:
+            #     CommunicationProvider.send_email(
+            #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+            #     )
 
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id

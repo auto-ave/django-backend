@@ -82,3 +82,15 @@ def NOTIFICATION_OWNER_BOOKING_COMPLETE(booking):
         'image': random_item(MODI_IMAGES),
         'userid': store.owner.user.id
     }
+
+# Only created to test notifis
+def NOTIFICATION_OWNER_BOOKING_INITIATED(booking):
+    store = booking.store
+    vehicle_model = booking.vehicle_model
+    event = booking.event
+    return {
+        'title': 'Initiated booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
+        'body': 'Booking for {} {} on {} has been confirmed. # TODO: content'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
+        'image': random_item(MODI_IMAGES),
+        'userid': store.owner.user.id
+    }
