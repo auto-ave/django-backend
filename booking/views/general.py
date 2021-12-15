@@ -22,7 +22,7 @@ class BookingsListConsumer(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return user.consumer.bookings.all()
+        return user.consumer.bookings.all().order_by('-created_at')
             
 class BookingListOwner(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
