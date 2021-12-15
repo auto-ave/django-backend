@@ -187,7 +187,7 @@ class PaymentCallbackView(views.APIView):
                     )
                 
                 # Payment confirmation notification for Store Owner
-                if booking.has_owner():
+                if booking.store.has_owner():
                     CommunicationProvider.send_notification(
                         **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
                     )
