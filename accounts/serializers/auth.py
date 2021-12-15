@@ -15,4 +15,4 @@ class AppLogoutSerializer(serializers.Serializer):
 class CredentialLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(max_length=128)
-    token = serializers.CharField(required=False, blank=True, null=True)
+    token = serializers.CharField(required=False, allow_blank=True)
