@@ -17,3 +17,9 @@ PAYMENT_STATUS = (
     (2, 'Cancelled')
 )
 PAYMENT_STATUS_DICT = dict((v, k) for k, v in PAYMENT_STATUS)
+
+BOOKING_CANCEL_REASONS = [
+    "Man nhi hai",
+    "Not a bhakt, sorry",
+    "Ganda app banaya jisne bhi banaya, please fix it",
+]

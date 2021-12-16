@@ -130,3 +130,7 @@ class Slot(Model):
 
     def __str__(self):
         return "Slot #{}".format(self.id)
+
+class CancellationRequest(Model):
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="cancellation_requests")
+    reason = models.TextField()

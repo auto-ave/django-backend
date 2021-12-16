@@ -10,7 +10,7 @@ from cart.models import Cart
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
-    email = models.EmailField(blank=True, null= True, unique= True)
+    email = models.EmailField(blank=True, null= True, unique=True)
 
     # TODO: something about the default value
     otp = models.CharField(max_length=4, default=0000)
