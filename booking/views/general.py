@@ -1,6 +1,6 @@
 from common.utils import TODAY_END, TODAY_START
 from vehicle.models import VehicleModel
-from booking.static import BOOKING_STATUS_DICT
+from booking.static import BookingStatusSlug
 from common.mixins import ValidateSerializerMixin
 from rest_framework import generics, permissions, response
 from django.db.models import Q
@@ -30,7 +30,10 @@ class BookingListOwner(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) | Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value)).order_by('-status_changed_time')
+        return user.storeowner.store.bookings.filter(
+            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) ) | 
+            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED) )
+        ).order_by('-booking_status_changed_time')
 
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'
@@ -99,14 +102,19 @@ class OwnerRevenue(generics.GenericAPIView):
 
     def get(self, request):
         user = self.request.user
-        bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
+        bookings = user.storeowner.store.bookings.filter(
+            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) )
+        )
         revenue = 0.0
         today = datetime.datetime.today().date()
         begin_date = today.replace(day=1)
         delta = datetime.timedelta(days=1)
         revenue_response = {}
         while begin_date <= today:
-            day_bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) & Q(event__start_datetime__contains=begin_date))
+            day_bookings = user.storeowner.store.bookings.filter(
+                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) ) & 
+                Q( event__start_datetime__contains=begin_date )
+            )
             begin_date += delta
             for booking in day_bookings:
                 if hasattr(booking, "amount"):
@@ -124,7 +132,9 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
     def get(self, request):
         vehicles = {}
         user = self.request.user
-        bookings = user.storeowner.store.bookings.filter(Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value))
+        bookings = user.storeowner.store.bookings.filter(
+            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) )
+        )
         for booking in bookings:
             booking1 = BookingDetailSerializer(booking)
             vehicle_model = booking1["vehicle_model"]
@@ -144,8 +154,8 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
     def get(self, request):
         user = self.request.user
         queryset = user.storeowner.store.bookings.filter(
-            Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value)
-        ).order_by('-status_changed_time')
+            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) )
+        ).order_by('-booking_status_changed_time')
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
@@ -155,9 +165,12 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
         queryset = user.storeowner.store.bookings.filter(
-            (Q(status=BOOKING_STATUS_DICT.PAYMENT_DONE.value) | Q(status=BOOKING_STATUS_DICT.SERVICE_STARTED.value))
+            (
+                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) ) | 
+                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED) )
+            )
             & 
-            Q(event__start_datetime__contains=date.date())
+            Q( event__start_datetime__contains=date.date() )
         ).order_by('event__start_datetime')
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
@@ -170,10 +183,7 @@ class OwnerPastBookings(generics.ListAPIView):
         user = self.request.user
         return user.storeowner.store.bookings.filter(
             event__start_datetime__lt=datetime.datetime.today().date()
-        ).order_by('-status_changed_time')
-        return user.storeowner.store.bookings.filter(
-            Q(status=BOOKING_STATUS_DICT.SERVICE_COMPLETED.value) | Q(status=BOOKING_STATUS_DICT.NOT_ATTENDED.value)
-        ).order_by('-status_changed_time')
+        ).order_by('-booking_status_changed_time')
 
 
 class OwnerDayWiseCalender(generics.ListAPIView):

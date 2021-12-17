@@ -6,6 +6,8 @@ from .models import *
 
 import json
 
+admin.site.site_header = "AutoAve Backend Admin"
+
 class PrettyJSONWidget(widgets.Textarea):
 
     def format_value(self, value):

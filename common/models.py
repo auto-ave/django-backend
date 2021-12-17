@@ -55,7 +55,7 @@ class Coupon(Model):
     is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
-        self.code = self.code.upper()
+        self.code = self.code.lower()
         super(Coupon, self).save(*args, **kwargs)
 
     def __str__(self):

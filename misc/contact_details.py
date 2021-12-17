@@ -1,1 +1,1 @@
-CONTACT_EMAIL = "info@autoave.in"
+CONTACT_EMAIL = "care@autoave.in"

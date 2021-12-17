@@ -2,7 +2,7 @@ from booking.utils import check_event_collide
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
-from booking.static import BOOKING_STATUS_DICT
+from booking.static import BookingStatusSlug
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.serializers.payment import InitiateTransactionSerializer
@@ -11,7 +11,7 @@ from django.conf import settings
 from common.mixins import ValidateSerializerMixin
 
 from store.models import Bay, Event
-from booking.models import Booking, Payment
+from booking.models import Booking, BookingStatus, Payment
 from common.permissions import IsConsumer
 
 from paytmchecksum import PaytmChecksum
@@ -62,7 +62,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             booking_id=randomUUID(),
             booked_by = user.consumer,
             store = bay.store,
-            status = BOOKING_STATUS_DICT.NOT_PAID.value,
+            booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
             event = event,
             amount = cart.total,
             vehicle_model = cart.vehicle_model,
@@ -183,7 +183,8 @@ class PaymentCallbackView(views.APIView):
 
         if verify:
             if response_dict['RESPCODE'] == '01':
-                booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
+                booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+                booking.booking_status_changed_time = datetime.datetime.now()
                 
                 # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
@@ -215,7 +216,8 @@ class PaymentCallbackView(views.APIView):
 
                 print('order successful')
             else:
-                booking.status = BOOKING_STATUS_DICT.PAYMENT_FAILED.value
+                booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+                booking.booking_status_changed_time = datetime.datetime.now()
                 print('order was not successful because' + response_dict['RESPMSG'])
             
             # clear cart

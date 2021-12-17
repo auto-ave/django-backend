@@ -72,6 +72,14 @@ def NOTIFICATION_CONSUMER_SERVICE_UNATTENDED(booking):
         'userid': booking.booked_by.user.id
     }
 
+def NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED(booking):
+    return {
+        'title': 'Cancellation Request Approved',
+        'body': 'Your cancellation request for booking ID #{} has been approved. A refund of ₹{} has been initiated towards your original payment method. Feel free to contact us at {} if you have any queries.'.format(booking.booking_id, booking.amount, CONTACT_EMAIL),
+        'image': random_item(MODI_IMAGES),
+        'userid': booking.booked_by.user.id
+    }
+
 def NOTIFICATION_OWNER_BOOKING_COMPLETE(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
