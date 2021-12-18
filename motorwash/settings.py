@@ -167,22 +167,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Logging
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': '/var/log/app-logs/django.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
+	"version": 1,
+	"disable_existing_loggers": False,
+	"formatters": {
+		"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
+	},
+	"handlers": {
+		"analyzer": {
+			"level": "DEBUG",
+			"class": "logging.FileHandler",
+			"filename": "/opt/python/log/django.log",
+			"formatter": "verbose",
+		}
+	},
+	"loggers": {
+		"analyzer": {
+            "handlers": ["analyzer"],
+            "level": "DEBUG", 
+            "propagate": True
+        }
+	},
 }
 
 # Django Rest Framework
