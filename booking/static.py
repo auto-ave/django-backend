@@ -31,3 +31,5 @@ BOOKING_CANCEL_REASONS = [
     "Not a bhakt, sorry",
     "Ganda app banaya jisne bhi banaya, please fix it",
 ]
+
+BOOKING_CANCEL_PRIOR_HOURS = 12

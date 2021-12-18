@@ -1,9 +1,10 @@
+from booking.static import BookingStatusSlug
 from common.utils import timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
 from common.mixins import ValidateSerializerMixin
-from booking.models import Slot
+from booking.models import BookingStatus, Slot
 from cart.models import Cart
 from store.models import Event
 from common.permissions import IsConsumer
@@ -91,11 +92,11 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             # Update slot times
             slot_start_time = add_mins_to_time(slot_start_time, total_time)
             slot_end_time = add_mins_to_time(slot_end_time, total_time)
-
+        
         for bay in bays:
             events = bay.events.filter(start_datetime__gte=convert_date_to_datetime(date), end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1)))
             for event in events:
-                if hasattr(event, 'booking') and event.booking.status == 0:
+                if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
                     continue
                 # print('event: ', event)
                 event_start_time = event.start_datetime.time()

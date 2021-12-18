@@ -34,8 +34,8 @@ class Booking(Model):
     
     # Breaking change
     booking_status = models.ForeignKey(BookingStatus, on_delete=models.PROTECT, related_name='bookings')
-    
     booking_status_changed_time = models.DateTimeField(default=datetime.datetime.now)
+    
     otp = models.CharField(max_length=4)
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
     event = models.OneToOneField(Event, on_delete=models.PROTECT, null=True, blank=True)

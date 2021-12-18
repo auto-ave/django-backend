@@ -1,5 +1,5 @@
 # pylint: disable=unused-import
-from booking.utils import check_event_collide
+from booking.utils import check_event_collide, generate_booking_id, get_amount_after_commission
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
@@ -22,11 +22,11 @@ import json, requests, datetime, uuid
 class PaymentChoices(generics.GenericAPIView):
     permission_classes = (IsConsumer,)
     
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         user = request.user
         cart = user.consumer.get_cart()
         total_amount = cart.total
-        commission = get_commission_percentage(total_amount)
+        
         payment_choices = [
             {
                 "type": "FULL",
@@ -40,7 +40,7 @@ class PaymentChoices(generics.GenericAPIView):
                 "title": "Pay Partially",
                 "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
                 "active": True,
-                "amount": float(total_amount) * commission
+                "amount": get_amount_after_commission(total_amount)
             }
         ]
         return response.Response(payment_choices)
@@ -86,7 +86,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         )
 
         booking = Booking.objects.create(
-            booking_id=randomUUID(),
+            booking_id = generate_booking_id(),
             booked_by = user.consumer,
             store = bay.store,
             booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
@@ -115,7 +115,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
-        AMOUNT = str(cart.total)
+        PAYMENT_AMOUNT = str(get_amount_after_commission(cart.total))
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
@@ -127,7 +127,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "orderId": ORDER_ID,
             "callbackUrl": CALLBACK_URL,
             "txnAmount": {
-                "value": AMOUNT,
+                "value": PAYMENT_AMOUNT,
                 "currency": settings.PAYTM_CURRENCY,
             },
             "userInfo": {
@@ -160,7 +160,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "mid": settings.PAYTM_MID,
                 "order_id": ORDER_ID,
-                "amount": AMOUNT,
+                "amount": PAYMENT_AMOUNT,
                 "callback_url": CALLBACK_URL,
                 "txn_token": body['txnToken']
             })
