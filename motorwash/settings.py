@@ -167,13 +167,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Logging
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
-LOG_FILE_PATH = os.getenv('LOG_FILE_PATH')
+LOG_FILE_PATH = os.getenv('LOG_FILE_PATH', 'logs/django.log')
 LOGGING = {
 	"version": 1,
 	"disable_existing_loggers": False,
-	"formatters": {
-		"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
-	},
+	# "formatters": {
+	# 	"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
+	# },
 	"handlers": {
 		"file": {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -189,10 +189,10 @@ LOGGING = {
             "handlers": ["file"],
             "level": LOG_LEVEL, 
         },
-        "autoave": {
-            "handlers": ["file"],
-            "level": LOG_LEVEL, 
-        }
+        # "autoave": {
+        #     "handlers": ["file"],
+        #     "level": LOG_LEVEL, 
+        # }
 	},
 }
 
