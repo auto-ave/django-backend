@@ -25,7 +25,7 @@ class PaymentChoices(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         user = request.user
         cart = user.consumer.get_cart()
-        total_amount = cart.total
+        total_amount = float(cart.total)
         commission_amount = get_commission_amount(total_amount)
         
         payment_choices = [
@@ -118,6 +118,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
+        # Added commission amount coz currently we only using partial payment
         PAYMENT_AMOUNT = str(get_commission_amount(cart.total))
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
