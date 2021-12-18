@@ -26,6 +26,7 @@ class PaymentChoices(generics.GenericAPIView):
         user = request.user
         cart = user.consumer.get_cart()
         total_amount = cart.total
+        commission_amount = get_commission_amount(total_amount)
         
         payment_choices = [
             {
@@ -33,14 +34,16 @@ class PaymentChoices(generics.GenericAPIView):
                 "title": "Pay in Full",
                 "description": "Pay the full amount right now and book the service",
                 "active": False,
-                "amount": total_amount
+                "amount": total_amount,
+                "remaining_amount": 0
             },
             {
                 "type": "PARTIAL",
                 "title": "Pay Partially",
                 "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
                 "active": True,
-                "amount": get_commission_amount(total_amount)
+                "amount": commission_amount,
+                "remaining_amount": total_amount - commission_amount
             }
         ]
         return response.Response(payment_choices)
