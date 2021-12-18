@@ -166,7 +166,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Logging
-LOG_LEVEL = os.getenv('LOG_FILE_PATH')
+LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
+LOG_FILE_PATH = os.getenv('LOG_FILE_PATH')
 LOGGING = {
 	"version": 1,
 	"disable_existing_loggers": False,
@@ -176,7 +177,7 @@ LOGGING = {
 	"handlers": {
 		"file": {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': LOG_LEVEL,
+            'filename': LOG_FILE_PATH,
             'when': 'midnight',
             'interval': 1,
             'backupCount': 1,
