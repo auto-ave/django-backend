@@ -1,3 +1,4 @@
+# pylint: disable=unused-import
 from booking.utils import check_event_collide
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
@@ -5,6 +6,7 @@ from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
+from booking.utils import get_commission_percentage
 from booking.serializers.payment import InitiateTransactionSerializer
 from rest_framework import generics, permissions, response,views
 from django.conf import settings
@@ -17,6 +19,31 @@ from common.permissions import IsConsumer
 from paytmchecksum import PaytmChecksum
 import json, requests, datetime, uuid
 
+class PaymentChoices(generics.GenericAPIView):
+    permission_classes = (IsConsumer,)
+    
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        cart = user.consumer.get_cart()
+        total_amount = cart.total
+        commission = get_commission_percentage(total_amount)
+        payment_choices = [
+            {
+                "type": "FULL",
+                "title": "Pay in Full",
+                "description": "Pay the full amount right now and book the service",
+                "active": False,
+                "amount": total_amount
+            },
+            {
+                "type": "PARTIAL",
+                "title": "Pay Partially",
+                "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
+                "active": True,
+                "amount": float(total_amount) * commission
+            }
+        ]
+        return response.Response(payment_choices)
 
 
 class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):

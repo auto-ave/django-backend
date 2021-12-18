@@ -1,5 +1,6 @@
+# pylint: disable=no-member
 from misc.email_contents import EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED
-from misc.notification_contents import NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
+from misc.notification_contents import NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
 from common.communication_provider import CommunicationProvider
 from cart.models import Cart
 from django.db import models
@@ -85,7 +86,7 @@ class Booking(Model):
             return False
         except Exception as e:
             print("Error at Booking unattended check: ", e)
-    
+   
     def approve_cancellation_request(self):
         print("Approving cancellation request")
         self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_APPROVED)

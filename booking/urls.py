@@ -12,7 +12,8 @@ urlpatterns = [
     
 
     path('slots/create', slots.SlotCreate.as_view()),
-
+    
+    path('payment/choices/', payment.PaymentChoices.as_view()),
     path('payment/initiate/', payment.InitiateTransactionView.as_view()),
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
 
