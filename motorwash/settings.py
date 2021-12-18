@@ -166,6 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Logging
+LOG_LEVEL = os.getenv('LOG_FILE_PATH')
 LOGGING = {
 	"version": 1,
 	"disable_existing_loggers": False,
@@ -173,18 +174,23 @@ LOGGING = {
 		"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
 	},
 	"handlers": {
-		"analyzer": {
-			"level": "DEBUG",
-			"class": "logging.FileHandler",
-			"filename": "/opt/rh/django.log",
-			"formatter": "verbose",
-		}
+		"file": {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': LOG_LEVEL,
+            'when': 'midnight',
+            'interval': 1,
+            'backupCount': 1,
+            'encoding': 'utf-8'
+        }
 	},
 	"loggers": {
-		"analyzer": {
-            "handlers": ["analyzer"],
-            "level": "DEBUG", 
-            "propagate": True
+		"django": {
+            "handlers": ["file"],
+            "level": LOG_LEVEL, 
+        },
+        "autoave": {
+            "handlers": ["file"],
+            "level": LOG_LEVEL, 
         }
 	},
 }
