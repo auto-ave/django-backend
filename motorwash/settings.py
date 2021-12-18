@@ -168,33 +168,33 @@ AUTH_PASSWORD_VALIDATORS = [
 # Logging
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 LOG_FILE_PATH = os.getenv('LOG_FILE_PATH', 'logs/django.log')
-LOGGING = {
-	"version": 1,
-	"disable_existing_loggers": False,
-	# "formatters": {
-	# 	"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
-	# },
-	"handlers": {
-		"file": {
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': LOG_FILE_PATH,
-            'when': 'midnight',
-            'interval': 1,
-            'backupCount': 1,
-            'encoding': 'utf-8'
-        }
-	},
-	"loggers": {
-		"django": {
-            "handlers": ["file"],
-            "level": LOG_LEVEL, 
-        },
-        # "autoave": {
-        #     "handlers": ["file"],
-        #     "level": LOG_LEVEL, 
-        # }
-	},
-}
+# LOGGING = {
+# 	"version": 1,
+# 	"disable_existing_loggers": False,
+# 	# "formatters": {
+# 	# 	"verbose": {"format": "%(asctime)s %(levelname)s %(module)s: %(message)s"}
+# 	# },
+# 	"handlers": {
+# 		"file": {
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': LOG_FILE_PATH,
+#             'when': 'midnight',
+#             'interval': 1,
+#             'backupCount': 1,
+#             'encoding': 'utf-8'
+#         }
+# 	},
+# 	"loggers": {
+# 		"django": {
+#             "handlers": ["file"],
+#             "level": LOG_LEVEL, 
+#         },
+#         # "autoave": {
+#         #     "handlers": ["file"],
+#         #     "level": LOG_LEVEL, 
+#         # }
+# 	},
+# }
 
 # Django Rest Framework
 REST_FRAMEWORK = {
