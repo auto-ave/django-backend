@@ -2,7 +2,6 @@ from rest_framework import permissions, generics, response
 from booking.serializers.cancel import BookingCancelSerializer
 from booking.static import BOOKING_CANCEL_PRIOR_HOURS, BOOKING_CANCEL_REASONS, BookingStatusSlug
 from booking.models import Booking, BookingStatus, CancellationRequest
-from booking.utils import get_amount_after_commission, get_commission_percentage
 from common.mixins import ValidateSerializerMixin
 from common.permissions import IsConsumer
 from misc.contact_details import CONTACT_EMAIL

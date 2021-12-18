@@ -1,5 +1,5 @@
 # pylint: disable=unused-import
-from booking.utils import check_event_collide, generate_booking_id, get_amount_after_commission
+from booking.utils import check_event_collide, generate_booking_id, get_commission_amount
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
@@ -40,7 +40,7 @@ class PaymentChoices(generics.GenericAPIView):
                 "title": "Pay Partially",
                 "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
                 "active": True,
-                "amount": get_amount_after_commission(total_amount)
+                "amount": get_commission_amount(total_amount)
             }
         ]
         return response.Response(payment_choices)
@@ -115,7 +115,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
-        PAYMENT_AMOUNT = str(get_amount_after_commission(cart.total))
+        PAYMENT_AMOUNT = str(get_commission_amount(cart.total))
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
