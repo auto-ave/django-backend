@@ -57,7 +57,6 @@ class Cart(Model):
     
     def removeItem(self, item):
         self.items.remove(item)
-        print('items after removing: ', len(self.items))
         if not len(self.items):
             self.vehicle_model = None
         self.save()
