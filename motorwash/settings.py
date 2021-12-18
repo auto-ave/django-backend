@@ -176,7 +176,7 @@ LOGGING = {
 		"analyzer": {
 			"level": "DEBUG",
 			"class": "logging.FileHandler",
-			"filename": "/opt/rh/log/django.log",
+			"filename": "/opt/rh/django.log",
 			"formatter": "verbose",
 		}
 	},
