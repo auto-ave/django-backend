@@ -74,7 +74,7 @@ class User(AbstractUser):
         devices.delete()
 
         # Register the token to the user
-        FCMDevice.objects.create(user=user, registration_id=token)    
+        device = FCMDevice.objects.create(user=user, registration_id=token)    
         
         # Registering user to user's stored topics
         for topic in user.notification_topics.all():
