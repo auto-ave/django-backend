@@ -30,19 +30,24 @@ class BookingCancelData(generics.GenericAPIView):
                 "error": "Invalid Booking status to cancel a booking, check if payment is completed. Please feel free to contact us at {} for any further queries.".format(CONTACT_EMAIL)
             })
         
+        payment_amount = float(booking.payment.amount)
         current_time = datetime.datetime.now()
         
         is_refundable = False
         refund_amount = 0
+        charged_amount = payment_amount
         
         if current_time + datetime.timedelta(hours=BOOKING_CANCEL_PRIOR_HOURS) <= booking.event.start_datetime :
+            # Booking is within the refundable period
             is_refundable = True
-            refund_amount = float(booking.payment.amount) # Full refund as currently we only supporting partial payment
+            refund_amount = payment_amount # Full refund as currently we only supporting partial payment
+            charged_amount = 0
         
         reasons = BOOKING_CANCEL_REASONS
         return response.Response({
             "reasons": reasons,
             "refund_amount": refund_amount,
+            "charged_amount": charged_amount,
             "is_refundable": is_refundable,
         })
 
