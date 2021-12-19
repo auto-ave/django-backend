@@ -37,7 +37,7 @@ class BookingCancelData(generics.GenericAPIView):
         
         if current_time + datetime.timedelta(hours=BOOKING_CANCEL_PRIOR_HOURS) <= booking.event.start_datetime :
             is_refundable = True
-            refund_amount = booking.payment.amount # Full refund as currently we only supporting partial payment
+            refund_amount = float(booking.payment.amount) # Full refund as currently we only supporting partial payment
         
         reasons = BOOKING_CANCEL_REASONS
         return response.Response({
