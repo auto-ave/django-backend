@@ -67,7 +67,7 @@ class BookingCancel(generics.GenericAPIView, ValidateSerializerMixin):
                 "error": "Cancellation Request has already been submitted for this booking, please feel free to contact us at {} for any further queries.".format(CONTACT_EMAIL)
             })
         
-        if booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS):
+        if booking.booking_status != BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS):
             return response.Response({
                 "error": "Invalid Booking status to cancel a booking, , please feel free to contact us at {} for any further queries.".format(CONTACT_EMAIL)
             })
