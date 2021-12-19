@@ -14,6 +14,7 @@ class PaymentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class BookingListSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     price_times = serializers.SerializerMethodField()
     amount = serializers.SerializerMethodField()
     review = serializers.SerializerMethodField()
@@ -23,6 +24,9 @@ class BookingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = "__all__"
+    
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
     
     def get_price_times(self, obj):
         price_times = []
@@ -48,6 +52,7 @@ class BookingListSerializer(serializers.ModelSerializer):
 
 
 class BookingListOwnerSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     booked_by = serializers.SerializerMethodField()
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
@@ -57,6 +62,9 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = "__all__"
+    
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
     
     def get_amount(self, obj):
         return obj.payment.amount
@@ -78,6 +86,7 @@ class NewBookingListOwnerSerializer(serializers.Serializer):
 
 
 class BookingDetailSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
     event = EventSerializer()
@@ -92,6 +101,9 @@ class BookingDetailSerializer(serializers.ModelSerializer):
         if hasattr(obj, 'review'):
             return ReviewSerializer(obj.review).data
         return None
+
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
 
 class BookingStartSerializer(serializers.Serializer):
     booking_id = serializers.CharField()

@@ -51,6 +51,9 @@ class Booking(Model):
             self.otp = otp_generator()
         super(Booking, self).save(*args, **kwargs)
     
+    def get_booking_status_display(self):
+        return self.booking_status.slug
+    
     def start_service(self):
         self.booking_status = BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED)
         self.booking_status_changed_time = datetime.datetime.now()
