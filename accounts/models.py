@@ -19,7 +19,8 @@ class User(AbstractUser):
     is_verified = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        self.email = self.email.lower().strip()
+        if self.email:
+            self.email = self.email.lower().strip()
         if self.email == "":
             self.email = None
         super(User, self).save(*args, **kwargs)
