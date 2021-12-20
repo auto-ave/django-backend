@@ -177,3 +177,17 @@ class CancellationRequest(Model):
     
     def __str__(self) -> str:
         return "{} - {}".format(self.booking, self.reason)
+
+
+class Coupon(Model):
+    code = models.CharField(max_length=20, unique=True)
+    discount = models.IntegerField()
+    description = models.TextField()
+    is_active = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        self.code = self.code.lower()
+        super(Coupon, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.code

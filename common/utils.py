@@ -93,6 +93,15 @@ def timeStringToTime(timeString):
     else:
         return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
 
+def timeStringToTime(timeString):
+    if len(timeString) == 5:
+        return datetime.datetime.strptime(timeString, '%H:%M').time()
+    else:
+        return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
+
+def combineDateAndTime(date, time):
+    return datetime.datetime.combine(date, time)
+
 def dateAndTimeStringsToDateTime(date, time):
     return datetime.datetime.strptime('{} {}'.format(date, time), '%Y-%m-%d %H:%M:%S')
 

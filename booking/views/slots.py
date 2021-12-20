@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import timeStringToTime
+from common.utils import combineDateAndTime, timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -22,6 +22,10 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             full_datetime = datetime.datetime.combine(dummy_date, timeval)
             added_datetime = full_datetime + datetime.timedelta(minutes=mins_to_add)
             return added_datetime.time()
+
+        def add_mins_to_date_time(date_time, mins_to_add):
+            added_datetime = date_time + datetime.timedelta(minutes=mins_to_add)
+            return added_datetime
         
         def convert_date_to_datetime(date):
             dummy_time = datetime.time(0, 0)
@@ -59,7 +63,9 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             }, status=status.HTTP_400_BAD_REQUEST)
         
         store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
+        store_opening_time = combineDateAndTime(date, store_opening_time)
         store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
+        store_closing_time  = combineDateAndTime(date, store_closing_time)
 
         if not cart.is_valid():
             return response.Response({
@@ -68,8 +74,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
         total_time = int(cart.total_time())
         print('total time: ', total_time)
-        print('store opening time: ', store_opening_time, add_mins_to_time(store_opening_time, total_time))
-        print('store ending time: ', store_closing_time, add_mins_to_time(store_closing_time, total_time))
+        print('store opening time: ', store_opening_time, add_mins_to_date_time(store_opening_time, total_time))
+        print('store ending time: ', store_closing_time, add_mins_to_date_time(store_closing_time, total_time))
 
         bays = store.bays.all()
         bays_count = bays.count()
@@ -80,31 +86,37 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # print('initial slots: ', final_slots)
 
         # Reset slot times
-        slot_start_time =  rounded_to_the_last_30th_minute_epoch().time() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
-        slot_end_time = add_mins_to_time(slot_start_time, total_time)
-        # print('initial slotsss----> ', slot_start_time, slot_end_time)
+        slot_start_time =  rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
+        slot_start_time = store_opening_time
+        slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
+        print('close time to epoch: ', rounded_to_the_last_30th_minute_epoch())
+        print('initial slotsss----> ', slot_start_time, slot_end_time)
+        print(type(slot_end_time))
 
         while(slot_end_time < store_closing_time):
+            # print(slot_end_time, store_closing_time)
             string = '{} to {}'.format(slot_start_time, slot_end_time)
+            # print(string)
             # final_slots[string] = final_slots[string]
             final_slots[string] = [ bay.id for bay in bays ]
             
             # Update slot times
-            slot_start_time = add_mins_to_time(slot_start_time, total_time)
-            slot_end_time = add_mins_to_time(slot_end_time, total_time)
+            slot_start_time = add_mins_to_date_time(slot_start_time, total_time)
+            slot_end_time = add_mins_to_date_time(slot_end_time, total_time)
         
+        print('pehla while loop khatam')
         for bay in bays:
             events = bay.events.filter(start_datetime__gte=convert_date_to_datetime(date), end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1)))
             for event in events:
                 if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
                     continue
                 # print('event: ', event)
-                event_start_time = event.start_datetime.time()
-                event_end_time = event.end_datetime.time()
+                event_start_time = event.start_datetime
+                event_end_time = event.end_datetime
 
                 # Reset slot times
-                slot_start_time = rounded_to_the_last_30th_minute_epoch().time() if is_today else store_opening_time
-                slot_end_time = add_mins_to_time(slot_start_time, total_time)
+                slot_start_time = rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time
+                slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
                 # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
                 while(slot_end_time < store_closing_time):
@@ -119,8 +131,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     #     final_slots[string] = final_slots[string]
                     
                     # Update slot times
-                    slot_start_time = add_mins_to_time(slot_start_time, total_time)
-                    slot_end_time = add_mins_to_time(slot_end_time, total_time)
+                    slot_start_time = add_mins_to_date_time(slot_start_time, total_time)
+                    slot_end_time = add_mins_to_date_time(slot_end_time, total_time)
         
         count = 1
         final_response = []
