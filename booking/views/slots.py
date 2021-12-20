@@ -86,8 +86,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # print('initial slots: ', final_slots)
 
         # Reset slot times
+        print("is today: ", is_today)
         slot_start_time =  rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
-        slot_start_time = store_opening_time
         slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
         print('close time to epoch: ', rounded_to_the_last_30th_minute_epoch())
         print('initial slotsss----> ', slot_start_time, slot_end_time)
