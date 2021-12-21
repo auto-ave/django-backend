@@ -11,6 +11,3 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         fields = "__all__"
-
-class CouponVerifySerializer(serializers.Serializer):
-    code = serializers.CharField(max_length=100)

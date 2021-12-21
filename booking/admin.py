@@ -44,3 +44,11 @@ class CancellationRequestAdmin(admin.ModelAdmin):
     )
     list_filter = ('reason',)
     actions = (approve_cancellation,)
+
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = (
+        'code', 'title', 'is_active', 'discount_percentage'
+    )
+    list_filter = ( 'is_active', 'valid_from', 'valid_to')
+    search_fields = ('code', 'title', 'description')

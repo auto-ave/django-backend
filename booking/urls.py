@@ -1,5 +1,5 @@
 from django.urls import path
-from booking.views import review, general, slots, payment, cancel
+from booking.views import coupon, review, general, slots, payment, cancel
 
 urlpatterns = [
     path('review/', review.ReviewListCreate.as_view()),
@@ -26,4 +26,7 @@ urlpatterns = [
     path('store-owner/past/bookings/', general.OwnerPastBookings.as_view()),
     path('store-owner/store/vehicles/', general.OwnerStoreVehicleTypes.as_view()),
     path('store-owner/calender/', general.OwnerDayWiseCalender.as_view()),
+    
+    path('coupon/list/', coupon.CouponListView.as_view()),
+    path('coupon/apply/', coupon.CouponApplyView.as_view()),
 ]
