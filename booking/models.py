@@ -40,7 +40,6 @@ class Booking(Model):
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
     event = models.OneToOneField(Event, on_delete=models.PROTECT, null=True, blank=True)
     vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.PROTECT, related_name='bookings', null=True)
-    is_refunded = models.BooleanField(default=False)
     # invoice (File Field: To be completed by subodh)
 
     def __str__(self):

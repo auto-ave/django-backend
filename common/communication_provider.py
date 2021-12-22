@@ -16,7 +16,7 @@ def OTP_MESSAGE(otp):
 class CommunicationProvider:
 
     @background(schedule=0)
-    def send_email(email, subject, html_content):
+    def send_email(email, subject="", html_content="", dynamic_template_data=None, template_id=None):
         sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
 
         message = Mail(
@@ -25,9 +25,17 @@ class CommunicationProvider:
             subject=subject,
             html_content=html_content
         )
+        
+        if template_id and dynamic_template_data:
+            message.template_id = template_id
+            message.dynamic_template_data = dynamic_template_data
+        
+        print(message.get())
         response = sendgrid_client.send(message)
         print("sendgrid response status code: ", response.status_code)
         print(response.body)
+    
+    
     
     @background(schedule=0)
     def send_otp(self, otp, number):

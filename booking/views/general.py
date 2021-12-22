@@ -30,10 +30,11 @@ class BookingListOwner(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
+        return user.storeowner.store.bookings.all()
         return user.storeowner.store.bookings.filter(
             Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) ) | 
             Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED) )
-        ).order_by('-booking_status_changed_time')
+        )#.order_by('-booking_status_changed_time')
 
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'
