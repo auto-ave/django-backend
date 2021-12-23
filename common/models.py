@@ -26,7 +26,7 @@ class City(Model):
         super(City, self).save(*args, **kwargs)
 
     def __str__(self):
-        return '{} : {}'.format(self.code, self.name)
+        return self.name
     
     class Meta:
         verbose_name_plural = 'Cities'

@@ -33,9 +33,13 @@ class JsonAdmin(admin.ModelAdmin):
 from common.models import City, Service
 from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
-admin.site.register(City)
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ( 'code', 'name', 'latitude', 'longitude', 'upcoming',)
+    list_filter = ( 'upcoming', )
+    search_fields = ( 'code', 'name' )
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin , DynamicArrayMixin):
-    pass
-    # readonly_fields = ("supported_vehicle_types", )
+    list_display = ( 'slug', 'name' )
+    search_fields = ( 'slug', 'name' )
