@@ -24,8 +24,6 @@ class BookingStatus(Model):
     def __str__(self):
         return self.slug
 
-BookingStatus.__doc__ = "sdfasfd"
-
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
     booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
@@ -54,7 +52,7 @@ class Booking(Model):
         return self.booking_status.slug
     
     def start_service(self):
-        self.booking_status = BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED)
+        self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_STARTED)
         self.booking_status_changed_time = datetime.datetime.now()
         self.save()
         # Service start notification
@@ -63,7 +61,7 @@ class Booking(Model):
         )
     
     def complete_service(self):
-        self.booking_status = BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED)
+        self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED)
         self.booking_status_changed_time = datetime.datetime.now()
         self.save()
         # Service complete notification
@@ -77,8 +75,8 @@ class Booking(Model):
         booking = Booking.objects.get(booking_id=bookingid)
         print('Starting booking unattended check: ', booking, booking.status)
         try:
-            if booking.booking_status == BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS):
-                booking.booking_status = BookingStatus.objects.get(BookingStatusSlug.NOT_ATTENDED)
+            if booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS):
+                booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.NOT_ATTENDED)
                 booking.booking_status_changed_time = datetime.datetime.now()
                 CommunicationProvider.send_notification(
                     **NOTIFICATION_CONSUMER_SERVICE_UNATTENDED(booking),
