@@ -17,7 +17,7 @@ urlpatterns = [
     path('payment/initiate/', payment.InitiateTransactionView.as_view()),
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
 
-    path('owner/booking/list/', general.BookingListOwner.as_view()),
+    path('owner/bookings/today/', general.OwnerTodayBookingList.as_view()),
     path('owner/service/start/', general.OwnerBookingStart.as_view()),
     path('owner/service/complete/', general.OwnerBookingComplete.as_view()),
     

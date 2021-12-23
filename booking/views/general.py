@@ -1,4 +1,4 @@
-from common.utils import TODAY_END, TODAY_START
+from common.utils import DATETIME_NOW, DATETIME_TODAY_END, DATETIME_TODAY_START
 from vehicle.models import VehicleModel
 from booking.static import BookingStatusSlug
 from common.mixins import ValidateSerializerMixin
@@ -24,16 +24,20 @@ class BookingsListConsumer(generics.ListAPIView):
         user = self.request.user
         return user.consumer.bookings.all().order_by('-created_at')
             
-class BookingListOwner(generics.ListAPIView):
+class OwnerTodayBookingList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = BookingListOwnerSerializer
 
     def get_queryset(self):
         user = self.request.user
-        return user.storeowner.store.bookings.all()
+        
+        success_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+        service_started_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_STARTED)
+        
         return user.storeowner.store.bookings.filter(
-            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) ) | 
-            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED) )
+            ( Q( event__start_datetime__contains=DATETIME_NOW.date() ))
+            &
+            ( Q( booking_status=success_status ) | Q( booking_status=service_started_status ) )
         )#.order_by('-booking_status_changed_time')
 
 class BookingDetail(generics.RetrieveAPIView):
@@ -198,8 +202,8 @@ class OwnerDayWiseCalender(generics.ListAPIView):
         bays = store.bays.all()
         for bay in bays:
             events.extend(bay.events.filter(
-            start_datetime__gte=TODAY_START,
-            end_datetime__lte=TODAY_END
+            start_datetime__gte=DATETIME_TODAY_START,
+            end_datetime__lte=DATETIME_TODAY_END
         ).order_by('start_datetime'))
         return events
         
