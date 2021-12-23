@@ -23,7 +23,14 @@ class HiddenFieldsAdmin(admin.ModelAdmin):
             return ('booked_by', 'store')
         return self.readonly_fields
 
-admin.site.register(Booking, HiddenFieldsAdmin)
+@admin.register(Booking)
+class Booking(HiddenFieldsAdmin):
+    list_display = (
+        'booking_id', 'store', 'booking_status', 'amount', 'vehicle_model'
+    )
+    list_filter = ( 'store', 'booking_status')
+    search_fields = ('booking_id', 'store__name', 'booking_status__slug', 'vehicle_model__model', 'vehicle_model__brand__name')
+
 admin.site.register(BookingStatus)
 admin.site.register(Payment)
 admin.site.register(Refund)
