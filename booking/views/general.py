@@ -53,7 +53,7 @@ class OwnerTodayBookingsList(generics.ListAPIView):
             ( Q( event__start_datetime__contains=DATETIME_NOW.date() ))
             &
             ( Q( booking_status=success_status ) | Q( booking_status=service_started_status ) )
-        )#.order_by('-booking_status_changed_time')
+        ).order_by('event.start_datetime')
 
 class OwnerPastBookingsList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
@@ -74,6 +74,34 @@ class OwnerPastBookingsList(generics.ListAPIView):
                 ~Q( booking_status=initiated_status ) & ~Q( booking_status=payment_failed_status )
             )
         ).order_by('-booking_status_changed_time')
+
+class OwnerUpcomingBookingsList(generics.ListAPIView):
+   
+    permission_classes = (IsStoreOwner, )
+    serializer_class = BookingListOwnerSerializer
+    
+    def get(self, request, *args, **kwargs):
+        """
+        NOTE - Provide 'date' in query parameters
+        """
+        return self.list(request, *args, **kwargs)
+    
+    def get_queryset(self):
+        user = self.request.user
+        
+        date = self.request.GET.get('date')
+        if not date:
+            date = DATETIME_NOW
+        else:
+            date = datetime.datetime.strptime(date, '%Y-%m-%d')
+
+        payment_success_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+        
+        return user.storeowner.store.bookings.filter(
+                Q( booking_status=payment_success_status )
+            &
+                Q( event__start_datetime__contains=date.date() )
+        ).order_by('event__start_datetime')
 
 
 class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
@@ -102,14 +130,7 @@ class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
         return response.Response({
             "success": "Booking started"
         })
-
-
-
-
-
-####################
-## STORE OWNER VIEWS
-####################
+    
 class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = BookingCompleteSerializer
     permission_classes = (IsStoreOwner, )
@@ -130,13 +151,22 @@ class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
             "success": "Booking Completed"
         })
 
+
+
+
+
+####################
+## STORE OWNER VIEWS
+####################
+
+
 class OwnerRevenue(generics.GenericAPIView):
     permission_classes = (IsStoreOwner, )
 
     def get(self, request):
         user = self.request.user
         bookings = user.storeowner.store.bookings.filter(
-            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) )
+            Q( booking_status=BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED) )
         )
         revenue = 0.0
         today = datetime.datetime.today().date()
@@ -145,7 +175,7 @@ class OwnerRevenue(generics.GenericAPIView):
         revenue_response = {}
         while begin_date <= today:
             day_bookings = user.storeowner.store.bookings.filter(
-                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) ) & 
+                Q( booking_status=BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED) ) & 
                 Q( event__start_datetime__contains=begin_date )
             )
             begin_date += delta
@@ -166,7 +196,7 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
         vehicles = {}
         user = self.request.user
         bookings = user.storeowner.store.bookings.filter(
-            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_COMPLETED) )
+            Q( booking_status=BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED) )
         )
         for booking in bookings:
             booking1 = BookingDetailSerializer(booking)
@@ -180,33 +210,7 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
                     vehicles[vehicle.value] = 1
 
         return response.Response(vehicles)
-class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
-    permission_classes = (IsStoreOwner, )
-    serializer_class = NewBookingListOwnerSerializer
 
-    def get(self, request):
-        user = self.request.user
-        queryset = user.storeowner.store.bookings.filter(
-            Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) )
-        ).order_by('-booking_status_changed_time')
-        serializer = BookingListOwnerSerializer(queryset, many=True)
-        return response.Response(serializer.data)
-
-    def post(self, request):
-        user = self.request.user
-        data = self.validate(request)
-        date = data.get('date')
-        date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        queryset = user.storeowner.store.bookings.filter(
-            (
-                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.PAYMENT_SUCCESS) ) | 
-                Q( booking_status=BookingStatus.objects.get(BookingStatusSlug.SERVICE_STARTED) )
-            )
-            & 
-            Q( event__start_datetime__contains=date.date() )
-        ).order_by('event__start_datetime')
-        serializer = BookingListOwnerSerializer(queryset, many=True)
-        return response.Response(serializer.data)
 
 
 
