@@ -120,5 +120,6 @@ def secondsToTimeString(seconds):
     return ' '.join(result)
 
 
-TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)
-TODAY_END = timezone.now().replace(hour=23, minute=59, second=59)
+DATETIME_NOW = timezone.now()
+DATETIME_TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)
+DATETIME_TODAY_END = timezone.now().replace(hour=23, minute=59, second=59)
