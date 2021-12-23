@@ -17,13 +17,14 @@ urlpatterns = [
     path('payment/initiate/', payment.InitiateTransactionView.as_view()),
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
 
-    path('owner/bookings/today/', general.OwnerTodayBookingList.as_view()),
+    path('owner/bookings/today/', general.OwnerTodayBookingsList.as_view()),
+    path('owner/bookings/past/', general.OwnerPastBookingsList.as_view()),
     path('owner/service/start/', general.OwnerBookingStart.as_view()),
     path('owner/service/complete/', general.OwnerBookingComplete.as_view()),
     
     path('store-owner/revenue/', general.OwnerRevenue.as_view()),
     path('store-owner/new/bookings/',general.OwnerNewBookings.as_view()),
-    path('store-owner/past/bookings/', general.OwnerPastBookings.as_view()),
+    path('store-owner/past/bookings/', general.OwnerPastBookingsList.as_view()),
     path('store-owner/store/vehicles/', general.OwnerStoreVehicleTypes.as_view()),
     path('store-owner/calender/', general.OwnerDayWiseCalender.as_view()),
     

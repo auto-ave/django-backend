@@ -16,6 +16,9 @@ import json, requests
 from django.conf import settings
 import datetime
 
+##
+## CONSUMER VIEWS
+##
 class BookingsListConsumer(generics.ListAPIView):
     serializer_class = BookingListSerializer
     permission_classes = ( IsConsumer, )
@@ -23,8 +26,20 @@ class BookingsListConsumer(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return user.consumer.bookings.all().order_by('-created_at')
-            
-class OwnerTodayBookingList(generics.ListAPIView):
+
+class BookingDetail(generics.RetrieveAPIView):
+    lookup_field = 'booking_id'
+    serializer_class = BookingDetailSerializer
+    permission_classes = ( IsConsumer, )
+
+    def get_queryset(self):
+        return self.request.user.consumer.bookings.all()
+
+
+##
+## OWNER VIEWS
+##       
+class OwnerTodayBookingsList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = BookingListOwnerSerializer
 
@@ -40,13 +55,26 @@ class OwnerTodayBookingList(generics.ListAPIView):
             ( Q( booking_status=success_status ) | Q( booking_status=service_started_status ) )
         )#.order_by('-booking_status_changed_time')
 
-class BookingDetail(generics.RetrieveAPIView):
-    lookup_field = 'booking_id'
-    serializer_class = BookingDetailSerializer
-    permission_classes = ( IsConsumer, )
+class OwnerPastBookingsList(generics.ListAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = BookingListOwnerSerializer
 
     def get_queryset(self):
-        return self.request.user.consumer.bookings.all()
+        user = self.request.user
+        
+        initiated_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
+        payment_failed_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+        
+        return user.storeowner.store.bookings.filter(
+            Q(
+                event__start_datetime__lt=datetime.datetime.today().date()
+            )
+            &
+            (
+                ~Q( booking_status=initiated_status ) & ~Q( booking_status=payment_failed_status )
+            )
+        ).order_by('-booking_status_changed_time')
+
 
 class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = BookingStartSerializer
@@ -180,15 +208,7 @@ class OwnerNewBookings(ValidateSerializerMixin, generics.GenericAPIView):
         serializer = BookingListOwnerSerializer(queryset, many=True)
         return response.Response(serializer.data)
 
-class OwnerPastBookings(generics.ListAPIView):
-    permission_classes = (IsStoreOwner, )
-    serializer_class = BookingListOwnerSerializer
 
-    def get_queryset(self):
-        user = self.request.user
-        return user.storeowner.store.bookings.filter(
-            event__start_datetime__lt=datetime.datetime.today().date()
-        ).order_by('-booking_status_changed_time')
 
 
 class OwnerDayWiseCalender(generics.ListAPIView):
