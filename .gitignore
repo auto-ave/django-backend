@@ -163,4 +163,7 @@ dmypy.json
 !.elasticbeanstalk/*.global.yml
 
 
+autoave-global-firebase-adminsdk.json
+
+
 sendgrid.env
