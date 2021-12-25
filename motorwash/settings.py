@@ -318,7 +318,7 @@ PAYTM_CURRENCY = env('PAYTM_CURRENCY')
 # Firebase Admin
 from firebase_admin import initialize_app
 from firebase_admin import credentials
-cred = credentials.Certificate("/tmp/autoave-global-firebase-adminsdk.json")
+cred = credentials.Certificate("/etc/pki/tls/certs/autoave-global-firebase-adminsdk.json")
 FIREBASE_APP = initialize_app(cred)
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
