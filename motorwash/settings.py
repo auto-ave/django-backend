@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import datetime, os
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e**+b4*p=^8@$%#s(n4+_$v=5#b#e1(jr&5(aq5c9%-z8%bgnb'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -119,27 +127,29 @@ if 'RDS_DB_NAME' in os.environ:
         }
     }
 else:
-    print('Using heroku')
+    print('Using local DB')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'd2dp3lk3a5fd88',
-            'USER': 'ipdsrwgbrteopp',
-            'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
-            'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+            'NAME': 'motorwash',
+            'USER': 'motorwash',
+            'PASSWORD': 'root',
+            'HOST': 'localhost',
             'PORT': '5432',
+        }
     }
-}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'motorwash',
-#         'USER': 'motorwash',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+    # Initial Heroku DB, https://motorwash.herokuapp.com
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #         'NAME': 'd2dp3lk3a5fd88',
+    #         'USER': 'ipdsrwgbrteopp',
+    #         'PASSWORD': '7687ee065748c43a1374bf415be7d9d7b47594e075005d823253522c292ab4df',
+    #         'HOST': 'ec2-34-204-128-77.compute-1.amazonaws.com',
+    #         'PORT': '5432',
+    #     }
+    # }
+
 
 
 import dj_database_url 
@@ -165,7 +175,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Logging
+# Logging TODO:
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 LOG_FILE_PATH = os.getenv('LOG_FILE_PATH', 'logs/django.log')
 # LOGGING = {
@@ -260,10 +270,6 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 
 ]
 
-TWILIO_ACCOUNT_SID = "AC45adcb12c870de63120cacd8c2dd14b8"
-TWILIO_AUTH_TOKEN = "bc8cb4921d6930d4b888102319565dc4"
-TWILIO_NUMBER = "+18508202747"
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -297,17 +303,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Lauda Paytm
-PAYTM_MID = "erKfbl49402655016816"
-PAYTM_MKEY = "y1RPZDGVbo0ySQ2S"
-PAYTM_CURRENCY = "INR"
+PAYTM_MID = env('PAYTM_MID')
+PAYTM_MKEY = env('PAYTM_MKEY')
+PAYTM_CURRENCY = env('PAYTM_CURRENCY')
 
 # Email Setup
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD = "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"
-EMAIL_USE_SSL = True
+# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = "apikey"
+# EMAIL_HOST_PASSWORD = ""
+# EMAIL_USE_SSL = True
 
 # Firebase Admin
 from firebase_admin import initialize_app
@@ -322,9 +328,9 @@ FCM_DJANGO_SETTINGS = {
 }
 
 # Django Storages
-AWS_ACCESS_KEY_ID = 'AKIAVFDW7UCVKEHHNJBO'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'autoave-backend-staticfiles'
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
@@ -336,5 +342,5 @@ DEFAULT_FILE_STORAGE = 'motorwash.storage_backends.MediaStorage'
 
 
 # SendGrid Email
-SENDGRID_API_KEY = "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"
-SENDGRID_SENDER="care@autoave.in"
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+SENDGRID_SENDER = env('SENDGRID_SENDER')
