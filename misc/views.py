@@ -44,3 +44,12 @@ class StoreImageUpload(views.APIView):
         return response.Response({
             "url": file_url,
         }, status=status.HTTP_201_CREATED)
+
+class DangerView(views.APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def get(self, request, format=None):
+        print('inside danger')
+        while(True):
+            pass
+        return HttpResponse(status=status.HTTP_200_OK)
