@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import django_better_admin_arrayfield.models.fields
+import custom_admin_arrayfield.models.fields
 import phonenumber_field.modelfields
 
 
@@ -41,15 +41,15 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(blank=True, null=True, unique=True)),
                 ('description', models.TextField(max_length=300)),
                 ('thumbnail', models.URLField()),
-                ('images', django_better_admin_arrayfield.models.fields.ArrayField(base_field=models.URLField(), blank=True, null=True, size=None)),
-                ('contact_numbers', django_better_admin_arrayfield.models.fields.ArrayField(base_field=phonenumber_field.modelfields.PhoneNumberField(max_length=128, region=None), size=None)),
+                ('images', custom_admin_arrayfield.models.fields.ArrayField(base_field=models.URLField(), blank=True, null=True, size=None)),
+                ('contact_numbers', custom_admin_arrayfield.models.fields.ArrayField(base_field=phonenumber_field.modelfields.PhoneNumberField(max_length=128, region=None), size=None)),
                 ('address', models.TextField()),
                 ('latitude', models.DecimalField(decimal_places=16, max_digits=22)),
                 ('longitude', models.DecimalField(decimal_places=16, max_digits=22)),
                 ('contact_person_name', models.CharField(max_length=30)),
                 ('contact_person_number', phonenumber_field.modelfields.PhoneNumberField(max_length=128, region=None)),
                 ('contact_person_photo', models.ImageField(blank=True, null=True, upload_to='')),
-                ('store_times', django_better_admin_arrayfield.models.fields.ArrayField(base_field=models.JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}', size=None)),
+                ('store_times', custom_admin_arrayfield.models.fields.ArrayField(base_field=models.JSONField(), help_text='{"closing_time": "18:00:00", "opening_time": "09:00:00"}', size=None)),
                 ('slot_length', models.PositiveIntegerField()),
                 ('rating', models.DecimalField(blank=True, decimal_places=1, max_digits=2, null=True)),
                 ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='stores', to='common.city')),
@@ -95,7 +95,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('price', models.PositiveIntegerField()),
                 ('time_interval', models.PositiveIntegerField()),
-                ('images', django_better_admin_arrayfield.models.fields.ArrayField(base_field=models.URLField(), blank=True, null=True, size=None)),
+                ('images', custom_admin_arrayfield.models.fields.ArrayField(base_field=models.URLField(), blank=True, null=True, size=None)),
                 ('description', models.TextField()),
                 ('bays', models.ManyToManyField(blank=True, help_text='BUG: Do no edit this field, if you want to change bays delete this instance and create another one', to='store.Bay')),
                 ('service', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pricetimes', to='common.service')),

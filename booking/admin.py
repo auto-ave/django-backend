@@ -1,5 +1,10 @@
+from django.contrib.admin.decorators import action
+from django.utils.html import format_html
 from django.contrib import admin
+from booking.static import BookingStatusSlug
 from .models import *
+
+import datetime
 
 class HiddenFieldsAdmin(admin.ModelAdmin):
     add_fieldsets = (
@@ -18,9 +23,43 @@ class HiddenFieldsAdmin(admin.ModelAdmin):
             return ('booked_by', 'store')
         return self.readonly_fields
 
-admin.site.register(Booking, HiddenFieldsAdmin)
-admin.site.register(Payment)
+@admin.register(Booking)
+class BookingAdmin(HiddenFieldsAdmin):
+    list_display = ( 'booking_id', 'store', 'booking_status', 'amount', 'vehicle_model' )
+    list_filter = ( 'store', 'booking_status')
+    search_fields = ( 'booking_id', 'store__name', 'booking_status__slug', 'vehicle_model__model', 'vehicle_model__brand__name' )
+
+admin.site.register(BookingStatus)
+
+@admin.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ( 'booking', 'status', 'amount', 'gateway_name', 'bank_name', 'mode_of_payment' )
+    list_filter = ( 'mode_of_payment', 'bank_name')
+    search_fields = ( 'booking__booking_id', 'booking__store__name', 'bank_name' )
+
 admin.site.register(Refund)
 admin.site.register(Review)
 
 admin.site.register(Slot)
+
+
+@admin.action(description="Aprove Cancellation request for the selected Bookings")
+def approve_cancellation(modeladmin, request, queryset):
+    for cancellation_request in queryset:
+        cancellation_request.booking.approve_cancellation_request()
+
+@admin.register(CancellationRequest)
+class CancellationRequestAdmin(admin.ModelAdmin):
+    list_display = (
+        'booking', 'reason', 'cancellation_status',
+    )
+    list_filter = ('reason',)
+    actions = (approve_cancellation,)
+
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = (
+        'code', 'title', 'is_active', 'discount_percentage'
+    )
+    list_filter = ( 'is_active', 'valid_from', 'valid_to')
+    search_fields = ('code', 'title', 'description')

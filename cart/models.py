@@ -23,6 +23,8 @@ class Cart(Model):
     
     def addItem(self, item, vehicle_model_pk):
         vehicle_model = VehicleModel.objects.get(pk=vehicle_model_pk)
+        print("request ka vehicle: ", vehicle_model)
+        print("cart ka vehicle model: ", self.vehicle_model)
 
         if self.vehicle_model != vehicle_model:
             print('clear1')
@@ -55,7 +57,8 @@ class Cart(Model):
     
     def removeItem(self, item):
         self.items.remove(item)
-        self.vehicle_model = None
+        if not self.items.all().count():
+            self.vehicle_model = None
         self.save()
 
     def clear(self):
@@ -79,3 +82,7 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+
+
+    def __str__(self):
+        return "Cart: {}".format(self.consumer)

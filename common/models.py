@@ -1,6 +1,6 @@
 from common.utils import get_unique_slug
 from django.db import models
-from django_better_admin_arrayfield.models.fields import ArrayField
+from custom_admin_arrayfield.models.fields import ArrayField
 # from common.constants import VEHICLE_MODELS, VEHICLE_TYPES
 
 class Model(models.Model):
@@ -26,7 +26,7 @@ class City(Model):
         super(City, self).save(*args, **kwargs)
 
     def __str__(self):
-        return '{} : {}'.format(self.code, self.name)
+        return self.name
     
     class Meta:
         verbose_name_plural = 'Cities'
@@ -47,16 +47,3 @@ class Service(Model):
 
     def __str__(self):
         return self.name
-
-class Coupon(Model):
-    code = models.CharField(max_length=20, unique=True)
-    discount = models.IntegerField()
-    description = models.TextField()
-    is_active = models.BooleanField(default=True)
-
-    def save(self, *args, **kwargs):
-        self.code = self.code.upper()
-        super(Coupon, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.code

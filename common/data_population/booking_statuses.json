@@ -1,0 +1,29 @@
+[
+    {
+        "slug": "INITIATED"
+    },
+    {
+        "slug": "PAYMENT_FAILED"
+    },
+    {
+        "slug": "PAYMENT_SUCCESS"
+    },
+    {
+        "slug": "NOT_ATTENDED"
+    },
+    {
+        "slug": "SERVICE_STARTED"
+    },
+    {
+        "slug": "SERVICE_COMPLETED"
+    },
+    {
+        "slug": "CANCELLATION_REQUEST_SUBMITTED"
+    },
+    {
+        "slug": "CANCELLATION_REQUEST_APPROVED"
+    },
+    {
+        "slug": "CANCELLATION_REQUEST_REJECTED"
+    }
+]

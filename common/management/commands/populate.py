@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from booking.models import BookingStatus
 from common.providers.data_population import DataPopulationProvider
 
 from common.data_population.serializers import *
@@ -18,7 +19,10 @@ class Command(BaseCommand):
         
             # Common
             (Service, None, 'common/data_population/common_services.json'),
-            (City, None, 'common/data_population/common_cities.json')
+            (City, None, 'common/data_population/common_cities.json'),
+            
+            # Booking
+            (BookingStatus, None, 'common/data_population/booking_statuses.json'),
         ]
 
         for data in POPULATION_DATA:

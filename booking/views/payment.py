@@ -1,20 +1,52 @@
-from misc.notification_contents import NOTIFICATION_2_HOURS_LEFT, NOTIFICATION_BOOKING_COMPLETE
+# pylint: disable=unused-import
+from booking.utils import check_event_collide, generate_booking_id, get_commission_amount
+from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
-from booking.static import BOOKING_STATUS_DICT
+from booking.static import BookingStatusSlug
 from vehicle.models import VehicleType
-from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes
+from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
+from booking.utils import get_commission_percentage
 from booking.serializers.payment import InitiateTransactionSerializer
 from rest_framework import generics, permissions, response,views
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
 
 from store.models import Bay, Event
-from booking.models import Booking, Payment
+from booking.models import Booking, BookingStatus, Payment
 from common.permissions import IsConsumer
 
 from paytmchecksum import PaytmChecksum
 import json, requests, datetime, uuid
 
+class PaymentChoices(generics.GenericAPIView):
+    permission_classes = (IsConsumer,)
+    
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        cart = user.consumer.get_cart()
+        total_amount = float(cart.total)
+        commission_amount = get_commission_amount(total_amount)
+        
+        payment_choices = [
+            {
+                "type": "FULL",
+                "title": "Pay in Full",
+                "description": "Pay the full amount right now and book the service",
+                "active": False,
+                "amount": total_amount,
+                "remaining_amount": 0
+            },
+            {
+                "type": "PARTIAL",
+                "title": "Pay Partially",
+                "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
+                "active": True,
+                "amount": commission_amount,
+                "remaining_amount": total_amount - commission_amount
+            }
+        ]
+        return response.Response(payment_choices)
 
 
 class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
@@ -28,6 +60,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         date = data.get('date')
         bay = data.get('bay')
         bay = Bay.objects.get(id=bay)
+
         slot_start = data.get('slot_start')
         slot_end = data.get('slot_end')
 
@@ -42,6 +75,11 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
             })
+        
+        if check_event_collide(start=start_datetime, end=end_datetime, store=bay.store):
+            return response.Response({
+                "detail": "Slot colliding with other event"
+            })
 
         event = Event.objects.create(
             is_blocking=False,
@@ -51,10 +89,10 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         )
 
         booking = Booking.objects.create(
-            booking_id=uuid.uuid4().hex[:6].upper(),
+            booking_id = generate_booking_id(),
             booked_by = user.consumer,
             store = bay.store,
-            status = 0,
+            booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
             event = event,
             amount = cart.total,
             vehicle_model = cart.vehicle_model,
@@ -65,9 +103,23 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # booking.price_times.set([cart.items.all()])
         # booking.save()
 
+
+        # Just testing notifis
+        # Payment confirmation notification for Store Owner
+        store = booking.store
+        if store.has_owner():
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
+            )
+            # if store.email or store.owner.user.email:
+            #     CommunicationProvider.send_email(
+            #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+            #     )
+
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
-        AMOUNT = str(cart.total)
+        # Added commission amount coz currently we only using partial payment
+        PAYMENT_AMOUNT = str(get_commission_amount(cart.total))
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
@@ -79,7 +131,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "orderId": ORDER_ID,
             "callbackUrl": CALLBACK_URL,
             "txnAmount": {
-                "value": AMOUNT,
+                "value": PAYMENT_AMOUNT,
                 "currency": settings.PAYTM_CURRENCY,
             },
             "userInfo": {
@@ -112,7 +164,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             return response.Response({
                 "mid": settings.PAYTM_MID,
                 "order_id": ORDER_ID,
-                "amount": AMOUNT,
+                "amount": PAYMENT_AMOUNT,
                 "callback_url": CALLBACK_URL,
                 "txn_token": body['txnToken']
             })
@@ -162,19 +214,32 @@ class PaymentCallbackView(views.APIView):
 
         if verify:
             if response_dict['RESPCODE'] == '01':
-                booking.status = BOOKING_STATUS_DICT.PAYMENT_DONE.value
+                booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+                booking.booking_status_changed_time = datetime.datetime.now()
                 
-                # Payment complete notification
+                # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
-                    userid=user.id,
-                    **NOTIFICATION_BOOKING_COMPLETE(booking),
-                    data={}
+                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking),
                 )
+                if user.email:
+                    CommunicationProvider.send_email(
+                        **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
+                    )
+                
+                # Payment confirmation notification for Store Owner
+                store = booking.store
+                if store.has_owner():
+                    CommunicationProvider.send_notification(
+                        **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
+                    )
+                    if store.email or store.owner.user.email:
+                        CommunicationProvider.send_email(
+                            **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+                        )
+
 
                 CommunicationProvider.send_notification(
-                    userid=user.id,
-                    **NOTIFICATION_2_HOURS_LEFT(booking),
-                    data={},
+                    **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
                     schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
 
@@ -182,11 +247,13 @@ class PaymentCallbackView(views.APIView):
 
                 print('order successful')
             else:
-                booking.status = BOOKING_STATUS_DICT.PAYMENT_FAILED.value
+                booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+                booking.booking_status_changed_time = datetime.datetime.now()
                 print('order was not successful because' + response_dict['RESPMSG'])
             
             # clear cart
             user.consumer.cart.clear()
+
             booking.save()
             return response.Response(response_dict)  
         else:

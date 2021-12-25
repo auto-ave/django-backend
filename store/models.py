@@ -1,5 +1,5 @@
 from django.db import models
-from django_better_admin_arrayfield.models.fields import ArrayField
+from custom_admin_arrayfield.models.fields import ArrayField
 from django.db.models import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
 from common.utils import *
@@ -20,7 +20,7 @@ class Store(Model):
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=900)
     thumbnail = models.URLField() # should be square
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     contact_numbers = ArrayField(base_field=PhoneNumberField())
@@ -52,6 +52,12 @@ class Store(Model):
         if not self.slug:
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
+    
+    def has_owner(self):
+        if hasattr(self, 'owner'):
+            return True
+        else:
+            return False
     
     def updateRating(self, rating, isRemove = False):
         count = self.reviews.all().count()

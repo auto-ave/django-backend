@@ -5,6 +5,7 @@ from rest_framework.utils import field_mapping
 from booking.models import *
 from booking.serializers.review import ReviewSerializer
 from store.serializers.services import PriceTimeSerializer
+from vehicle.serializers import VehicleModelSerializer
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -13,6 +14,7 @@ class PaymentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class BookingListSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     price_times = serializers.SerializerMethodField()
     amount = serializers.SerializerMethodField()
     review = serializers.SerializerMethodField()
@@ -22,6 +24,9 @@ class BookingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = "__all__"
+    
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
     
     def get_price_times(self, obj):
         price_times = []
@@ -47,23 +52,22 @@ class BookingListSerializer(serializers.ModelSerializer):
 
 
 class BookingListOwnerSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     booked_by = serializers.SerializerMethodField()
     price_times = PriceTimeSerializer(many=True)
-    payment = PaymentSerializer()
-    is_reviewed = serializers.SerializerMethodField()
+    remaining_amount = serializers.SerializerMethodField()
     event = EventSerializer()
+    vehicle_model = serializers.SerializerMethodField()
 
     class Meta:
         model = Booking
-        fields = "__all__"
+        exclude = ['amount', 'booking_status_changed_time', 'store']
     
-    def get_amount(self, obj):
-        return obj.payment.amount
-
-    def get_is_reviewed(self, obj):
-        if hasattr(obj, 'review'):
-            return True
-        return False
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
+    
+    def get_remaining_amount(self, obj):
+        return float(obj.amount) - float(obj.payment.amount)
 
 
     def get_booked_by(self, obj):
@@ -71,17 +75,24 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
             "name": obj.booked_by.user.full_name(),
             "phone": str(obj.booked_by.user.phone)
         }
+    
+    def get_vehicle_model(self, obj):
+        vehicle = obj.vehicle_model
+        return VehicleModelSerializer(vehicle).data
+    
 
 class NewBookingListOwnerSerializer(serializers.Serializer):
     date = serializers.DateField()
 
 
 class BookingDetailSerializer(serializers.ModelSerializer):
+    booking_status = serializers.SerializerMethodField()
     price_times = PriceTimeSerializer(many=True)
     payment = PaymentSerializer()
     event = EventSerializer()
     review = serializers.SerializerMethodField()
     store = SalesmanStoreListSerializer()
+    vehicle_model = VehicleModelSerializer()
     class Meta:
         model = Booking
         fields = "__all__"
@@ -90,6 +101,9 @@ class BookingDetailSerializer(serializers.ModelSerializer):
         if hasattr(obj, 'review'):
             return ReviewSerializer(obj.review).data
         return None
+
+    def get_booking_status(self, obj):
+        return obj.get_booking_status_display()
 
 class BookingStartSerializer(serializers.Serializer):
     booking_id = serializers.CharField()

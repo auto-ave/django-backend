@@ -14,32 +14,39 @@ def OTP_MESSAGE(otp):
     return '{} is your OTP (One Time Password) to authenticate your login to Autoave'.format(otp)
 
 class CommunicationProvider:
-    def __init__(self):
-        self.client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        self.sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
 
-    def send_sms(self, number, message):
+    @background(schedule=0)
+    def send_email(email, subject="", html_content="", dynamic_template_data=None, template_id=None):
+        sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
 
-        response = self.client.messages.create(
-            to=number,
-            from_=settings.TWILIO_NUMBER,
-            body=message)
-
-        return response
-
-    def send_email(self, email, subject, html_content):
         message = Mail(
             from_email= settings.SENDGRID_SENDER,
             to_emails=email,
             subject=subject,
-            html_content=html_content)
-
-        response = self.sendgrid_client.send(message)
-        return response
+            html_content=html_content
+        )
+        
+        if template_id and dynamic_template_data:
+            message.template_id = template_id
+            message.dynamic_template_data = dynamic_template_data
+        
+        print(message.get())
+        response = sendgrid_client.send(message)
+        print("sendgrid response status code: ", response.status_code)
+        print(response.body)
     
+    
+    
+    @background(schedule=0)
     def send_otp(self, otp, number):
+        sms_client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
         message = OTP_MESSAGE(otp)
-        response = self.send_sms(number=number, message=message)
+        response = sms_client.messages.create(
+            to=number,
+            from_=settings.TWILIO_NUMBER,
+            body=message
+        )
         return response
     
     @background(schedule=0)

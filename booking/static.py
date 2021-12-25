@@ -1,15 +1,21 @@
-import enum
+from django.apps import apps
 
-BOOKING_STATUS = (
-    (0, 'NOT_PAID'),
-    (10, 'PAYMENT_DONE'),
-    (20, 'PAYMENT_FAILED'),
-    (30, 'NOT_ATTENDED'),
-    (40, 'SERVICE_STARTED'),
-    (50, 'SERVICE_COMPLETED')
-)
-BOOKING_STATUS_DICT = dict((v, k) for k, v in BOOKING_STATUS)
-BOOKING_STATUS_DICT = enum.IntEnum('BOOKING_STATUS_DICT', BOOKING_STATUS_DICT)
+
+####
+#### MASTER DATA CONTAINING ALL THE BOOKING STATUS VALUES
+#### THIS DATA SHOULD BE INSYNC WITH THE common/data_population/booking_status.py file
+####
+class BookingStatusSlug():
+    INITIATED = 'INITIATED'
+    PAYMENT_FAILED = 'PAYMENT_FAILED'
+    PAYMENT_SUCCESS = 'PAYMENT_SUCCESS'
+    NOT_ATTENDED = 'NOT_ATTENDED'
+    SERVICE_STARTED = 'SERVICE_STARTED'
+    SERVICE_COMPLETED = 'SERVICE_COMPLETED'
+    CANCELLATION_REQUEST_SUBMITTED = 'CANCELLATION_REQUEST_SUBMITTED'
+    CANCELLATION_REQUEST_APPROVED = 'CANCELLATION_REQUEST_APPROVED'
+    CANCELLATION_REQUEST_REJECTED = 'CANCELLATION_REQUEST_REJECTED'
+
 
 PAYMENT_STATUS = (
     (0, 'Pending'),
@@ -17,3 +23,13 @@ PAYMENT_STATUS = (
     (2, 'Cancelled')
 )
 PAYMENT_STATUS_DICT = dict((v, k) for k, v in PAYMENT_STATUS)
+
+
+# Max length per reason limit to 500
+BOOKING_CANCEL_REASONS = [
+    "Man nhi hai",
+    "Not a bhakt, sorry",
+    "Ganda app banaya jisne bhi banaya, please fix it",
+]
+
+BOOKING_CANCEL_PRIOR_HOURS = 12

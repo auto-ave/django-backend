@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from rest_framework_simplejwt.tokens import RefreshToken
 from common.models import Model
-from django_better_admin_arrayfield.models.fields import ArrayField
 from fcm_django.models import FCMDevice
 
 from phonenumber_field.modelfields import PhoneNumberField
@@ -11,12 +10,20 @@ from cart.models import Cart
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
+    email = models.EmailField(blank=True, null= True, unique=True)
 
     # TODO: something about the default value
     otp = models.CharField(max_length=4, default=0000)
 
     # True after first otp validation
     is_verified = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if self.email:
+            self.email = self.email.lower().strip()
+        if self.email == "":
+            self.email = None
+        super(User, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -62,9 +69,14 @@ class User(AbstractUser):
     
     def register_fcm(self, token):
         user = self
-        device = FCMDevice.objects.filter(registration_id=token).first()
-        if not device:
-            device = FCMDevice.objects.create(user=user, registration_id=token)
+
+        # Delete every device related to that token
+        devices = FCMDevice.objects.filter(registration_id=token)
+        devices.delete()
+
+        # Register the token to the user
+        device = FCMDevice.objects.create(user=user, registration_id=token)    
+        
         # Registering user to user's stored topics
         for topic in user.notification_topics.all():
             device.handle_topic_subscription(True, topic=topic.code)
