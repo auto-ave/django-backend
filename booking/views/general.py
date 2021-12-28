@@ -53,7 +53,7 @@ class OwnerTodayBookingsList(generics.ListAPIView):
             ( Q( event__start_datetime__contains=DATETIME_NOW.date() ))
             &
             ( Q( booking_status=success_status ) | Q( booking_status=service_started_status ) )
-        ).order_by('event.start_datetime')
+        )
 
 class OwnerPastBookingsList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
