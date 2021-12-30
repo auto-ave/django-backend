@@ -30,12 +30,6 @@
         "model": "Premium"
     },
     {
-        "description": "Vehicles like Porsche 911, Ford Mustang, Audi, Mercedes, BMW, Jaguar, Aston Martin, and Land rover.",
-        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/9de44eb0-dc62-4980-9c55-33533da9ed07.jpg",
-        "wheel": "four_wheeler",
-        "model": "Premium Cars"
-    },
-    {
         "description": "Vehicles like Alto 800, Renault Kwid, Grand i10, Tata Tiago, Swift, Volkswagen Polo, Tata Altroz, Baleno, Toyota Glanza and Ford Figo",
         "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/a14254d9-be18-4934-8e6b-9717c024e6c8.jpg",
         "wheel": "four_wheeler",
