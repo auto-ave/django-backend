@@ -56,19 +56,26 @@ class CommunicationProvider:
         user = User.objects.get(id=userid)
         devices = user.get_devices()
         ErrorLogging.objects.create(location="starting_notifications", content="")
-        try:
-            if devices:
-                notification = Notification(title=title, body=body, image=image)
-                message = Message(
-                    notification=notification,
-                    data=data,
-                    topic=topic,
+        if devices:
+            notification = Notification(title=title, body=body, image=image)
+            message = Message(
+                notification=notification,
+                data=data,
+                topic=topic,
+            )
+            ErrorLogging.objects.create(location="before result", content="")
+            result = devices.send_message(message)
+            print("ye result hai: ", result)
+            if user.email:
+                sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
+
+                message = Mail(
+                    from_email= settings.SENDGRID_SENDER,
+                    to_emails=user.email,
+                    subject="notification hdfisdjf",
+                    html_content='html_content' + str(result)
                 )
-                ErrorLogging.objects.create(location="before result", content="")
-                result = devices.send_message(message)
-                if user.email:
-                    CommunicationProvider.send_email(email=user.email, subject="notification bhai", html_content='hello' + str(result))
-                
-                ErrorLogging.objects.create(location="send_notification", content=str(result))
-        except Exception as e:
-            ErrorLogging.objects.create(location="send_notification_error", content=str(e))
+
+                response = sendgrid_client.send(message)
+                print("sendgrid response status code: ", response.status_code)
+                print(response.body)
