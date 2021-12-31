@@ -63,6 +63,6 @@ class CommunicationProvider:
                 topic=topic,
             )
             result = devices.send_message(message)
-            print('notification result: ', result)
-            print('another variation: ', result[0])
-            print('another variation: ', result[1])
+            print('notification result: ', str(result))
+            print('another variation: ', str(result[0]))
+            print('another variation: ', str(result[1]))
