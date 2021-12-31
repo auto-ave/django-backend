@@ -53,10 +53,8 @@ class CommunicationProvider:
     
     @background(schedule=0)
     def send_notification(userid, title, body, image="", data={}, topic=None):
-        print('user ke pehle')
         user = User.objects.get(id=userid)
         devices = user.get_devices()
-        print('user ke baad')
         if devices:
             notification = Notification(title=title, body=body, image=image)
             message = Message(
@@ -64,19 +62,4 @@ class CommunicationProvider:
                 data=data,
                 topic=topic,
             )
-            print('sending notification')
-            result = devices.send_message(message)
-            print("ye result hai: ", result)
-            if user.email:
-                sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
-
-                message = Mail(
-                    from_email= settings.SENDGRID_SENDER,
-                    to_emails=user.email,
-                    subject="notification hdfisdjf",
-                    html_content='html_content' + str(result)
-                )
-
-                response = sendgrid_client.send(message)
-                print("sendgrid response status code: ", response.status_code)
-                print(response.body)
+            devices.send_message(message)
