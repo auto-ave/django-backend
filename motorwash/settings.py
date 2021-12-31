@@ -323,6 +323,7 @@ FIREBASE_APP = initialize_app(cred)
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
     "APP_VERBOSE_NAME": "Autoave Notifications",
+    "FCM_SERVER_KEY": "AAAAjU7rmA0:APA91bFTyE2Zxh25iI1YVFkHPU6iyArFHDkKPzHryWRhuQ-_SNahoQkvTNRhj91P5HrhaqYmVoYJdONehwoNhCz64KiMDkxQkqdYv9JKM6bYvPUueXX5lUKPg7HnrvF5bRL6wmCAZGmE",
     "ONE_DEVICE_PER_USER": False,
     "DELETE_INACTIVE_DEVICES": False,
 }
