@@ -93,6 +93,7 @@ class BookingDetailSerializer(serializers.ModelSerializer):
     review = serializers.SerializerMethodField()
     store = SalesmanStoreListSerializer()
     vehicle_model = VehicleModelSerializer()
+    remaining_amount = serializers.SerializerMethodField()
     class Meta:
         model = Booking
         fields = "__all__"
@@ -101,6 +102,9 @@ class BookingDetailSerializer(serializers.ModelSerializer):
         if hasattr(obj, 'review'):
             return ReviewSerializer(obj.review).data
         return None
+    
+    def get_remaining_amount(self, obj):
+        return float(obj.amount) - float(obj.payment.amount)
 
     def get_booking_status(self, obj):
         return obj.get_booking_status_display()
