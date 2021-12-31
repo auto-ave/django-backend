@@ -11,3 +11,8 @@ class Feedback(Model):
 
     def __str__(self):
         return self.email or self.phone
+
+class ErrorLogging(Model):
+    location = models.CharField(max_length=200, null=True, blank=True)
+    content = models.TextField(blank=True, null=True)
+    

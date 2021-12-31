@@ -10,6 +10,8 @@ from sendgrid.helpers.mail import Mail
 from fcm_django.models import FCMDevice
 from firebase_admin.messaging import Message, Notification
 
+from misc.models import ErrorLogging
+
 def OTP_MESSAGE(otp):
     return '{} is your OTP (One Time Password) to authenticate your login to Autoave'.format(otp)
 
@@ -62,4 +64,5 @@ class CommunicationProvider:
             )
             result = devices.send_message(message)
             print(str(result))
+            ErrorLogging.objects.create(location="send_notification", content=str(result))
             return str(result)
