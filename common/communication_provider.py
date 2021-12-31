@@ -53,9 +53,10 @@ class CommunicationProvider:
     
     @background(schedule=0)
     def send_notification(userid, title, body, image="", data={}, topic=None):
+        print('user ke pehle')
         user = User.objects.get(id=userid)
         devices = user.get_devices()
-        ErrorLogging.objects.create(location="starting_notifications", content="")
+        print('user ke baad')
         if devices:
             notification = Notification(title=title, body=body, image=image)
             message = Message(
@@ -63,7 +64,7 @@ class CommunicationProvider:
                 data=data,
                 topic=topic,
             )
-            ErrorLogging.objects.create(location="before result", content="")
+            print('sending notification')
             result = devices.send_message(message)
             print("ye result hai: ", result)
             if user.email:
