@@ -60,4 +60,6 @@ class CommunicationProvider:
                 data=data,
                 topic=topic,
             )
-            devices.send_message(message)
+            result = devices.send_message(message)
+            print(str(result))
+            return str(result)
