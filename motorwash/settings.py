@@ -16,7 +16,7 @@ import environ
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 env.read_env()
 
@@ -318,11 +318,12 @@ PAYTM_CURRENCY = env('PAYTM_CURRENCY')
 # Firebase Admin
 from firebase_admin import initialize_app
 from firebase_admin import credentials
-cred = credentials.Certificate("./autoave-global-firebase-adminsdk.json")
+cred = credentials.Certificate("/etc/pki/tls/certs/autoave-global-firebase-adminsdk.json")
 FIREBASE_APP = initialize_app(cred)
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
     "APP_VERBOSE_NAME": "Autoave Notifications",
+    "FCM_SERVER_KEY": "AAAAjU7rmA0:APA91bFTyE2Zxh25iI1YVFkHPU6iyArFHDkKPzHryWRhuQ-_SNahoQkvTNRhj91P5HrhaqYmVoYJdONehwoNhCz64KiMDkxQkqdYv9JKM6bYvPUueXX5lUKPg7HnrvF5bRL6wmCAZGmE",
     "ONE_DEVICE_PER_USER": False,
     "DELETE_INACTIVE_DEVICES": False,
 }

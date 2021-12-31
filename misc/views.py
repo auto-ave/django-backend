@@ -16,6 +16,12 @@ class FeedbackView(generics.CreateAPIView):
     serializer_class = FeedbackSerializer
     throttle_scope = "public_post_api"
 
+    def perform_create(self, serializer):
+        user = self.request.user
+        if not user.is_anonymous:
+            serializer.save(user=user)
+        else:
+            serializer.save()
 
 class ImageUploadParser(parsers.FileUploadParser):
     media_type = 'image/*'
