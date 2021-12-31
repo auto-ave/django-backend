@@ -55,14 +55,15 @@ class CommunicationProvider:
     def send_notification(userid, title, body, image="", data={}, topic=None):
         user = User.objects.get(id=userid)
         devices = user.get_devices()
-        if devices:
-            notification = Notification(title=title, body=body, image=image)
-            message = Message(
-                notification=notification,
-                data=data,
-                topic=topic,
-            )
-            result = devices.send_message(message)
-            print(str(result))
-            ErrorLogging.objects.create(location="send_notification", content=str(result))
-            return str(result)
+        try:
+            if devices:
+                notification = Notification(title=title, body=body, image=image)
+                message = Message(
+                    notification=notification,
+                    data=data,
+                    topic=topic,
+                )
+                result = devices.send_message(message)
+                ErrorLogging.objects.create(location="send_notification", content=str(result))
+        except Exception as e:
+            ErrorLogging.objects.create(location="send_notification_error", content=str(e))
