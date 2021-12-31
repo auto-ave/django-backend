@@ -164,6 +164,9 @@ dmypy.json
 
 
 autoave-global-firebase-adminsdk.json
-
-
 sendgrid.env
+
+
+# Node
+package-lock.json
+node_modules
