@@ -6,4 +6,4 @@ class ImageSerializer(serializers.Serializer):
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
-        fields = ('phone', 'email', 'message')
+        fields = ('message', 'order_id')
