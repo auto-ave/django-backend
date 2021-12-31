@@ -90,7 +90,7 @@ def NOTIFICATION_OWNER_BOOKING_COMPLETE(booking):
         'image': random_item(MODI_IMAGES),
         'userid': store.owner.user.id,
         'data': {
-            'reload': True
+            'reload': "true"
         }
     }
 
