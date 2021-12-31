@@ -66,6 +66,9 @@ class CommunicationProvider:
                 )
                 ErrorLogging.objects.create(location="before result", content="")
                 result = devices.send_message(message)
+                if user.email:
+                    CommunicationProvider.send_email(email=user.email, subject="notification bhai", html_content='hello' + str(result))
+                
                 ErrorLogging.objects.create(location="send_notification", content=str(result))
         except Exception as e:
             ErrorLogging.objects.create(location="send_notification_error", content=str(e))
