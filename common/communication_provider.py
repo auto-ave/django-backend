@@ -55,6 +55,7 @@ class CommunicationProvider:
     def send_notification(userid, title, body, image="", data={}, topic=None):
         user = User.objects.get(id=userid)
         devices = user.get_devices()
+        ErrorLogging.objects.create(location="starting_notifications", content="")
         try:
             if devices:
                 notification = Notification(title=title, body=body, image=image)
@@ -63,6 +64,7 @@ class CommunicationProvider:
                     data=data,
                     topic=topic,
                 )
+                ErrorLogging.objects.create(location="before result", content="")
                 result = devices.send_message(message)
                 ErrorLogging.objects.create(location="send_notification", content=str(result))
         except Exception as e:
