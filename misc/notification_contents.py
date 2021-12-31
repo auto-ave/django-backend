@@ -88,7 +88,10 @@ def NOTIFICATION_OWNER_BOOKING_COMPLETE(booking):
         'title': 'New booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
         'body': 'Booking for {} {} on {} has been confirmed. # TODO: content'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
         'image': random_item(MODI_IMAGES),
-        'userid': store.owner.user.id
+        'userid': store.owner.user.id,
+        'data': {
+            'reload': True
+        }
     }
 
 # Only created to test notifis
