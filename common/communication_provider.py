@@ -62,4 +62,6 @@ class CommunicationProvider:
                 data=data,
                 topic=topic,
             )
-            devices.send_message(message)
+            result = devices.send_message(message)
+            print('notification result: ', result)
+            print('another variation: ', result['response'])
