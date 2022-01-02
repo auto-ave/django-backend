@@ -84,7 +84,6 @@ class CityStoreList(generics.ListAPIView):
             tag = get_object_or_404(ServiceTag, slug=tag)
             services = Service.objects.filter(tags__in=[tag])
             price_times = PriceTime.objects.filter(store__in=queryset, service__in=services)
-
-            return price_times.values('store').distinct()
+            return [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
 
         return queryset
