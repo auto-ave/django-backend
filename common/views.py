@@ -24,3 +24,8 @@ class ServiceList(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'description']
 
+class ServiceTagList(generics.ListAPIView):
+    queryset = ServiceTag.objects.all()
+    serializer_class = ServiceTagSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'description']

@@ -39,6 +39,11 @@ class CityAdmin(admin.ModelAdmin):
     list_filter = ( 'upcoming', )
     search_fields = ( 'code', 'name' )
 
+@admin.register(ServiceTag)
+class ServiceTagAdmin(admin.ModelAdmin , DynamicArrayMixin):
+    list_display = ( 'slug', 'name' )
+    search_fields = ( 'slug', 'name' )
+
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin , DynamicArrayMixin):
     list_display = ( 'slug', 'name' )

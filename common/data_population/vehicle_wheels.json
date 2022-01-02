@@ -1,12 +1,12 @@
 [
     {
-        "code": "four_wheeler",
-        "name": "Four Wheeler",
-        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png"
-    },
-    {
         "code": "two_wheeler",
         "name": "Two Wheeler",
-        "image": "https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png"
+        "image": "https://cdn.autoave.in/population_data/g916_1_1.png"
+    },
+    {
+        "code": "four_wheeler",
+        "name": "Four Wheeler",
+        "image": "https://cdn.autoave.in/population_data/g916_1_1.png"
     }
 ]

@@ -2,17 +2,17 @@ from django.db.models import query
 from rest_framework import generics, response
 from common.mixins import ValidateSerializerMixin
 from common.permissions import *
-from booking.models import Coupon
-from booking.serializers.coupon import *
+from booking.models import Offer
+from booking.serializers.offer import *
 
 
-class CouponListView(generics.ListAPIView):
-    serializer_class = CouponSerializer
+class OfferListView(generics.ListAPIView):
+    serializer_class = OfferSerializer
     permission_classes = (IsConsumer,)
-    queryset = Coupon.objects.active_coupons()
+    queryset = Offer.objects.active_offers()
 
-class CouponApplyView(generics.GenericAPIView, ValidateSerializerMixin):
-    serializer_class = CouponApplySerializer
+class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = OfferApplySerializer
     permission_classes = (IsConsumer,)
     
     def post(self, request, *args, **kwargs):

@@ -1,373 +1,370 @@
 [
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-6.jpeg",
         "name": "Honda"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-7.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-7.jpeg",
         "name": "Hyundai"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-9.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-9.jpeg",
         "name": "Maruti Suzuki"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-1.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-1.jpeg",
         "name": "Chevrolet"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-2.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-2.jpeg",
         "name": "Daewoo"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-3.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-3.jpeg",
         "name": "Datsun"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-4.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-4.jpeg",
         "name": "Fiat"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-5.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-5.jpeg",
         "name": "Ford"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-8.jpeg",
         "name": "Mahindra"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-10.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-10.jpeg",
         "name": "Mitsubishi"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-11.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-11.jpeg",
         "name": "Nissan"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-12.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-12.jpeg",
         "name": "Renault"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-13.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-13.jpeg",
         "name": "Skoda"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-14.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-14.jpeg",
         "name": "Tata"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-15.jpeg",
         "name": "Toyota"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-16.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-16.jpeg",
         "name": "Volkswagen"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-17.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-17.jpeg",
         "name": "Aston Martin"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-18.jpeg",
         "name": "Audi"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-19.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-19.jpeg",
         "name": "Bentley"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-20.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-20.jpeg",
         "name": "BMW"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-21.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-21.jpeg",
         "name": "Ferrari"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-22.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-22.jpeg",
         "name": "Jaguar"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-23.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-23.jpeg",
         "name": "Lamborghini"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-24.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-24.jpeg",
         "name": "Land Rover"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-25.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-25.jpeg",
         "name": "Maserati"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-26.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-26.jpeg",
         "name": "Mercedes"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-27.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-27.jpeg",
         "name": "Mini"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-28.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-28.jpeg",
         "name": "Porsche"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-29.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-29.jpeg",
         "name": "Rolls Royce"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-30.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-30.jpeg",
         "name": "Volvo"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-31.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-31.jpeg",
         "name": "Force"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-32.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-32.jpeg",
         "name": "Isuzu"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-33.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-33.jpeg",
         "name": "Hindustan Motors"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-34.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-34.jpeg",
         "name": "Jeep"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-35.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-35.jpeg",
         "name": "Opel"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-36.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-36.jpeg",
         "name": "Ssangyong"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-37.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-37.jpeg",
         "name": "Kia"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-38.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-38.jpeg",
         "name": "MG"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-39.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-39.jpeg",
         "name": "Foton"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-40.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-40.jpeg",
         "name": "Jayem"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-41.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-41.jpeg",
         "name": "DC"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42.jpeg",
         "name": "Lexus"
     },
     {
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-43.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-43.jpeg",
         "name": "Citroen"
     },
-
-    
-
     {
         "name": "TVS",
-        "image": "https: //imgd.aeplcdn.com/110x61/bw/makes/tvs20200508193203.jpg"
+        "image": "https://cdn.autoave.in/population_data/tvs20200508193203.jpg"
     },
     {
         "name": "Yamaha",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/yamaha20200508193220.jpg"
+        "image": "https://cdn.autoave.in/population_data/yamaha20200508193220.jpg"
     },
     {
         "name": "Royal Enfield",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/royal-enfield20200508193112.jpg"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield20200508193112.jpg"
     },
     {
         "name": "Hero",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/hero20200508192826.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero20200508192826.jpg"
     },
     {
         "name": "Honda Bikes",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/honda20200511152343.jpg"
+        "image": "https://cdn.autoave.in/population_data/honda20200511152343.jpg"
     },
     {
         "name": "Bajaj",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/bajaj20200508192534.jpg"
+        "image": "https://cdn.autoave.in/population_data/bajaj20200508192534.jpg"
     },
     {
         "name": "Suzuki",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/suzuki20200508193118.jpg"
+        "image": "https://cdn.autoave.in/population_data/suzuki20200508193118.jpg"
     },
     {
         "name": "KTM",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/ktm20200518163508.jpg"
+        "image": "https://cdn.autoave.in/population_data/ktm20200518163508.jpg"
     },
     {
         "name": "Hero Electric",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/hero-electric20200508192834.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero-electric20200508192834.jpg"
     },
     {
         "name": "Jawa",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/jawa20200508192940.jpg"
+        "image": "https://cdn.autoave.in/population_data/jawa20200508192940.jpg"
     },
     {
         "name": "22Kymco",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/22kymco20200508192432.jpg"
+        "image": "https://cdn.autoave.in/population_data/22kymco20200508192432.jpg"
     },
     {
         "name": "Ampere",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/ampere20200722153827.jpg"
+        "image": "https://cdn.autoave.in/population_data/ampere20200722153827.jpg"
     },
     {
         "name": "Aprilia",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/aprilia20200508192455.jpg"
+        "image": "https://cdn.autoave.in/population_data/aprilia20200508192455.jpg"
     },
     {
         "name": "Ather",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/ather20200518163442.jpg"
+        "image": "https://cdn.autoave.in/population_data/ather20200518163442.jpg"
     },
     {
         "name": "Benelli",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/benelli20200508192543.jpg"
+        "image": "https://cdn.autoave.in/population_data/benelli20200508192543.jpg"
     },
     {
         "name": "Benling",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/benling20201027111846.jpg"
+        "image": "https://cdn.autoave.in/population_data/benling20201027111846.jpg"
     },
     {
         "name": "BGauss",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/bgauss20201014113347.jpg"
+        "image": "https://cdn.autoave.in/population_data/bgauss20201014113347.jpg"
     },
     {
         "name": "BMW Bikes",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/bmw20200508192553.jpg"
+        "image": "https://cdn.autoave.in/population_data/bmw20200508192553.jpg"
     },
     {
         "name": "CFMoto",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/cfmoto20200508192601.jpg"
+        "image": "https://cdn.autoave.in/population_data/cfmoto20200508192601.jpg"
     },
     {
         "name": "Ducati",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/ducati20200511152332.jpg"
+        "image": "https://cdn.autoave.in/population_data/ducati20200511152332.jpg"
     },
     {
         "name": "EeVe",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/eeve20201014113401.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve20201014113401.jpg"
     },
     {
         "name": "Emflux Motors",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/emflux-motors20200508192730.jpg"
+        "image": "https://cdn.autoave.in/population_data/emflux-motors20200508192730.jpg"
     },
     {
         "name": "Evolet",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/evolet20200508192755.jpg"
+        "image": "https://cdn.autoave.in/population_data/evolet20200508192755.jpg"
     },
     {
         "name": "Gemopai",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/gemopai20201014113421.jpg"
+        "image": "https://cdn.autoave.in/population_data/gemopai20201014113421.jpg"
     },
     {
         "name": "Harley-Davidson",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/harleydavidson20200508192816.jpg"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson20200508192816.jpg"
     },
     {
         "name": "Husqvarna",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/husqvarna20200508192901.jpg"
+        "image": "https://cdn.autoave.in/population_data/husqvarna20200508192901.jpg"
     },
     {
         "name": "Hyosung",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/hyosung20200511152353.jpg"
+        "image": "https://cdn.autoave.in/population_data/hyosung20200511152353.jpg"
     },
     {
         "name": "Indian",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/indian20200508192932.jpg"
+        "image": "https://cdn.autoave.in/population_data/indian20200508192932.jpg"
     },
     {
         "name": "Joy e-bike",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/joy-ebike20210106103732.jpg"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike20210106103732.jpg"
     },
     {
         "name": "Kawasaki",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/kawasaki20200508192950.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki20200508192950.jpg"
     },
     {
         "name": "Lambretta",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/lambretta20200508193016.jpg"
+        "image": "https://cdn.autoave.in/population_data/lambretta20200508193016.jpg"
     },
     {
         "name": "Lectro",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/lectro20200508193007.jpg"
+        "image": "https://cdn.autoave.in/population_data/lectro20200508193007.jpg"
     },
     {
         "name": "Mahindra Bikes",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/mahindra20200508193036.jpg"
+        "image": "https://cdn.autoave.in/population_data/mahindra20200508193036.jpg"
     },
     {
         "name": "Moto Guzzi",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/moto-guzzi20200518163528.jpg"
+        "image": "https://cdn.autoave.in/population_data/moto-guzzi20200518163528.jpg"
     },
     {
         "name": "MV Agusta",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/mv-agusta20200508193049.jpg"
+        "image": "https://cdn.autoave.in/population_data/mv-agusta20200508193049.jpg"
     },
     {
         "name": "Norton",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/norton20200508193055.jpg"
+        "image": "https://cdn.autoave.in/population_data/norton20200508193055.jpg"
     },
     {
         "name": "Odysse",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/odysse20210404205603.jpg"
+        "image": "https://cdn.autoave.in/population_data/odysse20210404205603.jpg"
     },
     {
         "name": "Okinawa",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/okinawa20200508193101.jpg"
+        "image": "https://cdn.autoave.in/population_data/okinawa20200508193101.jpg"
     },
     {
         "name": "OLA",
-        "image": "https://imgd.aeplcdn.com/110x61/n/cw/ec/101/brands/logos/ola.jpg?v=1626954594142"
+        "image": "https://cdn.autoave.in/population_data/ola.jpg"
     },
     {
         "name": "PURE EV",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/pure-ev20201014113440.jpg"
+        "image": "https://cdn.autoave.in/population_data/pure-ev20201014113440.jpg"
     },
     {
         "name": "Revolt",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/revolt20200508193107.jpg"
+        "image": "https://cdn.autoave.in/population_data/revolt20200508193107.jpg"
     },
     {
         "name": "Simple Energy",
-        "image": "https://imgd.aeplcdn.com/110x61/n/cw/ec/103/brands/logos/simple energy.jpg?v=1629381889557"
+        "image": "https://cdn.autoave.in/population_data/simple energy.jpg"
     },
     {
         "name": "SWM",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/swm20200508193124.jpg"
+        "image": "https://cdn.autoave.in/population_data/swm20200508193124.jpg"
     },
     {
         "name": "Techo Electra",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/techo-electra20200508193138.jpg"
+        "image": "https://cdn.autoave.in/population_data/techo-electra20200508193138.jpg"
     },
     {
         "name": "Tork",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/tork20200508193146.jpg"
+        "image": "https://cdn.autoave.in/population_data/tork20200508193146.jpg"
     },
     {
         "name": "Triumph",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/triumph20200508193154.jpg"
+        "image": "https://cdn.autoave.in/population_data/triumph20200508193154.jpg"
     },
     {
         "name": "Vespa",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/vespa20200508193212.jpg"
+        "image": "https://cdn.autoave.in/population_data/vespa20200508193212.jpg"
     },
     {
         "name": "Yezdi",
-        "image": "https://imgd.aeplcdn.com/110x61/n/cw/ec/107/brands/logos/yezdi.jpg?v=1632722736288"
+        "image": "https://cdn.autoave.in/population_data/yezdi.jpg"
     },
     {
         "name": "Yo",
-        "image": "https://imgd.aeplcdn.com/110x61/bw/makes/yo20200508193225.jpg"
+        "image": "https://cdn.autoave.in/population_data/yo20200508193225.jpg"
     }
 ]

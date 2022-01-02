@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from common.models import City, Service
+from common.models import City, Service, ServiceTag
 
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,4 +10,9 @@ class CitySerializer(serializers.ModelSerializer):
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
+        fields = "__all__"
+
+class ServiceTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceTag
         fields = "__all__"

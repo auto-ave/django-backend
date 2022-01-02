@@ -2,3741 +2,3739 @@
     {
         "brand": "Chevrolet",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-beat-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-beat-petrol-tilted.jpg",
         "model": "Beat"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-spark-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-spark-petrol-tilted.jpg",
         "model": "Spark"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-aveo-uva-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-aveo-uva-tilted.jpg",
         "model": "UVA"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-sail-hatchback-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-sail-hatchback-diesel-tilted.jpg",
         "model": "Sail Hatchback"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-optra-srv-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-optra-srv-diesel-tilted.jpg",
         "model": "Optra SRV"
     },
     {
         "brand": "Daewoo",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/daewoo-Matiz-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/daewoo-Matiz-tilted.jpg",
         "model": "Matiz"
     },
     {
         "brand": "Datsun",
         "vehicle_type": "Hatchback",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-3-model-472.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-3-model-472.jpeg",
         "model": "Redi Go"
     },
     {
         "brand": "Datsun",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/datsun-go-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/datsun-go-petrol-tilted.jpg",
         "model": "GO"
     },
     {
         "brand": "Datsun",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/datsun-go-plus-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/datsun-go-plus-petrol-tilted.jpg",
         "model": "GO Plus"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-punto-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/fiat-punto-tilted.png",
         "model": "Punto"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-punto-evo-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-punto-evo-tilted.jpg",
         "model": "Punto Evo"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-palio-petrol-tilted.jpg",
         "model": "Palio D"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-avventura-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-avventura-petrol-tilted.jpg",
         "model": "Avventura"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-stile-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-palio-stile-tilted.jpg",
         "model": "Palio Stile"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-avventura-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-avventura-diesel-tilted.jpg",
         "model": "Adventure"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-palio-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-palio-petrol-tilted.jpg",
         "model": "Palio NV"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-urbancross-ilted.png",
+        "image": "https://cdn.autoave.in/population_data/fiat-urbancross-ilted.png",
         "model": "Urban Cross"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-uno-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/fiat-uno-tilted.png",
         "model": "Uno"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-figo-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-figo-petrol-tilted.jpg",
         "model": "Figo"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ford_Freestyle.png",
+        "image": "https://cdn.autoave.in/population_data/Ford_Freestyle.png",
         "model": "Freestyle"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-fusion-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-fusion-petrol-tilted.jpg",
         "model": "Fusion"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-brio-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-brio-petrol-tilted.jpg",
         "model": "Brio"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i10-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-i10-petrol-tilted.jpg",
         "model": "i10"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-grandi10-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-grandi10-petrol-tilted.jpg",
         "model": "Grand i10"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-santro-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-santro-petrol-tilted.jpg",
         "model": "Santro Xing"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-eon-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-eon-petrol-tilted.jpg",
         "model": "Eon"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20Santro.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai%20Santro.png",
         "model": "Santro"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Getz_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai_Getz_tilted.png",
         "model": "Getz"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20i10%20NIOS.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai%20i10%20NIOS.png",
         "model": "Grand i10 Nios"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Getz_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai_Getz_tilted.png",
         "model": "Getz Prime"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-kuv100-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-kuv100-petrol-tilted.jpg",
         "model": "KUV 100"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-verito-vibe-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-verito-vibe-diesel-tilted.jpg",
         "model": "Verito Vibe CS"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra+E20+Plus.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra+E20+Plus.jpg",
         "model": "E20 Plus"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-swift-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-swift-diesel-tilted.jpg",
         "model": "Swift"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-wagonr-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-wagonr-petrol-tilted.jpg",
         "model": "WagonR"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-Alto-800-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-Alto-800-tilted.jpg",
         "model": "Alto"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ritz-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-ritz-petrol-tilted.jpg",
         "model": "Ritz"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-celerio-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-celerio-petrol-tilted.jpg",
         "model": "Celerio"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-altok10-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-altok10-petrol-tilted.jpg",
         "model": "Alto K10"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-alto800-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-alto800-petrol-tilted.jpg",
         "model": "Alto 800"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-zen-estilo-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-zen-estilo-tilted.jpg",
         "model": "Estilo"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-800-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/maruti-800-tilted.png",
         "model": 800
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti-Suzuki-Zen-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Maruti-Suzuki-Zen-tilted.jpg",
         "model": "Zen"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-astar-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-astar-petrol-tilted.jpg",
         "model": "A-Star"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ignis-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-ignis-diesel-tilted.jpg",
         "model": "Ignis"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-eeco-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-eeco-petrol-tilted.jpg",
         "model": "Eeco"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-omni-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-omni-petrol-tilted.jpg",
         "model": "Omni"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti%20Suzuki%20S-Presso.png",
+        "image": "https://cdn.autoave.in/population_data/Maruti%20Suzuki%20S-Presso.png",
         "model": "S-Presso"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-versa-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-versa-tilted.png",
         "model": "Versa"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-micra-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-micra-petrol-tilted.jpg",
         "model": "Micra"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-micra-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-micra-diesel-tilted.jpg",
         "model": "Micra Active"
     },
     {
         "brand": "Renault",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-kwid-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-kwid-petrol-tilted.jpg",
         "model": "Kwid"
     },
     {
         "brand": "Renault",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-pulse-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-pulse-petrol-tilted.jpg",
         "model": "Pulse"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-tiago-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-tiago-petrol-tilted.jpg",
         "model": "Tiago"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata+Nano_tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata+Nano_tilted.jpg",
         "model": "Nano"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-vista-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-vista-petrol-tilted.jpg",
         "model": "Indica Vista"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indica-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-indica-petrol-tilted.jpg",
         "model": "Indica"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indica-v2-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/tata-indica-v2-tilted.png",
         "model": "Indica V2"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-bolt-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-bolt-petrol-tilted.jpg",
         "model": "Bolt"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-nano-cng-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-nano-cng-tilted.jpg",
         "model": "Nano Genx"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata-Indica-ev2-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Tata-Indica-ev2-tilted.png",
         "model": "Indica eV2"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-liva-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-etios-liva-petrol-tilted.jpg",
         "model": "Etios Liva"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-cross-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-etios-cross-petrol-tilted.jpg",
         "model": "Etios Cross"
     },
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
         "model": "Corsa"
     },
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
         "model": "Astra"
     },
     {
         "brand": "Jayem",
         "vehicle_type": "Hatchback",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-40-model-525.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-40-model-525.jpeg",
         "model": "Neo"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-mustang-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ford-mustang-tilted.png",
         "model": "Mustang"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-gtr-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/nissan-gtr-tilted.png",
         "model": "GTR"
     },
     {
         "brand": "Aston Martin",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-Martin-V12-Vantage-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/aston-Martin-V12-Vantage-tilted.png",
         "model": "Vantage"
     },
     {
         "brand": "Aston Martin",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-martin-rapide-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/aston-martin-rapide-tilted.jpg",
         "model": "Rapide"
     },
     {
         "brand": "Aston Martin",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston_Martin-Vanquish-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/aston_Martin-Vanquish-tilted.png",
         "model": "Vanquish"
     },
     {
         "brand": "Aston Martin",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/aston-martin-db9-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/aston-martin-db9-tilted.png",
         "model": "DB9"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a4-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a4-petrol-tilted.jpg",
         "model": "A4"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a6-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a6-petrol-tilted.jpg",
         "model": "A6"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q3-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-q3-tilted.jpg",
         "model": "Q3"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-565.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-18-model-565.jpeg",
         "model": "Q2"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q7-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-q7-tilted.jpg",
         "model": "Q7"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a3-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a3-petrol-tilted.jpg",
         "model": "A3"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-q5-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-q5-tilted.jpg",
         "model": "Q5"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a8l-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a8l-petrol-tilted.jpg",
         "model": "A8 L"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a7-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a7-petrol-tilted.jpg",
         "model": "A7"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-a8-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-a8-diesel-tilted.jpg",
         "model": "A8"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-tt-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-tt-tilted.jpg",
         "model": "TT"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/audi-r8-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/audi-r8-tilted.jpg",
         "model": "R8"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-555.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-18-model-555.jpeg",
         "model": "RS5"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-556.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-18-model-556.jpeg",
         "model": "RS3"
     },
     {
         "brand": "Audi",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-18-model-557.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-18-model-557.jpeg",
         "model": "RS7"
     },
     {
         "brand": "Bentley",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-mulsanne-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/bentley-mulsanne-tilted.png",
         "model": "Mulsanne"
     },
     {
         "brand": "Bentley",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-continental-gt-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bentley-continental-gt-tilted.jpg",
         "model": "Continental"
     },
     {
         "brand": "Bentley",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bentley-flying-spur-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/bentley-flying-spur-tilted.png",
         "model": "Flying Spur"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x1-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-x1-diesel-tilted.jpg",
         "model": "X1"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-3-series-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-3-series-diesel-tilted.jpg",
         "model": "3 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-20-model-566.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-20-model-566.jpeg",
         "model": "2 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-5-series-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-5-series-diesel-tilted.jpg",
         "model": "5 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/BMW+3+series+GT-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/BMW+3+series+GT-tilted.png",
         "model": "3 Series GT"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x3-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-x3-diesel-tilted.jpg",
         "model": "X3"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-7-series-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-7-series-diesel-tilted.jpg",
         "model": "7 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-1-series-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-1-series-diesel-tilted.jpg",
         "model": "1 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-z4-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-z4-petrol-tilted.jpg",
         "model": "Z4"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-5-series-gt-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-5-series-gt-diesel-tilted.jpg",
         "model": "5 Series GT"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x5-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-x5-diesel-tilted.jpg",
         "model": "X5"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-x6-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-x6-diesel-tilted.jpg",
         "model": "X6"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-6-series-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-6-series-diesel-tilted.jpg",
         "model": "6 Series"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-m5-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-m5-petrol-tilted.jpg",
         "model": "M5"
     },
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/bmw-m3-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/bmw-m3-petrol-tilted.jpg",
         "model": "M3"
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-458-Speciale-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ferrari-458-Speciale-tilted.png",
         "model": "458 Speciale"
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-458-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ferrari-458-tilted.png",
         "model": "458 Italia"
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferarri-488-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ferarri-488-tilted.png",
         "model": 488
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-california-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ferrari-california-tilted.png",
         "model": "California"
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ferrari-f12-berlinitta-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ferrari-f12-berlinitta-tilted.png",
         "model": "F12 Berlinetta"
     },
     {
         "brand": "Ferrari",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ferrari-FF-titlted.png",
+        "image": "https://cdn.autoave.in/population_data/Ferrari-FF-titlted.png",
         "model": "FF"
     },
     {
         "brand": "Jaguar",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xf-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/jaguar-xf-petrol-tilted.jpg",
         "model": "XF"
     },
     {
         "brand": "Jaguar",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xe-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/jaguar-xe-petrol-tilted.jpg",
         "model": "XE"
     },
     {
         "brand": "Jaguar",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-xj-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/jaguar-xj-petrol-tilted.jpg",
         "model": "XJ"
     },
     {
         "brand": "Jaguar",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/jaguar-f-type-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/jaguar-f-type-petrol-tilted.jpg",
         "model": "F Type"
     },
     {
         "brand": "Jaguar",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Jaguar%20F%20Pace.jpg",
+        "image": "https://cdn.autoave.in/population_data/Jaguar%20F%20Pace.jpg",
         "model": "F Pace"
     },
     {
         "brand": "Lamborghini",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-huracan-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/lamborghini-huracan-tilted.png",
         "model": "Huracan"
     },
     {
         "brand": "Lamborghini",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-aventador-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/lamborghini-aventador-tilted.png",
         "model": "Aventador"
     },
     {
         "brand": "Lamborghini",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/lamborghini-gallardo-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/lamborghini-gallardo-tilted.png",
         "model": "Gallardo"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-discovery-sport-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-discovery-sport-diesel-tilted.jpg",
         "model": "Discovery Sport"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-evoque-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-range-rover-evoque-petrol-tilted.jpg",
         "model": "Range Rover Evoque"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-freelander-2-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-freelander-2-diesel-tilted.jpg",
         "model": "Freelander 2"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-sport-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-range-rover-sport-petrol-tilted.jpg",
         "model": "Range Rover Sport"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-discovery-4-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-discovery-4-diesel-tilted.jpg",
         "model": "Discovery 4"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-24-model-574.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-24-model-574.jpeg",
         "model": "Defender"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/land-rover-range-rover-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/land-rover-range-rover-diesel-tilted.jpg",
         "model": "Land Rover"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Range%20Rover%20Vogue.jpg",
+        "image": "https://cdn.autoave.in/population_data/Range%20Rover%20Vogue.jpg",
         "model": "Range Rover Vogue"
     },
     {
         "brand": "Land Rover",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Land%20Rover%20Velar.jpg",
+        "image": "https://cdn.autoave.in/population_data/Land%20Rover%20Velar.jpg",
         "model": "Range Rover Velar"
     },
     {
         "brand": "Maserati",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maserati-Ghibli-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Maserati-Ghibli-tilted.jpg",
         "model": "Ghibli"
     },
     {
         "brand": "Maserati",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-quattroporte-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/maserati-quattroporte-tilted.png",
         "model": "Quattroporte"
     },
     {
         "brand": "Maserati",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-grancabrio-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maserati-grancabrio-tilted.jpg",
         "model": "GranCabrio"
     },
     {
         "brand": "Maserati",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maserati-granturismo-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/maserati-granturismo-tilted.png",
         "model": "GranTurismo"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-c-class-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-c-class-petrol-tilted.jpg",
         "model": "C-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-e-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-e-class-diesel-tilted.jpg",
         "model": "E-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-cla-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-cla-class-diesel-tilted.jpg",
         "model": "CLA Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-a-class-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-a-class-petrol-tilted.jpg",
         "model": "A-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-s-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-s-class-diesel-tilted.jpg",
         "model": "S-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-26-model-567.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-26-model-567.jpeg",
         "model": "V-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-ml-class-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-ml-class-petrol-tilted.jpg",
         "model": "ML Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-b-class-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-b-class-petrol-tilted.jpg",
         "model": "B-Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gla-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-gla-class-diesel-tilted.jpg",
         "model": "GLA Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gle-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-gle-class-diesel-tilted.jpg",
         "model": "GLE Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-sl-500-amg-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-sl-500-amg-petrol-tilted.jpg",
         "model": "SL 500 AMG"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-amg-gt-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-amg-gt-petrol-tilted.jpg",
         "model": "AMG GT"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-g63-amg-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-g63-amg-petrol-tilted.jpg",
         "model": "G63 AMGr"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-gl-class-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-gl-class-diesel-tilted.jpg",
         "model": "GL Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-slk-class-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-slk-class-petrol-tilted.jpg",
         "model": "SLK Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mercedes-benz-cls-class-petrol-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/mercedes-benz-cls-class-petrol-tilted.png",
         "model": "CLS Class"
     },
     {
         "brand": "Mercedes",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Mercedes%20R%20Class.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mercedes%20R%20Class.jpg",
         "model": "R Class"
     },
     {
         "brand": "Mini",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mini-cooper-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/mini-cooper-tilted.png",
         "model": "Cooper"
     },
     {
         "brand": "Mini",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mini-countryman-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/mini-countryman-tilted.png",
         "model": "Countryman"
     },
     {
         "brand": "Mini",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Mini%20Clubman.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mini%20Clubman.jpg",
         "model": "Clubman"
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-911-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/porsche-911-tilted.png",
         "model": 911
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-cayenne-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/porsche-cayenne-tilted.png",
         "model": "Cayenne"
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-macan-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/porsche-macan-tilted.jpg",
         "model": "Macan"
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-cayman-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/porsche-cayman-tilted.png",
         "model": "Cayman"
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/porsche-pabrandra-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/porsche-pabrandra-tilted.png",
         "model": "Pabrandra"
     },
     {
         "brand": "Porsche",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Porsche-Boxter-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Porsche-Boxter-tilted.png",
         "model": "Boxter"
     },
     {
         "brand": "Rolls Royce",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/rolls_royce_Phantom-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/rolls_royce_Phantom-tilted.png",
         "model": "Phantom"
     },
     {
         "brand": "Rolls Royce",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Rolls-Royce-Ghost-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Rolls-Royce-Ghost-tilted.png",
         "model": "Ghost"
     },
     {
         "brand": "Rolls Royce",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Rolls-Royce-wraith-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Rolls-Royce-wraith-tilted.png",
         "model": "Wraith"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s60-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-s60-petrol-tilted.jpg",
         "model": "S60"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-v40-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-v40-petrol-tilted.jpg",
         "model": "V40"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s80-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-s80-diesel-tilted.jpg",
         "model": "S80"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-xc60-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-xc60-diesel-tilted.jpg",
         "model": "XC60"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-xc90-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-xc90-diesel-tilted.jpg",
         "model": "XC90"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-s60-cross-country-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-s60-cross-country-diesel-tilted.jpg",
         "model": "S60 Cross Country"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volvo-v40-cross-country-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volvo-v40-cross-country-petrol-tilted.jpg",
         "model": "V40 Cross Country"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S40.jpg",
+        "image": "https://cdn.autoave.in/population_data/Volvo%20S40.jpg",
         "model": "S40"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20XC40.jpg",
+        "image": "https://cdn.autoave.in/population_data/Volvo%20XC40.jpg",
         "model": "XC 40"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20V60.jpg",
+        "image": "https://cdn.autoave.in/population_data/Volvo%20V60.jpg",
         "model": "V60"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S90.jpg",
+        "image": "https://cdn.autoave.in/population_data/Volvo%20S90.jpg",
         "model": "V90"
     },
     {
         "brand": "Volvo",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Volvo%20S90.jpg",
+        "image": "https://cdn.autoave.in/population_data/Volvo%20S90.jpg",
         "model": "S90"
     },
     {
         "brand": "DC",
         "vehicle_type": "Luxury",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/DC%20Avanti.jpg",
+        "image": "https://cdn.autoave.in/population_data/DC%20Avanti.jpg",
         "model": "Avanti"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-571.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-571.jpeg",
         "model": "ES"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-568.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-568.jpeg",
         "model": "NX"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-572.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-572.jpeg",
         "model": "LS"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-569.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-569.jpeg",
         "model": "RX"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-573.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-573.jpeg",
         "model": "LC"
     },
     {
         "brand": "Lexus",
         "vehicle_type": "Luxury",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-42-model-570.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-42-model-570.jpeg",
         "model": "LX"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-Abarth-Punto-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-Abarth-Punto-tilted.jpg",
         "model": "Abarth Punto"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-jazz-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-jazz-petrol-tilted.jpg",
         "model": "Jazz"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i20-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-i20-petrol-tilted.jpg",
         "model": "i20"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-elite-i20-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/hyundai-elite-i20-tilted.png",
         "model": "Elite i20"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-i20active-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-i20active-petrol-tilted.jpg",
         "model": "i20 Active"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-baleno-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-baleno-petrol-tilted.jpg",
         "model": "Baleno"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-fabia-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/skoda-fabia-petrol-tilted.jpg",
         "model": "Fabia"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Fabia-Scout-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Fabia-Scout-tilted.png",
         "model": "Fabia Scout"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-14-model-581.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-14-model-581.jpeg",
         "model": "Tiago NRG"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-altroz.png",
+        "image": "https://cdn.autoave.in/population_data/tata-altroz.png",
         "model": "Altroz"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Glanza.png",
+        "image": "https://cdn.autoave.in/population_data/Toyota%20Glanza.png",
         "model": "Glanza"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-polo-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-polo-diesel-tilted.jpg",
         "model": "Polo"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-polo-cross-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-polo-cross-diesel-tilted.jpg",
         "model": "Cross Polo"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Hatchback",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-beetle-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-beetle-tilted.png",
         "model": "Beetle"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-cruze-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-cruze-diesel-tilted.jpg",
         "model": "Cruze"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-city-petrol-tilted.jpg",
         "model": "City IVTEC"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-civic-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-civic-petrol-tilted.jpg",
         "model": "Civic"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-accord-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-accord-petrol-tilted.jpg",
         "model": "Accord"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-city-diesel-tilted.jpg",
         "model": "City IDTEC"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Honda-Accord-Hybrid-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Honda-Accord-Hybrid-tilted.png",
         "model": "Accord Hybrid"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-fluidic-verna-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-fluidic-verna-petrol-tilted.jpg",
         "model": "Verna Fluidic"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-elantra-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-elantra-petrol-tilted.jpg",
         "model": "Elantra"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-sonata-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-sonata-petrol-tilted.jpg",
         "model": "Sonata"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-sonata-embera-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-sonata-embera-tilted.jpg",
         "model": "Sonata Embera"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai-Sonata-Transform-Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Hyundai-Sonata-Transform-Tilted.jpg",
         "model": "Sonata Transform"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ciaz-diesel-tilted%20(1).jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-ciaz-diesel-tilted%20(1).jpg",
         "model": "Ciaz"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-kizashi-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-kizashi-petrol-tilted.jpg",
         "model": "Kizashi"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-sunny-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-sunny-diesel-tilted.jpg",
         "model": "Sunny"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-teana-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-teana-petrol-tilted.jpg",
         "model": "Teana"
     },
     {
         "brand": "Renault",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-scala-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-scala-diesel-tilted.jpg",
         "model": "Scala"
     },
     {
         "brand": "Renault",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-fluence-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-fluence-diesel-tilted.jpg",
         "model": "Fluence"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-rapid-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/skoda-rapid-petrol-tilted.jpg",
         "model": "Rapid"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda-Superb-titled.png",
+        "image": "https://cdn.autoave.in/population_data/Skoda-Superb-titled.png",
         "model": "Superb"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda-laura-diesel-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Skoda-laura-diesel-tilted.png",
         "model": "Laura"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-octavia-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/skoda-octavia-petrol-tilted.jpg",
         "model": "Octavia"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium Sedan",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15-model-564.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-15-model-564.jpeg",
         "model": "Sera"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota-Corolla-Altis-Tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Toyota-Corolla-Altis-Tilted.png",
         "model": "Corolla Altis"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Yaris.jpg",
+        "image": "https://cdn.autoave.in/population_data/Toyota%20Yaris.jpg",
         "model": "Yaris"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-camry-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-camry-tilted.jpg",
         "model": "Camry"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-vento-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-vento-petrol-tilted.jpg",
         "model": "Vento"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-jetta-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-jetta-petrol-tilted.jpg",
         "model": "Jetta"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-passat-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-passat-tilted.jpg",
         "model": "Passat"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Chevrolet+Captiva_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Chevrolet+Captiva_tilted.png",
         "model": "Captiva"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-traiblazer-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-traiblazer-tilted.png",
         "model": "Trailblazer"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-endeavour-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-endeavour-tilted.jpg",
         "model": "Endeavour"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-crv-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-crv-petrol-tilted.jpg",
         "model": "CRV"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-7-model-578.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-7-model-578.jpeg",
         "model": "Alcazar"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-santafe-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-santafe-petrol-tilted.jpg",
         "model": "SantaFE"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-tucson-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-tucson-diesel-tilted.jpg",
         "model": "Tucson"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-xuv500-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-xuv500-diesel-tilted.jpg",
         "model": "XUV 500"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-580.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-8-model-580.jpeg",
         "model": "XUV 700"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/Mahindra+Alturas+G4.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra+Alturas+G4.jpg",
         "model": "Alturas G4"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-grand-vitara-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/maruti-grand-vitara-tilted.png",
         "model": "Grand Vitara"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi-Pajero-Sport-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Mitsubishi-Pajero-Sport-tilted.png",
         "model": "Pajero Sport"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mitsubishi-outlander-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mitsubishi-outlander-diesel-tilted.jpg",
         "model": "Outlander"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mitsubishi-pajero-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/mitsubishi-pajero-tilted.png",
         "model": "Pajero"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi-Montero-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Mitsubishi-Montero-tilted.png",
         "model": "Montero"
     },
     {
         "brand": "Renault",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-koleos-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-koleos-diesel-tilted.jpg",
         "model": "Koleos"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/skoda-yeti-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/skoda-yeti-tilted.jpg",
         "model": "Yeti"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Skoda_Kodiaq.png",
+        "image": "https://cdn.autoave.in/population_data/Skoda_Kodiaq.png",
         "model": "Kodiaq"
     },
     {
         "brand": "Skoda",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-13-model-577.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-13-model-577.jpeg",
         "model": "Kushaq"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-aria-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-aria-diesel-tilted.jpg",
         "model": "Aria"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata+Harrier+_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata+Harrier+_Tilted.jpg",
         "model": "harrier"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-hexa-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-hexa-diesel-tilted.jpg",
         "model": "Hexa"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-fortuner-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-fortuner-tilted.jpg",
         "model": "Fortuner"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-innova-crysta-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-innova-crysta-tilted.jpg",
         "model": "Innova Crysta"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-land-cruiser-200-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-land-cruiser-200-diesel-tilted.jpg",
         "model": "Land Cruiser"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-land-cruiser-prado-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-land-cruiser-prado-diesel-tilted.jpg",
         "model": "Land Cruiser Prado"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-16-model-579.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-16-model-579.jpeg",
         "model": "T-Roc"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Volkswagen_Tiguannew.png",
+        "image": "https://cdn.autoave.in/population_data/Volkswagen_Tiguannew.png",
         "model": "Tiguan"
     },
     {
         "brand": "Isuzu",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Isuzu_MU7.jpg",
+        "image": "https://cdn.autoave.in/population_data/Isuzu_MU7.jpg",
         "model": "MU7"
     },
     {
         "brand": "Jeep",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Jeep+Compass.1440.jpg",
+        "image": "https://cdn.autoave.in/population_data/Jeep+Compass.1440.jpg",
         "model": "Compass"
     },
     {
         "brand": "Ssangyong",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Ssangyong+Rexton_Titlted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Ssangyong+Rexton_Titlted.jpg",
         "model": "Rexton"
     },
     {
         "brand": "MG",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-37-model-559.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-37-model-559.jpeg",
         "model": "Gloster"
     },
     {
         "brand": "MG",
         "vehicle_type": "Premium SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hector.png",
+        "image": "https://cdn.autoave.in/population_data/hector.png",
         "model": "Hector"
     },
     {
         "brand": "Kia",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-38-model-558.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-38-model-558.jpeg",
         "model": "Carnival"
     },
     {
         "brand": "Citroen",
         "vehicle_type": "Premium SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-43-model-582.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-43-model-582.jpeg",
         "model": "C5 Aircross"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-aveo-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-aveo-petrol-tilted.jpg",
         "model": "Aveo"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-sail-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-sail-diesel-tilted.jpg",
         "model": "Sail"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-optra-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-optra-petrol-tilted.jpg",
         "model": "Optra"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Chevrolet-Optra-Magnum-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Chevrolet-Optra-Magnum-tilted.png",
         "model": "Optra Magnum"
     },
     {
         "brand": "Daewoo",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/daewoo-nexia-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/daewoo-nexia-tilted.png",
         "model": "Nexia"
     },
     {
         "brand": "Daewoo",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Daewoo_Cielo_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Daewoo_Cielo_tilted.png",
         "model": "Cielo"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-linea-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-linea-diesel-tilted.jpg",
         "model": "Linea"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/fiat-linea-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/fiat-linea-diesel-tilted.jpg",
         "model": "Linea Classic"
     },
     {
         "brand": "Fiat",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Fiat_Petra_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Fiat_Petra_tilted.png",
         "model": "Petra"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-figo-aspire-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-figo-aspire-petrol-tilted.jpg",
         "model": "Figo Aspire"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-fiesta-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-fiesta-petrol-tilted.jpg",
         "model": "Fiesta"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-classic-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-classic-petrol-tilted.jpg",
         "model": "Fiesta Classic"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-Ikon-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-Ikon-tilted.jpg",
         "model": "Ikon"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-escort-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-escort-tilted.jpg",
         "model": "Escort"
     },
     {
         "brand": "Ford",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-mondeo-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/ford-mondeo-tilted.png",
         "model": "Mondeo"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-amaze-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-amaze-petrol-tilted.jpg",
         "model": "Amaze"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-city-petrol-tilted.jpg",
         "model": "City"
     },
     {
         "brand": "Honda",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-city-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-city-petrol-tilted.jpg",
         "model": "City ZX"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-xcent-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-xcent-petrol-tilted.jpg",
         "model": "Xcent"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-verna-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-verna-petrol-tilted.jpg",
         "model": "Verna"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-accent-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-accent-petrol-tilted.jpg",
         "model": "Accent"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-verna-transform-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-verna-transform-tilted.jpg",
         "model": "Verna Transform"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-accent-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-accent-petrol-tilted.jpg",
         "model": "Accent Viva"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai%20Aura.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai%20Aura.png",
         "model": "Aura"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-logan-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-logan-petrol-tilted.jpg",
         "model": "Logan"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-verito-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-verito-diesel-tilted.jpg",
         "model": "Verito"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-swift-dzire-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-swift-dzire-petrol-tilted.jpg",
         "model": "Swift Dzire"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-sx4-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-sx4-diesel-tilted.jpg",
         "model": "SX4"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-esteem-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-esteem-tilted.jpg",
         "model": "Esteem"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi%20Lancer.png",
+        "image": "https://cdn.autoave.in/population_data/Mitsubishi%20Lancer.png",
         "model": "Lancer"
     },
     {
         "brand": "Mitsubishi",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mitsubishi%20Cedia.png",
+        "image": "https://cdn.autoave.in/population_data/Mitsubishi%20Cedia.png",
         "model": "Cedia"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-zest-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-zest-petrol-tilted.jpg",
         "model": "Zest"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-tigor-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/tata-tigor-tilted.png",
         "model": "Tigor"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-manza-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-manza-petrol-tilted.jpg",
         "model": "Manza"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata-Indigo-Tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Tata-Indigo-Tilted.png",
         "model": "Indigo"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/TATA_Indigo-ecs.jpg",
+        "image": "https://cdn.autoave.in/population_data/TATA_Indigo-ecs.jpg",
         "model": "Indigo eCS"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indigo-cs.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-indigo-cs.jpg",
         "model": "Indigo CS"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-marina-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-marina-tilted.jpg",
         "model": "Indigo Marina"
     },
     {
         "brand": "Tata",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-indigo-xl-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-indigo-xl-tilted.jpg",
         "model": "Indigo XL"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-etios-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-etios-petrol-tilted.jpg",
         "model": "Etios"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-corolla-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-corolla-petrol-tilted.jpg",
         "model": "Corolla"
     },
     {
         "brand": "Volkswagen",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/volkswagen-ameo-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/volkswagen-ameo-petrol-tilted.jpg",
         "model": "Ameo"
     },
     {
         "brand": "Hindustan Motors",
         "vehicle_type": "Sedan",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/HM_Ambassador.jpg",
+        "image": "https://cdn.autoave.in/population_data/HM_Ambassador.jpg",
         "model": "Ambassador"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-enjoy-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-enjoy-petrol-tilted.jpg",
         "model": "Enjoy"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-tavera-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-tavera-diesel-tilted.jpg",
         "model": "Tavera"
     },
     {
         "brand": "Chevrolet",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/chevrolet-forrester-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/chevrolet-forrester-diesel-tilted.jpg",
         "model": "Forester"
     },
     {
         "brand": "Ford",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/ford-ecosport-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/ford-ecosport-diesel-tilted.jpg",
         "model": "Eco Sport"
     },
     {
         "brand": "Honda",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-wrv-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/honda-wrv-tilted.png",
         "model": "WRV"
     },
     {
         "brand": "Honda",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-mobilio-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-mobilio-petrol-tilted.jpg",
         "model": "Mobilio"
     },
     {
         "brand": "Honda",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/honda-brv-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/honda-brv-tilted.jpg",
         "model": "BRV"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/hyundai-creta-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/hyundai-creta-petrol-tilted.jpg",
         "model": "Creta"
     },
     {
         "brand": "Hyundai",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Hyundai_Venue.png",
+        "image": "https://cdn.autoave.in/population_data/Hyundai_Venue.png",
         "model": "Venue"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-scorpio-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-scorpio-diesel-tilted.jpg",
         "model": "Scorpio"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-xylo-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-xylo-diesel-tilted.jpg",
         "model": "Xylo"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-tuv300-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-tuv300-diesel-tilted.jpg",
         "model": "TUV 300"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-576.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-8-model-576.jpeg",
         "model": "Bolero Neo"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-quanto-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-quanto-diesel-tilted.jpg",
         "model": "Quanto"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-bolero-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-bolero-diesel-tilted.jpg",
         "model": "Bolero"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-563.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-8-model-563.jpeg",
         "model": "Imperio"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/mahindra-XUV300.png",
+        "image": "https://cdn.autoave.in/population_data/mahindra-XUV300.png",
         "model": "XUV 300"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-thar-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-thar-diesel-tilted.jpg",
         "model": "Thar"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra%20Bolero%20Camper.png",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%20Bolero%20Camper.png",
         "model": "Bolero Camper"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-nuovo-sport-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/mahindra-nuovo-sport-tilted.png",
         "model": "NuvoSport"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra_Marazzo.png",
+        "image": "https://cdn.autoave.in/population_data/Mahindra_Marazzo.png",
         "model": "Marazzo"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Mahindra%20Bolero%20Pickup.png",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%20Bolero%20Pickup.png",
         "model": "Bolero Pickup"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/mahindra-scorpio-getaway-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/mahindra-scorpio-getaway-tilted.jpg",
         "model": "Scorpio Getaway"
     },
     {
         "brand": "Mahindra",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8-model-575.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-8-model-575.jpeg",
         "model": "TUV 300 Plus"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-ertiga-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-ertiga-petrol-tilted.jpg",
         "model": "Ertiga"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-vitara-brezza-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-vitara-brezza-diesel-tilted.jpg",
         "model": "Vitara Brezza"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-s-cross-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-s-cross-diesel-tilted.jpg",
         "model": "S-Cross"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/maruti-suzuki-gypsy-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/maruti-suzuki-gypsy-tilted.jpg",
         "model": "Gypsy"
     },
     {
         "brand": "Maruti Suzuki",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Maruti%20Suzuki%20XL%206.jpg",
+        "image": "https://cdn.autoave.in/population_data/Maruti%20Suzuki%20XL%206.jpg",
         "model": "XL6"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-terrano-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/nissan-terrano-tilted.png",
         "model": "Terrano"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "SUV",
-        "image": "https://storage.googleapis.com/gomechanic_assets/CarModel/Nissan%20Kicks.jpg",
+        "image": "https://cdn.autoave.in/population_data/Nissan%20Kicks.jpg",
         "model": "Kicks"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-evalia-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-evalia-diesel-tilted.jpg",
         "model": "Evalia"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/nissan-x-trail-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/nissan-x-trail-diesel-tilted.jpg",
         "model": "X-Trail"
     },
     {
         "brand": "Nissan",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-11-model-560.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-11-model-560.jpeg",
         "model": "Magnite"
     },
     {
         "brand": "Renault",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-duster-petrol-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-duster-petrol-tilted.jpg",
         "model": "Duster"
     },
     {
         "brand": "Renault",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Renault_Triber.png",
+        "image": "https://cdn.autoave.in/population_data/Renault_Triber.png",
         "model": "Triber"
     },
     {
         "brand": "Renault",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/renault-lodgy-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/renault-lodgy-diesel-tilted.jpg",
         "model": "Lodgy"
     },
     {
         "brand": "Renault",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Renault_Captur.png",
+        "image": "https://cdn.autoave.in/population_data/Renault_Captur.png",
         "model": "Captur"
     },
     {
         "brand": "Renault",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-12-model-561.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-12-model-561.jpeg",
         "model": "Kiger"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-nexon-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/tata-nexon-tilted.png",
         "model": "Nexon"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-safari-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-safari-diesel-tilted.jpg",
         "model": "Safari"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-safari-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-safari-diesel-tilted.jpg",
         "model": "Safari Storme"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-sumo-diesel-tilted.jpg",
         "model": "Sumo Grande"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-sumo-diesel-tilted.jpg",
         "model": "Sumo Gold"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-sumo-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-sumo-diesel-tilted.jpg",
         "model": "Sumo Grande MK II"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-venture-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/tata-venture-tilted.png",
         "model": "Venture"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-movus-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-movus-diesel-tilted.jpg",
         "model": "Sumo Spacio"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Tata_Winger.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata_Winger.jpg",
         "model": "Winger"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/tata_xenon.png",
+        "image": "https://cdn.autoave.in/population_data/tata_xenon.png",
         "model": "Xenon"
     },
     {
         "brand": "Tata",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/tata-movus-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/tata-movus-diesel-tilted.jpg",
         "model": "Sumo Victa"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/toyota-innova-diesel-tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/toyota-innova-diesel-tilted.jpg",
         "model": "Innova"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Toyota%20Qualis.png",
+        "image": "https://cdn.autoave.in/population_data/Toyota%20Qualis.png",
         "model": "Qualis"
     },
     {
         "brand": "Toyota",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15-model-562.jpeg",
+        "image": "https://cdn.autoave.in/population_data/brand-15-model-562.jpeg",
         "model": "Urban Cruiser"
     },
     {
         "brand": "Force",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force-Motors-Force-One-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Force-Motors-Force-One-tilted.png",
         "model": "One"
     },
     {
         "brand": "Force",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20traveller.png",
+        "image": "https://cdn.autoave.in/population_data/Force%20traveller.png",
         "model": "Traveller 3350"
     },
     {
         "brand": "Force",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20motor%20trax.png",
+        "image": "https://cdn.autoave.in/population_data/Force%20motor%20trax.png",
         "model": "Trax"
     },
     {
         "brand": "Force",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Force%20Motors%20Gurkha.png",
+        "image": "https://cdn.autoave.in/population_data/Force%20Motors%20Gurkha.png",
         "model": "Gurkha"
     },
     {
         "brand": "Isuzu",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Isuzu%20Dmax%20Vcross.png",
+        "image": "https://cdn.autoave.in/population_data/Isuzu%20Dmax%20Vcross.png",
         "model": "Dmax V Cross"
     },
     {
         "brand": "Kia",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/gm-retail-app/cars/Seltos.png",
+        "image": "https://cdn.autoave.in/population_data/Seltos.png",
         "model": "Seltos"
     },
     {
         "brand": "Kia",
         "vehicle_type": "SUV",
-        "image": "https://gm-retail-app.s3.ap-south-1.amazonaws.com/cars/Kia+sonet.jpg",
+        "image": "https://cdn.autoave.in/population_data/Kia+sonet.jpg",
         "model": "Sonet"
     },
     {
         "brand": "Foton",
         "vehicle_type": "SUV",
-        "image": "https://s3.ap-south-1.amazonaws.com/carimagepath/general/logo/Foton_View_CS2.png",
+        "image": "https://cdn.autoave.in/population_data/Foton_View_CS2.png",
         "model": "VIW CS2"
     },
-
-    
     {
         "brand": "Ampere",
         "model": "Ampere V 48",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ampere-v-48-lead-acid-battery20190711191843.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ampere-v-48-lead-acid-battery20190711191843.jpg"
     },
     {
         "brand": "Ampere",
         "model": "Ampere Reo Elite",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ampere-reo-elite-lead-acid-battery20191223151716.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ampere-reo-elite-lead-acid-battery20191223151716.jpg"
     },
     {
         "brand": "Ampere",
         "model": "Ampere REO",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ampere-reo-lead-acid-battery20190711191749.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ampere-reo-lead-acid-battery20190711191749.jpg"
     },
     {
         "brand": "Ampere",
         "model": "Ampere Zeal",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ampere-zeal-li-battery20190711191913.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ampere-zeal-li-battery20190711191913.jpg"
     },
     {
         "brand": "Ampere",
         "model": "Ampere Magnus Pro",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ampere-magnus-pro--li-battery20200616030610.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ampere-magnus-pro--li-battery20200616030610.jpg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia SR 160",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/aprilia-sr-160--facelift--bs-vi20200309112218.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/aprilia-sr-160--facelift--bs-vi20200309112218.jpg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia SXR 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/aprilia-sxr-125-standard20210402205740.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/aprilia-sxr-125-standard20210402205740.jpg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia SXR 160",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/aprilia-sxr-160-standard20200206132658.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/aprilia-sxr-160-standard20200206132658.jpg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia Tuono 660",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102765/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia RS 660",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102763/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia Tuono Factory",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102769/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia RSV4 1100 Factory",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102767/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia Storm 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/aprilia-storm-125-bs-vi--fi20200114172335.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/aprilia-storm-125-bs-vi--fi20200114172335.jpg"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia SR 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/aprilia-sr125-bs-vi--fi20200114172823.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/aprilia-sr125-bs-vi--fi20200114172823.jpg"
     },
     {
         "brand": "Ather",
         "model": "Ather 450X",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ather-450x-plus20200928155355.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ather-450x-plus20200928155355.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Avenger Street 160",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-avenger-street-160-bs-vi20200211171236.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-avenger-street-160-bs-vi20200211171236.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar 180",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/bajaj-pulsar-180-bikini-fairing.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-180-bikini-fairing.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar NS160",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-pulsar-ns160-twin-disc--abs--bs-vi20200211172625.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-ns160-twin-disc--abs--bs-vi20200211172625.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar 220 F",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-pulsar-220f-bs-vi20200211172259.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-220f-bs-vi20200211172259.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Avenger Cruise 220",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-avenger-cruise-220-bs-vi20200211171517.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-avenger-cruise-220-bs-vi20200211171517.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar NS200",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-pulsar-ns200-bs-vi20200211173001.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-ns200-bs-vi20200211173001.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Chetak",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-urbanite-chetak-standard20191016163349.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-urbanite-chetak-standard20191016163349.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar RS 200",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-pulsar-rs-200-bs-vi20200402124559.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-rs-200-bs-vi20200402124559.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Dominar 250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/45831/dominar-250-right-side-view-2.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/dominar-250-right-side-view-2.jpeg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Dominar 400",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-dominar-400-standard--bs-vi20200403135546.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-dominar-400-standard--bs-vi20200403135546.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj CT 100",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-ct-100-ks-alloy--bs-vi--facelift20201026135646.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-ct-100-ks-alloy--bs-vi--facelift20201026135646.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Platina 100",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-platina-100-ks-202120201217160226.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-platina-100-ks-202120201217160226.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj CT 110",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-ct-110-es-alloy--bs-vi20200211163744.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-ct-110-es-alloy--bs-vi20200211163744.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Platina 110 H-Gear",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-platina-110-hgear-es-drum--bs-vi20210507200111.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-platina-110-hgear-es-drum--bs-vi20210507200111.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar 125",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bajaj-pulsar-125-drum--bs-vi20200316145222.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-125-drum--bs-vi20200316145222.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar 150",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/bajaj-pulsar-150-neon-abs-bs-vi.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-150-neon-abs-bs-vi.jpg"
     },
     {
         "brand": "Bajaj",
         "model": "Bajaj Pulsar NS125",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/bajaj-pulsar-ns125-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bajaj-pulsar-ns125-standard.jpg"
     },
     {
         "brand": "Benelli",
         "model": "Benelli Imperiale 400",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benelli-imperiale-400-standard20200709151857.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benelli-imperiale-400-standard20200709151857.jpg"
     },
     {
         "brand": "Benelli",
         "model": "Benelli Leoncino 500",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benelli-leoncino-500-standard20200719203519.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benelli-leoncino-500-standard20200719203519.jpg"
     },
     {
         "brand": "Benelli",
         "model": "Benelli TRK 502",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benelli-trk-502-standard20200719202226.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benelli-trk-502-standard20200719202226.jpg"
     },
     {
         "brand": "Benelli",
         "model": "Benelli 502C",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/benelli-502c-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benelli-502c-standard.jpg"
     },
     {
         "brand": "Benelli",
         "model": "Benelli TRK 502X",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benelli-trk-502x-standard20200719201830.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benelli-trk-502x-standard20200719201830.jpg"
     },
     {
         "brand": "Benling",
         "model": "Benling Kriti",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benling-kriti-standard20201026203943.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benling-kriti-standard20201026203943.jpg"
     },
     {
         "brand": "Benling",
         "model": "Benling Falcon",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benling-falcon-standard20201026203804.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benling-falcon-standard20201026203804.jpg"
     },
     {
         "brand": "Benling",
         "model": "Benling Icon",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benling-icon-standard20201026203905.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benling-icon-standard20201026203905.jpg"
     },
     {
         "brand": "Benling",
         "model": "Benling Aura",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/benling-aura-standard20201026203705.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/benling-aura-standard20201026203705.jpg"
     },
     {
         "brand": "BGauss",
         "model": "BGauss A2",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bgauss-a2-lead-acid20201006202636.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bgauss-a2-lead-acid20201006202636.jpg"
     },
     {
         "brand": "BGauss",
         "model": "BGauss B8",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bgauss-b8-lead-acid20201006202843.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bgauss-b8-lead-acid20201006202843.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW F900R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-f900r-standard20191129161356.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-f900r-standard20191129161356.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW F900XR",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-f900xr-standard20191129161245.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-f900xr-standard20191129161245.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW R Nine T Scrambler",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-r-nine-t-scrambler-standard20200731231100.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-r-nine-t-scrambler-standard20200731231100.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW S 1000 R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-s-1000-r-standard20200731225628.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-s-1000-r-standard20200731225628.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW R nineT",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-r-ninet-standard20200731231554.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-r-ninet-standard20200731231554.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW R18",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-r18-standard20200919140914.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-r18-standard20200919140914.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW G 310 R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-g-310-r-standard20201010112848.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-g-310-r-standard20201010112848.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW G 310 GS",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-g-310-gs-standard20201010112822.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-g-310-gs-standard20201010112822.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW R 1250 GS",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-r-1250-gs-standard20200731223837.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-r-1250-gs-standard20200731223837.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW S 1000 XR",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-s1000xr-2020-standard20191129161142.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-s1000xr-2020-standard20191129161142.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW R 1250 GS Adventure",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-r-1250-gs-adventure-standard20200731224233.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-r-1250-gs-adventure-standard20200731224233.jpg"
     },
     {
         "brand": "BMW Bikes",
         "model": "BMW M 1000 RR",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/bmw-m-1000-rr-standard20210320230911.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/bmw-m-1000-rr-standard20210320230911.jpg"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 300NK",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/cfmoto-300nk-standard20210401162542.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-300nk-standard20210401162542.jpg"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 650NK",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/cfmoto-650nk-standard20210423171513.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650nk-standard20210423171513.jpg"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 650MT",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/cfmoto-650mt-standard20210507173743.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650mt-standard20210507173743.jpg"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 650GT",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/cfmoto-650gt-standard20210506173736.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650gt-standard20210506173736.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Scrambler Desert Sled",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-scrambler-desert-sled-standard20210315163003.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-desert-sled-standard20210315163003.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Monster BS6",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103831/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Scrambler 1100",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-scrambler-1100-pro20200923020012.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-1100-pro20200923020012.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati SuperSport",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103219/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Multistrada 950",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-multistrada-950-standard20200729211745.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-950-standard20200729211745.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Panigale V2",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-panigale-v2-standard20200826132036.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-panigale-v2-standard20200826132036.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati XDiavel",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/--dark.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/--dark.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Diavel 1260",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-diavel-1260-standard20200729224117.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-diavel-1260-standard20200729224117.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Multistrada V4",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/ducati-multistrada-v4-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-v4-standard.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Streetfighter V4",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-streetfighter-v4-standard20191111152735.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-streetfighter-v4-standard20191111152735.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Panigale V4",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-panigale-v4-standard20200729213231.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-panigale-v4-standard20200729213231.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Scrambler Icon",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-scrambler-icon-dark20210122161614.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-icon-dark20210122161614.jpg"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Scrambler Nightshift",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ducati-scrambler-nightshift-standard20210315163113.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-nightshift-standard20210315163113.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Your",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-your-standard20201005141415.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-your-standard20201005141415.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Wind",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-wind-standard20201005141252.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-wind-standard20201005141252.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Ahava",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-ahava-standard20210504173725.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-ahava-standard20210504173725.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Atreo",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-atreo-standard20210504173826.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-atreo-standard20210504173826.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe 4U",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-4u-standard20201005141211.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-4u-standard20201005141211.jpg"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Xeniaa",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/eeve-xeniaa-standard20201005141334.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/eeve-xeniaa-standard20201005141334.jpg"
     },
     {
         "brand": "Evolet",
         "model": "Evolet Pony",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/evolet-pony-ez20190904180558.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/evolet-pony-ez20190904180558.jpg"
     },
     {
         "brand": "Evolet",
         "model": "Evolet Polo",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/evolet-polo-ez20190904180534.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/evolet-polo-ez20190904180534.jpg"
     },
     {
         "brand": "Evolet",
         "model": "Evolet Derby",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/evolet-derby-ez20190904180506.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/evolet-derby-ez20190904180506.jpg"
     },
     {
         "brand": "Gemopai",
         "model": "Gemopai Ryder",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/gemopai-ryder-standard20201006225821.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/gemopai-ryder-standard20201006225821.jpg"
     },
     {
         "brand": "Gemopai",
         "model": "Gemopai Astrid Lite",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/gemopai-astrid-lite-standard20201006225736.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/gemopai-astrid-lite-standard20201006225736.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Forty Eight",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-forty-eight-standard20200614200811.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-forty-eight-standard20200614200811.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Softail",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-softail-standard20210430205242.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-softail-standard20210430205242.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Street Bob",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-street-bob-standard20210430224153.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-bob-standard20210430224153.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Fat Bob",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-fat-bob-standard20210501012622.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-fat-bob-standard20210501012622.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson PAN America 1250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-pan-america-1250-standard20210428144842.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-pan-america-1250-standard20210428144842.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Fat Boy",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-fat-boy-standard20200616022543.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-fat-boy-standard20200616022543.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Heritage Classic",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-heritage-classic-standard20210501020530.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-heritage-classic-standard20210501020530.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Electra Glide",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-electra-glide-standard20210501014619.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-electra-glide-standard20210501014619.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Road King",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-road-king-standard20210501022417.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-road-king-standard20210501022417.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Street Glide Special",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-street-glide-special-standard20210501030258.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-glide-special-standard20210501030258.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Road Glide Special",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-road-glide-special-standard20210501024444.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-road-glide-special-standard20210501024444.jpg"
     },
     {
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Iron 883",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/harleydavidson-iron-883-standard20200613230206.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-iron-883-standard20200613230206.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Xtreme 160R",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-xtreme-160r-front-disc20200630184113.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-xtreme-160r-front-disc20200630184113.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Xpulse 200T",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-xpulse-200t-standard-bs620210313131548.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-xpulse-200t-standard-bs620210313131548.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Xpulse 200",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-xpulse-200-standard20200810151858.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-xpulse-200-standard20200810151858.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Xtreme 200S",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-xtreme-200s-standard20201110143816.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-xtreme-200s-standard20201110143816.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero HF Deluxe",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-hf-deluxe-kick-spoke-bsvi20200602163327.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-hf-deluxe-kick-spoke-bsvi20200602163327.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Pleasure+",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-pleasure-110-sheet-metal-wheel--bs-vi20200129134245.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-pleasure-110-sheet-metal-wheel--bs-vi20200129134245.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Splendor Plus",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-splendor-plus-kick-alloy--bs-vi20200214191452.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-splendor-plus-kick-alloy--bs-vi20200214191452.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Maestro Edge 110",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-maestro-edge-110-drum-brake-alloy--vx20200909235228.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-maestro-edge-110-drum-brake-alloy--vx20200909235228.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Splendor iSmart 110",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-splendor-ismart-110-fi--bsvi20191107161814.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-splendor-ismart-110-fi--bsvi20191107161814.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Passion Pro",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-passion-pro-110-drum--bs-vi20200509232836.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-passion-pro-110-drum--bs-vi20200509232836.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Destini 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-destini-125-lx--bs-vi20200214185348.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-destini-125-lx--bs-vi20200214185348.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Super Splendor",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-super-splendor-selfdrum-alloy--bs-vi20200227201639.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-super-splendor-selfdrum-alloy--bs-vi20200227201639.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Maestro Edge 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/hero-maestro-alloy-wheel-drum-bs-vi.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-maestro-alloy-wheel-drum-bs-vi.jpg"
     },
     {
         "brand": "Hero",
         "model": "Hero Glamour",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-glamour-i3s-drum--bs-vi20200510005530.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-glamour-i3s-drum--bs-vi20200510005530.jpg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Flash",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/heroelectric-flash.jpg?20191401123031&q=75"
+        "image": "https://cdn.autoave.in/population_data/heroelectric-flash.jpg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Optima",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-electric-optima-lead-acid20210511154426.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-electric-optima-lead-acid20210511154426.jpg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Optima HX",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/100393/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric NYX HX",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/100391/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Atria",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/99383/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Dash",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-electric-dash-standard20200104202505.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-electric-dash-standard20200104202505.jpg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric NYX",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-electric-nyx-er20190819195052.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-electric-nyx-er20190819195052.jpg"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Photon",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/hero-electric-photon-hx20210511133422.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/hero-electric-photon-hx20210511133422.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda X-Blade",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/48644/x-blade-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/x-blade-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Hornet 2.0",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/51748/hornet-right-front-three-quarter-2.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/hornet-right-front-three-quarter-2.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB200X",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/104053/right-rear-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-rear-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Hness CB350",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-hness-cb350-dlx20201113120847.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-hness-cb350-dlx20201113120847.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB350RS",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-cb350rs-standard20210216125021.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-cb350rs-standard20210216125021.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Africa Twin",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-africa-twin-adventure-sports--manual20210112145358.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-africa-twin-adventure-sports--manual20210112145358.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Goldwing",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-goldwing-standard20200804235945.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-goldwing-standard20200804235945.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB500X",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-cb500x-standard20210315125812.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-cb500x-standard20210315125812.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CD 110 Dream",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/48095/dream-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/dream-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Dio",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/49460/dio-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/dio-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Activa 6G",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/44686/activa-6g-right-front-three-quarter-2.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/activa-6g-right-front-three-quarter-2.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Livo",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/48537/livo-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/livo-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Shine",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/45481/shine-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/shine-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Activa 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/56823/activa-125-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/activa-125-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Grazia",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/48441/grazia-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/grazia-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda SP 125",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/43482/sp-125-right-front-three-quarter-2.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/sp-125-right-front-three-quarter-2.jpeg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB650R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-cb650r-standard20210330171322.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-cb650r-standard20210330171322.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CBR 650R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/honda-cbr-650r-standard20210330171401.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/honda-cbr-650r-standard20210330171401.jpg"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Unicorn",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/49459/unicorn-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/unicorn-right-front-three-quarter.jpeg"
     },
     {
         "brand": "Husqvarna",
         "model": "Husqvarna Vitpilen 250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/husqvarna-vitpilen-250-standard20200225140033.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/husqvarna-vitpilen-250-standard20200225140033.jpg"
     },
     {
         "brand": "Husqvarna",
         "model": "Husqvarna Svartpilen 250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/husqvarna-svartpilen-250-standard20200225140010.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/husqvarna-svartpilen-250-standard20200225140010.jpg"
     },
     {
         "brand": "Indian",
         "model": "Indian Chief Dark Horse",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/indian-chief-dark-horse-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/indian-chief-dark-horse-standard.jpg"
     },
     {
         "brand": "Indian",
         "model": "Indian Chief Bobber Dark Horse",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/indian-chief-bobber-dark-horse-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/indian-chief-bobber-dark-horse-standard.jpg"
     },
     {
         "brand": "Indian",
         "model": "Indian Super Chief Limited",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/indian-super-chief-limited-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/indian-super-chief-limited-standard.jpg"
     },
     {
         "brand": "Jawa",
         "model": "Jawa 42",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/jawa-42-single-channel-abs--bs-vi20200302122453.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/jawa-42-single-channel-abs--bs-vi20200302122453.jpg"
     },
     {
         "brand": "Jawa",
         "model": "Jawa Standard",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/jawa-standard-single-channel-abs--bs-vi20200302120818.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/jawa-standard-single-channel-abs--bs-vi20200302120818.jpg"
     },
     {
         "brand": "Jawa",
         "model": "Jawa Perak",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/jawa-perak-standard20191116153507.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/jawa-perak-standard20191116153507.jpg"
     },
     {
         "brand": "Joy e-bike",
         "model": "Joy e-bike Monster",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/joy-ebike-monster-standard20210106020700.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike-monster-standard20210106020700.jpg"
     },
     {
         "brand": "Joy e-bike",
         "model": "Joy e-bike Honeybee",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/joy-ebike-honeybee-standard20210106020556.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike-honeybee-standard20210106020556.jpg"
     },
     {
         "brand": "Joy e-bike",
         "model": "Joy e-bike Gen Nxt",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/joy-ebike-gen-nxt-standard20210106020312.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike-gen-nxt-standard20210106020312.jpg"
     },
     {
         "brand": "Joy e-bike",
         "model": "Joy e-bike Glob",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/joy-ebike-glob-standard20210106020414.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike-glob-standard20210106020414.jpg"
     },
     {
         "brand": "Joy e-bike",
         "model": "Joy e-bike Wolf",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/joy-ebike-wolf-standard20210106020802.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/joy-ebike-wolf-standard20210106020802.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja 1000",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-ninja-1000-2020-sx20200529171023.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-1000-2020-sx20200529171023.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Versys 1000",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-versys-1000-2020-bs-vi20200519181432.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-1000-2020-bs-vi20200519181432.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja ZX-10R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-ninja-zx10r-standard20210316212716.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-zx10r-standard20210316212716.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Z H2",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-z-h2-standard20210104200105.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-z-h2-standard20210104200105.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja 300",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-ninja-300-standard20200731234031.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-300-standard20200731234031.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Vulcan S",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/--standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/--standard.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Z650",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/100265/right-front-three-quarter.png?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.png"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja 650",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/100211/right-front-three-quarter.png?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.png"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Versys 650",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-versys-650-standard20200812111500.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-650-standard20200812111500.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki W800",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-w800-standard20200612012451.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-w800-standard20200612012451.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki KX250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102875/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja H2R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-ninja-h2r-standard20200803234022.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-h2r-standard20200803234022.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Z900",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/kawasaki-z900-2020-standard20191129170842.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-z900-2020-standard20191129170842.jpg"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki KX450",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102877/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "KTM",
         "model": "KTM 125 Duke",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-125-duke-bs-vi-202120201207143206.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-125-duke-bs-vi-202120201207143206.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM RC 125",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-rc-125-bs-vi20200928131640.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-rc-125-bs-vi20200928131640.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM 200 Duke",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-200-duke-bs-vi20200130112649.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-200-duke-bs-vi20200130112649.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM RC 200",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-rc-200-bs-vi20200928131706.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-rc-200-bs-vi20200928131706.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM 250 Duke",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-250-duke-bs-vi20200805125938.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-250-duke-bs-vi20200805125938.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM 250 Adventure",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-250-adventure-standard20191203140505.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-250-adventure-standard20191203140505.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM RC 390",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-rc-390-bs-vi20200928131730.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-rc-390-bs-vi20200928131730.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM 390 Duke",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-390-duke-bs-vi20200130112504.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-390-duke-bs-vi20200130112504.jpg"
     },
     {
         "brand": "KTM",
         "model": "KTM 390 Adventure",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/ktm-390-adventure-standard20191122103644.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/ktm-390-adventure-standard20191122103644.jpg"
     },
     {
         "brand": "Mahindra Bikes",
         "model": "Mahindra Mojo",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/mahindra-mojo-standard20200719185146.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/mahindra-mojo-standard20200719185146.jpg"
     },
     {
         "brand": "Moto Guzzi",
         "model": "Moto Guzzi V85 TT",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102771/right-side-view.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
     },
     {
         "brand": "Odysse",
         "model": "Odysse Evoqis",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/odysse-evoqis-standard20210402183446.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/odysse-evoqis-standard20210402183446.jpg"
     },
     {
         "brand": "Odysse",
         "model": "Odysse E2Go",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/odysse-e2go-lead-acid20210402183643.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/odysse-e2go-lead-acid20210402183643.jpg"
     },
     {
         "brand": "Odysse",
         "model": "Odysse Racer",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/odysse-racer-lead-acid20210402184114.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/odysse-racer-lead-acid20210402184114.jpg"
     },
     {
         "brand": "Odysse",
         "model": "Odysse Hawk",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/odysse-hawk-lite20210402183857.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/odysse-hawk-lite20210402183857.jpg"
     },
     {
         "brand": "Okinawa",
         "model": "Okinawa i-Praise",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/okinawa-i-praise.jpg?20192401181900&q=75"
+        "image": "https://cdn.autoave.in/population_data/okinawa-i-praise.jpg"
     },
     {
         "brand": "Okinawa",
         "model": "Okinawa R30",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/okinawa-r30-standard20200821164805.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/okinawa-r30-standard20200821164805.jpg"
     },
     {
         "brand": "Okinawa",
         "model": "Okinawa Lite",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/okinawa-lite-standard20191107181833.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/okinawa-lite-standard20191107181833.jpg"
     },
     {
         "brand": "Okinawa",
         "model": "Okinawa Ridge Plus",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/okinawa-ridge-plus.jpg?20190103151915&q=75"
+        "image": "https://cdn.autoave.in/population_data/okinawa-ridge-plus.jpg"
     },
     {
         "brand": "Okinawa",
         "model": "Okinawa Praise",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/okinawa-praise-pro20190905143848.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/okinawa-praise-pro20190905143848.jpg"
     },
     {
         "brand": "OLA",
         "model": "OLA S1",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/98491/series-s-left-side-view-5.jpeg?q=75"
+        "image": "https://cdn.autoave.in/population_data/series-s-left-side-view-5.jpeg"
     },
     {
         "brand": "PURE EV",
         "model": "PURE EV ETrance",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/pure-ev-etrance-standard20201006162702.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/pure-ev-etrance-standard20201006162702.jpg"
     },
     {
         "brand": "PURE EV",
         "model": "PURE EV ETrance+",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/pure-ev-etrance-standard20201006163041.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/pure-ev-etrance-standard20201006163041.jpg"
     },
     {
         "brand": "PURE EV",
         "model": "PURE EV EPluto",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/pure-ev-epluto-standard20201006162445.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/pure-ev-epluto-standard20201006162445.jpg"
     },
     {
         "brand": "PURE EV",
         "model": "PURE EV ETrance Neo",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/pure-ev-etrance-neo-standard20210316151336.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/pure-ev-etrance-neo-standard20210316151336.jpg"
     },
     {
         "brand": "PURE EV",
         "model": "PURE EV EPluto 7G",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/pure-ev-epluto-7g-standard20201006162543.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/pure-ev-epluto-7g-standard20201006162543.jpg"
     },
     {
         "brand": "Revolt",
         "model": "Revolt RV 300",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/revolt-rv-300-standard20190828182039.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/revolt-rv-300-standard20190828182039.jpg"
     },
     {
         "brand": "Revolt",
         "model": "Revolt RV 400",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/revolt-rv-400-premium20190828154717.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/revolt-rv-400-premium20190828154717.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Bullet 350",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/royal-enfield-bullet-350-ks--x--efi-bs-vi20200401130113.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield-bullet-350-ks--x--efi-bs-vi20200401130113.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Classic 350",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/royalenfield-classic-350-2021-redditch-single-channel-abs.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royalenfield-classic-350-2021-redditch-single-channel-abs.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Meteor 350",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/royal-enfield-meteor-350-fireball20201106124644.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield-meteor-350-fireball20201106124644.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Himalayan",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/royal-enfield-himalayan-standard--bs-vi-202120210211125102.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield-himalayan-standard--bs-vi-202120210211125102.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Interceptor 650",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/royal-enfield-interceptor-650-standard--bs-vi20200212180615.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield-interceptor-650-standard--bs-vi20200212180615.jpg"
     },
     {
         "brand": "Royal Enfield",
         "model": "Royal Enfield Continental GT 650",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/royal-enfield-continental-gt-650-standard--bs-vi20200212182221.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/royal-enfield-continental-gt-650-standard--bs-vi20200212182221.jpg"
     },
     {
         "brand": "Simple Energy",
         "model": "Simple Energy One",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/1/versions/simpleenergy-one-standard.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/simpleenergy-one-standard.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Gixxer",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-gixxer-single-channel-abs--bs-vi20210628105741.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-gixxer-single-channel-abs--bs-vi20210628105741.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Intruder 150",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-intruder-150-standard--bs-vi20200320182536.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-intruder-150-standard--bs-vi20200320182536.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Gixxer SF",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-gixxer-sf-standard--bs-vi20210628170629.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-gixxer-sf-standard--bs-vi20210628170629.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Gixxer 250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-gixxer-250-standard--bs-vi20210628105908.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-gixxer-250-standard--bs-vi20210628105908.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Gixxer SF 250",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-gixxer-sf-250-motogp-edition--bs-vi20200528161432.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-gixxer-sf-250-motogp-edition--bs-vi20200528161432.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Hayabusa",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-hayabusa-standard20210426152114.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-hayabusa-standard20210426152114.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Access 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-access-125-steel-wheel--drum--cbs-bs-vi20200106120649.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-access-125-steel-wheel--drum--cbs-bs-vi20200106120649.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki V-Strom 650 XT",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-vstrom-650-xt-standard20200805183513.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-vstrom-650-xt-standard20200805183513.jpg"
     },
     {
         "brand": "Suzuki",
         "model": "Suzuki Burgman Street 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/suzuki-burgman-street-125-bs-vi20200217114022.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/suzuki-burgman-street-125-bs-vi20200217114022.jpg"
     },
     {
         "brand": "Techo Electra",
         "model": "Techo Electra Neo",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/techoelectra-neo.jpg?20192106122708&q=75"
+        "image": "https://cdn.autoave.in/population_data/techoelectra-neo.jpg"
     },
     {
         "brand": "Techo Electra",
         "model": "Techo Electra Raptor",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/techoelectra-raptor.jpg?20191906194925&q=75"
+        "image": "https://cdn.autoave.in/population_data/techoelectra-raptor.jpg"
     },
     {
         "brand": "Techo Electra",
         "model": "Techo Electra Emerge",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/techoelectra-emerge.jpg?20191906194822&q=75"
+        "image": "https://cdn.autoave.in/population_data/techoelectra-emerge.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Bonneville T120",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-bonneville-t120-2021-standard20210401113257.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-t120-2021-standard20210401113257.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Speed Twin",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/101359/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Street Triple RS",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-street-triple-rs-standard20200703230118.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-rs-standard20200703230118.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Bonneville Speedmaster",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-bonneville-speedmaster-2021-standard20210401153414.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-speedmaster-2021-standard20210401153414.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Tiger 850 Sport",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-tiger-850-sport-standard20201230153551.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-tiger-850-sport-standard20201230153551.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Bonneville Bobber",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-bonneville-bobber-standard20210423193707.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-bobber-standard20210423193707.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Tiger 900",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-tiger-900-gt20200619130902.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-tiger-900-gt20200619130902.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Scrambler 1200",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-scrambler-1200-steve-mcqueen-edition20210423172836.png?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-scrambler-1200-steve-mcqueen-edition20210423172836.png"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Speed Triple 1200 RS",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-speed-triple-1200-rs-standard20210127121552.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-speed-triple-1200-rs-standard20210127121552.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Rocket 3",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-rocket-3-2020-r20190802133947.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-rocket-3-2020-r20190802133947.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Trident 660",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-trident-standard20201103153922.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-trident-standard20201103153922.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Street Twin",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-street-twin-2021-standard20210401131021.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-twin-2021-standard20210401131021.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Street Triple R",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-street-triple-r-standard20200804163527.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-r-standard20200804163527.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Bonneville T100",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-bonneville-t100-2021-standard20210401150611.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-t100-2021-standard20210401150611.jpg"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Street Scrambler",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/triumph-street-scrambler-sandstorm-edition20210423165626.png?q=75"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-scrambler-sandstorm-edition20210423165626.png"
     },
     {
         "brand": "TVS",
         "model": "TVS Apache RTR 160",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-apache-rtr-160-front-disc--abs--bs-vi20200122150111.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-apache-rtr-160-front-disc--abs--bs-vi20200122150111.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Apache RTR 160 4V",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-apache-rtr-160-4v-drum--abs--bsvi20191126160322.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-apache-rtr-160-4v-drum--abs--bsvi20191126160322.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Apache RTR 180",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-apache-rtr-180-bs-vi20200320162824.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-apache-rtr-180-bs-vi20200320162824.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Apache RTR 200 4V",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-apache-rtr-200-4v-single-channel-abs--bs-vi20200922135525.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-apache-rtr-200-4v-single-channel-abs--bs-vi20200922135525.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Apache RR310",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102869/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "TVS",
         "model": "TVS XL100 Comfort",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-xl100-comfort-kick-start20201228120501.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-xl100-comfort-kick-start20201228120501.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS XL100 Heavy Duty",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-xl100-heavy-duty-kick-start20201228123645.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-xl100-heavy-duty-kick-start20201228123645.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Sport",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-sport-kick-start-alloy--bs-vi20200406102206.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-sport-kick-start-alloy--bs-vi20200406102206.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Scooty Pep Plus",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-scooty-pep-plus-bs-vi20200401185937.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-scooty-pep-plus-bs-vi20200401185937.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Radeon",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-radeon-drum--bs-vi20200416143002.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-radeon-drum--bs-vi20200416143002.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Scooty Zest 110",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-scooty-zest-110-himalayan-high20200723172945.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-scooty-zest-110-himalayan-high20200723172945.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Jupiter",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-jupiter-sheet-metal-wheel20210111113827.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-jupiter-sheet-metal-wheel20210111113827.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Star City Plus",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-star-city-plus-mono-tone--bs-vi20200213124609.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-star-city-plus-mono-tone--bs-vi20200213124609.jpg"
     },
     {
         "brand": "TVS",
         "model": "TVS Ntorq 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/102709/ntorq-125-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/ntorq-125-right-front-three-quarter.jpeg"
     },
     {
         "brand": "TVS",
         "model": "TVS Raider 125",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103183/raider-125-right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/raider-125-right-front-three-quarter.jpeg"
     },
     {
         "brand": "TVS",
         "model": "TVS iQube",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/tvs-iqube-standard20200125210025.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/tvs-iqube-standard20200125210025.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa LX 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-lx-125-bs-vi20200810112807.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-lx-125-bs-vi20200810112807.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa ZX 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-zx-125-bs-vi--fi20200114174818.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-zx-125-bs-vi--fi20200114174818.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa VXL 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-vxl-125-bs-vi20200504235404.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-vxl-125-bs-vi20200504235404.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa SXL 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-sxl-125-bs-vi--fi20200114182112.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-sxl-125-bs-vi--fi20200114182112.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa VXL 150",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-vxl-149-bs-vi20200504234257.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-vxl-149-bs-vi20200504234257.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa Elegante 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-elegante-125-bs-vi20200704232539.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-elegante-125-bs-vi20200704232539.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa SXL 150",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-sxl-150-bs-vi--fi20200114182809.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-sxl-150-bs-vi--fi20200114182809.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa Elegante 150",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-elegante-150-bs-vi--fi20200114183459.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-elegante-150-bs-vi--fi20200114183459.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa Urban Club",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-urban-club-bs-vi--fi20200114174114.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-urban-club-bs-vi--fi20200114174114.jpg"
     },
     {
         "brand": "Vespa",
         "model": "Vespa Notte",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/vespa-notte-bs-vi20200624121704.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/vespa-notte-bs-vi20200624121704.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha FZ FI",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-fz-v3-single-channel-abs--bs-vi20191111113605.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fz-v3-single-channel-abs--bs-vi20191111113605.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha FZ S FI",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-fz-s-v3-single-channel-abs--bs-vi20191111114812.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fz-s-v3-single-channel-abs--bs-vi20191111114812.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha FZ X",
         "vehicle_type": "Bike",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-fz-x-standard20210618140055.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fz-x-standard20210618140055.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha Aerox 155",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103803/right-front-three-quarter-2.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter-2.jpeg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha FZ25",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-fz25-standard20200727170517.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fz25-standard20200727170517.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha MT 15",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-mt-15-bs-vi20200204191522.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-mt-15-bs-vi20200204191522.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha YZF R15 V4",
         "vehicle_type": "Premium",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103795/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha Fascino 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yamaha-fascino-125-standard--drum-brake20191219183603.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fascino-125-standard--drum-brake20191219183603.jpg"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha Ray ZR 125",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/103097/right-front-three-quarter.jpeg?isig=0&q=75"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
     },
     {
         "brand": "Yo",
         "model": "Yo Edge",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yo-edge-dx20200921231209.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yo-edge-dx20200921231209.jpg"
     },
     {
         "brand": "Yo",
         "model": "Yo Drift",
         "vehicle_type": "Gearless",
-        "image": "https://imgd.aeplcdn.com/310x174/bw/models/yo-drift-dx20200921231133.jpg?q=75"
+        "image": "https://cdn.autoave.in/population_data/yo-drift-dx20200921231133.jpg"
     }
 ]

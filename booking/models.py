@@ -176,46 +176,42 @@ class CancellationRequest(Model):
         return "{} - {}".format(self.booking, self.reason)
 
 
-class ActiveCouponManager(models.Manager):
-    def active_coupons(self):
-        return super().get_queryset().filter(
-            is_active=True,
-            valid_from__lte=datetime.datetime.now(),
-            valid_to__gte=datetime.datetime.now(),
-        )
+class ActiveOfferManager(models.Manager):
+    def active_offers(self):
+        return super().get_queryset().all()
 
-class Coupon(Model):
+class Offer(Model):
     code = models.CharField(max_length=20, unique=True)
     is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     
-    # Greater the priority, higher the coupon comes in a list
+    # Greater the priority, higher the offer comes in a list
     priority = models.IntegerField(default=1)
     
     discount_percentage = models.IntegerField(default=10)
     max_discount = models.IntegerField(default=0)
     
-    linked_store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="coupons", null=True, blank=True)
+    linked_store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="offers", null=True, blank=True)
     
-    max_redeem_count = models.IntegerField(default=10, help_text="Maximum number of times a coupon can be used in total, 0 for unlimited")
-    max_redeem_count_per_cosumer = models.IntegerField(default=2, help_text="Maximum number of times a coupon can be used by one user, 0 for unlimited")
+    max_redeem_count = models.IntegerField(default=10, help_text="Maximum number of times a offer can be used in total, 0 for unlimited")
+    max_redeem_count_per_cosumer = models.IntegerField(default=2, help_text="Maximum number of times a offer can be used by one user, 0 for unlimited")
     
     valid_from = models.DateTimeField(null=True, blank=True)
     valid_to = models.DateTimeField(null=True, blank=True)
     
-    objects = ActiveCouponManager()
+    objects = ActiveOfferManager()
 
     def save(self, *args, **kwargs):
         self.code = self.code.upper()
-        super(Coupon, self).save(*args, **kwargs)
+        super(Offer, self).save(*args, **kwargs)
 
     def __str__(self):
         return '{} - {}'.format(self.code, self.title)
 
-class CouponRedeem(Model):
-    coupon = models.ForeignKey(Coupon, on_delete=models.CASCADE, related_name="redeems")
+class OfferRedeem(Model):
+    offer = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="redeems")
     consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="redeems")
     
     def __str__(self) -> str:
-        return "{} - {}".format(self.coupon, self.consumer)
+        return "{} - {}".format(self.offer, self.consumer)

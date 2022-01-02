@@ -32,18 +32,33 @@ class City(Model):
         verbose_name_plural = 'Cities'
 
 
+class ServiceTag(Model):
+    slug = models.SlugField(unique=True, null=True, blank=True)
+    name = models.CharField(max_length=50)
+    description = models.TextField(null=True, blank=True)
+    thumbnail = models.URLField()
+
+    def __str__(self):
+        return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = get_unique_slug(self, "name")
+        super(ServiceTag, self).save(*args, **kwargs)
+
 class Service(Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     name = models.CharField(max_length=50)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     thumbnail = models.URLField(null=True, blank=True)
+    tags = models.ManyToManyField(ServiceTag, related_name='services', blank=True)
 
     def save(self, *args, **kwargs):
-        # self.code = self.code.lower()
         if not self.slug:
             self.slug = get_unique_slug(self, "name")
         super(Service, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+

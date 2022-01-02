@@ -6,6 +6,7 @@ from store.serializers.general import *
 import haversine as hs
 from haversine import Unit
 from django.shortcuts import get_object_or_404
+from common.models import ServiceTag
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
 from rest_framework.response import Response
@@ -76,4 +77,13 @@ class CityStoreList(generics.ListAPIView):
             user.sub_to_topic(city.code)
 
         queryset = city.stores.filter(is_active=True)
+
+        tag = self.request.GET.get('tag', None)
+
+        if tag:
+            tag = get_object_or_404(ServiceTag, slug=tag)
+            queryset = queryset.filter(services__tags__in=tag)
+            services = Service.objects.filter(tags__slug=tag)
+            queryset = PriceTime.objects.filter(store__in=queryset, service__slug=tag)
+
         return queryset
