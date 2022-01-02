@@ -63,8 +63,8 @@ class CancellationRequestAdmin(admin.ModelAdmin):
     list_filter = ('reason',)
     actions = (approve_cancellation,)
 
-@admin.register(Coupon)
-class CouponAdmin(admin.ModelAdmin):
+@admin.register(Offer)
+class OfferAdmin(admin.ModelAdmin):
     list_display = (
         'code', 'title', 'is_active', 'discount_percentage'
     )
