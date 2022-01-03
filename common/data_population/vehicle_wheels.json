@@ -2,11 +2,11 @@
     {
         "code": "two_wheeler",
         "name": "Two Wheeler",
-        "image": "https://cdn.autoave.in/population_data/g916_1_1.png"
+        "image": "https://cdn.autoave.in/media/offer_banners/unnamed_1.png"
     },
     {
         "code": "four_wheeler",
         "name": "Four Wheeler",
-        "image": "https://cdn.autoave.in/population_data/g916_1_1.png"
+        "image": "https://cdn.autoave.in/media/offer_banners/unnamed.png"
     }
 ]

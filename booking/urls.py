@@ -30,5 +30,6 @@ urlpatterns = [
     path('store-owner/calender/', general.OwnerDayWiseCalender.as_view()),
     
     path('offer/list/', offer.OfferListView.as_view()),
+    path('offer/banner/', offer.OfferBannerView.as_view()),
     path('offer/apply/', offer.OfferApplyView.as_view()),
 ]

@@ -23,12 +23,18 @@ class FeedbackView(generics.CreateAPIView):
         else:
             serializer.save()
 
+class ContactView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    serializer_class = ContactSerializer
+    throttle_scope = "public_post_api"
+
+
 class ImageUploadParser(parsers.FileUploadParser):
     media_type = 'image/*'
 
 class StoreImageUpload(views.APIView):
     serializer_class = ImageSerializer
-    permission_classes = ( (IsSalesman| permissions.IsAdminUser ) , )
+    permission_classes = ( (IsSalesman | permissions.IsAdminUser ) , )
     parser_class = (ImageUploadParser,)
 
     def put(self, request, format=None):
