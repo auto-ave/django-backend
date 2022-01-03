@@ -23,6 +23,12 @@ class FeedbackView(generics.CreateAPIView):
         else:
             serializer.save()
 
+class ContactView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    serializer_class = ContactSerializer
+    throttle_scope = "public_post_api"
+
+
 class ImageUploadParser(parsers.FileUploadParser):
     media_type = 'image/*'
 
