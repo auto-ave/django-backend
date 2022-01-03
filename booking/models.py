@@ -187,7 +187,7 @@ class Offer(Model):
     description = models.TextField(null=True, blank=True)
 
     banner = models.ImageField(upload_to='offer_banners', null=True, blank=True)
-    is_promotional = models.BooleanField(default=False)
+    is_promo = models.BooleanField(default=False)
     
     # Greater the priority, higher the offer comes in a list
     priority = models.IntegerField(default=1)

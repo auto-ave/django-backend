@@ -9,12 +9,12 @@ from booking.serializers.offer import *
 class  OfferListView(generics.ListAPIView):
     serializer_class = OfferListSerializer
     permission_classes = (IsConsumer,)
-    queryset = Offer.objects.active_offers()
+    queryset = Offer.objects.filter(is_active=True)
 
 class OfferBannerView(generics.ListAPIView):
     serializer_class = OfferBannerSerializer
     permission_classes = (IsConsumer,)
-    queryset = Offer.objects.active_offers()
+    queryset = Offer.objects.filter(is_active=True, is_promo=True)
 
 class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = OfferApplySerializer
