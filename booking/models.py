@@ -185,6 +185,9 @@ class Offer(Model):
     is_active = models.BooleanField(default=True)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
+
+    banner = models.ImageField(upload_to='offer_banners', null=True, blank=True)
+    is_promotional = models.BooleanField(default=False)
     
     # Greater the priority, higher the offer comes in a list
     priority = models.IntegerField(default=1)
@@ -205,6 +208,14 @@ class Offer(Model):
     def save(self, *args, **kwargs):
         self.code = self.code.upper()
         super(Offer, self).save(*args, **kwargs)
+    
+    def is_valid(self):
+        if not self.is_active:
+            return False
+        if self.valid_from and self.valid_to:
+            if self.valid_from > datetime.datetime.now() or self.valid_to < datetime.datetime.now():
+                return False
+        return True
 
     def __str__(self):
         return '{} - {}'.format(self.code, self.title)

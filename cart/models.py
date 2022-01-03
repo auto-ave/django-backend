@@ -82,6 +82,12 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+    
+    def apply_offer(self, offer):
+        if offer.is_valid():
+            
+            return True
+        return False
 
 
     def __str__(self):
