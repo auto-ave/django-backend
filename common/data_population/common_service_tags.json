@@ -3,72 +3,72 @@
         "slug": "quick-wash",
         "name": "Quick Wash",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service1.png"
+        "thumbnail": "population_data/service1.png"
     },
     {
         "slug": "foam-wash",
         "name": "Foam Wash",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service2.png"
+        "thumbnail": "population_data/service2.png"
     },
     {
         "slug": "diesel-wash",
         "name": "Diesel Wash",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service3.png"
+        "thumbnail": "population_data/service3.png"
     },
     {
         "slug": "9h-ceramic-coating",
         "name": "9H Ceramic coating",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service4.png"
+        "thumbnail": "population_data/service4.png"
     },
     {
         "slug": "rubbing-and-polishing",
         "name": "Rubbing & Polishing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service5.png"
+        "thumbnail": "population_data/service5.png"
     },
     {
         "slug": "interior-cleaning",
         "name": "Interior cleaning",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service6.png"
+        "thumbnail": "population_data/service6.png"
     },
     {
         "slug": "pu-coating",
         "name": "PU coating",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service7.png"
+        "thumbnail": "population_data/service7.png"
     },
     {
         "slug": "alloy-detailing",
         "name": "Alloy detailing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service8.png"
+        "thumbnail": "population_data/service8.png"
     },
     {
         "slug": "under-chasis-detailing",
         "name": "Under chasis detailing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service9.png"
+        "thumbnail": "population_data/service9.png"
     },
     {
         "slug": "head-light-detailing",
         "name": "Head light Detailing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service10.png"
+        "thumbnail": "population_data/service10.png"
     },
     {
         "slug": "tail-light-detailing",
         "name": "Tail light Detailing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service11.png"
+        "thumbnail": "population_data/service11.png"
     },
     {
         "slug": "logo-detailing",
         "name": "Logo detailing",
         "description": "",
-        "thumbnail": "https://cdn.autoave.in/population_data/service12.png"
+        "thumbnail": "population_data/service12.png"
     }
 ]
