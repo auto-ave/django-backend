@@ -4,7 +4,7 @@ from common.providers.data_population import DataPopulationProvider
 
 from common.data_population.serializers import *
 from vehicle.models import VehicleBrand, VehicleModel, Wheel, VehicleType
-from common.models import Service, City
+from common.models import Service, City, ServiceTag
 
 import json
 
@@ -19,6 +19,7 @@ class Command(BaseCommand):
         
             # Common
             (Service, None, 'common/data_population/common_services.json'),
+            (ServiceTag, None, 'common/data_population/common_service_tags.json'),
             (City, None, 'common/data_population/common_cities.json'),
             
             # Booking
