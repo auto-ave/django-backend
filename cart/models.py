@@ -13,6 +13,8 @@ class Cart(Model):
     items = models.ManyToManyField(PriceTime, related_name="carts")
     vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.SET_NULL, related_name="carts", null=True)
 
+    offer = models.ForeignKey('booking.Offer', on_delete=models.SET_NULL, related_name="carts", null=True)
+
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
@@ -82,13 +84,6 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
-    
-    def apply_offer(self, offer):
-        if offer.is_valid():
-            
-            return True
-        return False
-
 
     def __str__(self):
         return "Cart: {}".format(self.consumer)

@@ -33,8 +33,13 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 'error': 'Offer has Expired'
             })
-
-        cart.apply_offer(offer)
+        
+        if cart.items.all().count() == 0:
+            return response.Response({
+                'error': 'Cart is empty'
+            })
+        
+        
         
         
         return response.Response({})
