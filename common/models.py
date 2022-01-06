@@ -36,7 +36,7 @@ class ServiceTag(Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     name = models.CharField(max_length=50)
     description = models.TextField(null=True, blank=True)
-    thumbnail = models.ImageField(upload_to="service_tags")
+    thumbnail = models.ImageField(upload_to="service_tags", default="/service_tags/default.png")
 
     def __str__(self):
         return self.name

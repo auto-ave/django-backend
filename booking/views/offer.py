@@ -14,7 +14,7 @@ class  OfferListView(generics.ListAPIView):
 
 class OfferBannerView(generics.ListAPIView):
     serializer_class = OfferBannerSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (AllowAny,) 
     queryset = Offer.objects.filter(is_active=True, is_promo=True)
 
 class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
