@@ -1,5 +1,6 @@
 from django.db.models import query
 from rest_framework import generics, response
+from rest_framework.permissions import AllowAny
 from common.mixins import ValidateSerializerMixin
 from common.permissions import *
 from booking.models import Offer
@@ -13,7 +14,7 @@ class  OfferListView(generics.ListAPIView):
 
 class OfferBannerView(generics.ListAPIView):
     serializer_class = OfferBannerSerializer
-    permission_classes = (IsConsumer,)
+    permission_classes = (AllowAny,)
     queryset = Offer.objects.filter(is_active=True, is_promo=True)
 
 class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
@@ -32,8 +33,13 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 'error': 'Offer has Expired'
             })
-
-        cart.apply_offer(offer)
+        
+        if cart.items.all().count() == 0:
+            return response.Response({
+                'error': 'Cart is empty'
+            })
+        
+        
         
         
         return response.Response({})
