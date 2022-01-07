@@ -347,3 +347,7 @@ DEFAULT_FILE_STORAGE = 'motorwash.storage_backends.MediaStorage'
 # SendGrid Email
 SENDGRID_API_KEY = env('SENDGRID_API_KEY')
 SENDGRID_SENDER = env('SENDGRID_SENDER')
+
+
+# FAST2SMS
+FAST2SMS_API_KEY = env('FAST2SMS_API_KEY')

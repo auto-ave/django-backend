@@ -1,5 +1,3 @@
-
-
 from accounts.models import User
 from django.conf import settings
 from background_task import background
@@ -11,6 +9,7 @@ from fcm_django.models import FCMDevice
 from firebase_admin.messaging import Message, Notification
 
 from misc.models import ErrorLogging
+import requests
 
 def OTP_MESSAGE(otp):
     return '{} is your OTP (One Time Password) to authenticate your login to Autoave'.format(otp)
@@ -36,6 +35,27 @@ class CommunicationProvider:
         response = sendgrid_client.send(message)
         print("sendgrid response status code: ", response.status_code)
         print(response.body)
+    
+    @background(schedule=0)
+    def send_sms(numbers, message_id, variables_values=""):
+        SENDER_ID = "AUTAVE"
+        ROUTE = "dlt"
+        url = "https://www.fast2sms.com/dev/bulkV2"
+        
+        payload = "sender_id={}&message={}&variables_values={}&route={}&numbers={}".format(
+            SENDER_ID, message_id, variables_values, ROUTE, numbers
+        )
+        headers = {
+            'authorization': settings.FAST2SMS_API_KEY,
+            'Content-Type': "application/x-www-form-urlencoded",
+            'Cache-Control': "no-cache",
+         }
+        response = requests.post(
+            url,
+            data=payload,
+            headers=headers
+        )
+        print(response.text)
     
     
     
@@ -63,9 +83,9 @@ class CommunicationProvider:
                 topic=topic,
             )
             result = devices.send_message(message)
-            print('notification result: ', str(result))
-            print('list: ', str(result[0].responses))
-            print('first object: ', str(result[0].responses[0]))
-            print('exception: ', str(result[0].responses[0].exception))
-            print('messag id: ', str(result[0].responses[0].message_id))
-            print('succes boolean: ', str(result[0].responses[0].success))
+            # print('notification result: ', str(result))
+            # print('list: ', str(result[0].responses))
+            # print('first object: ', str(result[0].responses[0]))
+            # print('exception: ', str(result[0].responses[0].exception))
+            # print('messag id: ', str(result[0].responses[0].message_id))
+            # print('succes boolean: ', str(result[0].responses[0].success))
