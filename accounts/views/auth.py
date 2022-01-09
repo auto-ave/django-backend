@@ -31,6 +31,9 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
             if settings.DEBUG:
                 user.otp = '1234'
                 user.save()
+                CommunicationProvider().send_sms(
+                    **SMS_LOGIN_CONTENT(phone, user.otp)
+                )
             else:
                 otp = user.generate_otp()
                 phone = user.phone.as_national.lstrip('0').strip().replace(' ', '') # Janky way to convert to national format
