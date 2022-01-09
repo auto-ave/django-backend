@@ -7,6 +7,7 @@ from fcm_django.models import FCMDevice
 from phonenumber_field.modelfields import PhoneNumberField
 
 from cart.models import Cart
+import random
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
@@ -32,13 +33,10 @@ class User(AbstractUser):
         return self.first_name + " " + self.last_name
     
     def generate_otp(self):
-        self.otp = 1234
+        otp = random.randint(1000, 9999)
+        self.otp = otp
         self.save()
-    
-    def send_otp(self):
-        self.generate_otp()
-        # providor = CommunicationProvider()
-        # providor.send_otp(otp=self.otp, number=str(self.phone))
+        return otp
     
     def check_otp(self, otp):
         if self.otp == otp:

@@ -1,13 +1,17 @@
 from rest_framework import generics, response, status, permissions
 from django.shortcuts import get_object_or_404
+from django.conf import settings
 from django.db.models import Q
 from accounts.models import User, Consumer
 from cart.models import Cart
 from accounts.serializers.auth import *
+from common.communication_provider import CommunicationProvider
 from common.mixins import ValidateSerializerMixin
 from fcm_django.models import FCMDevice
 
 from rest_framework_simplejwt.tokens import RefreshToken
+
+from misc.sms_contents import SMS_LOGIN_CONTENT
 
 class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = GetOTPSerializer
@@ -24,7 +28,22 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
             consumer = Consumer.objects.create(user=user)
             Cart.objects.create(consumer=consumer)
         try:
-            user.send_otp()
+            if settings.DEBUG:
+                user.otp = '1234'
+                user.save()
+                
+                # TODO: remove this after testing
+                phone = user.phone.as_national.lstrip('0').strip().replace(' ', '') # Janky way to convert to national format
+                CommunicationProvider().send_sms(
+                    **SMS_LOGIN_CONTENT(phone, user.otp)
+                )
+            else:
+                otp = user.generate_otp()
+                phone = user.phone.as_national.lstrip('0').strip().replace(' ', '') # Janky way to convert to national format
+                print('phone: ', phone)
+                CommunicationProvider().send_sms(
+                    **SMS_LOGIN_CONTENT(phone, otp)
+                )
         except Exception as e:
             return response.Response(
                 {'error': str(e)},

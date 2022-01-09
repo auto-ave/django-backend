@@ -20,7 +20,6 @@ env = environ.Env(
 )
 env.read_env()
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -265,6 +264,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     # "https://owner.autoave.care",
 
     "https://autoave.in",
+    "https://www.autoave.in",
     "https://sales.autoave.in",
     "https://owner.autoave.in",
 
@@ -316,10 +316,13 @@ PAYTM_CURRENCY = env('PAYTM_CURRENCY')
 # EMAIL_USE_SSL = True
 
 # Firebase Admin
-from firebase_admin import initialize_app
+from firebase_admin import initialize_app, get_app
 from firebase_admin import credentials
 cred = credentials.Certificate("/etc/pki/tls/certs/autoave-global-firebase-adminsdk.json")
-FIREBASE_APP = initialize_app(cred)
+try:
+    FIREBASE_APP = get_app()
+except:
+    FIREBASE_APP = initialize_app(cred)
 FCM_DJANGO_SETTINGS = {
      # default: _('FCM Django')
     "APP_VERBOSE_NAME": "Autoave Notifications",
@@ -346,3 +349,7 @@ DEFAULT_FILE_STORAGE = 'motorwash.storage_backends.MediaStorage'
 # SendGrid Email
 SENDGRID_API_KEY = env('SENDGRID_API_KEY')
 SENDGRID_SENDER = env('SENDGRID_SENDER')
+
+
+# FAST2SMS
+FAST2SMS_API_KEY = env('FAST2SMS_API_KEY')

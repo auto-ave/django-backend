@@ -25,7 +25,10 @@ class BookingsListConsumer(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return user.consumer.bookings.all().order_by('-created_at')
+        initiated_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
+        return user.consumer.bookings.filter(
+            ~Q( booking_status=initiated_status )
+        ).order_by('-created_at')
 
 class BookingDetail(generics.RetrieveAPIView):
     lookup_field = 'booking_id'
