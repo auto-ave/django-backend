@@ -192,7 +192,7 @@ class PaymentCallbackView(views.APIView):
             if i == 'CHECKSUMHASH':
                 checksum = form[i]
             if i == 'ORDERID':
-                print('paytm ki ma ki chut')
+                print('fk you paytm')
                 booking = Booking.objects.get(booking_id=form.get('ORDERID'))
                 if Payment.objects.filter(booking=booking).exists():
                     return response.Response({
