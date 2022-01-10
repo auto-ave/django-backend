@@ -5,6 +5,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node ./node_modules/.bin/pm2 start ecosystem.config.json",
+        "list": "node ./node_modules/.bin/pm2 list",
         "kill": "node ./node_modules/.bin/pm2 kill",
         "status": "node ./node_modules/.bin/pm2 status",
         "logs": "node ./node_modules/.bin/pm2 logs --lines 100"

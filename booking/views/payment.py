@@ -245,15 +245,15 @@ class PaymentCallbackView(views.APIView):
 
                 booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
 
+                # clear cart after order successfull
+                user.consumer.cart.clear()
+                
                 print('order successful')
             else:
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
                 booking.booking_status_changed_time = datetime.datetime.now()
                 print('order was not successful because' + response_dict['RESPMSG'])
             
-            # clear cart
-            user.consumer.cart.clear()
-
             booking.save()
             return response.Response(response_dict)  
         else:
