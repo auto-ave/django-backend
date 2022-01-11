@@ -75,6 +75,7 @@ class Booking(Model):
         CommunicationProvider.send_sms(
             **SMS_CONSUMER_SERVICE_COMPLETE(self)
         )
+        
 
     @background(schedule=0)
     def booking_unattended_check(bookingid):
@@ -99,8 +100,8 @@ class Booking(Model):
     
     def submit_cancellation_request(self):
         print("Submitting cancellation request")
-        self.booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_SUBMITTED)
-        self.booking.booking_status_changed_time = datetime.datetime.now()
+        self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_SUBMITTED)
+        self.booking_status_changed_time = datetime.datetime.now()
         self.save()
         # Cancellation approved notification and email
         CommunicationProvider.send_notification(
@@ -122,7 +123,7 @@ class Booking(Model):
         CommunicationProvider.send_sms(
             **SMS_CONSUMER_CANCELLATION_APPROVED(self),
         )
-        if self.booking_id.user.email:
+        if self.booked_by.user.email:
             CommunicationProvider.send_email(
                 **EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
             )
