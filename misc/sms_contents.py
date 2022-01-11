@@ -1,17 +1,19 @@
 from common.utils import secondsToTimeString
 
 
-def SMS_LOGIN_CONTENT(phone, otp):
+def SMS_LOGIN_CONTENT(user):
+    phone = user.phone_sms()
     return {
         'message_id': '135921',
-        'variables_values': '{}|'.format(str(otp)),
-        'numbers': str(phone),
+        'variables_values': '{}|'.format(user.otp),
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_BOOKING_COMPLETE(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event
+    phone = booking.booked_by.user.phone_sms()
     return {
         'message_id': '135924',
         'variables_values': '{}|{}|{}|{}|{}|'.format(
@@ -21,14 +23,15 @@ def SMS_CONSUMER_BOOKING_COMPLETE(booking):
             store.name,
             booking.otp
         ),
-        'numbers': '',
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_2_HOURS_LEFT(booking):
+    phone = booking.booked_by.user.phone_sms()
     return {
         'message_id': '135925',
         'variables_values': '{}|'.format(booking.store.name),
-        'numbers': '',
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_SERVICE_STARTED(booking):
@@ -43,24 +46,27 @@ def SMS_CONSUMER_SERVICE_STARTED(booking):
     }
 
 def SMS_CONSUMER_SERVICE_COMPLETE(booking):
+    phone = booking.booked_by.user.phone_sms()
     return {
         'message_id': '135920',
         'variables_values': '{}|'.format(booking.store.name),
-        'numbers': '',
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_CANCELLATION_REQUESTED(booking):
+    phone = booking.booked_by.user.phone_sms()
     return {
         'message_id': '135919',
         'variables_values': '{}|'.format(booking.booking_id),
-        'numbers': '',
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_CANCELLATION_APPROVED(booking):
+    phone = booking.booked_by.user.phone_sms()
     return {
         'message_id': '135918',
         'variables_values': '{}|{}'.format(booking.booking_id, booking.payment.amount),
-        'numbers': '',
+        'numbers': phone,
     }
 
 def SMS_CONSUMER_SERVICE_UNATTENDED(booking):
@@ -74,6 +80,7 @@ def SMS_CONSUMER_SERVICE_UNATTENDED(booking):
 def SMS_OWNER_NEW_BOOKING(booking):
     vehicle_model = booking.vehicle_model
     event = booking.event
+    phone = booking.store.owner.user.phone_sms()
     return {
         'message_id': '135923',
         'variables_values': '{}|{}|{}|'.format(
@@ -81,5 +88,5 @@ def SMS_OWNER_NEW_BOOKING(booking):
             vehicle_model.brand,
             vehicle_model.model,
         ),
-        'numbers': '',
+        'numbers': phone,
     }
