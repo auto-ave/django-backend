@@ -182,39 +182,40 @@ class PaymentCallbackView(views.APIView):
         user = request.user
 
         checksum = ""
-        form = data
 
         booking = ""
+        
+        try:
+            checksum = data['CHECKSUMHASH']
+            orderid = data['ORDERID']
+            
+            booking = Booking.objects.get(booking_id=orderid)
+            payment = Payment.objects.filter(booking=booking).exists()
+            
+            if payment:
+                return response.Response({
+                    "detail": "Payment already done"
+                })
+            else:
+                Payment.objects.create(
+                    status=data.get('STATUS'),
+                    booking=booking,
+                    transaction_id=data.get('TXNID'),
+                    mode_of_payment=data.get('PAYMENTMODE'),
+                    amount=data.get('TXNAMOUNT'),
+                    gateway_name=data.get('GATEWAYNAME'),
+                    bank_name=data.get('BANKNAME'),
+                    payment_mode=data.get('PAYMENTMODE')
+                )
+        except Exception as e:
+            return response.Response({
+                'error': str(e)
+            })
 
-        response_dict = {}
-
-        for i in form.keys():
-            response_dict[i] = form[i]
-            if i == 'CHECKSUMHASH':
-                checksum = form[i]
-            if i == 'ORDERID':
-                print('fk you paytm')
-                booking = Booking.objects.get(booking_id=form.get('ORDERID'))
-                if Payment.objects.filter(booking=booking).exists():
-                    return response.Response({
-                        "detail": "Payment already done"
-                    })
-                else:
-                    payment = Payment.objects.create(
-                        status=form.get('STATUS'),
-                        booking=booking,
-                        transaction_id=form.get('TXNID'),
-                        mode_of_payment=form.get('PAYMENTMODE'),
-                        amount=form.get('TXNAMOUNT'),
-                        gateway_name=form.get('GATEWAYNAME'),
-                        bank_name=form.get('BANKNAME'),
-                        payment_mode=form.get('PAYMENTMODE')
-                    )
-
-        verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
+        verify = PaytmChecksum.verifySignature(data, settings.PAYTM_MKEY, checksum)
 
         if verify:
-            if response_dict['RESPCODE'] == '01':
+            if data['RESPCODE'] == '01':
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
                 booking.booking_status_changed_time = datetime.datetime.now()
                 
@@ -263,13 +264,13 @@ class PaymentCallbackView(views.APIView):
             else:
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
                 booking.booking_status_changed_time = datetime.datetime.now()
-                print('order was not successful because' + response_dict['RESPMSG'])
+                print('order was not successful because' + data['RESPMSG'])
             
             booking.save()
-            return response.Response(response_dict)  
+            return response.Response(data)  
         else:
             print('checksum verification failed')
-            return response.Response(response_dict) 
+            return response.Response(data) 
             return response.Response({
                 "you are": "a rendi"
             })
