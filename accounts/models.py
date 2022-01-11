@@ -32,6 +32,9 @@ class User(AbstractUser):
     def full_name(self):
         return self.first_name + " " + self.last_name
     
+    def phone_sms(self):
+        return str(self.phone.as_national.lstrip('0').strip().replace(' ', ''))
+    
     def generate_otp(self):
         otp = random.randint(1000, 9999)
         self.otp = otp

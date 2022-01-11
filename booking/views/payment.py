@@ -1,9 +1,10 @@
 # pylint: disable=unused-import
 from booking.utils import check_event_collide, generate_booking_id, get_commission_amount
-from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
-from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
+from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
+from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
@@ -219,7 +220,10 @@ class PaymentCallbackView(views.APIView):
                 
                 # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
-                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking),
+                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+                )
+                CommunicationProvider.send_sms(
+                    **SMS_CONSUMER_BOOKING_COMPLETE(booking)
                 )
                 if user.email:
                     CommunicationProvider.send_email(
@@ -230,16 +234,23 @@ class PaymentCallbackView(views.APIView):
                 store = booking.store
                 if store.has_owner():
                     CommunicationProvider.send_notification(
-                        **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
+                        **NOTIFICATION_OWNER_NEW_BOOKING(booking),
+                    )
+                    CommunicationProvider.send_sms(
+                        **SMS_OWNER_NEW_BOOKING(booking)
                     )
                     if store.email or store.owner.user.email:
                         CommunicationProvider.send_email(
-                            **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+                            **EMAIL_OWNER_NEW_BOOKING(booking)
                         )
 
 
                 CommunicationProvider.send_notification(
                     **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
+                    schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+                )
+                CommunicationProvider.send_sms(
+                    **SMS_CONSUMER_2_HOURS_LEFT(booking),
                     schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
 
