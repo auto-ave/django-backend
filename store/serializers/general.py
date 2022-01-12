@@ -28,7 +28,13 @@ class StoreSerializer(ModelSerializer):
         for pricetime in pricetimes:
             if pricetime.price <= min:
                 min = pricetime.price
-        return min
+        if min == 999999:
+            return 599
+
+class StoreDetailOwnerSerializer(ModelSerializer):
+    class Meta():
+        model = Store
+        fields = ( 'name', 'address', 'thumbnail' )
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()

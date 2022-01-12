@@ -3,6 +3,7 @@ from store.views import general, review, services, salesman
 
 urlpatterns = [
     path('store/<slug:slug>/', general.StoreDetail.as_view()),
+    path('store/owner/<slug:slug>/', general.StoreOwnerDetail.as_view()),
     path('store/<slug:slug>/reviews/', review.StoreReviewList().as_view()),
     path('store/<slug:slug>/services/', services.StoreServicesList().as_view()),
 

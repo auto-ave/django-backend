@@ -87,7 +87,11 @@ def NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_RECIEVED(booking):
 def NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED(booking):
     return {
         'title': 'Cancellation Request Approved',
-        'body': 'Your cancellation request for booking ID #{} has been approved. A refund of ₹{} has been initiated towards your original payment method. Feel free to contact us at {} if you have any queries.'.format(booking.booking_id, booking.amount, CONTACT_EMAIL),
+        'body': 'Your cancellation request for booking ID #{} has been approved. A refund of ₹{} has been initiated towards your original payment method. Feel free to contact us at {} if you have any queries.'.format(
+            booking.booking_id,
+            booking.payment.amount,
+            CONTACT_EMAIL
+        ),
         'image': random_item(MODI_IMAGES),
         'userid': booking.booked_by.user.id
     }

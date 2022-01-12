@@ -41,7 +41,7 @@ class BookingDetail(generics.RetrieveAPIView):
 
 ##
 ## OWNER VIEWS
-##       
+##
 class OwnerTodayBookingsList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = BookingListOwnerSerializer
