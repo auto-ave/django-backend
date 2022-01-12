@@ -1,12 +1,13 @@
 # pylint: disable=no-member
 from misc.email_contents import EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED
-from misc.notification_contents import NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
+from misc.notification_contents import NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_RECIEVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
 from common.communication_provider import CommunicationProvider
 from cart.models import Cart
 from django.db import models
 from common.models import Model
 from django.contrib.postgres.fields import ArrayField
 from accounts.models import Consumer
+from misc.sms_contents import SMS_CONSUMER_CANCELLATION_APPROVED, SMS_CONSUMER_CANCELLATION_REQUESTED, SMS_CONSUMER_SERVICE_COMPLETE, SMS_CONSUMER_SERVICE_STARTED, SMS_CONSUMER_SERVICE_UNATTENDED
 from store.models import Store, PriceTime, Event, VehicleType
 from .static import PAYMENT_STATUS, BookingStatusSlug
 from common.utils import otp_generator
@@ -59,6 +60,9 @@ class Booking(Model):
         CommunicationProvider.send_notification(
             **NOTIFICATION_CONSUMER_SERVICE_STARTED(self),
         )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_SERVICE_STARTED(self)
+        )
     
     def complete_service(self):
         self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED)
@@ -68,6 +72,10 @@ class Booking(Model):
         CommunicationProvider.send_notification(
             **NOTIFICATION_CONSUMER_SERVICE_COMPLETED(self),
         )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_SERVICE_COMPLETE(self)
+        )
+        
 
     @background(schedule=0)
     def booking_unattended_check(bookingid):
@@ -81,11 +89,27 @@ class Booking(Model):
                 CommunicationProvider.send_notification(
                     **NOTIFICATION_CONSUMER_SERVICE_UNATTENDED(booking),
                 )
+                CommunicationProvider.send_sms(
+                    **SMS_CONSUMER_SERVICE_UNATTENDED(booking),
+                )
                 booking.save()
                 return True
             return False
         except Exception as e:
             print("Error at Booking unattended check: ", e)
+    
+    def submit_cancellation_request(self):
+        print("Submitting cancellation request")
+        self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_SUBMITTED)
+        self.booking_status_changed_time = datetime.datetime.now()
+        self.save()
+        # Cancellation approved notification and email
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_RECIEVED(self),
+        )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_CANCELLATION_REQUESTED(self),
+        )
    
     def approve_cancellation_request(self):
         print("Approving cancellation request")
@@ -96,9 +120,13 @@ class Booking(Model):
         CommunicationProvider.send_notification(
             **NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
         )
-        CommunicationProvider.send_email(
-            **EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_CANCELLATION_APPROVED(self),
         )
+        if self.booked_by.user.email:
+            CommunicationProvider.send_email(
+                **EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
+            )
 
 class Payment(Model):
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT, null=True, blank=True)
@@ -167,9 +195,7 @@ class CancellationRequest(Model):
     
     def save(self, *args, **kwargs):
         if not self.id:
-            self.booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_SUBMITTED)
-            self.booking.booking_status_changed_time = datetime.datetime.now()
-            self.booking.save()
+            self.booking.submit_cancellation_request()
         super(CancellationRequest, self).save(*args, **kwargs)
     
     def __str__(self) -> str:

@@ -34,7 +34,7 @@ class City(Model):
 
 class ServiceTag(Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     thumbnail = models.ImageField(upload_to="service_tags", default="/service_tags/default.png")
 
@@ -48,7 +48,7 @@ class ServiceTag(Model):
 
 class Service(Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     thumbnail = models.URLField(null=True, blank=True)

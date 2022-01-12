@@ -41,7 +41,7 @@ class BookingDetail(generics.RetrieveAPIView):
 
 ##
 ## OWNER VIEWS
-##       
+##
 class OwnerTodayBookingsList(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = BookingListOwnerSerializer
@@ -128,6 +128,11 @@ class OwnerBookingStart(generics.GenericAPIView, ValidateSerializerMixin):
                 "error": "Invalid OTP"
             }, status=400)
 
+        if booking.booking_status != BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS):
+            return response.Response({
+                "error": "Invalid booking status, should be PAYMENT_SUCCESS"
+            })
+        
         booking.start_service()
 
         return response.Response({
@@ -148,6 +153,11 @@ class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
                 "error": "You are not allowed to complete this booking"
             }, status=403)
 
+        if booking.booking_status != BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_STARTED):
+            return response.Response({
+                "error": "Invalid Booking status, should be SERVICE_STARTED"
+            })
+        
         booking.complete_service()
 
         return response.Response({

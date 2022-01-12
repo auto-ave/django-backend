@@ -32,6 +32,10 @@ class StoreDetail(generics.RetrieveAPIView):
 
         return instance
 
+class StoreOwnerDetail(generics.RetrieveAPIView):
+    lookup_field = 'slug'
+    serializers_class = StoreDetailOwnerSerializer
+
 class StoreList(generics.ListAPIView):
     permission_classes = (ReadOnly | IsConsumer, )
     serializer_class = StoreListSerializer

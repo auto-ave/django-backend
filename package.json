@@ -5,20 +5,21 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node ./node_modules/.bin/pm2 start ecosystem.config.json",
+        "list": "node ./node_modules/.bin/pm2 list",
         "kill": "node ./node_modules/.bin/pm2 kill",
         "status": "node ./node_modules/.bin/pm2 status",
         "logs": "node ./node_modules/.bin/pm2 logs --lines 100"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Motor-Wash/django-backend.git"
+        "url": "git+https://github.com/auto-ave/django-backend.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Motor-Wash/django-backend/issues"
+        "url": "https://github.com/auto-ave/django-backend/issues"
     },
-    "homepage": "https://autoave.care",
+    "homepage": "https://www.autoave.in",
     "dependencies": {
         "pm2": "^5.1.2"
     }

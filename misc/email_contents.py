@@ -31,7 +31,7 @@ def EMAIL_CONSUMER_BOOKING_INITIATED(booking):
         'html_content': 'Your booking for {} {} on {} has been initiated.'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
     }
 
-def EMAIL_OWNER_BOOKING_COMPLETE(booking):
+def EMAIL_OWNER_NEW_BOOKING(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event

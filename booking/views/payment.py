@@ -1,9 +1,10 @@
 # pylint: disable=unused-import
 from booking.utils import check_event_collide, generate_booking_id, get_commission_amount
-from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_BOOKING_COMPLETE
-from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_COMPLETE, NOTIFICATION_OWNER_BOOKING_INITIATED
+from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
+from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
@@ -181,45 +182,49 @@ class PaymentCallbackView(views.APIView):
         user = request.user
 
         checksum = ""
-        form = data
 
         booking = ""
+        
+        try:
+            checksum = data['CHECKSUMHASH']
+            orderid = data['ORDERID']
+            
+            booking = Booking.objects.get(booking_id=orderid)
+            payment = Payment.objects.filter(booking=booking).exists()
+            
+            if payment:
+                return response.Response({
+                    "detail": "Payment already done"
+                })
+            else:
+                Payment.objects.create(
+                    status=data.get('STATUS'),
+                    booking=booking,
+                    transaction_id=data.get('TXNID'),
+                    mode_of_payment=data.get('PAYMENTMODE'),
+                    amount=data.get('TXNAMOUNT'),
+                    gateway_name=data.get('GATEWAYNAME'),
+                    bank_name=data.get('BANKNAME'),
+                    payment_mode=data.get('PAYMENTMODE')
+                )
+        except Exception as e:
+            return response.Response({
+                'error': str(e)
+            })
 
-        response_dict = {}
-
-        for i in form.keys():
-            response_dict[i] = form[i]
-            if i == 'CHECKSUMHASH':
-                checksum = form[i]
-            if i == 'ORDERID':
-                print('paytm ki ma ki chut')
-                booking = Booking.objects.get(booking_id=form.get('ORDERID'))
-                if Payment.objects.filter(booking=booking).exists():
-                    return response.Response({
-                        "detail": "Payment already done"
-                    })
-                else:
-                    payment = Payment.objects.create(
-                        status=form.get('STATUS'),
-                        booking=booking,
-                        transaction_id=form.get('TXNID'),
-                        mode_of_payment=form.get('PAYMENTMODE'),
-                        amount=form.get('TXNAMOUNT'),
-                        gateway_name=form.get('GATEWAYNAME'),
-                        bank_name=form.get('BANKNAME'),
-                        payment_mode=form.get('PAYMENTMODE')
-                    )
-
-        verify = PaytmChecksum.verifySignature(response_dict, settings.PAYTM_MKEY, checksum)
+        verify = PaytmChecksum.verifySignature(data, settings.PAYTM_MKEY, checksum)
 
         if verify:
-            if response_dict['RESPCODE'] == '01':
+            if data['RESPCODE'] == '01':
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
                 booking.booking_status_changed_time = datetime.datetime.now()
                 
                 # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
-                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking),
+                    **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+                )
+                CommunicationProvider.send_sms(
+                    **SMS_CONSUMER_BOOKING_COMPLETE(booking)
                 )
                 if user.email:
                     CommunicationProvider.send_email(
@@ -230,11 +235,14 @@ class PaymentCallbackView(views.APIView):
                 store = booking.store
                 if store.has_owner():
                     CommunicationProvider.send_notification(
-                        **NOTIFICATION_OWNER_BOOKING_COMPLETE(booking),
+                        **NOTIFICATION_OWNER_NEW_BOOKING(booking),
+                    )
+                    CommunicationProvider.send_sms(
+                        **SMS_OWNER_NEW_BOOKING(booking)
                     )
                     if store.email or store.owner.user.email:
                         CommunicationProvider.send_email(
-                            **EMAIL_OWNER_BOOKING_COMPLETE(booking)
+                            **EMAIL_OWNER_NEW_BOOKING(booking)
                         )
 
 
@@ -242,22 +250,27 @@ class PaymentCallbackView(views.APIView):
                     **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
                     schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
                 )
+                CommunicationProvider.send_sms(
+                    **SMS_CONSUMER_2_HOURS_LEFT(booking),
+                    schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+                )
 
                 booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
 
+                # clear cart after order successfull
+                user.consumer.cart.clear()
+                
                 print('order successful')
             else:
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
                 booking.booking_status_changed_time = datetime.datetime.now()
-                print('order was not successful because' + response_dict['RESPMSG'])
+                print('order was not successful because' + data['RESPMSG'])
             
-            # clear cart
-            user.consumer.cart.clear()
-
             booking.save()
-            return response.Response(response_dict)  
+            return response.Response(data)  
         else:
             print('checksum verification failed')
+            return response.Response(data) 
             return response.Response({
                 "you are": "a rendi"
             })

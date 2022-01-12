@@ -21,7 +21,7 @@ class CommunicationProvider:
         sendgrid_client = SendGridAPIClient(settings.SENDGRID_API_KEY)
 
         message = Mail(
-            from_email= settings.SENDGRID_SENDER,
+            from_email= (settings.SENDGRID_SENDER, 'Autoave'),
             to_emails=email,
             subject=subject,
             html_content=html_content

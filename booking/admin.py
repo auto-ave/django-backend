@@ -25,7 +25,7 @@ class HiddenFieldsAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(HiddenFieldsAdmin):
-    list_display = ( 'booking_id', 'store', 'booking_status', 'event_start', 'amount', 'vehicle_model' )
+    list_display = ( 'booking_id', 'created_at', 'store', 'booking_status', 'event_start', 'amount', 'vehicle_model' )
     list_filter = ( 'store', 'booking_status')
     search_fields = ( 'booking_id', 'store__name', 'booking_status__slug', 'vehicle_model__model', 'vehicle_model__brand__name' )
 

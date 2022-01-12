@@ -94,6 +94,9 @@ def timeStringToTime(timeString):
         return datetime.datetime.strptime(timeString, '%H:%M:%S').time()
 
 def timeStringToTime(timeString):
+    if len(timeString) == 4:
+        timeString = '0' + timeString
+        return datetime.datetime.strptime(timeString, '%H:%M').time()
     if len(timeString) == 5:
         return datetime.datetime.strptime(timeString, '%H:%M').time()
     else:
