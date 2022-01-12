@@ -72,17 +72,18 @@ class CommunicationProvider:
         return response
     
     @background(schedule=0)
-    def send_notification(userid, title, body, image="", data={}, topic=None):
-        user = User.objects.get(id=userid)
-        devices = user.get_devices()
-        if devices:
-            notification = Notification(title=title, body=body, image=image)
-            message = Message(
-                notification=notification,
-                data=data,
-                topic=topic,
-            )
-            result = devices.send_message(message)
+    def send_notification(title, body, userid = None, image="", data={}, topic=None):
+        if userid:
+            user = User.objects.get(id=userid)
+            devices = user.get_devices()
+            if devices:
+                notification = Notification(title=title, body=body, image=image)
+                message = Message(
+                    notification=notification,
+                    data=data,
+                    topic=topic,
+                )
+                result = devices.send_message(message)
             # print('notification result: ', str(result))
             # print('list: ', str(result[0].responses))
             # print('first object: ', str(result[0].responses[0]))
