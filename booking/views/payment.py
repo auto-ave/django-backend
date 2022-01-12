@@ -240,7 +240,7 @@ class PaymentCallbackView(views.APIView):
                     CommunicationProvider.send_sms(
                         **SMS_OWNER_NEW_BOOKING(booking)
                     )
-                    if store.email or store.owner.user.email:
+                    if store.email or (store.has_owner() and store.owner.user.email):
                         CommunicationProvider.send_email(
                             **EMAIL_OWNER_NEW_BOOKING(booking)
                         )
