@@ -64,7 +64,10 @@ class StoreListSerializer(ModelSerializer):
         for pricetime in pricetimes:
             if pricetime.price <= min:
                 min = pricetime.price
-        return min
+        if min == 999999:
+            return 499
+        else:
+            return min
 
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
