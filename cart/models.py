@@ -13,7 +13,7 @@ class Cart(Model):
     items = models.ManyToManyField(PriceTime, related_name="carts")
     vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.SET_NULL, related_name="carts", null=True)
 
-    offer = models.ForeignKey('booking.Offer', on_delete=models.SET_NULL, related_name="carts", null=True)
+    offer = models.ForeignKey('booking.Offer', on_delete=models.SET_NULL, related_name="carts", null=True, blank=True)
 
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)

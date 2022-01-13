@@ -14,7 +14,7 @@ def get_commission_percentage(amount):
 
 def get_commission_amount(amount):
     amount = float(amount)
-    return amount * get_commission_percentage(amount)
+    return round(amount * get_commission_percentage(amount), 2)
 
 
 def check_event_collide(start, end, store):

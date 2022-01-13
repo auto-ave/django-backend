@@ -160,6 +160,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
         body = resp["body"]
+        print('order create body: ', body)
 
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
