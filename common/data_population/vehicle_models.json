@@ -194,7 +194,7 @@
     {
         "brand": "Mahindra",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Mahindra+E20+Plus.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%2BE20%2BPlus.jpg",
         "model": "E20 Plus"
     },
     {
@@ -326,7 +326,7 @@
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Tata+Nano_tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata%2BNano_tilted.jpg",
         "model": "Nano"
     },
     {
@@ -380,13 +380,13 @@
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel%2BAstra_Tilted.jpg",
         "model": "Corsa"
     },
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel%2BAstra_Tilted.jpg",
         "model": "Astra"
     },
     {
@@ -566,7 +566,7 @@
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://cdn.autoave.in/population_data/BMW+3+series+GT-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/BMW%2B3%2Bseries%2BGT-tilted.png",
         "model": "3 Series GT"
     },
     {
@@ -1334,7 +1334,7 @@
     {
         "brand": "Chevrolet",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Chevrolet+Captiva_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Chevrolet%2BCaptiva_tilted.png",
         "model": "Captiva"
     },
     {
@@ -1388,7 +1388,7 @@
     {
         "brand": "Mahindra",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Mahindra+Alturas+G4.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%2BAlturas%2BG4.jpg",
         "model": "Alturas G4"
     },
     {
@@ -1454,7 +1454,7 @@
     {
         "brand": "Tata",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Tata+Harrier+_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata%2BHarrier%2B_Tilted.jpg",
         "model": "harrier"
     },
     {
@@ -1508,13 +1508,13 @@
     {
         "brand": "Jeep",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Jeep+Compass.1440.jpg",
+        "image": "https://cdn.autoave.in/population_data/Jeep%2BCompass.1440.jpg",
         "model": "Compass"
     },
     {
         "brand": "Ssangyong",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Ssangyong+Rexton_Titlted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Ssangyong%2BRexton_Titlted.jpg",
         "model": "Rexton"
     },
     {
@@ -2156,7 +2156,7 @@
     {
         "brand": "Kia",
         "vehicle_type": "SUV",
-        "image": "https://cdn.autoave.in/population_data/Kia+sonet.jpg",
+        "image": "https://cdn.autoave.in/population_data/Kia%2Bsonet.jpg",
         "model": "Sonet"
     },
     {
