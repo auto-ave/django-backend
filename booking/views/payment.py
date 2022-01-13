@@ -108,7 +108,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # Just testing notifis
         # Payment confirmation notification for Store Owner
         store = booking.store
-        if store.has_owner():
+        if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
             )
@@ -234,17 +234,17 @@ class PaymentCallbackView(views.APIView):
                 
                 # Payment confirmation notification for Store Owner
                 store = booking.store
-                if store.has_owner():
+                if store.owner:
                     CommunicationProvider.send_notification(
                         **NOTIFICATION_OWNER_NEW_BOOKING(booking),
                     )
                     CommunicationProvider.send_sms(
                         **SMS_OWNER_NEW_BOOKING(booking)
                     )
-                    if store.email or (store.has_owner() and store.owner.user.email):
-                        CommunicationProvider.send_email(
-                            **EMAIL_OWNER_NEW_BOOKING(booking)
-                        )
+                if store.email:
+                    CommunicationProvider.send_email(
+                        **EMAIL_OWNER_NEW_BOOKING(booking)
+                    )
 
 
                 CommunicationProvider.send_notification(

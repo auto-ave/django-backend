@@ -105,7 +105,12 @@ class StoreCreateView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        slug = self.perform_create(serializer)
+        try:
+            slug = self.perform_create(serializer)
+        except Exception as e:
+            return response.Response({
+                'error': str(e)
+            })
         return response.Response({
             "slug": slug,
         }, status=status.HTTP_201_CREATED)

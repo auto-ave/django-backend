@@ -23,7 +23,6 @@ class DynamicArrayField(forms.Field):
     def clean(self, value):
         cleaned_data = []
         errors = []
-        print("value: ", value)
         if value is not None:
             value = [x for x in value if x]
 

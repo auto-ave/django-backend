@@ -29,7 +29,6 @@ class DynamicArrayWidget(forms.TextInput):
         return context
 
     def value_from_datadict(self, data, files, name):
-        print('name: ', name)
         try:
             getter = data.getlist
             return_value = [value for value in getter(name) if value]
