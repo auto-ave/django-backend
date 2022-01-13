@@ -29,7 +29,9 @@ class StoreSerializer(ModelSerializer):
             if pricetime.price <= min:
                 min = pricetime.price
         if min == 999999:
-            return 599
+            return 499
+        else:
+            return min
 
 class StoreDetailOwnerSerializer(ModelSerializer):
     class Meta():

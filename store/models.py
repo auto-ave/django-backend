@@ -33,13 +33,19 @@ class Store(Model):
     pincode = models.CharField(max_length=6, null=True, blank=True)
     email = models.EmailField(blank=True, null=True)
     # registration_number = models.CharField(max_length=20)
+    
     contact_person_name = models.CharField(max_length=30)
     contact_person_number = PhoneNumberField()
     contact_person_photo = models.ImageField(null=True, blank =True)
+    
     # TODO: json schema validation, change slot api, also frontend validation
     # Starts from sunday
     store_times = ArrayField(base_field=JSONField(), help_text='{"closing_time": "18:00", "opening_time": "09:00"}',
         validators=[JSONSchemaValidator(limit_value=STORE_TIMES_FIELD_SCHEMA)])
+    display_opening_closing_time = models.CharField(max_length=100, null=True, blank=True)
+    display_days_open = models.CharField(max_length=100, null=True, blank=True)
+    
+    
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
 
