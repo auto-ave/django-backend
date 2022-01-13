@@ -194,7 +194,7 @@
     {
         "brand": "Mahindra",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Mahindra+E20+Plus.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%2BE20%2BPlus.jpg",
         "model": "E20 Plus"
     },
     {
@@ -326,7 +326,7 @@
     {
         "brand": "Tata",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Tata+Nano_tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata%2BNano_tilted.jpg",
         "model": "Nano"
     },
     {
@@ -380,13 +380,13 @@
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel%2BAstra_Tilted.jpg",
         "model": "Corsa"
     },
     {
         "brand": "Opel",
         "vehicle_type": "Hatchback",
-        "image": "https://cdn.autoave.in/population_data/Opel+Astra_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Opel%2BAstra_Tilted.jpg",
         "model": "Astra"
     },
     {
@@ -566,7 +566,7 @@
     {
         "brand": "BMW",
         "vehicle_type": "Luxury",
-        "image": "https://cdn.autoave.in/population_data/BMW+3+series+GT-tilted.png",
+        "image": "https://cdn.autoave.in/population_data/BMW%2B3%2Bseries%2BGT-tilted.png",
         "model": "3 Series GT"
     },
     {
@@ -1334,7 +1334,7 @@
     {
         "brand": "Chevrolet",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Chevrolet+Captiva_tilted.png",
+        "image": "https://cdn.autoave.in/population_data/Chevrolet%2BCaptiva_tilted.png",
         "model": "Captiva"
     },
     {
@@ -1388,7 +1388,7 @@
     {
         "brand": "Mahindra",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Mahindra+Alturas+G4.jpg",
+        "image": "https://cdn.autoave.in/population_data/Mahindra%2BAlturas%2BG4.jpg",
         "model": "Alturas G4"
     },
     {
@@ -1454,7 +1454,7 @@
     {
         "brand": "Tata",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Tata+Harrier+_Tilted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Tata%2BHarrier%2B_Tilted.jpg",
         "model": "harrier"
     },
     {
@@ -1508,13 +1508,13 @@
     {
         "brand": "Jeep",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Jeep+Compass.1440.jpg",
+        "image": "https://cdn.autoave.in/population_data/Jeep%2BCompass.1440.jpg",
         "model": "Compass"
     },
     {
         "brand": "Ssangyong",
         "vehicle_type": "Premium SUV",
-        "image": "https://cdn.autoave.in/population_data/Ssangyong+Rexton_Titlted.jpg",
+        "image": "https://cdn.autoave.in/population_data/Ssangyong%2BRexton_Titlted.jpg",
         "model": "Rexton"
     },
     {
@@ -2156,7 +2156,7 @@
     {
         "brand": "Kia",
         "vehicle_type": "SUV",
-        "image": "https://cdn.autoave.in/population_data/Kia+sonet.jpg",
+        "image": "https://cdn.autoave.in/population_data/Kia%2Bsonet.jpg",
         "model": "Sonet"
     },
     {
@@ -2217,25 +2217,25 @@
         "brand": "Aprilia",
         "model": "Aprilia Tuono 660",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia RS 660",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia Tuono Factory",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Aprilia",
         "model": "Aprilia RSV4 1100 Factory",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Aprilia",
@@ -2307,7 +2307,7 @@
         "brand": "Bajaj",
         "model": "Bajaj Dominar 250",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/dominar-250-right-side-view-2.jpeg"
+        "image": "https://cdn.autoave.in/population_data/dominar-250-right-side-view-2.webp"
     },
     {
         "brand": "Bajaj",
@@ -2367,13 +2367,13 @@
         "brand": "Benelli",
         "model": "Benelli Leoncino 500",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/benelli-leoncino-500-standard20200719203519.jpg"
+        "image": "https://cdn.autoave.in/population_data/benelli-leoncino-500-standard20200719203519.webp"
     },
     {
         "brand": "Benelli",
         "model": "Benelli TRK 502",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/benelli-trk-502-standard20200719202226.jpg"
+        "image": "https://cdn.autoave.in/population_data/benelli-trk-502-standard20200719202226.webp"
     },
     {
         "brand": "Benelli",
@@ -2439,7 +2439,7 @@
         "brand": "BMW Bikes",
         "model": "BMW R Nine T Scrambler",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/bmw-r-nine-t-scrambler-standard20200731231100.jpg"
+        "image": "https://cdn.autoave.in/population_data/bmw-r-nine-t-scrambler-standard20200731231100.webp"
     },
     {
         "brand": "BMW Bikes",
@@ -2505,31 +2505,31 @@
         "brand": "CFMoto",
         "model": "CFMoto 650NK",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/cfmoto-650nk-standard20210423171513.jpg"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650nk-standard20210423171513.webp"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 650MT",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/cfmoto-650mt-standard20210507173743.jpg"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650mt-standard20210507173743.webp"
     },
     {
         "brand": "CFMoto",
         "model": "CFMoto 650GT",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/cfmoto-650gt-standard20210506173736.jpg"
+        "image": "https://cdn.autoave.in/population_data/cfmoto-650gt-standard20210506173736.webp"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Scrambler Desert Sled",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-desert-sled-standard20210315163003.jpg"
+        "image": "https://cdn.autoave.in/population_data/ducati-scrambler-desert-sled-standard20210315163003.webp"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Monster BS6",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Ducati",
@@ -2541,13 +2541,13 @@
         "brand": "Ducati",
         "model": "Ducati SuperSport",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Ducati",
         "model": "Ducati Multistrada 950",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-950-standard20200729211745.jpg"
+        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-950-standard20200729211745.webp"
     },
     {
         "brand": "Ducati",
@@ -2571,7 +2571,7 @@
         "brand": "Ducati",
         "model": "Ducati Multistrada V4",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-v4-standard.jpg"
+        "image": "https://cdn.autoave.in/population_data/ducati-multistrada-v4-standard.webp"
     },
     {
         "brand": "Ducati",
@@ -2601,37 +2601,37 @@
         "brand": "EeVe",
         "model": "EeVe Your",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-your-standard20201005141415.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-your-standard20201005141415.webp"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Wind",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-wind-standard20201005141252.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-wind-standard20201005141252.webp"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Ahava",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-ahava-standard20210504173725.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-ahava-standard20210504173725.webp"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Atreo",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-atreo-standard20210504173826.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-atreo-standard20210504173826.webp"
     },
     {
         "brand": "EeVe",
         "model": "EeVe 4U",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-4u-standard20201005141211.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-4u-standard20201005141211.webp"
     },
     {
         "brand": "EeVe",
         "model": "EeVe Xeniaa",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/eeve-xeniaa-standard20201005141334.jpg"
+        "image": "https://cdn.autoave.in/population_data/eeve-xeniaa-standard20201005141334.webp"
     },
     {
         "brand": "Evolet",
@@ -2679,7 +2679,7 @@
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Street Bob",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-bob-standard20210430224153.jpg"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-bob-standard20210430224153.webp"
     },
     {
         "brand": "Harley-Davidson",
@@ -2721,7 +2721,7 @@
         "brand": "Harley-Davidson",
         "model": "Harley-Davidson Street Glide Special",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-glide-special-standard20210501030258.jpg"
+        "image": "https://cdn.autoave.in/population_data/harleydavidson-street-glide-special-standard20210501030258.webp"
     },
     {
         "brand": "Harley-Davidson",
@@ -2739,7 +2739,7 @@
         "brand": "Hero",
         "model": "Hero Xtreme 160R",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/hero-xtreme-160r-front-disc20200630184113.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero-xtreme-160r-front-disc20200630184113.webp"
     },
     {
         "brand": "Hero",
@@ -2769,7 +2769,7 @@
         "brand": "Hero",
         "model": "Hero Pleasure+",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/hero-pleasure-110-sheet-metal-wheel--bs-vi20200129134245.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero-pleasure-110-sheet-metal-wheel--bs-vi20200129134245.webp"
     },
     {
         "brand": "Hero",
@@ -2787,7 +2787,7 @@
         "brand": "Hero",
         "model": "Hero Splendor iSmart 110",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/hero-splendor-ismart-110-fi--bsvi20191107161814.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero-splendor-ismart-110-fi--bsvi20191107161814.webp"
     },
     {
         "brand": "Hero",
@@ -2823,31 +2823,31 @@
         "brand": "Hero Electric",
         "model": "Hero Electric Flash",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/heroelectric-flash.jpg"
+        "image": "https://cdn.autoave.in/population_data/heroelectric-flash.webp"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Optima",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/hero-electric-optima-lead-acid20210511154426.jpg"
+        "image": "https://cdn.autoave.in/population_data/hero-electric-optima-lead-acid20210511154426.webp"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Optima HX",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric NYX HX",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Hero Electric",
         "model": "Hero Electric Atria",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Hero Electric",
@@ -2871,19 +2871,19 @@
         "brand": "Honda Bikes",
         "model": "Honda X-Blade",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/x-blade-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/x-blade-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Hornet 2.0",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/hornet-right-front-three-quarter-2.jpeg"
+        "image": "https://cdn.autoave.in/population_data/hornet-right-front-three-quarter-2.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB200X",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-rear-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-rear-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
@@ -2901,7 +2901,7 @@
         "brand": "Honda Bikes",
         "model": "Honda Africa Twin",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/honda-africa-twin-adventure-sports--manual20210112145358.jpg"
+        "image": "https://cdn.autoave.in/population_data/honda-africa-twin-adventure-sports--manual20210112145358.webp"
     },
     {
         "brand": "Honda Bikes",
@@ -2919,13 +2919,13 @@
         "brand": "Honda Bikes",
         "model": "Honda CD 110 Dream",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/dream-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/dream-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Dio",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/dio-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/dio-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
@@ -2943,43 +2943,43 @@
         "brand": "Honda Bikes",
         "model": "Honda Shine",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/shine-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/shine-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Activa 125",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/activa-125-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/activa-125-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Grazia",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/grazia-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/grazia-right-front-three-quarter.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda SP 125",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/sp-125-right-front-three-quarter-2.jpeg"
+        "image": "https://cdn.autoave.in/population_data/sp-125-right-front-three-quarter-2.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CB650R",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/honda-cb650r-standard20210330171322.jpg"
+        "image": "https://cdn.autoave.in/population_data/honda-cb650r-standard20210330171322.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda CBR 650R",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/honda-cbr-650r-standard20210330171401.jpg"
+        "image": "https://cdn.autoave.in/population_data/honda-cbr-650r-standard20210330171401.webp"
     },
     {
         "brand": "Honda Bikes",
         "model": "Honda Unicorn",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/unicorn-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/unicorn-right-front-three-quarter.webp"
     },
     {
         "brand": "Husqvarna",
@@ -3009,7 +3009,7 @@
         "brand": "Indian",
         "model": "Indian Super Chief Limited",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/indian-super-chief-limited-standard.jpg"
+        "image": "https://cdn.autoave.in/population_data/indian-super-chief-limited-standard.webp"
     },
     {
         "brand": "Jawa",
@@ -3063,19 +3063,19 @@
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja 1000",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-1000-2020-sx20200529171023.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-1000-2020-sx20200529171023.webp"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Versys 1000",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-1000-2020-bs-vi20200519181432.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-1000-2020-bs-vi20200519181432.webp"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja ZX-10R",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-zx10r-standard20210316212716.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-ninja-zx10r-standard20210316212716.webp"
     },
     {
         "brand": "Kawasaki",
@@ -3099,19 +3099,19 @@
         "brand": "Kawasaki",
         "model": "Kawasaki Z650",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.png"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Ninja 650",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.png"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki Versys 650",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-650-standard20200812111500.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-versys-650-standard20200812111500.webp"
     },
     {
         "brand": "Kawasaki",
@@ -3123,7 +3123,7 @@
         "brand": "Kawasaki",
         "model": "Kawasaki KX250",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Kawasaki",
@@ -3135,13 +3135,13 @@
         "brand": "Kawasaki",
         "model": "Kawasaki Z900",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/kawasaki-z900-2020-standard20191129170842.jpg"
+        "image": "https://cdn.autoave.in/population_data/kawasaki-z900-2020-standard20191129170842.webp"
     },
     {
         "brand": "Kawasaki",
         "model": "Kawasaki KX450",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "KTM",
@@ -3207,7 +3207,7 @@
         "brand": "Moto Guzzi",
         "model": "Moto Guzzi V85 TT",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-side-view.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-side-view.webp"
     },
     {
         "brand": "Odysse",
@@ -3237,7 +3237,7 @@
         "brand": "Okinawa",
         "model": "Okinawa i-Praise",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/okinawa-i-praise.jpg"
+        "image": "https://cdn.autoave.in/population_data/okinawa-i-praise.webp"
     },
     {
         "brand": "Okinawa",
@@ -3255,7 +3255,7 @@
         "brand": "Okinawa",
         "model": "Okinawa Ridge Plus",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/okinawa-ridge-plus.jpg"
+        "image": "https://cdn.autoave.in/population_data/okinawa-ridge-plus.webp"
     },
     {
         "brand": "Okinawa",
@@ -3267,7 +3267,7 @@
         "brand": "OLA",
         "model": "OLA S1",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/series-s-left-side-view-5.jpeg"
+        "image": "https://cdn.autoave.in/population_data/series-s-left-side-view-5.webp"
     },
     {
         "brand": "PURE EV",
@@ -3387,7 +3387,7 @@
         "brand": "Suzuki",
         "model": "Suzuki Hayabusa",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/suzuki-hayabusa-standard20210426152114.jpg"
+        "image": "https://cdn.autoave.in/population_data/suzuki-hayabusa-standard20210426152114.webp"
     },
     {
         "brand": "Suzuki",
@@ -3417,31 +3417,31 @@
         "brand": "Techo Electra",
         "model": "Techo Electra Raptor",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/techoelectra-raptor.jpg"
+        "image": "https://cdn.autoave.in/population_data/techoelectra-raptor.webp"
     },
     {
         "brand": "Techo Electra",
         "model": "Techo Electra Emerge",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/techoelectra-emerge.jpg"
+        "image": "https://cdn.autoave.in/population_data/techoelectra-emerge.webp"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Bonneville T120",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-t120-2021-standard20210401113257.jpg"
+        "image": "https://cdn.autoave.in/population_data/triumph-bonneville-t120-2021-standard20210401113257.webp"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Speed Twin",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Triumph",
         "model": "Triumph Street Triple RS",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-rs-standard20200703230118.jpg"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-rs-standard20200703230118.webp"
     },
     {
         "brand": "Triumph",
@@ -3471,7 +3471,7 @@
         "brand": "Triumph",
         "model": "Triumph Scrambler 1200",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/triumph-scrambler-1200-steve-mcqueen-edition20210423172836.png"
+        "image": "https://cdn.autoave.in/population_data/triumph-scrambler-1200-steve-mcqueen-edition20210423172836.webp"
     },
     {
         "brand": "Triumph",
@@ -3501,7 +3501,7 @@
         "brand": "Triumph",
         "model": "Triumph Street Triple R",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-r-standard20200804163527.jpg"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-triple-r-standard20200804163527.webp"
     },
     {
         "brand": "Triumph",
@@ -3513,7 +3513,7 @@
         "brand": "Triumph",
         "model": "Triumph Street Scrambler",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/triumph-street-scrambler-sandstorm-edition20210423165626.png"
+        "image": "https://cdn.autoave.in/population_data/triumph-street-scrambler-sandstorm-edition20210423165626.webp"
     },
     {
         "brand": "TVS",
@@ -3543,7 +3543,7 @@
         "brand": "TVS",
         "model": "TVS Apache RR310",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "TVS",
@@ -3585,7 +3585,7 @@
         "brand": "TVS",
         "model": "TVS Jupiter",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/tvs-jupiter-sheet-metal-wheel20210111113827.jpg"
+        "image": "https://cdn.autoave.in/population_data/tvs-jupiter-sheet-metal-wheel20210111113827.webp"
     },
     {
         "brand": "TVS",
@@ -3597,13 +3597,13 @@
         "brand": "TVS",
         "model": "TVS Ntorq 125",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/ntorq-125-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/ntorq-125-right-front-three-quarter.webp"
     },
     {
         "brand": "TVS",
         "model": "TVS Raider 125",
         "vehicle_type": "Bike",
-        "image": "https://cdn.autoave.in/population_data/raider-125-right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/raider-125-right-front-three-quarter.webp"
     },
     {
         "brand": "TVS",
@@ -3645,7 +3645,7 @@
         "brand": "Vespa",
         "model": "Vespa Elegante 125",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/vespa-elegante-125-bs-vi20200704232539.jpg"
+        "image": "https://cdn.autoave.in/population_data/vespa-elegante-125-bs-vi20200704232539.webp"
     },
     {
         "brand": "Vespa",
@@ -3693,7 +3693,7 @@
         "brand": "Yamaha",
         "model": "Yamaha Aerox 155",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter-2.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter-2.webp"
     },
     {
         "brand": "Yamaha",
@@ -3711,19 +3711,19 @@
         "brand": "Yamaha",
         "model": "Yamaha YZF R15 V4",
         "vehicle_type": "Premium",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha Fascino 125",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/yamaha-fascino-125-standard--drum-brake20191219183603.jpg"
+        "image": "https://cdn.autoave.in/population_data/yamaha-fascino-125-standard--drum-brake20191219183603.webp"
     },
     {
         "brand": "Yamaha",
         "model": "Yamaha Ray ZR 125",
         "vehicle_type": "Gearless",
-        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.jpeg"
+        "image": "https://cdn.autoave.in/population_data/right-front-three-quarter.webp"
     },
     {
         "brand": "Yo",
