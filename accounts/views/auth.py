@@ -35,14 +35,14 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
                 user.otp = '1234'
                 user.save()
                 
-                CommunicationProvider().send_sms(
-                    **SMS_LOGIN_CONTENT(user)
-                )
+                # CommunicationProvider().send_sms(
+                #     **SMS_LOGIN_CONTENT(user)
+                # )
             else:
                 otp = user.generate_otp()
-                CommunicationProvider().send_sms(
-                    **SMS_LOGIN_CONTENT(user)
-                )
+                # CommunicationProvider().send_sms(
+                #     **SMS_LOGIN_CONTENT(user)
+                # )
         except Exception as e:
             return response.Response(
                 {'error': str(e)},
