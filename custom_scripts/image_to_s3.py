@@ -5,9 +5,11 @@ from boto.s3.connection import OrdinaryCallingFormat
 from urllib.request import urlopen
 import json
 
-KEY = "AKIAVFDW7UCVKEHHNJBO"
-SECRET = "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"
-BUCKET = "autoave-backend-staticfiles"
+from django.conf import settings
+
+KEY = settings.AWS_ACCESS_KEY_ID
+SECRET = settings.AWS_SECRET_ACCESS_KEY
+BUCKET = settings.FAST2SMS_API_KEY
 
 from io import BytesIO
 def send_image_to_s3(url, name):
