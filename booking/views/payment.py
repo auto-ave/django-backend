@@ -108,7 +108,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # Just testing notifis
         # Payment confirmation notification for Store Owner
         store = booking.store
-        if store.has_owner():
+        if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
             )
@@ -160,6 +160,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
         body = resp["body"]
+        print('order create body: ', body)
 
         if body['resultInfo']['resultStatus'] == "S":
             return response.Response({
@@ -233,17 +234,17 @@ class PaymentCallbackView(views.APIView):
                 
                 # Payment confirmation notification for Store Owner
                 store = booking.store
-                if store.has_owner():
+                if store.owner:
                     CommunicationProvider.send_notification(
                         **NOTIFICATION_OWNER_NEW_BOOKING(booking),
                     )
                     CommunicationProvider.send_sms(
                         **SMS_OWNER_NEW_BOOKING(booking)
                     )
-                    if store.email or (store.has_owner() and store.owner.user.email):
-                        CommunicationProvider.send_email(
-                            **EMAIL_OWNER_NEW_BOOKING(booking)
-                        )
+                if store.email:
+                    CommunicationProvider.send_email(
+                        **EMAIL_OWNER_NEW_BOOKING(booking)
+                    )
 
 
                 CommunicationProvider.send_notification(

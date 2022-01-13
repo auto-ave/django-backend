@@ -1,3 +1,4 @@
+from accounts.models import StoreOwner
 from vehicle.models import Wheel, VehicleType
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, response, status, views
@@ -98,13 +99,18 @@ class SalesmanStoreList(generics.ListAPIView):
         return user.salesman.stores.all()
 
 class StoreCreateView(generics.CreateAPIView):
-    permission_classes = (IsSalesman,)   
+    permission_classes = (IsSalesman,)
     serializer_class = StoreCreateSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        slug = self.perform_create(serializer)
+        try:
+            slug = self.perform_create(serializer)
+        except Exception as e:
+            return response.Response({
+                'error': str(e)
+            })
         return response.Response({
             "slug": slug,
         }, status=status.HTTP_201_CREATED)
@@ -119,6 +125,19 @@ class StoreCreateView(generics.CreateAPIView):
         del data['bay_number']
 
         store = Store.objects.create(**data)
+        
+        owner_user = User.objects.create(
+            username=store.slug,
+            email=store.email
+        )
+        owner_user.set_password('Qwerty@123')
+        owner_user.save()
+        
+        owner_profile = StoreOwner.objects.create(user=owner_user)
+        
+        store.owner = owner_profile
+        store.save()
+        
         for index in range(bay_number):
             bay = Bay.objects.create(store=store)
         

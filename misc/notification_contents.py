@@ -100,10 +100,6 @@ def NOTIFICATION_OWNER_NEW_BOOKING(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event
-    if store.has_owner():
-        userid = store.owner.user.id
-    else:
-        userid = None
     return {
         'title': 'New booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
         'body': 'Booking for {} {} on {} has been confirmed. Be sure to complete the service on time and collect the due amount displayed on your mobile application.'.format(
@@ -112,7 +108,7 @@ def NOTIFICATION_OWNER_NEW_BOOKING(booking):
             event.start_datetime.strftime('%d %b')
         ),
         'image': random_item(MODI_IMAGES),
-        'userid': userid,
+        'userid': store.owner.user.id,
         'data': {
             'reload': "true"
         }
@@ -123,13 +119,9 @@ def NOTIFICATION_OWNER_BOOKING_INITIATED(booking):
     store = booking.store
     vehicle_model = booking.vehicle_model
     event = booking.event
-    if store.has_owner():
-        userid = store.owner.user.id
-    else:
-        userid = None
     return {
         'title': 'Initiated booking on {} for {} {}'.format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
         'body': 'Booking for {} {} on {} has been confirmed. # TODO: content'.format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
         'image': random_item(MODI_IMAGES),
-        'userid': userid
+        'userid': store.owner.user.id
     }

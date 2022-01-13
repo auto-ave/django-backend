@@ -36,12 +36,8 @@ def EMAIL_OWNER_NEW_BOOKING(booking):
     vehicle_model = booking.vehicle_model
     event = booking.event
     user = booking.booked_by.user
-    if store.has_owner():
-        owneremail = store.owner.user.id
-    else:
-        owneremail = None
     return {
-        "email": list(filter( None, [owneremail, store.email] )),
+        "email": store.email,
         "subject": "New booking on {} for {} {}".format(event.start_datetime.strftime('%d %b - %I:%M %p'), vehicle_model.brand, vehicle_model.model),
         "html_content": "Booking for {} {} on {} has been confirmed.".format(vehicle_model.brand, vehicle_model.model, event.start_datetime.strftime('%d %b')),
         "template_id": "d-28d7bcd7d3854ec8ae3bf9b4aa2be5fd",
