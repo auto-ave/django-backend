@@ -6,7 +6,7 @@ import uuid
 ####
 def get_commission_percentage(amount):
     amount = float(amount)
-    if amount > 5000:
+    if amount > 10000:
         return 0.10
     if amount > 1000:
         return 0.15

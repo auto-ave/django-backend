@@ -41,22 +41,24 @@ class CommunicationProvider:
         SENDER_ID = "AUTAVE"
         ROUTE = "dlt"
         url = "https://www.fast2sms.com/dev/bulkV2"
-        
-        payload = "sender_id={}&message={}&variables_values={}&route={}&numbers={}".format(
-            SENDER_ID, message_id, variables_values, ROUTE, numbers
-        )
-        headers = {
-            'authorization': settings.FAST2SMS_API_KEY,
-            'Content-Type': "application/x-www-form-urlencoded",
-            'Cache-Control': "no-cache",
-         }
-        response = requests.post(
-            url,
-            data=payload,
-            headers=headers
-        )
-        print(response.text)
-    
+
+        if settings.FAST2SMS_ENABLE:
+            payload = "sender_id={}&message={}&variables_values={}&route={}&numbers={}".format(
+                SENDER_ID, message_id, variables_values, ROUTE, numbers
+            )
+            headers = {
+                'authorization': settings.FAST2SMS_API_KEY,
+                'Content-Type': "application/x-www-form-urlencoded",
+                'Cache-Control': "no-cache",
+            }
+            response = requests.post(
+                url,
+                data=payload,
+                headers=headers
+            )
+            print(response.text)
+        else:
+            print('Fast2SMS is disabled')
     
     
     @background(schedule=0)
