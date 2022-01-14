@@ -8,7 +8,7 @@ from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_CO
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
-from booking.serializers.payment import InitiateTransactionSerializer
+from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer
 from rest_framework import generics, permissions, response,views
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
@@ -22,6 +22,7 @@ import json, requests, datetime, uuid
 
 class PaymentChoices(generics.GenericAPIView):
     permission_classes = (IsConsumer,)
+    serializer_class = PaymentChoicesSerializer
     
     def get(self, request, *args, **kwargs):
         user = request.user

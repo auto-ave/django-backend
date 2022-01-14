@@ -115,3 +115,8 @@ class BookingStartSerializer(serializers.Serializer):
 
 class BookingCompleteSerializer(serializers.Serializer):
     booking_id = serializers.CharField()
+
+class OwnerRevenueSerializer(serializers.Serializer):
+    pass
+class OwnerStoreVehicleTypesSerializer(serializers.Serializer):
+    pass

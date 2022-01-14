@@ -25,6 +25,8 @@ class SalesmanStoreRetrieve(generics.RetrieveAPIView):
 
 class SalesmanStoreServiceRetrieve(generics.GenericAPIView):
     serializer_class = PriceTimeSerializer
+    queryset = PriceTime.objects.all()
+    
 
     def get(self, request, slug, pk):
         user = self.request.user
@@ -145,7 +147,7 @@ class StoreCreateView(generics.CreateAPIView):
 
 class ServiceCreationDetails(generics.GenericAPIView):
     # permission_classes = (IsSalesman | is)   
-    # serializer_class = ServiceCreationDetailsSerializer
+    serializer_class = ServiceCreationDetailsSerializer
     
 
     def get(self, request, slug):
@@ -222,7 +224,7 @@ class CreateStorePriceTimes(views.APIView):
 
 class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
     permission_classes = (IsSalesman,)
-    # serializer_class = StoreServiceListSerializer
+    serializer_class = StorePriceTimeListSerializer
     lookup_field = 'slug'
 
     def get_queryset(self):
@@ -273,6 +275,7 @@ class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
 
 class StoreRegistrationEmail(generics.GenericAPIView):
     permission_classes = (IsSalesman,)
+    serializer_class = StoreRegistrationEmailSerializer
     lookup_field = 'slug'
 
     def get_queryset(self):

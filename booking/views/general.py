@@ -175,6 +175,7 @@ class OwnerBookingComplete(generics.GenericAPIView, ValidateSerializerMixin):
 
 class OwnerRevenue(generics.GenericAPIView):
     permission_classes = (IsStoreOwner, )
+    serializer_class = OwnerRevenueSerializer
 
     def get(self, request):
         user = self.request.user
@@ -204,6 +205,7 @@ class OwnerRevenue(generics.GenericAPIView):
 
 class OwnerStoreVehicleTypes(generics.GenericAPIView):
     permission_classes = (IsStoreOwner,)
+    serializer_class = OwnerStoreVehicleTypesSerializer
 
     def get(self, request):
         vehicles = {}

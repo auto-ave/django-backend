@@ -53,6 +53,7 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
 
 class ClearCart(ValidateSerializerMixin, generics.GenericAPIView):
     permission_classes = (IsConsumer, )
+    serializer_class = ClearCartSerializer
 
     def post(self, request):
         cart = request.user.consumer.get_cart()
