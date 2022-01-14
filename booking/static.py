@@ -27,9 +27,8 @@ PAYMENT_STATUS_DICT = dict((v, k) for k, v in PAYMENT_STATUS)
 
 # Max length per reason limit to 500
 BOOKING_CANCEL_REASONS = [
-    "Man nhi hai",
-    "Not a bhakt, sorry",
-    "Ganda app banaya jisne bhi banaya, please fix it",
+    "Want to book another time slot",
+    "I am not available for the service",
 ]
 
 BOOKING_CANCEL_PRIOR_HOURS = 12

@@ -3,6 +3,9 @@ from rest_framework import serializers
 
 from store.models import Bay
 
+class PaymentChoicesSerializer(serializers.Serializer):
+    pass
+
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
@@ -13,4 +16,3 @@ class InitiateTransactionSerializer(serializers.Serializer):
     bay = serializers.PrimaryKeyRelatedField(queryset=Bay.objects.all())
     slot_start = serializers.TimeField()
     slot_end = serializers.TimeField()
-    

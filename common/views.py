@@ -5,6 +5,7 @@ from common.serializers import *
 from common.mixins import ValidateSerializerMixin
 
 class CityList(generics.GenericAPIView):
+    serializer_class = CityListSerializer
     
     def get(self, request, format=None):
         cities = City.objects.all()

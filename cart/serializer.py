@@ -66,3 +66,6 @@ class CartAddItemSerializer(serializers.Serializer):
 
 class CartRemoveItemSerializer(serializers.Serializer):
     item = serializers.PrimaryKeyRelatedField(queryset=PriceTime.objects.all())
+
+class ClearCartSerializer(serializers.Serializer):
+    pass

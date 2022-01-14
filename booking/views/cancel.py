@@ -1,5 +1,5 @@
 from rest_framework import permissions, generics, response
-from booking.serializers.cancel import BookingCancelSerializer
+from booking.serializers.cancel import BookingCancelDataSerializer, BookingCancelSerializer
 from booking.static import BOOKING_CANCEL_PRIOR_HOURS, BOOKING_CANCEL_REASONS, BookingStatusSlug
 from booking.models import Booking, BookingStatus, CancellationRequest
 from common.mixins import ValidateSerializerMixin
@@ -10,6 +10,7 @@ import datetime
 
 class BookingCancelData(generics.GenericAPIView):
     permission_classes = (permissions.AllowAny, )
+    serializer_class = BookingCancelDataSerializer
 
     def get(self, request, *args, **kwargs):
         booking_id = kwargs['booking_id']
