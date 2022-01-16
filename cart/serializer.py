@@ -1,5 +1,6 @@
 from django.contrib.postgres import fields
 from rest_framework import serializers
+from booking.serializers.offer import OfferListSerializer
 
 from vehicle.serializers import VehicleTypeSerializer
 from cart.models import Cart
@@ -21,6 +22,7 @@ class CartSerializer(serializers.ModelSerializer):
     store = serializers.SerializerMethodField()
     vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
+    offer = OfferListSerializer()
     class Meta:
         model = Cart
         fields = "__all__"
