@@ -81,7 +81,6 @@ class Booking(Model):
     def booking_unattended_check(bookingid):
         # Cannot take self as an argument in background tasks, therefore used bookingid
         booking = Booking.objects.get(booking_id=bookingid)
-        print('Starting booking unattended check: ', booking, booking.status)
         try:
             if booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS):
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.NOT_ATTENDED)
