@@ -20,10 +20,10 @@ def updateCart(sender, instance, **kwargs):
     offer = instance.offer
     if offer:
         offer = instance.offer
-        discount_percentage = offer.discount_percentage
+        discount_percentage = offer.discount_percentage / 100 # since we store in percentage
         max_discount = offer.max_discount
         
-        raw_discount = round(instance.total * discount_percentage)
+        raw_discount = round(instance.subtotal * discount_percentage, 2)
         if raw_discount > max_discount:
             raw_discount = max_discount
         

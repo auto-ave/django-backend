@@ -1,3 +1,4 @@
+from booking.utils import get_commission_amount, get_commission_percentage
 import vehicle
 from store.models import Store
 from django.db import models
@@ -95,6 +96,11 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+
+    def get_partial_pay_amount(self):
+        amount = float(self.subtotal)
+        commission_amount = get_commission_amount(amount)
+        return round( commission_amount - float(self.discount) , 2)
 
     def __str__(self):
         return "Cart: {}".format(self.consumer)
