@@ -32,4 +32,5 @@ urlpatterns = [
     path('offer/list/', offer.OfferListView.as_view()),
     path('offer/banner/', offer.OfferBannerView.as_view()),
     path('offer/apply/', offer.OfferApplyView.as_view()),
+    path('offer/remove/', offer.OfferRemoveView.as_view()),
 ]

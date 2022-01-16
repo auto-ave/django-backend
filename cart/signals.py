@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save, pre_delete, m2m_changed
+from django.db.models.signals import post_save, pre_delete, m2m_changed, pre_save
 from django.dispatch import receiver
 
 from cart.models import *
@@ -8,10 +8,27 @@ def updateCartValue(sender, instance, **kwargs):
     """
     Signal to update total, subTotal and taxes values when the cart is modified
     """
-    instance.subtotal = 0
-    instance.total = 0
-    for item in instance.items.all():
-        instance.total += item.price
-        instance.subtotal += item.price
-    # TODO: Taxes bitch
-    instance.save()
+    instance.process_total()
+
+@receiver(pre_save, sender=Cart)
+def updateCart(sender, instance, **kwargs):
+    """[summary]
+    Signal to mainly process offer
+    """
+    instance.process_total()
+    
+    offer = instance.offer
+    if offer:
+        offer = instance.offer
+        discount_percentage = offer.discount_percentage
+        max_discount = offer.max_discount
+        
+        raw_discount = round(instance.total * discount_percentage)
+        if raw_discount > max_discount:
+            raw_discount = max_discount
+        
+        instance.discount = raw_discount
+        instance.total = instance.total - raw_discount
+    else:
+        instance.discount = 0
+        

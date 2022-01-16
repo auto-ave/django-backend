@@ -112,20 +112,23 @@ class Booking(Model):
    
     def approve_cancellation_request(self):
         print("Approving cancellation request")
-        self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_APPROVED)
-        self.booking_status_changed_time = datetime.datetime.now()
-        self.save()
-        # Cancellation approved notification and email
-        CommunicationProvider.send_notification(
-            **NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
-        )
-        CommunicationProvider.send_sms(
-            **SMS_CONSUMER_CANCELLATION_APPROVED(self),
-        )
-        if self.booked_by.user.email:
-            CommunicationProvider.send_email(
-                **EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
+        if self.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_SUBMITTED):
+            self.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_APPROVED)
+            self.booking_status_changed_time = datetime.datetime.now()
+            self.save()
+            # Cancellation approved notification and email
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
             )
+            CommunicationProvider.send_sms(
+                **SMS_CONSUMER_CANCELLATION_APPROVED(self),
+            )
+            if self.booked_by.user.email:
+                CommunicationProvider.send_email(
+                    **EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED(self),
+                )
+        else:
+            print('already approved cancellation request for {} this booking'.format(self.booking_id))
 
 class Payment(Model):
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT, null=True, blank=True)

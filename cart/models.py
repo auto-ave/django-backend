@@ -15,6 +15,7 @@ class Cart(Model):
 
     offer = models.ForeignKey('booking.Offer', on_delete=models.SET_NULL, related_name="carts", null=True, blank=True)
 
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
@@ -22,6 +23,16 @@ class Cart(Model):
 
     def save(self, *args, **kwargs):
         super(Cart, self).save(*args, **kwargs)
+    
+    def process_total(self):
+        self.subtotal = 0
+        self.total = 0
+        for item in self.items.all():
+            self.total += item.price
+            self.subtotal += item.price
+        Cart.objects.filter(pk=self.pk).update(
+            subtotal=self.subtotal, total=self.total
+        )
     
     def addItem(self, item, vehicle_model_pk):
         vehicle_model = VehicleModel.objects.get(pk=vehicle_model_pk)

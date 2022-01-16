@@ -13,3 +13,6 @@ class OfferBannerSerializer(serializers.ModelSerializer):
 
 class OfferApplySerializer(serializers.Serializer):
     code = serializers.CharField(max_length=21)
+
+class OfferRemoveSerializer(serializers.Serializer):
+    pass
