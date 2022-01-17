@@ -1,4 +1,5 @@
 from common.utils import DATETIME_NOW, DATETIME_TODAY_END, DATETIME_TODAY_START
+from store.serializers.general import StoreDetailOwnerSerializer
 from vehicle.models import VehicleModel
 from booking.static import BookingStatusSlug
 from common.mixins import ValidateSerializerMixin
@@ -245,6 +246,14 @@ class OwnerDayWiseCalender(generics.ListAPIView):
             end_datetime__lte=DATETIME_TODAY_END
         ).order_by('start_datetime'))
         return events
+
+
+class OwnerStoreDetail(generics.RetrieveAPIView):
+    permission_classes = (IsStoreOwner, )
+    serializer_class = StoreDetailOwnerSerializer
+    
+    def get_object(self):
+        return self.request.user.storeowner.store
 
 class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CalenderBlockSerializer

@@ -23,6 +23,7 @@ urlpatterns = [
     path('owner/service/start/', general.OwnerBookingStart.as_view()),
     path('owner/service/complete/', general.OwnerBookingComplete.as_view()),
     path('owner/calender/block/', general.OwnerCalenderBlock.as_view()),
+    path('owner/store/detail/', general.OwnerStoreDetail.as_view()),
     
     path('store-owner/revenue/', general.OwnerRevenue.as_view()),
     path('store-owner/new/bookings/',general.OwnerUpcomingBookingsList.as_view()),
