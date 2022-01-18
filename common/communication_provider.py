@@ -6,6 +6,7 @@ from twilio.rest import Client
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from fcm_django.models import FCMDevice
+from firebase_admin.messaging import APNSConfig, APNSPayload, Aps
 from firebase_admin.messaging import Message, Notification
 
 from misc.models import ErrorLogging
@@ -84,13 +85,13 @@ class CommunicationProvider:
                     notification=notification,
                     data=data,
                     topic=topic,
-                    apns={
-                        'payload': {
-                            'aps': {
-                                'sound': 'turbo'
-                            }
-                        }
-                    }
+                    apns=APNSConfig(
+                        payload=APNSPayload(
+                            aps=Aps(
+                                sound='turbo',
+                            )
+                        )
+                    )
                 )
                 result = devices.send_message(message)
             # print('notification result: ', str(result))
