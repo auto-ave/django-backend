@@ -12,10 +12,11 @@ from fcm_django.models import FCMDevice
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from misc.sms_contents import SMS_LOGIN_CONTENT
+from motorwash.throttles import OTPBurst, OTPRate, OTPSustained
 
 class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = GetOTPSerializer
-    throttle_scope = 'otp_api'
+    throttle_classes = [ OTPBurst, OTPSustained, OTPRate ]
 
     def post(self, request, *args, **kwargs):
         data = self.validate(request)

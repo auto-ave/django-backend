@@ -84,6 +84,13 @@ class CommunicationProvider:
                     notification=notification,
                     data=data,
                     topic=topic,
+                    apns={
+                        'payload': {
+                            'aps': {
+                                'sound': 'turbo'
+                            }
+                        }
+                    }
                 )
                 result = devices.send_message(message)
             # print('notification result: ', str(result))
