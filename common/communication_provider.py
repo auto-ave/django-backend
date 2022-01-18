@@ -1,4 +1,4 @@
-from accounts.models import User
+from django.contrib.auth import get_user_model
 from django.conf import settings
 from background_task import background
 
@@ -76,7 +76,7 @@ class CommunicationProvider:
     @background(schedule=0)
     def send_notification(title, body, userid = None, image="", data={}, topic=None):
         if userid:
-            user = User.objects.get(id=userid)
+            user = get_user_model().objects.get(id=userid)
             devices = user.get_devices()
             if devices:
                 notification = Notification(title=title, body=body, image=image)

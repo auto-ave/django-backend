@@ -4,7 +4,7 @@ from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
 from common.mixins import ValidateSerializerMixin
-from booking.models import BookingStatus, Slot
+from booking.models import BookingStatus
 from cart.models import Cart
 from store.models import Event
 from common.permissions import IsConsumer

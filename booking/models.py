@@ -2,11 +2,9 @@
 from misc.email_contents import EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED
 from misc.notification_contents import NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_RECIEVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
 from common.communication_provider import CommunicationProvider
-from cart.models import Cart
 from django.db import models
 from common.models import Model
 from django.contrib.postgres.fields import ArrayField
-from accounts.models import Consumer
 from misc.sms_contents import SMS_CONSUMER_CANCELLATION_APPROVED, SMS_CONSUMER_CANCELLATION_REQUESTED, SMS_CONSUMER_SERVICE_COMPLETE, SMS_CONSUMER_SERVICE_STARTED, SMS_CONSUMER_SERVICE_UNATTENDED
 from store.models import Store, PriceTime, Event, VehicleType
 from .static import PAYMENT_STATUS, BookingStatusSlug
@@ -27,7 +25,7 @@ class BookingStatus(Model):
 
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
-    booked_by = models.ForeignKey(Consumer, on_delete=models.PROTECT, related_name='bookings')
+    booked_by = models.ForeignKey('accounts.Consumer', on_delete=models.PROTECT, related_name='bookings')
     amount = models.CharField(max_length=30, null=True, blank=True)
     store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')
     
@@ -166,7 +164,7 @@ class Refund(Model):
         super(Refund, self).save(*args, **kwargs)
         
 class Review(Model):
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="reviews")
+    consumer = models.ForeignKey('accounts.Consumer', on_delete=models.CASCADE, related_name="reviews")
     booking = models.OneToOneField(Booking, on_delete=models.PROTECT)
     store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="reviews")
     is_only_rating = models.BooleanField(default=True)
@@ -182,13 +180,6 @@ class Review(Model):
     def __str__(self):
         return "Review #{} : {}".format(self.pk, self.store)
 
-class Slot(Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-
-    def __str__(self):
-        return "Slot #{}".format(self.id)
 
 class CancellationRequest(Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="cancellation_requests")
@@ -250,7 +241,7 @@ class Offer(Model):
 
 class OfferRedeem(Model):
     offer = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name="redeems")
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE, related_name="redeems")
+    consumer = models.ForeignKey('accounts.Consumer', on_delete=models.CASCADE, related_name="redeems")
     
     def __str__(self) -> str:
         return "{} - {}".format(self.offer, self.consumer)

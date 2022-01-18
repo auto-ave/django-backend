@@ -47,7 +47,6 @@ class PaymentAdmin(admin.ModelAdmin):
 admin.site.register(Refund)
 admin.site.register(Review)
 
-admin.site.register(Slot)
 
 
 @admin.action(description="Aprove Cancellation request for the selected Bookings")

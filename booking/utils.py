@@ -1,5 +1,5 @@
 import uuid
-from booking.models import BookingStatus
+from .models import BookingStatus
 from booking.static import BookingStatusSlug
 
 from common.utils import DATETIME_TODAY_END, DATETIME_TODAY_START
