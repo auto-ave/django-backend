@@ -232,7 +232,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_THROTTLE_RATES': {
         'public_post_api': '3/hour',
-        'public_get_api': '100/day' # TODO: yet to be decided
+        'public_get_api': '100/day', # TODO: yet to be decided
+        'otp_api': '4/minute',
     }
 }
 
