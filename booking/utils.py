@@ -1,4 +1,6 @@
 import uuid
+from booking.models import BookingStatus
+from booking.static import BookingStatusSlug
 
 from common.utils import DATETIME_TODAY_END, DATETIME_TODAY_START
 
@@ -38,6 +40,8 @@ def check_event_collide_in_store(start, end, store):
             )
         )
     for event in events:
+        if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
+            continue
         if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
             return True
     return False
