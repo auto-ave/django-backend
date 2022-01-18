@@ -265,14 +265,14 @@ class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
         store = user.storeowner.store
         bays = store.bays.all()
         
-        event = Event.objects.create(
-            is_blocking=True,
-            bay=bays[0],
-            start_datetime=data['start_datetime'],
-            end_datetime=data['end_datetime'],
-        )
+        for bay in bays:
+            Event.objects.create(
+                is_blocking=True,
+                bay=bay,
+                start_datetime=data['start_datetime'],
+                end_datetime=data['end_datetime'],
+            )
         
         return response.Response({
             'success': 'Event created',
-            'event': EventSerializer(event).data
         })
