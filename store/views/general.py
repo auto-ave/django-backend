@@ -66,6 +66,10 @@ class CityStoreList(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', ]
     
+    def list(self, request, *args, **kwargs):
+        response = super(CityStoreList, self).list(request, args, kwargs)
+        response.data['results'] = sorted(response.data['results'], key=lambda k: (k['distance'], ))
+        return response
 
     def get_queryset(self):
         citycode = self.kwargs['citycode']
