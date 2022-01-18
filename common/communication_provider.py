@@ -88,7 +88,7 @@ class CommunicationProvider:
                     apns=APNSConfig(
                         payload=APNSPayload(
                             aps=Aps(
-                                sound='turbo',
+                                sound='turbo.aiff',
                             )
                         )
                     )
