@@ -38,7 +38,8 @@ def check_event_collide_in_store(start, end, store):
             )
         )
     for event in events:
-        pass
+        if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
+            return True
     return False
 
 
