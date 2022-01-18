@@ -29,7 +29,7 @@ def SMS_CONSUMER_BOOKING_COMPLETE(booking):
 def SMS_CONSUMER_2_HOURS_LEFT(booking):
     phone = booking.booked_by.user.phone_sms()
     return {
-        'message_id': '135925',
+        'message_id': '136241',
         'variables_values': '{}|'.format(booking.store.name),
         'numbers': phone,
     }
@@ -82,11 +82,12 @@ def SMS_OWNER_NEW_BOOKING(booking):
     event = booking.event
     phone = booking.store.owner.user.phone_sms()
     return {
-        'message_id': '135923',
-        'variables_values': '{}|{}|{}|'.format(
+        'message_id': '136242',
+        'variables_values': '{}|{}|{}|{}|'.format(
             event.start_datetime.strftime('%d %b - %I:%M %p'),
             vehicle_model.brand,
             vehicle_model.model,
+            float(booking.amount) - float(booking.payment.amount)
         ),
         'numbers': phone,
     }

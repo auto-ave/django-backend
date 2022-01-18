@@ -55,6 +55,7 @@ def EMAIL_OWNER_NEW_BOOKING(booking):
                 "date": event.start_datetime.strftime('%d %b'),
             },
             "remaining_amount": float(booking.amount) - float(booking.payment.amount),
+            "paid_amount": float(booking.payment.amount),
             "services": [ str(item.service.name) for item in booking.price_times.all() ],
             "customer": {
                 "name": str(user.full_name()),
