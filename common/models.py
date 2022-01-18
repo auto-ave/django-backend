@@ -47,7 +47,7 @@ class ServiceTag(Model):
         super(ServiceTag, self).save(*args, **kwargs)
 
 class Service(Model):
-    slug = models.SlugField(unique=True, null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True, blank=True, max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)

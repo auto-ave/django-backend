@@ -1,5 +1,5 @@
 # pylint: disable=unused-import
-from booking.utils import check_event_collide, generate_booking_id
+from booking.utils import check_event_collide_in_store, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
@@ -78,7 +78,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "detail": "Total time of booking should be equal to total time of cart"
             })
         
-        if check_event_collide(start=start_datetime, end=end_datetime, store=bay.store):
+        if check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store):
             return response.Response({
                 "detail": "Slot colliding with other event"
             })
