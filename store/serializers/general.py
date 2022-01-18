@@ -36,7 +36,7 @@ class StoreSerializer(ModelSerializer):
 class StoreDetailOwnerSerializer(ModelSerializer):
     class Meta():
         model = Store
-        fields = ( 'name', 'address', 'thumbnail' )
+        fields = ( 'name', 'address', 'thumbnail', 'images' )
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
