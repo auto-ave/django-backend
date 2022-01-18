@@ -1,7 +1,7 @@
 # pylint: disable=unused-import
 from booking.utils import check_event_collide_in_store, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
-from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CUSTOMER_BOOKING_INITIATED, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
 from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
@@ -109,6 +109,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # Just testing notifis
         # Payment confirmation notification for Store Owner
         store = booking.store
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
+        )
         if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
