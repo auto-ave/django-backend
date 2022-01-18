@@ -26,17 +26,12 @@ ON_SERVER = 'RDS_DB_NAME' in os.environ
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-print('env: ', os.environ)
-print('secret key os.environ: ', os.environ.get('SECRET_KEY'))
-print('secret key env: ', env('SECRET_KEY'))
 if ON_SERVER:  
     SECRET_KEY = os.environ['SECRET_KEY']
 else:
     SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-print('debug os.environ: ', os.environ.get('DEBUG'))
-print('debug env: ', env('DEBUG'))
 if ON_SERVER:  
     DEBUG = int(os.environ['DEBUG'])
 else:

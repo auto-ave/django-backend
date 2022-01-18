@@ -1,5 +1,5 @@
 # pylint: disable=unused-import
-from booking.utils import check_event_collide, generate_booking_id, get_commission_amount
+from booking.utils import check_event_collide, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
@@ -28,7 +28,7 @@ class PaymentChoices(generics.GenericAPIView):
         user = request.user
         cart = user.consumer.get_cart()
         total_amount = float(cart.total)
-        commission_amount = get_commission_amount(total_amount)
+        commission_amount = cart.get_partial_pay_amount()
         
         payment_choices = [
             {
@@ -121,7 +121,8 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         print("total: ", cart.total, str(cart.total))
         ORDER_ID = booking.booking_id
         # Added commission amount coz currently we only using partial payment
-        PAYMENT_AMOUNT = str(get_commission_amount(cart.total))
+        PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
+        print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
@@ -173,7 +174,8 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             })
         else:
             return response.Response({
-                "detail": body['resultInfo']['resultMessage']
+                'code': body['resultInfo']['resultCode'],
+                "detail": body['resultInfo']['resultMsg']
             })
 
 class PaymentCallbackView(views.APIView):
