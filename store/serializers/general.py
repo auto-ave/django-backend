@@ -95,6 +95,11 @@ class StoreCreateSerializer(ModelSerializer):
         model = Store
         exclude = ('created_at', 'updated_at', 'is_verified_by_admin', 'is_locked_for_salesman', 'partner', 'owner', 'salesman', 'supported_vehicle_types', 'rating')
 
+class StoreUpdateSerializer(ModelSerializer):
+    class Meta():
+        model = Store
+        fields = ('thumbnail', 'images' )
+
 
 class StorePriceTimeListSerializer(serializers.Serializer):
     pass
