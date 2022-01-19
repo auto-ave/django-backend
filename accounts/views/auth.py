@@ -38,7 +38,7 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
                 user.save()
             else:
                 user.generate_otp()
-                if settings.FAST2SMS_ENABLED:
+                if settings.FAST2SMS_ENABLE:
                     CommunicationProvider().send_sms(
                         **SMS_LOGIN_CONTENT(user)
                     )
