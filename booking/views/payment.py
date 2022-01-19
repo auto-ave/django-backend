@@ -265,6 +265,7 @@ class PaymentCallbackView(views.APIView):
                 booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
 
                 # clear cart after order successfull
+                user.consumer.cart.booking_completed()
                 user.consumer.cart.clear()
                 
                 print('order successful')
