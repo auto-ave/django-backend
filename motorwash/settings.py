@@ -37,6 +37,9 @@ if ON_SERVER:
 else:
     DEBUG = int(env('DEBUG'))
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 ALLOWED_HOSTS = ['*']
 
 
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
     'djcelery_email',
     'background_task',
     'fcm_django',
+    "debug_toolbar",
     
     'accounts',
     'common',
@@ -72,6 +76,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
