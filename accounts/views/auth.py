@@ -53,6 +53,7 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
 
 class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CheckOTPSerializer
+    throttle_scope = 'public_get_api'
 
     def post(self, request, *args, **kwargs):
         data = self.validate(request)
