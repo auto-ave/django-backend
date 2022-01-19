@@ -36,7 +36,7 @@ class StoreSerializer(ModelSerializer):
 class StoreDetailOwnerSerializer(ModelSerializer):
     class Meta():
         model = Store
-        fields = ( 'name', 'address', 'thumbnail' )
+        fields = ( 'name', 'address', 'thumbnail', )
 
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
@@ -72,7 +72,7 @@ class StoreListSerializer(ModelSerializer):
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
         model = Store
-        fields = ('id', 'name', 'address', 'thumbnail', 'slug', 'latitude', 'longitude', 'contact_person_name', 'contact_person_number', 'created_at', 'updated_at', 'is_active', 'is_verified_by_admin', 'is_locked_for_salesman')
+        fields = ('id', 'name', 'address', 'thumbnail', 'images', 'slug', 'latitude', 'longitude', 'contact_person_name', 'contact_person_number', 'created_at', 'updated_at', 'is_active', 'is_verified_by_admin', 'is_locked_for_salesman')
     
 class EventSerializer(ModelSerializer):
     class Meta():
@@ -94,6 +94,11 @@ class StoreCreateSerializer(ModelSerializer):
     class Meta():
         model = Store
         exclude = ('created_at', 'updated_at', 'is_verified_by_admin', 'is_locked_for_salesman', 'partner', 'owner', 'salesman', 'supported_vehicle_types', 'rating')
+
+class StoreUpdateSerializer(ModelSerializer):
+    class Meta():
+        model = Store
+        fields = ('thumbnail', 'images' )
 
 
 class StorePriceTimeListSerializer(serializers.Serializer):

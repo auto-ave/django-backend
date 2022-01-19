@@ -8,6 +8,7 @@ blessed==1.19.0
 boto==2.49.0
 boto3==1.18.63
 botocore==1.21.63
+Brotli==1.0.9
 CacheControl==0.12.6
 cached-property==1.5.2
 cachetools==4.2.2
@@ -21,6 +22,7 @@ click-didyoumean==0.0.3
 click-plugins==1.1.1
 click-repl==0.2.0
 colorama==0.4.3
+ConfigArgParse==1.5.3
 coreapi==2.3.3
 coreschema==0.0.4
 cryptography==35.0.0
@@ -33,6 +35,7 @@ django-celery-email==3.0.0
 django-compat==1.0.15
 django-cors-headers==3.7.0
 django-dbbackup==3.3.0
+django-debug-toolbar==3.2.4
 django-environ==0.8.1
 django-filter==2.4.0
 django-phonenumber-field==5.1.0
@@ -51,9 +54,14 @@ ebcli==4.0.18
 enum34==1.1.10
 fcm-django==1.0.5
 firebase-admin==5.0.2
+Flask==2.0.2
+Flask-BasicAuth==0.2.0
+Flask-Cors==3.0.10
 future==0.16.0
 geographiclib==1.50
 geopy==2.1.0
+gevent==21.12.0
+geventhttpclient==1.5.3
 google-api-core==1.31.3
 google-api-python-client==2.21.0
 google-auth==1.35.0
@@ -64,6 +72,7 @@ google-cloud-storage==1.42.2
 google-crc32c==1.2.0
 google-resumable-media==2.0.3
 googleapis-common-protos==1.53.0
+greenlet==1.1.2
 grpcio==1.40.0
 gunicorn==20.1.0
 haversine==2.3.0
@@ -71,15 +80,18 @@ httplib2==0.19.1
 idna==2.10
 importlib-metadata==4.6.4
 inflection==0.5.1
+itsdangerous==2.0.1
 itypes==1.2.0
-Jinja2==2.11.3
+Jinja2==3.0.3
 jmespath==0.10.0
 jsonschema==3.2.0
 keyring==9.0
 keyrings.alt==4.1.0
 kombu==5.1.0
-MarkupSafe==1.1.1
+locust==2.5.1
+MarkupSafe==2.0.1
 msgpack==1.0.2
+newrelic==7.2.4.171
 packaging==20.9
 paramiko==2.8.0
 pathspec==0.5.9
@@ -90,6 +102,7 @@ ply==3.11
 prompt-toolkit==3.0.20
 proto-plus==1.19.0
 protobuf==3.17.3
+psutil==5.9.0
 psycopg2-binary==2.8.6
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
@@ -103,7 +116,9 @@ python-dateutil==2.8.2
 python-http-client==3.3.2
 pytz==2021.1
 PyYAML==5.4.1
+pyzmq==22.3.0
 requests==2.25.1
+roundrobin==0.0.2
 rsa==4.7.2
 ruamel.yaml==0.17.4
 ruamel.yaml.clib==0.2.2
@@ -123,5 +138,8 @@ urllib3==1.26.7
 vine==5.0.0
 wcwidth==0.1.9
 websocket-client==0.59.0
+Werkzeug==2.0.2
 whitenoise==5.2.0
 zipp==3.5.0
+zope.event==4.5.0
+zope.interface==5.4.0

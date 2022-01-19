@@ -1,3 +1,4 @@
+from booking.models import OfferRedeem
 from booking.utils import get_commission_amount, get_commission_percentage
 import vehicle
 from store.models import Store
@@ -78,7 +79,14 @@ class Cart(Model):
     def clear(self):
         self.items.clear()
         self.vehicle_model = None
+        self.offer = None
         self.save()
+    
+    def booking_completed(self):
+        OfferRedeem.objects.create(
+            offer=self.offer,
+            consumer=self.consumer,
+        )
     
     def complete(self):
         self.completed = True

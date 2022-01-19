@@ -145,6 +145,15 @@ class StoreCreateView(generics.CreateAPIView):
         
         return store.slug
 
+class StoreUpdateView(generics.UpdateAPIView):
+    permission_classes = (IsSalesman,)
+    serializer_class = StoreUpdateSerializer
+    lookup_field = 'slug'
+    
+    def get_queryset(self):
+        user = self.request.user
+        return user.salesman.stores.all()
+
 class ServiceCreationDetails(generics.GenericAPIView):
     # permission_classes = (IsSalesman | is)   
     serializer_class = ServiceCreationDetailsSerializer

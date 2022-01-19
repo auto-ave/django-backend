@@ -37,6 +37,9 @@ if ON_SERVER:
 else:
     DEBUG = int(env('DEBUG'))
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 ALLOWED_HOSTS = ['*']
 
 
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
     'djcelery_email',
     'background_task',
     'fcm_django',
+    "debug_toolbar",
     
     'accounts',
     'common',
@@ -72,6 +76,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -232,7 +237,11 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_THROTTLE_RATES': {
         'public_post_api': '3/hour',
-        'public_get_api': '100/day' # TODO: yet to be decided
+        'public_get_api': '100/day',
+
+        'otp_burst': '4/minute',
+        'otp_sustained': '10/hour',
+        'otp_rate': '25/day',
     }
 }
 

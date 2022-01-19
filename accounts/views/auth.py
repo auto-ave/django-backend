@@ -12,9 +12,11 @@ from fcm_django.models import FCMDevice
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from misc.sms_contents import SMS_LOGIN_CONTENT
+from motorwash.throttles import OTPBurst, OTPRate, OTPSustained
 
 class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = GetOTPSerializer
+    throttle_classes = [ OTPBurst, OTPSustained, OTPRate ]
 
     def post(self, request, *args, **kwargs):
         data = self.validate(request)
@@ -34,15 +36,12 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
             if settings.DEBUG:
                 user.otp = '1234'
                 user.save()
-                
-                # CommunicationProvider().send_sms(
-                #     **SMS_LOGIN_CONTENT(user)
-                # )
             else:
                 user.generate_otp()
-                # CommunicationProvider().send_sms(
-                #     **SMS_LOGIN_CONTENT(user)
-                # )
+                if settings.FAST2SMS_ENABLED:
+                    CommunicationProvider().send_sms(
+                        **SMS_LOGIN_CONTENT(user)
+                    )
         except Exception as e:
             return response.Response(
                 {'error': str(e)},

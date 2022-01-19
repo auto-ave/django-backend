@@ -4,7 +4,7 @@ from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
 from common.mixins import ValidateSerializerMixin
-from booking.models import BookingStatus, Slot
+from booking.models import BookingStatus
 from cart.models import Cart
 from store.models import Event
 from common.permissions import IsConsumer
@@ -55,6 +55,11 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         store = cart.store
 
+        if not store:
+            return response.Response({
+                "detail": "No store in cart"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
         day = date.weekday()
         
         if len(store.store_times) != 7:
@@ -73,6 +78,11 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
         total_time = int(cart.total_time())
+        OVERLAPING_SLOTS = total_time >= 90
+        SLOT_INCREMENT = 60
+        INCREMENT_TIME = SLOT_INCREMENT if OVERLAPING_SLOTS else total_time
+        print(OVERLAPING_SLOTS, SLOT_INCREMENT, INCREMENT_TIME)
+
         print('total time: ', total_time)
         print('store opening time: ', store_opening_time, add_mins_to_date_time(store_opening_time, total_time))
         print('store ending time: ', store_closing_time, add_mins_to_date_time(store_closing_time, total_time))
@@ -101,8 +111,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             final_slots[string] = [ bay.id for bay in bays ]
             
             # Update slot times
-            slot_start_time = add_mins_to_date_time(slot_start_time, total_time)
-            slot_end_time = add_mins_to_date_time(slot_end_time, total_time)
+            slot_start_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
+            slot_end_time = add_mins_to_date_time(slot_end_time, INCREMENT_TIME)
         
         print('pehla while loop khatam')
         for bay in bays:
@@ -116,7 +126,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
                 # Reset slot times
                 slot_start_time = rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time
-                slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
+                slot_end_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
                 # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
                 while(slot_end_time < store_closing_time):
@@ -131,8 +141,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     #     final_slots[string] = final_slots[string]
                     
                     # Update slot times
-                    slot_start_time = add_mins_to_date_time(slot_start_time, total_time)
-                    slot_end_time = add_mins_to_date_time(slot_end_time, total_time)
+                    slot_start_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
+                    slot_end_time = add_mins_to_date_time(slot_end_time, INCREMENT_TIME)
         
         count = 1
         final_response = []

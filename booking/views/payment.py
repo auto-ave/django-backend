@@ -1,7 +1,7 @@
 # pylint: disable=unused-import
-from booking.utils import check_event_collide, generate_booking_id
+from booking.utils import check_event_collide_in_store, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
-from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
+from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CUSTOMER_BOOKING_INITIATED, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
 from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
@@ -78,7 +78,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "detail": "Total time of booking should be equal to total time of cart"
             })
         
-        if check_event_collide(start=start_datetime, end=end_datetime, store=bay.store):
+        if check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store):
             return response.Response({
                 "detail": "Slot colliding with other event"
             })
@@ -109,6 +109,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         # Just testing notifis
         # Payment confirmation notification for Store Owner
         store = booking.store
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
+        )
         if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
@@ -262,6 +265,7 @@ class PaymentCallbackView(views.APIView):
                 booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
 
                 # clear cart after order successfull
+                user.consumer.cart.booking_completed()
                 user.consumer.cart.clear()
                 
                 print('order successful')
