@@ -225,6 +225,7 @@ class PaymentCallbackView(views.APIView):
             if data['RESPCODE'] == '01':
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
                 booking.booking_status_changed_time = datetime.datetime.now()
+                booking.save()
                 
                 # Payment confirmation notification for Consumer
                 CommunicationProvider.send_notification(
@@ -272,10 +273,10 @@ class PaymentCallbackView(views.APIView):
             else:
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
                 booking.booking_status_changed_time = datetime.datetime.now()
-                print('order was not successful because' + data['RESPMSG'])
+                booking.save()
+                print('order was not successful because' + data['RESPMSG']) 
             
-            booking.save()
-            return response.Response(data)  
+            return response.Response(data) 
         else:
             print('checksum verification failed')
             return response.Response(data) 

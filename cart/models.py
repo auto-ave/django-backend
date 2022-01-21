@@ -74,6 +74,7 @@ class Cart(Model):
         self.items.remove(item)
         if not self.items.all().count():
             self.vehicle_model = None
+            self.offer = None
         self.save()
 
     def clear(self):
@@ -83,10 +84,11 @@ class Cart(Model):
         self.save()
     
     def booking_completed(self):
-        OfferRedeem.objects.create(
-            offer=self.offer,
-            consumer=self.consumer,
-        )
+        if self.offer:
+            OfferRedeem.objects.create(
+                offer=self.offer,
+                consumer=self.consumer,
+            )
     
     def complete(self):
         self.completed = True
