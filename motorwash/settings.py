@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     'djcelery_email',
     'background_task',
     'fcm_django',
-    "debug_toolbar",
     
     'accounts',
     'common',
@@ -76,7 +75,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',

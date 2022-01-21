@@ -14,6 +14,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from misc.sms_contents import SMS_LOGIN_CONTENT
 from motorwash.throttles import OTPBurst, OTPRate, OTPSustained
 
+import time
+
 class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = GetOTPSerializer
     throttle_classes = [ OTPBurst, OTPSustained, OTPRate ]
@@ -53,20 +55,26 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
 
 class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CheckOTPSerializer
-    throttle_scope = 'public_get_api'
+    # throttle_scope = 'public_get_api'
 
     def post(self, request, *args, **kwargs):
+        # start_time = time.time()
         data = self.validate(request)
         phone = data.get('phone')
         otp = data.get('otp')
         token = data.get('token')
+        # print('data mil gaya: ', time.time() - start_time)
 
         user = get_object_or_404(User, phone=phone)
+        # print('user nikal liya: ', time.time() - start_time)
         if user.check_otp(otp):
+            # print('otp check karliya: ', time.time() - start_time)
             if token:
-                user.register_fcm(token)
+                user.register_fcm(user.id, token)
+                # print('token register karliya: ', time.time() - start_time)
 
             refresh = RefreshToken.for_user(user)
+            # print('refrest token bana liya, sending response now: ', time.time() - start_time)
             return response.Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token)
@@ -86,7 +94,7 @@ class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
         token = data.get('token')
 
         if token:
-            user.deregister_fcm(token)
+            user.deregister_fcm(user.id, token)
                 
         return response.Response({
             'success': True

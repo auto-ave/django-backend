@@ -8,6 +8,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from cart.models import Cart
 import random
+from background_task import background
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
@@ -60,16 +61,19 @@ class User(AbstractUser):
         devices = FCMDevice.objects.filter(user=self)
         return devices if devices else None
     
-    def sub_to_topic(self, topic):
+    @background(schedule=0)
+    def sub_to_topic(userid, topic):
+        user = User.objects.get(id=userid)
         instance = NotificationTopic.objects.filter(code=topic).first()
         if instance:
-            instance.users.add(self)
-            devices = self.get_devices()
+            instance.users.add(user)
+            devices = user.get_devices()
             if devices:
                 devices.handle_topic_subscription(True, topic=topic)
     
-    def register_fcm(self, token):
-        user = self
+    @background(schedule=0)
+    def register_fcm(userid, token):
+        user = User.objects.get(id=userid)
 
         # Delete every device related to that token
         devices = FCMDevice.objects.filter(registration_id=token)
@@ -82,8 +86,9 @@ class User(AbstractUser):
         for topic in user.notification_topics.all():
             device.handle_topic_subscription(True, topic=topic.code)
     
-    def deregister_fcm(self, token):
-        user = self
+    @background(schedule=0)
+    def deregister_fcm(userid, token):
+        user = User.objects.get(id=userid)
         device = FCMDevice.objects.filter(registration_id=token).first()
         if device:
             # Deregistering user from user's stored topics

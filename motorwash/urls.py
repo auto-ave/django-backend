@@ -21,7 +21,6 @@ urlpatterns = [
     path("rest/", include("rest_framework.urls", namespace="rest_framework")),
     path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('', include('vehicle.urls')),
     path('', include('cart.urls')),
     path('', include('common.urls')),
