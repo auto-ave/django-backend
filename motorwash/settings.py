@@ -226,9 +226,9 @@ REST_FRAMEWORK = {
     ),
     
     # Renderers
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.BrowsableAPIRenderer' if DEBUG else 'rest_framework.renderers.JSONRenderer',
-    ), 
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ], 
 
     # Filtering
     'DEFAULT_FILTER_BACKENDS': [
@@ -255,6 +255,9 @@ REST_FRAMEWORK = {
     # Exception Handling
     'EXCEPTION_HANDLER': 'motorwash.exception_handler.autoave_exception_handler',
 }
+
+if DEBUG:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append('rest_framework.renderers.BrowsableAPIRenderer')
 
 # JWT Authentication
 SIMPLE_JWT = {
