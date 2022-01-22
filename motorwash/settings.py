@@ -63,6 +63,8 @@ INSTALLED_APPS = [
     'background_task',
     'fcm_django',
     'drf_api_logger',
+    'silk',
+    
     
     'accounts',
     'common',
@@ -77,6 +79,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'silk.middleware.SilkyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -379,3 +382,7 @@ FAST2SMS_API_KEY = env('FAST2SMS_API_KEY')
 # DRF Logging
 DRF_API_LOGGER_DATABASE = True
 DRF_API_LOGGER_SLOW_API_ABOVE = 200
+
+# Silk config
+SILKY_AUTHENTICATION = True 
+SILKY_AUTHORISATION = True  
