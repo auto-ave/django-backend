@@ -8,6 +8,9 @@ from booking.models import BookingStatus
 from cart.models import Cart
 from store.models import Event
 from common.permissions import IsConsumer
+from booking.models import Booking
+
+from django.db.models import Prefetch
    
 from collections import defaultdict
 import datetime
@@ -98,7 +101,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # Reset slot times
         print("is today: ", is_today)
         slot_start_time =  rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
-        slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
+        slot_end_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
         print('close time to epoch: ', rounded_to_the_last_30th_minute_epoch())
         print('initial slotsss----> ', slot_start_time, slot_end_time)
         print(type(slot_end_time))
@@ -116,7 +119,12 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         print('pehla while loop khatam')
         for bay in bays:
-            events = bay.events.filter(start_datetime__gte=convert_date_to_datetime(date), end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1)))
+            events = bay.events.prefetch_related(
+                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+            ).filter(
+                start_datetime__gte=convert_date_to_datetime(date),
+                end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1))
+            )
             for event in events:
                 if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
                     continue
