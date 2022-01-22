@@ -1,6 +1,9 @@
 import uuid
 from .models import BookingStatus
 from booking.static import BookingStatusSlug
+from booking.models import Booking
+
+from django.db.models import Prefetch
 
 from common.utils import DATETIME_TODAY_END, DATETIME_TODAY_START
 
@@ -34,13 +37,17 @@ def check_event_collide_in_store(start, end, store):
     events = []
     for bay in bays:
         events.extend(
-            bay.events.filter(
+            bay.events.prefetch_related(
+                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+            ).filter(
                 start_datetime__gte=DATETIME_TODAY_START,
                 end_datetime__lte=DATETIME_TODAY_END
             )
         )
+    booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
+    print(booking_init_status)
     for event in events:
-        if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
+        if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
             continue
         if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
             return True
