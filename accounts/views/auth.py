@@ -12,6 +12,7 @@ from fcm_django.models import FCMDevice
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from misc.sms_contents import SMS_LOGIN_CONTENT
+from motorwash.exception_handler import ResponseData, StatusCode
 from motorwash.throttles import OTPBurst, OTPRate, OTPSustained
 
 import time
@@ -80,9 +81,12 @@ class AuthCheckOTP(generics.GenericAPIView, ValidateSerializerMixin):
                 'access': str(refresh.access_token)
             }, status=status.HTTP_200_OK)
         else:
-            return response.Response({
-                "detail": "Invalid OTP"
-            }, status=status.HTTP_400_BAD_REQUEST)
+            return response.Response(
+                ResponseData(
+                    StatusCode.FAIL,
+                    'OTP is incorrect'
+                ).to_dict()
+            , status=status.HTTP_400_BAD_REQUEST)
 
 class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
     permission_classes = ( permissions.IsAuthenticated, )

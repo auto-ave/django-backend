@@ -9,7 +9,6 @@ from fcm_django.models import FCMDevice
 from firebase_admin.messaging import APNSConfig, APNSPayload, Aps
 from firebase_admin.messaging import Message, Notification
 
-from misc.models import ErrorLogging
 import requests
 
 def OTP_MESSAGE(otp):
