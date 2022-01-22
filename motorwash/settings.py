@@ -240,7 +240,8 @@ REST_FRAMEWORK = {
         'otp_burst': '4/minute',
         'otp_sustained': '10/hour',
         'otp_rate': '25/day',
-    }
+    },
+    'EXCEPTION_HANDLER': 'motorwash.exception_handler.autoave_exception_handler',
 }
 
 # JWT Authentication

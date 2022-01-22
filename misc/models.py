@@ -21,6 +21,7 @@ class Contact(Model):
         return self.name
 
 class ErrorLogging(Model):
-    location = models.CharField(max_length=200, null=True, blank=True)
-    content = models.TextField(blank=True, null=True)
+    context = models.TextField(blank=True, null=True)
+    exception = models.TextField(blank=True, null=True)
+    traceback = models.TextField(blank=True, null=True)
     
