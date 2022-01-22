@@ -101,7 +101,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         # Reset slot times
         print("is today: ", is_today)
         slot_start_time =  rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time # .strftime("%H:%M:%S") # store_opening_time
-        slot_end_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
+        slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
         print('close time to epoch: ', rounded_to_the_last_30th_minute_epoch())
         print('initial slotsss----> ', slot_start_time, slot_end_time)
         print(type(slot_end_time))
@@ -118,6 +118,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             slot_end_time = add_mins_to_date_time(slot_end_time, INCREMENT_TIME)
         
         print('pehla while loop khatam')
+        booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
         for bay in bays:
             events = bay.events.prefetch_related(
                 Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
@@ -126,7 +127,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1))
             )
             for event in events:
-                if hasattr(event, 'booking') and event.booking.booking_status == BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED):
+                if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
                     continue
                 # print('event: ', event)
                 event_start_time = event.start_datetime
@@ -134,7 +135,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
 
                 # Reset slot times
                 slot_start_time = rounded_to_the_last_30th_minute_epoch() if is_today else store_opening_time
-                slot_end_time = add_mins_to_date_time(slot_start_time, INCREMENT_TIME)
+                slot_end_time = add_mins_to_date_time(slot_start_time, total_time)
                 # print('initial slotsss----> ', slot_start_time, slot_end_time)
 
                 while(slot_end_time < store_closing_time):
