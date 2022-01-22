@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'djcelery_email',
     'background_task',
     'fcm_django',
+    'drf_api_logger',
     
     'accounts',
     'common',
@@ -83,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware',
 ]
 
 ROOT_URLCONF = 'motorwash.urls'
@@ -219,6 +221,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+    
+    # Renderers
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer' if DEBUG else 'rest_framework.renderers.JSONRenderer',
+    ), 
 
     # Filtering
     'DEFAULT_FILTER_BACKENDS': [
@@ -241,6 +248,8 @@ REST_FRAMEWORK = {
         'otp_sustained': '10/hour',
         'otp_rate': '25/day',
     },
+    
+    # Exception Handling
     'EXCEPTION_HANDLER': 'motorwash.exception_handler.autoave_exception_handler',
 }
 
@@ -366,3 +375,7 @@ SENDGRID_SENDER = env('SENDGRID_SENDER')
 # FAST2SMS
 FAST2SMS_ENABLE = int(env('FAST2SMS_ENABLE'))
 FAST2SMS_API_KEY = env('FAST2SMS_API_KEY')
+
+# DRF Logging
+DRF_API_LOGGER_DATABASE = True
+DRF_API_LOGGER_SLOW_API_ABOVE = 200
