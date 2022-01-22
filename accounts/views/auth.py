@@ -148,6 +148,6 @@ class StoreOwnerLogin(generics.GenericAPIView, ValidateSerializerMixin):
             }, status=status.HTTP_400_BAD_REQUEST)
         
         if token:
-            user.register_fcm(token)
+            user.register_fcm(user.id, token)
             
         return response.Response(user.get_auth_tokens(), status=status.HTTP_200_OK)
