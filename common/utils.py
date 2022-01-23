@@ -132,12 +132,12 @@ def minutes_to_time_string(minutes):
     minutes = (minutes % 1440) % 60
     result = ''
     if days:
-        result += '{} Day{}'.format(days, 's' if days > 1 else '')
+        result += '{} Day{} '.format(days, 's' if days > 1 else '')
         return result
     if hours:
-        result += '{} Hour{}'.format(hours, 's' if hours > 1 else '')
+        result += '{} Hour{} '.format(hours, 's' if hours > 1 else '')
     if minutes:
-        result += '{} min{}'.format(minutes, 's' if minutes > 1 else '')
+        result += '{} min{} '.format(minutes, 's' if minutes > 1 else '')
     return result
 
 def daterange(start_date, end_date):

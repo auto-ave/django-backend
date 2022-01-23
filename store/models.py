@@ -65,6 +65,9 @@ class Store(Model):
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
     
+    def is_open(self, date):
+        return self.store_times[date.weekday()] == '00:00' or self.store_times[date.weekday()] == '00:00:00'
+    
     
     def updateRating(self, rating, isRemove = False):
         count = self.reviews.all().count()

@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, timeStringToTime
+from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -52,27 +52,43 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         store = cart.store
 
+        day = date.weekday()
+        store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
+        store_opening_time = combineDateAndTime(date, store_opening_time)
+        store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
+        store_closing_time  = combineDateAndTime(date, store_closing_time)
+        
         if not store:
             return response.Response({
                 "detail": "No store in cart"
             }, status=status.HTTP_400_BAD_REQUEST)
-
-        day = date.weekday()
         
         if len(store.store_times) != 7:
             return response.Response({
                 "detail": "Invalid Store Timings"
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
-        store_opening_time = combineDateAndTime(date, store_opening_time)
-        store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
-        store_closing_time  = combineDateAndTime(date, store_closing_time)
 
         if not cart.is_valid():
             return response.Response({
                 'detail': 'No Items in cart'
             }, status=status.HTTP_400_BAD_REQUEST)
+        
+        if cart.is_intra_day():
+            ideal_complete_date = date + datetime.timedelta( days = cart.total_days() )
+            increment = 0
+            for check_date in daterange(date, ideal_complete_date):
+                print('is store open on {}: {}'.format(check_date, store.is_open(check_date)))
+                if not store.is_open(check_date):
+                    increment = increment + 1
+            estimated_complete_date = ideal_complete_date + datetime.timedelta( days = increment )
+
+
+            final_estimate = convert_date_to_datetime(estimated_complete_date, dummy_time=datetime.time(18, 0))
+            return response.Response({
+                'estimated_complete_time': final_estimate,
+                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.'
+            })
 
         total_time = int(cart.total_time())
         OVERLAPING_SLOTS = total_time >= 90

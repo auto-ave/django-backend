@@ -107,6 +107,15 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+    
+    def total_days(self):
+        return self.total_time() // 1440
+    
+    def is_intra_day(self):
+        if self.store:
+            return self.total_time() >= self.store.intra_day_time
+        else:
+            False
 
     def get_partial_pay_amount(self):
         amount = float(self.subtotal)

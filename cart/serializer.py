@@ -61,7 +61,7 @@ class CartSerializer(serializers.ModelSerializer):
             return None
     
     def get_is_intra_day(self, obj):
-        return obj.total_time() >= obj.store.intra_day_time
+        return obj.is_intra_day()
 
 
 class FullCartSerializer(serializers.ModelSerializer):
