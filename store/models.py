@@ -44,6 +44,9 @@ class Store(Model):
         validators=[JSONSchemaValidator(limit_value=STORE_TIMES_FIELD_SCHEMA)])
     display_opening_closing_time = models.CharField(max_length=100, null=True, blank=True)
     display_days_open = models.CharField(max_length=100, null=True, blank=True)
+
+    # time in minutes to check if total service time should make an intra day service
+    intra_day_time = models.SmallIntegerField(default=360) 
     
     
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)

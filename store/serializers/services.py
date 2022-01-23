@@ -1,4 +1,5 @@
 from django.db.models import query
+from common.utils import minutes_to_time_string
 from vehicle.models import VehicleType
 import vehicle
 from rest_framework import serializers
@@ -12,7 +13,7 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
         return obj.service.name
     
     def get_time_interval(self, obj):
-        return "1 day"
+        return minutes_to_time_string(obj.time_interval)
 
     class Meta:
         model = PriceTime

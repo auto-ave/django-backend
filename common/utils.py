@@ -126,6 +126,20 @@ def convert_date_to_datetime(date, dummy_time=datetime.time(0, 0)):
     full_datetime = datetime.datetime.combine(date, dummy_time)
     return full_datetime
 
+def minutes_to_time_string(minutes):
+    days = minutes // 1440
+    hours = (minutes % 1440) // 60
+    minutes = (minutes % 1440) % 60
+    result = ''
+    if days:
+        result += '{} Day{}'.format(days, 's' if days > 1 else '')
+        return result
+    if hours:
+        result += '{} Hour{}'.format(hours, 's' if hours > 1 else '')
+    if minutes:
+        result += '{} min{}'.format(minutes, 's' if minutes > 1 else '')
+    return result
+
 def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days) + 1):
         yield start_date + datetime.timedelta(n)

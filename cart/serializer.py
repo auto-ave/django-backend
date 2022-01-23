@@ -1,6 +1,7 @@
 from django.contrib.postgres import fields
 from rest_framework import serializers
 from booking.serializers.offer import OfferListSerializer
+from common.utils import minutes_to_time_string
 
 from vehicle.serializers import VehicleTypeSerializer
 from cart.models import Cart
@@ -19,7 +20,7 @@ class CartItemSerializer(serializers.ModelSerializer):
         return obj.service.name
     
     def get_time_interval(self, obj):
-        return "1 day"
+        return minutes_to_time_string(obj.time_interval)
 
 class CartSerializer(serializers.ModelSerializer):
     item_objs = serializers.SerializerMethodField()
@@ -27,6 +28,8 @@ class CartSerializer(serializers.ModelSerializer):
     vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
     offer = OfferListSerializer()
+    is_intra_day = serializers.SerializerMethodField()
+
     class Meta:
         model = Cart
         fields = "__all__"
@@ -56,6 +59,9 @@ class CartSerializer(serializers.ModelSerializer):
             return serializer.data
         else:
             return None
+    
+    def get_is_intra_day(self, obj):
+        return obj.total_time() >= obj.store.intra_day_time
 
 
 class FullCartSerializer(serializers.ModelSerializer):
