@@ -6,6 +6,7 @@ from store.models import PriceTime, Service,Store
 
 class PriceTimeListSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
+    time_interval = serializers.SerializerMethodField()
 
     def get_service(self, obj):
         return obj.service.name

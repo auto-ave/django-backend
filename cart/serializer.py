@@ -10,6 +10,7 @@ from vehicle.serializers import VehicleModelSerializer
 
 class CartItemSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
+    time_interval = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         exclude = ("description", )
