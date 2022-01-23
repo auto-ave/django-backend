@@ -34,23 +34,25 @@ def check_time_range_overlap(start1, end1, start2, end2):
 
 def check_event_collide_in_store(start, end, store):
     bays = store.bays.all()
-    events = []
-    for bay in bays:
-        events.extend(
-            bay.events.prefetch_related(
-                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
-            ).filter(
-                start_datetime__gte=DATETIME_TODAY_START,
-                end_datetime__lte=DATETIME_TODAY_END
-            )
-        )
+    colliding_events = []
     booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
-    print(booking_init_status)
-    for event in events:
-        if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
-            continue
-        if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
-            return event
+    count = 0
+    for bay in bays:
+        events = bay.events.prefetch_related(
+            Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+        ).filter(
+            start_datetime__gte=DATETIME_TODAY_START,
+            end_datetime__lte=DATETIME_TODAY_END
+        )
+        for event in events:
+            if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
+                continue
+            if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
+                count = count + 1
+                colliding_events.append(event)
+                break
+    if count == bays.count():
+        return True
     return False
 
 

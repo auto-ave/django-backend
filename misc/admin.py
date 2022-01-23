@@ -13,5 +13,5 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(ErrorLogging)
 class ErrorLoggingAdmin(admin.ModelAdmin):
-    list_display = ( 'exception' ,)
-    search_fields = ( 'context', 'exception', 'traceback' )
+    list_display = ( 'created_at', 'exception' ,)
+    search_fields = ( 'created_at', 'updated_at', 'context', 'exception', 'traceback' )
