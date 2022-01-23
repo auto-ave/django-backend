@@ -122,6 +122,14 @@ def secondsToTimeString(seconds):
         result.append('{} minute{}'.format(minutes, 's' if minutes > 1 else ''))
     return ' '.join(result)
 
+def convert_date_to_datetime(date, dummy_time=datetime.time(0, 0)):
+    full_datetime = datetime.datetime.combine(date, dummy_time)
+    return full_datetime
+
+def daterange(start_date, end_date):
+    for n in range(int ((end_date - start_date).days) + 1):
+        yield start_date + datetime.timedelta(n)
+
 
 DATETIME_NOW = timezone.now()
 DATETIME_TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)

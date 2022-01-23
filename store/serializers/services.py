@@ -9,6 +9,9 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
 
     def get_service(self, obj):
         return obj.service.name
+    
+    def get_time_interval(self, obj):
+        return "1 day"
 
     class Meta:
         model = PriceTime

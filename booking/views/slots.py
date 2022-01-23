@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_TODAY_END, combineDateAndTime, timeStringToTime
+from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -29,12 +29,6 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         def add_mins_to_date_time(date_time, mins_to_add):
             added_datetime = date_time + datetime.timedelta(minutes=mins_to_add)
             return added_datetime
-        
-        def convert_date_to_datetime(date):
-            dummy_time = datetime.time(0, 0)
-
-            full_datetime = datetime.datetime.combine(date, dummy_time)
-            return full_datetime
         
         def timeCollideCheck(start1, end1, start2, end2):
             if start1 < end2 and end1 > start2:

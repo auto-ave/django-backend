@@ -1,4 +1,4 @@
-from common.utils import DATETIME_NOW, DATETIME_TODAY_END, DATETIME_TODAY_START
+from common.utils import DATETIME_NOW, DATETIME_TODAY_END, DATETIME_TODAY_START, convert_date_to_datetime, daterange
 from store.serializers.general import StoreDetailOwnerSerializer
 from vehicle.models import VehicleModel
 from booking.static import BookingStatusSlug
@@ -264,14 +264,41 @@ class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
         user = self.request.user
         store = user.storeowner.store
         bays = store.bays.all()
+        start_datetime = datetime.datetime.fromisoformat(data['start_datetime'])
+        end_datetime = datetime.datetime.fromisoformat(data['end_datetime'])
         
         for bay in bays:
-            Event.objects.create(
-                is_blocking=True,
-                bay=bay,
-                start_datetime=data['start_datetime'],
-                end_datetime=data['end_datetime'],
-            )
+            if end_datetime.date() == start_datetime.date():
+                Event.objects.create(
+                    is_blocking=True,
+                    bay=bay,
+                    start_datetime=start_datetime,
+                    end_datetime=end_datetime,
+                )
+            else:
+                date_range = list(daterange(start_datetime.date(), end_datetime.date()))
+                for index, date in enumerate(date_range):
+                    if index == 0:
+                        Event.objects.create(
+                            is_blocking=True,
+                            bay=bay,
+                            start_datetime=start_datetime,
+                            end_datetime=convert_date_to_datetime(date, dummy_time=datetime.time(23, 59)),
+                        )
+                    elif index == len(date_range) - 1:
+                        Event.objects.create(
+                            is_blocking=True,
+                            bay=bay,
+                            start_datetime=convert_date_to_datetime(date, dummy_time=datetime.time(0, 0)),
+                            end_datetime=end_datetime,
+                        )
+                    else:
+                        Event.objects.create(
+                            is_blocking=True,
+                            bay=bay,
+                            start_datetime=convert_date_to_datetime(date),
+                            end_datetime=convert_date_to_datetime(date, dummy_time=datetime.time(23, 59)),
+                        )
         
         return response.Response({
             'success': 'Event created',
