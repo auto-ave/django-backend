@@ -50,7 +50,7 @@ def check_event_collide_in_store(start, end, store):
         if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
             continue
         if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
-            return True
+            return event
     return False
 
 

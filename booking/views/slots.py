@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import combineDateAndTime, timeStringToTime
+from common.utils import DATETIME_TODAY_END, combineDateAndTime, timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -120,11 +120,25 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         print('pehla while loop khatam')
         booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
         for bay in bays:
-            events = bay.events.prefetch_related(
-                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
-            ).filter(
-                start_datetime__gte=convert_date_to_datetime(date),
-                end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1))
+            events = []
+            
+            events.extend(
+                bay.events.prefetch_related(
+                    Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+                ).filter(
+                    start_datetime__gte=convert_date_to_datetime(date),
+                    end_datetime__lte=convert_date_to_datetime(date + datetime.timedelta(days=1))
+                )
+            )
+
+            events.extend(
+                bay.events.prefetch_related(
+                    Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+                ).filter(
+                    is_blocking=True,
+                    start_datetime__gte=datetime.datetime.now(),
+                    end_datetime__gte=DATETIME_TODAY_END
+                )
             )
             for event in events:
                 if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:

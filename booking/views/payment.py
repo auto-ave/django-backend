@@ -78,9 +78,11 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "detail": "Total time of booking should be equal to total time of cart"
             })
         
-        if check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store):
+        colliding_event = check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store)
+        if colliding_event:
             return response.Response({
-                "detail": "Slot colliding with other event"
+                "detail": "Slot colliding with other event",
+                "event": str(colliding_event)
             })
 
         event = Event.objects.create(
