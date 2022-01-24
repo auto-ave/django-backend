@@ -9,7 +9,7 @@ from misc.contact_details import CONTACT_EMAIL
 import datetime
 
 class BookingCancelData(generics.GenericAPIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (IsConsumer, )
     serializer_class = BookingCancelDataSerializer
 
     def get(self, request, *args, **kwargs):

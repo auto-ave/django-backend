@@ -80,7 +80,7 @@ class CityStoreList(generics.ListAPIView):
         if user and user.is_active:
             user.sub_to_topic(user.id, city.code)
 
-        queryset = city.stores.filter(is_active=True)
+        queryset = city.stores.filter(is_active=True).prefetch_related('pricetimes')
 
         tag = self.request.GET.get('tag', None)
 

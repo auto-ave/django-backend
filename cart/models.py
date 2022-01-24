@@ -1,5 +1,6 @@
 from booking.models import OfferRedeem
 from booking.utils import get_commission_amount, get_commission_percentage
+from common.utils import convert_date_to_datetime, daterange
 import vehicle
 from store.models import Store
 from django.db import models
@@ -8,6 +9,8 @@ from rest_framework.exceptions import ValidationError
 
 from store.models import Store, PriceTime
 from vehicle.models import VehicleModel
+
+import datetime
 
 class Cart(Model):
     consumer = models.OneToOneField('accounts.Consumer', on_delete=models.CASCADE, related_name="cart")
@@ -38,29 +41,32 @@ class Cart(Model):
             )
     
     def addItem(self, item, vehicle_model_pk):
+        current_vehicle_model = self.vehicle_model
+        current_store = self.store
+        item_vehicle_type = item.vehicle_type
         vehicle_model = VehicleModel.objects.get(pk=vehicle_model_pk)
+        
         print("request ka vehicle: ", vehicle_model)
-        print("cart ka vehicle model: ", self.vehicle_model)
+        print("cart ka vehicle model: ", current_vehicle_model)
 
-        if self.vehicle_model != vehicle_model:
+        if current_vehicle_model != vehicle_model:
             print('clear1')
             self.clear()
 
-        if self.store != item.store:
+        if current_store != item.store:
             print('clear2')
             self.clear()
         
         old_items_vehicle_type = self.items.all().count() > 0 and self.items.all()[0].vehicle_type
-        if item.vehicle_type != old_items_vehicle_type:
+        if item_vehicle_type != old_items_vehicle_type:
             print('clear3')
             self.clear()
 
-        if item.vehicle_type != (self.vehicle_model and self.vehicle_model.vehicle_type):
+        if item_vehicle_type != (current_vehicle_model and current_vehicle_model.vehicle_type):
             print('clear4')
             self.clear() 
-        
-        print(item.vehicle_type, vehicle_model and vehicle_model.vehicle_type)
-        if item.vehicle_type != (vehicle_model and vehicle_model.vehicle_type):
+
+        if item_vehicle_type != (vehicle_model and vehicle_model.vehicle_type):
             print('not clear but 5')
             raise ValidationError({
                 'error': 'Store Item cannot be added for selected vehicle model'
@@ -107,6 +113,29 @@ class Cart(Model):
         for item in self.items.all():
             time += item.time_interval
         return time
+    
+    def total_days(self):
+        return self.total_time() // 1440
+    
+    def is_multi_day(self):
+        if self.store:
+            return self.total_time() >= self.store.intra_day_time
+        else:
+            False
+    
+    def get_estimate_finish_time(self, date: datetime.date) -> datetime.datetime:
+        store = self.store
+        
+        ideal_complete_date = date + datetime.timedelta( days = self.total_days() )
+        increment = 0
+        for check_date in daterange(date, ideal_complete_date):
+            print('is store close on {}: {}'.format(check_date, store.is_close(check_date)))
+            if store.is_close(check_date):
+                increment = increment + 1
+        estimated_complete_date = ideal_complete_date + datetime.timedelta( days = increment )
+        final_estimate = convert_date_to_datetime(estimated_complete_date, dummy_time=datetime.time(18, 0))
+        
+        return final_estimate
 
     def get_partial_pay_amount(self):
         amount = float(self.subtotal)

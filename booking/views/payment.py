@@ -59,23 +59,45 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         user = request.user
         data = self.validate(request)
 
-        date = data.get('date')
-        bay = data.get('bay')
-        bay = Bay.objects.get(id=bay)
-
-        slot_start = data.get('slot_start')
-        slot_end = data.get('slot_end')
-
+        date = data.get('date') # Always Required
+        bay = data.get('bay') # Required for single day bookings
+        slot_start = data.get('slot_start') # Always required
+        slot_end = data.get('slot_end') # Required for single day bookings
+        
         start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
-        end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
-
-        print(start_datetime, end_datetime)
-
+        
+        
+        if start_datetime < datetime.datetime.now():
+            return response.Response({
+                'detail': 'Booking date and time should be in the future'
+            })
+        
         cart = user.consumer.get_cart()
-        print(dateTimeDiffInMinutes(end_datetime, start_datetime), cart.total_time())
-        if dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
+        if cart.is_multi_day():
+            bay = cart.store.bays.first()
+            end_datetime = cart.get_estimate_finish_time(dateStringToDate(date))
+            print('estimated finish time: ', end_datetime)
+        else:
+            if not bay:
+                return response.Response({
+                    'detail': 'Bay is required'
+                })
+            if not slot_end:
+                return response.Response({
+                    'detail': 'Slot end is required'
+                })
+            bay = Bay.objects.get(id=bay)
+            end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
+        
+        print('total cart time (in mins):' ,cart.total_time())
+        if ( not cart.is_multi_day() ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
+            })
+            
+        if bay.store != cart.store:
+            return response.Response({
+                'detail': "The selected bay is not in the cart's store"
             })
         
         colliding_event = check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store)
@@ -101,19 +123,17 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             amount = cart.total,
             vehicle_model = cart.vehicle_model,
         )
-        # booking.event = event
+
         for item in cart.items.all():
             booking.price_times.add(item)
-        # booking.price_times.set([cart.items.all()])
-        # booking.save()
 
 
         # Just testing notifis
         # Payment confirmation notification for Store Owner
         store = booking.store
-        CommunicationProvider.send_notification(
-            **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
-        )
+        # CommunicationProvider.send_notification(
+        #     **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
+        # )
         if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
@@ -123,11 +143,14 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
             #     )
 
-        print("total: ", cart.total, str(cart.total))
+
+
         ORDER_ID = booking.booking_id
+        
         # Added commission amount coz currently we only using partial payment
         PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
+        
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 

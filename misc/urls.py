@@ -7,5 +7,6 @@ urlpatterns = [
     path('feedback/', FeedbackView.as_view()),
     path('contact/', ContactView.as_view()),
     
-    path('danger/', DangerView.as_view()),
+    path('health/', HealthCheck.as_view()),
+    # path('danger/', DangerView.as_view()),
 ]

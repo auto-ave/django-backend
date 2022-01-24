@@ -11,8 +11,8 @@ schema_view = get_schema_view(
         title="AutoAve API (All)",
         default_version='v1'
     ),
-    public=True,
-    permission_classes=(permissions.IsAdminUser,),
+    public=False,
+    permission_classes=(permissions.AllowAny,),
 )
 
 

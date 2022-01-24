@@ -310,6 +310,8 @@ USE_L10N = True
 
 USE_TZ = False
 
+SECURE_SSL_REDIRECT = not DEBUG
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -387,5 +389,9 @@ DRF_API_LOGGER_DATABASE = True
 DRF_API_LOGGER_SLOW_API_ABOVE = 200
 
 # Silk config
+SILKY_IGNORE_PATHS = [
+    '/',
+    '/admin/'
+]
 SILKY_AUTHENTICATION = True 
 SILKY_AUTHORISATION = True  

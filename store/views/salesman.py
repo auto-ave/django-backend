@@ -25,6 +25,7 @@ class SalesmanStoreRetrieve(generics.RetrieveAPIView):
 
 class SalesmanStoreServiceRetrieve(generics.GenericAPIView):
     serializer_class = PriceTimeSerializer
+    permission_classes = (IsSalesman, )
     queryset = PriceTime.objects.all()
     
 
@@ -155,7 +156,7 @@ class StoreUpdateView(generics.UpdateAPIView):
         return user.salesman.stores.all()
 
 class ServiceCreationDetails(generics.GenericAPIView):
-    # permission_classes = (IsSalesman | is)   
+    permission_classes = (IsSalesman, ) 
     serializer_class = ServiceCreationDetailsSerializer
     
 

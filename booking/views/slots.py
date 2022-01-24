@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_TODAY_END, combineDateAndTime, timeStringToTime
+from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, timeStringToTime
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -30,12 +30,6 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             added_datetime = date_time + datetime.timedelta(minutes=mins_to_add)
             return added_datetime
         
-        def convert_date_to_datetime(date):
-            dummy_time = datetime.time(0, 0)
-
-            full_datetime = datetime.datetime.combine(date, dummy_time)
-            return full_datetime
-        
         def timeCollideCheck(start1, end1, start2, end2):
             if start1 < end2 and end1 > start2:
                 return True
@@ -58,27 +52,34 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         store = cart.store
 
+        day = date.weekday()
+        store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
+        store_opening_time = combineDateAndTime(date, store_opening_time)
+        store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
+        store_closing_time  = combineDateAndTime(date, store_closing_time)
+        
         if not store:
             return response.Response({
                 "detail": "No store in cart"
             }, status=status.HTTP_400_BAD_REQUEST)
-
-        day = date.weekday()
         
         if len(store.store_times) != 7:
             return response.Response({
                 "detail": "Invalid Store Timings"
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
-        store_opening_time = combineDateAndTime(date, store_opening_time)
-        store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
-        store_closing_time  = combineDateAndTime(date, store_closing_time)
 
         if not cart.is_valid():
             return response.Response({
                 'detail': 'No Items in cart'
             }, status=status.HTTP_400_BAD_REQUEST)
+        
+        if cart.is_multi_day():
+            estimated_complete_time = cart.get_estimate_finish_time(date)
+            return response.Response({
+                'estimated_complete_time': estimated_complete_time,
+                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.'
+            })
 
         total_time = int(cart.total_time())
         OVERLAPING_SLOTS = total_time >= 90

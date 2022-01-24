@@ -1,6 +1,7 @@
 from django.contrib.postgres import fields
 from rest_framework import serializers
 from booking.serializers.offer import OfferListSerializer
+from common.utils import minutes_to_time_string
 
 from vehicle.serializers import VehicleTypeSerializer
 from cart.models import Cart
@@ -10,12 +11,16 @@ from vehicle.serializers import VehicleModelSerializer
 
 class CartItemSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
+    time_interval = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         exclude = ("description", )
     
     def get_service(self, obj):
         return obj.service.name
+    
+    def get_time_interval(self, obj):
+        return minutes_to_time_string(obj.time_interval)
 
 class CartSerializer(serializers.ModelSerializer):
     item_objs = serializers.SerializerMethodField()
@@ -23,6 +28,8 @@ class CartSerializer(serializers.ModelSerializer):
     vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
     offer = OfferListSerializer()
+    is_multi_day = serializers.SerializerMethodField()
+
     class Meta:
         model = Cart
         fields = "__all__"
@@ -52,6 +59,9 @@ class CartSerializer(serializers.ModelSerializer):
             return serializer.data
         else:
             return None
+    
+    def get_is_multi_day(self, obj):
+        return obj.is_multi_day()
 
 
 class FullCartSerializer(serializers.ModelSerializer):
