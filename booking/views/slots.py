@@ -75,18 +75,9 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             }, status=status.HTTP_400_BAD_REQUEST)
         
         if cart.is_multi_day():
-            ideal_complete_date = date + datetime.timedelta( days = cart.total_days() )
-            increment = 0
-            for check_date in daterange(date, ideal_complete_date):
-                print('is store open on {}: {}'.format(check_date, store.is_open(check_date)))
-                if not store.is_open(check_date):
-                    increment = increment + 1
-            estimated_complete_date = ideal_complete_date + datetime.timedelta( days = increment )
-
-
-            final_estimate = convert_date_to_datetime(estimated_complete_date, dummy_time=datetime.time(18, 0))
+            estimated_complete_time = cart.get_estimate_finish_time(date)
             return response.Response({
-                'estimated_complete_time': final_estimate,
+                'estimated_complete_time': estimated_complete_time,
                 'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.'
             })
 

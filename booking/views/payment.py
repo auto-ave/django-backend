@@ -59,25 +59,35 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         user = request.user
         data = self.validate(request)
 
-        date = data.get('date')
-        bay = data.get('bay')
-        slot_start = data.get('slot_start')
-        slot_end = data.get('slot_end')
+        date = data.get('date') # Always Required
+        bay = data.get('bay') # Required for single day bookings
+        slot_start = data.get('slot_start') # Always required
+        slot_end = data.get('slot_end') # Required for single day bookings
+        
+        start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
+        
+        
+        if start_datetime < datetime.datetime.now():
+            return response.Response({
+                'detail': 'Booking date and time should be in the future'
+            })
         
         cart = user.consumer.get_cart()
         if cart.is_multi_day():
             bay = cart.store.bays.first()
-            slot_end = '18:00:00'
+            end_datetime = cart.get_estimate_finish_time(dateStringToDate(date))
+            print('estimated finish time: ', end_datetime)
         else:
             if not bay:
                 return response.Response({
                     'detail': 'Bay is required'
                 })
+            if not slot_end:
+                return response.Response({
+                    'detail': 'Slot end is required'
+                })
             bay = Bay.objects.get(id=bay)
-
-        start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
-        end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
-
+            end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
         
         print('total cart time (in mins):' ,cart.total_time())
         if ( not cart.is_multi_day() ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():

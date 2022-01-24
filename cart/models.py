@@ -1,5 +1,6 @@
 from booking.models import OfferRedeem
 from booking.utils import get_commission_amount, get_commission_percentage
+from common.utils import convert_date_to_datetime, daterange
 import vehicle
 from store.models import Store
 from django.db import models
@@ -8,6 +9,8 @@ from rest_framework.exceptions import ValidationError
 
 from store.models import Store, PriceTime
 from vehicle.models import VehicleModel
+
+import datetime
 
 class Cart(Model):
     consumer = models.OneToOneField('accounts.Consumer', on_delete=models.CASCADE, related_name="cart")
@@ -116,6 +119,20 @@ class Cart(Model):
             return self.total_time() >= self.store.intra_day_time
         else:
             False
+    
+    def get_estimate_finish_time(self, date: datetime.date) -> datetime.datetime:
+        store = self.store
+        
+        ideal_complete_date = date + datetime.timedelta( days = self.total_days() )
+        increment = 0
+        for check_date in daterange(date, ideal_complete_date):
+            print('is store close on {}: {}'.format(check_date, store.is_close(check_date)))
+            if store.is_close(check_date):
+                increment = increment + 1
+        estimated_complete_date = ideal_complete_date + datetime.timedelta( days = increment )
+        final_estimate = convert_date_to_datetime(estimated_complete_date, dummy_time=datetime.time(18, 0))
+        
+        return final_estimate
 
     def get_partial_pay_amount(self):
         amount = float(self.subtotal)

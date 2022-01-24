@@ -65,7 +65,7 @@ class Store(Model):
             self.slug = get_unique_slug(self, "name")
         super(Store, self).save(*args, **kwargs)
     
-    def is_open(self, date):
+    def is_close(self, date: datetime.date):
         return (self.store_times[date.weekday()]['opening_time'] == '00:00' or self.store_times[date.weekday()]['opening_time'] == '00:00:00') and (self.store_times[date.weekday()]['closing_time'] == '00:00' or self.store_times[date.weekday()]['closing_time'] == '00:00:00')
     
     
