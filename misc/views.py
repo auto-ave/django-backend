@@ -65,3 +65,9 @@ class DangerView(views.APIView):
         while(True):
             pass
         return HttpResponse(status=status.HTTP_200_OK)
+
+class HealthCheck(views.APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def get(self, request, format=None):
+        return HttpResponse("I'm fine! How are you?", status=status.HTTP_200_OK)

@@ -3,6 +3,8 @@ from vehicle.serializers import *
 from rest_framework import generics, filters
 from vehicle.models import *
 
+from django.db.models import Prefetch
+
 
 class VehicleTypeListView(generics.ListAPIView):
     serializer_class = VehicleTypeSerializer
@@ -21,7 +23,19 @@ class VehicleBrandsListView(generics.ListAPIView):
 
     def get_queryset(self):
         wheel = self.request.query_params.get('wheel', None)
-        queryset = VehicleBrand.objects.all()
+        queryset = VehicleBrand.objects.all().prefetch_related(
+            Prefetch(
+                'vehicle_models',
+                queryset=VehicleModel.objects.prefetch_related(
+                    Prefetch(
+                        'vehicle_type',
+                        queryset=VehicleType.objects.prefetch_related(
+                            'wheel'
+                        )
+                    )
+                )
+            )
+        )
         result = []
         for brand in queryset:
             for model in brand.vehicle_models.all():
