@@ -61,21 +61,33 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         date = data.get('date')
         bay = data.get('bay')
-        bay = Bay.objects.get(id=bay)
-
         slot_start = data.get('slot_start')
         slot_end = data.get('slot_end')
+        
+        cart = user.consumer.get_cart()
+        if cart.is_multi_day():
+            bay = cart.store.bays.first()
+            slot_end = '18:00:00'
+        else:
+            if not bay:
+                return response.Response({
+                    'detail': 'Bay is required'
+                })
+            bay = Bay.objects.get(id=bay)
 
         start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
         end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
 
-        print(start_datetime, end_datetime)
-
-        cart = user.consumer.get_cart()
-        print(dateTimeDiffInMinutes(end_datetime, start_datetime), cart.total_time())
-        if dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
+        
+        print('total cart time (in mins):' ,cart.total_time())
+        if ( not cart.is_multi_day() ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
+            })
+            
+        if bay.store != cart.store:
+            return response.Response({
+                'detail': "The selected bay is not in the cart's store"
             })
         
         colliding_event = check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store)
@@ -101,11 +113,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             amount = cart.total,
             vehicle_model = cart.vehicle_model,
         )
-        # booking.event = event
+
         for item in cart.items.all():
             booking.price_times.add(item)
-        # booking.price_times.set([cart.items.all()])
-        # booking.save()
 
 
         # Just testing notifis
@@ -123,11 +133,14 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
             #     )
 
-        print("total: ", cart.total, str(cart.total))
+
+
         ORDER_ID = booking.booking_id
+        
         # Added commission amount coz currently we only using partial payment
         PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
+        
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 

@@ -66,7 +66,7 @@ class Store(Model):
         super(Store, self).save(*args, **kwargs)
     
     def is_open(self, date):
-        return self.store_times[date.weekday()] == '00:00' or self.store_times[date.weekday()] == '00:00:00'
+        return (self.store_times[date.weekday()]['opening_time'] == '00:00' or self.store_times[date.weekday()]['opening_time'] == '00:00:00') and (self.store_times[date.weekday()]['closing_time'] == '00:00' or self.store_times[date.weekday()]['closing_time'] == '00:00:00')
     
     
     def updateRating(self, rating, isRemove = False):

@@ -13,6 +13,6 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 class InitiateTransactionSerializer(serializers.Serializer):
     date = serializers.DateField()
-    bay = serializers.PrimaryKeyRelatedField(queryset=Bay.objects.all())
+    bay = serializers.PrimaryKeyRelatedField(queryset=Bay.objects.all(), required=False, allow_null=True, default=None)
     slot_start = serializers.TimeField()
-    slot_end = serializers.TimeField()
+    slot_end = serializers.TimeField(required=False, allow_null=True, default=None)

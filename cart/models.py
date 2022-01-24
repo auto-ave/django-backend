@@ -111,7 +111,7 @@ class Cart(Model):
     def total_days(self):
         return self.total_time() // 1440
     
-    def is_intra_day(self):
+    def is_multi_day(self):
         if self.store:
             return self.total_time() >= self.store.intra_day_time
         else:

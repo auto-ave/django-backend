@@ -28,7 +28,7 @@ class CartSerializer(serializers.ModelSerializer):
     vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
     offer = OfferListSerializer()
-    is_intra_day = serializers.SerializerMethodField()
+    is_multi_day = serializers.SerializerMethodField()
 
     class Meta:
         model = Cart
@@ -60,8 +60,8 @@ class CartSerializer(serializers.ModelSerializer):
         else:
             return None
     
-    def get_is_intra_day(self, obj):
-        return obj.is_intra_day()
+    def get_is_multi_day(self, obj):
+        return obj.is_multi_day()
 
 
 class FullCartSerializer(serializers.ModelSerializer):

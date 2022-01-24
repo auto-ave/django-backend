@@ -74,7 +74,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 'detail': 'No Items in cart'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        if cart.is_intra_day():
+        if cart.is_multi_day():
             ideal_complete_date = date + datetime.timedelta( days = cart.total_days() )
             increment = 0
             for check_date in daterange(date, ideal_complete_date):

@@ -2,11 +2,11 @@
 
 from store.models import Store
 
-STORE_1 = 'prestige-car-spa'
-STORE_2 = 'clean-and-shine-car-spa'
+STORE_FROM = 'clean-and-shine-car-spa-1'
+STORE_TO = 'clean-shine-car-spa-bellandur'
 
-store1 = Store.objects.get(slug=STORE_1)
-store2 = Store.objects.get(slug=STORE_2)
+store1 = Store.objects.get(slug=STORE_FROM)
+store2 = Store.objects.get(slug=STORE_TO)
 
 price_times = store1.pricetimes.all()
 
