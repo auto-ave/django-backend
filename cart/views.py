@@ -40,8 +40,9 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
 
     def post(self, request):
         self.validate(request)
+        item_pk = request.data['item']
 
-        item = PriceTime.objects.get(pk=request.data['item'])
+        item = PriceTime.objects.get(pk=item_pk)
         cart = request.user.consumer.get_cart()
 
         cart.removeItem(item)

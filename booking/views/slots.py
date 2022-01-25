@@ -92,7 +92,6 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         print('store ending time: ', store_closing_time, add_mins_to_date_time(store_closing_time, total_time))
 
         bays = store.bays.all()
-        bays_count = bays.count()
         events = []
 
         # final_slots = defaultdict(lambda : bays_count)
