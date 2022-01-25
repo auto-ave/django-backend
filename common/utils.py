@@ -76,6 +76,11 @@ def distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
     d = radius * c
     return d
 
+def distanceStringFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2):
+    distance = distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
+    distance = round(float(distance), 1)
+    return "{} km".format(str(distance))
+
 
 # random item from array
 def random_item(array):
