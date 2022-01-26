@@ -44,8 +44,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        print(date.date(), datetime.datetime.today().date())
-        is_today = date.date() == datetime.datetime.today().date()
+        print(date.date(), datetime.datetime.now().date())
+        is_today = date.date() == datetime.datetime.now().date()
 
         user = request.user
         cart = user.consumer.get_cart()

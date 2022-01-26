@@ -159,6 +159,6 @@ def daterange(start_date, end_date):
         yield start_date + datetime.timedelta(n)
 
 
-DATETIME_NOW = timezone.now()
+DATETIME_NOW = datetime.datetime.now()
 DATETIME_TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)
 DATETIME_TODAY_END = timezone.now().replace(hour=23, minute=59, second=59)
