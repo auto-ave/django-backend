@@ -162,7 +162,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         paytmParams["body"] = {
             "requestType" : "Payment",
             "mid": settings.PAYTM_MID,
-            "websiteName": "WEBSTAGING",
+            "websiteName": settings.PAYTM_WEBSITE_NAME,
             "orderId": ORDER_ID,
             "callbackUrl": CALLBACK_URL,
             "txnAmount": {
