@@ -88,9 +88,15 @@ def random_item(array):
 
 
 
-# Time Functions
+# Date Time Functions
 def dateStringToDate(dateString):
     return datetime.datetime.strptime(dateString, '%Y-%m-%d')
+
+def timeToAMPMOnlyHour(time : datetime.time) -> string:
+    return str(time.strftime('%I %p')).strip()
+
+def datetimeToBeautifulDateTime(datetime : datetime.datetime):
+    return datetime.strftime("%-d %B %Y, %I:%M%p")
 
 def timeStringToTime(timeString):
     if len(timeString) == 5:

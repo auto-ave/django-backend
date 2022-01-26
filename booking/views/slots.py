@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, timeStringToTime
+from common.utils import DATETIME_NOW, DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, datetimeToBeautifulDateTime, timeStringToTime, timeToAMPMOnlyHour
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -76,9 +76,33 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         if cart.is_multi_day():
             estimated_complete_time = cart.get_estimate_finish_time(date)
+            slots = []
+            breakpoint1 = combineDateAndTime(date, timeStringToTime("12:00:00"))
+            breakpoint2 = combineDateAndTime(date, timeStringToTime("16:00:00"))
+            
+            if DATETIME_NOW < breakpoint1:
+                slots.append({
+                    'title': 'Morning',
+                    'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
+                    'image': ''
+                })
+            if DATETIME_NOW < breakpoint2:
+                slots.append({
+                    'title': 'Afternoon',
+                    'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
+                    'image': ''
+                })
+            if DATETIME_NOW < store_closing_time:
+                slots.append({
+                    'title': 'Evening',
+                    'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
+                    'image': ''
+                })
+
             return response.Response({
-                'estimated_complete_time': estimated_complete_time,
-                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.'
+                'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.',
+                'slots': slots
             })
 
         total_time = int(cart.total_time())

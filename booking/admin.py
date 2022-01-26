@@ -35,7 +35,6 @@ class BookingAdmin(HiddenFieldsAdmin):
         else:
             return '-'
 
-
 admin.site.register(BookingStatus)
 
 @admin.register(Payment)
