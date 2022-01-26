@@ -76,12 +76,14 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         if cart.is_multi_day():
             estimated_complete_time = cart.get_estimate_finish_time(date)
+            estimated_complete_time = datetimeToBeautifulDateTime(estimated_complete_time)
             slots = []
             breakpoint1 = combineDateAndTime(date, timeStringToTime("12:00:00"))
             breakpoint2 = combineDateAndTime(date, timeStringToTime("16:00:00"))
             
             if DATETIME_NOW < breakpoint1:
                 slots.append({
+                    'estimated_complete_time': estimated_complete_time,
                     'title': 'Morning',
                     'start_time': str( breakpoint1.time() if is_today else store_opening_time.time() ),
                     'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
@@ -89,6 +91,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 })
             if DATETIME_NOW < breakpoint2:
                 slots.append({
+                    'estimated_complete_time': estimated_complete_time,
                     'title': 'Afternoon',
                     'start_time': str( breakpoint2.time() if is_today else breakpoint1.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
@@ -96,6 +99,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 })
             if DATETIME_NOW < store_closing_time:
                 slots.append({
+                    'estimated_complete_time': estimated_complete_time,
                     'title': 'Evening',
                     'start_time': str( store_closing_time.time() if is_today else breakpoint2.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
@@ -103,7 +107,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 })
 
             return response.Response({
-                'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                
                 'message': 'This is a multi day booking which will take more than one day to complete. You would be required to leave your vehicle at the service store for the desired time slot.',
                 'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.',
                 'slots': slots

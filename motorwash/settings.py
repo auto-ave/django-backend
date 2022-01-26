@@ -310,8 +310,6 @@ USE_L10N = True
 
 USE_TZ = False
 
-SECURE_SSL_REDIRECT = not DEBUG
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -334,6 +332,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PAYTM_MID = env('PAYTM_MID')
 PAYTM_MKEY = env('PAYTM_MKEY')
 PAYTM_CURRENCY = env('PAYTM_CURRENCY')
+PAYTM_STAGING_URL = "https://securegw-stage.paytm.in/theia/"
+PAYTM_PROD_URL = "https://securegw.paytm.in/theia/"
+PAYTM_BASE_URL = PAYTM_STAGING_URL if DEBUG else PAYTM_PROD_URL
 
 # Email Setup
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
