@@ -83,24 +83,28 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             if DATETIME_NOW < breakpoint1:
                 slots.append({
                     'title': 'Morning',
+                    'start_time': str( breakpoint1.time() if is_today else store_opening_time.time() ),
                     'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
                     'image': ''
                 })
             if DATETIME_NOW < breakpoint2:
                 slots.append({
                     'title': 'Afternoon',
+                    'start_time': str( breakpoint2.time() if is_today else breakpoint1.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
                     'image': ''
                 })
             if DATETIME_NOW < store_closing_time:
                 slots.append({
                     'title': 'Evening',
+                    'start_time': str( store_closing_time.time() if is_today else breakpoint2.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
                     'image': ''
                 })
 
             return response.Response({
                 'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                'message': 'This is a multi day booking which will take more than one day to complete. You would be required to leave your vehicle at the service store for the desired time slot.',
                 'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.',
                 'slots': slots
             })
