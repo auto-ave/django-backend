@@ -5,7 +5,6 @@ from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIF
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
 from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
-from motorwash.settings import PAYTM_BASE_URL
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
@@ -156,7 +155,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
-        CALLBACK_URL = PAYTM_BASE_URL + "/paytmCallback?ORDER_ID={}".format(ORDER_ID)
+        CALLBACK_URL = settings.PAYTM_BASE_URL + "/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
         paytmParams = dict()
         paytmParams["body"] = {
@@ -306,6 +305,7 @@ class PaymentCallbackView(views.APIView):
         else:
             print('checksum verification failed')
             data['youare'] = 'a rendi, checksum failed'
+            data['verificationresult'] = str(verify)
             return response.Response(data) 
             return response.Response({
                 "you are": "a rendi"
