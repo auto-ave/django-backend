@@ -335,6 +335,7 @@ PAYTM_CURRENCY = env('PAYTM_CURRENCY')
 PAYTM_STAGING_URL = "https://securegw-stage.paytm.in/theia/"
 PAYTM_PROD_URL = "https://securegw.paytm.in/theia/"
 PAYTM_BASE_URL = PAYTM_STAGING_URL if DEBUG else PAYTM_PROD_URL
+PAYTM_WEBSITE_NAME = "WEBSTAGING" if DEBUG else "DEFAULT"
 
 # Email Setup
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
