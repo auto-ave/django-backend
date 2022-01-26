@@ -93,7 +93,7 @@ def dateStringToDate(dateString):
     return datetime.datetime.strptime(dateString, '%Y-%m-%d')
 
 def timeToAMPMOnlyHour(time : datetime.time) -> string:
-    return str(time.strftime('%I %p')).strip()
+    return str(time.strftime('%I %p')).strip('0')
 
 def datetimeToBeautifulDateTime(datetime : datetime.datetime):
     return datetime.strftime("%-d %B %Y, %I:%M%p")
@@ -124,12 +124,15 @@ def dateTimeDiffInMinutes(datetime1, datetime2):
     return newTime.seconds/60
 
 def secondsToTimeString(seconds):
-    hours = seconds // 3600
     minutes = (seconds % 3600) // 60
+    hours = seconds // 3600
+    days = hours // 24
     result = []
+    if days:
+        result.append('{} day{}'.format(days, 's' if days > 1 else ''))
     if hours:
         result.append('{} hour{}'.format(hours, 's' if hours > 1 else ''))
-    if minutes:
+    if minutes and not days:
         result.append('{} minute{}'.format(minutes, 's' if minutes > 1 else ''))
     return ' '.join(result)
 

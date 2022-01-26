@@ -73,7 +73,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             })
         
         cart = user.consumer.get_cart()
-        if cart.is_multi_day():
+        is_multi_day = cart.is_multi_day()
+        
+        if is_multi_day:
             bay = cart.store.bays.first()
             end_datetime = cart.get_estimate_finish_time(dateStringToDate(date))
             print('estimated finish time: ', end_datetime)
@@ -90,7 +92,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
         
         print('total cart time (in mins):' ,cart.total_time())
-        if ( not cart.is_multi_day() ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
+        if ( not is_multi_day ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
             })
@@ -118,6 +120,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             booking_id = generate_booking_id(),
             booked_by = user.consumer,
             store = bay.store,
+            is_multi_day = is_multi_day,
             booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
             event = event,
             amount = cart.total,
