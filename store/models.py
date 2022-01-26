@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 from custom_admin_arrayfield.models.fields import ArrayField
 from django.db.models import JSONField
 from phonenumber_field.modelfields import PhoneNumberField
@@ -103,8 +104,6 @@ class PriceTime(Model):
     # images and description is redundant data and will be same for all the price times of same service
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     description = models.TextField() # same descp for each type of vehicle
-
-    bays = models.ManyToManyField(Bay,  blank=True, help_text="BUG: Do no edit this field, if you want to change bays delete this instance and create another one")
     
     class Meta:
         unique_together = ('vehicle_type', 'service', 'store')
@@ -114,6 +113,14 @@ class PriceTime(Model):
     
     def save(self, *args, **kwargs):
         super(PriceTime, self).save(*args, **kwargs)
+    
+    @cached_property
+    def time_interval_string(self):
+        return minutes_to_time_string(self.time_interval)
+    
+    @cached_property
+    def service_name(self):
+        return str(self.service)
 
 class Event(Model):
     is_blocking = models.BooleanField()

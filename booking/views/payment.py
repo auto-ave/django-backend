@@ -5,6 +5,7 @@ from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIF
 from common.communication_provider import CommunicationProvider
 from booking.static import BookingStatusSlug
 from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
+from motorwash.settings import PAYTM_BASE_URL
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
@@ -73,7 +74,9 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             })
         
         cart = user.consumer.get_cart()
-        if cart.is_multi_day():
+        is_multi_day = cart.is_multi_day()
+        
+        if is_multi_day:
             bay = cart.store.bays.first()
             end_datetime = cart.get_estimate_finish_time(dateStringToDate(date))
             print('estimated finish time: ', end_datetime)
@@ -90,7 +93,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
         
         print('total cart time (in mins):' ,cart.total_time())
-        if ( not cart.is_multi_day() ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
+        if ( not is_multi_day ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
             return response.Response({
                 "detail": "Total time of booking should be equal to total time of cart"
             })
@@ -118,6 +121,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             booking_id = generate_booking_id(),
             booked_by = user.consumer,
             store = bay.store,
+            is_multi_day = is_multi_day,
             booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
             event = event,
             amount = cart.total,
@@ -152,7 +156,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         
         CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
-        CALLBACK_URL = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID={}".format(ORDER_ID)
+        CALLBACK_URL = PAYTM_BASE_URL + "/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
         paytmParams = dict()
         paytmParams["body"] = {
@@ -183,11 +187,8 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         post_data = json.dumps(paytmParams)
 
-        # for Staging
-        url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid={}&orderId={}".format(settings.PAYTM_MID, ORDER_ID)
+        url = settings.PAYTM_BASE_URL +  "/api/v1/initiateTransaction?mid={}&orderId={}".format(settings.PAYTM_MID, ORDER_ID)
 
-        # for Production
-        # url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765"
         resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
         body = resp["body"]
         print('order create body: ', body)

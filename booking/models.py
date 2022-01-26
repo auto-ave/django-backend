@@ -35,6 +35,7 @@ class Booking(Model):
     
     otp = models.CharField(max_length=4)
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
+    is_multi_day = models.BooleanField(default=False)
     event = models.OneToOneField(Event, on_delete=models.PROTECT, null=True, blank=True)
     vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.PROTECT, related_name='bookings', null=True)
     # invoice (File Field: To be completed by subodh)

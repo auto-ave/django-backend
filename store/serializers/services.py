@@ -10,10 +10,10 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
     time_interval = serializers.SerializerMethodField()
 
     def get_service(self, obj):
-        return obj.service.name
+        return obj.service_name
     
     def get_time_interval(self, obj):
-        return minutes_to_time_string(obj.time_interval)
+        return obj.time_interval_string
 
     class Meta:
         model = PriceTime
@@ -21,12 +21,16 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
 
 class PriceTimeSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
+    time_interval = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
         fields = "__all__"
     
     def get_service(self, obj):
-        return obj.service.name
+        return obj.service_name
+
+    def get_time_interval(self, obj):
+        return obj.time_interval_string
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:

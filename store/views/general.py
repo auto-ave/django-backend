@@ -6,6 +6,7 @@ from store.serializers.general import *
 import haversine as hs
 from haversine import Unit
 from django.shortcuts import get_object_or_404
+from django.db.models import F
 from common.models import ServiceTag
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
@@ -81,6 +82,12 @@ class CityStoreList(generics.ListAPIView):
             user.sub_to_topic(user.id, city.code)
 
         queryset = city.stores.filter(is_active=True).prefetch_related('pricetimes')
+        
+        latitude = float(self.request.query_params.get('latitude'))
+        longitude = float(self.request.query_params.get('longitude'))
+        
+        print(queryset)
+        
 
         tag = self.request.GET.get('tag', None)
 

@@ -1,5 +1,5 @@
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, timeStringToTime
+from common.utils import DATETIME_NOW, DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, datetimeToBeautifulDateTime, timeStringToTime, timeToAMPMOnlyHour
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -44,8 +44,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         data = self.validate(request)
         date = data.get('date')
         date = datetime.datetime.strptime(date, '%Y-%m-%d')
-        print(date.date(), datetime.datetime.today().date())
-        is_today = date.date() == datetime.datetime.today().date()
+        print(date.date(), datetime.datetime.now().date())
+        is_today = date.date() == datetime.datetime.now().date()
 
         user = request.user
         cart = user.consumer.get_cart()
@@ -76,9 +76,41 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         if cart.is_multi_day():
             estimated_complete_time = cart.get_estimate_finish_time(date)
+            estimated_complete_time = datetimeToBeautifulDateTime(estimated_complete_time)
+            slots = []
+            breakpoint1 = combineDateAndTime(date, timeStringToTime("12:00:00"))
+            breakpoint2 = combineDateAndTime(date, timeStringToTime("16:00:00"))
+            
+            if DATETIME_NOW < breakpoint1:
+                slots.append({
+                    'estimated_complete_time': estimated_complete_time,
+                    'title': 'Morning',
+                    'start_time': str( breakpoint1.time() if is_today else store_opening_time.time() ),
+                    'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
+                    'image': ''
+                })
+            if DATETIME_NOW < breakpoint2:
+                slots.append({
+                    'estimated_complete_time': estimated_complete_time,
+                    'title': 'Afternoon',
+                    'start_time': str( breakpoint2.time() if is_today else breakpoint1.time() ),
+                    'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
+                    'image': ''
+                })
+            if DATETIME_NOW < store_closing_time:
+                slots.append({
+                    'estimated_complete_time': estimated_complete_time,
+                    'title': 'Evening',
+                    'start_time': str( store_closing_time.time() if is_today else breakpoint2.time() ),
+                    'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
+                    'image': ''
+                })
+
             return response.Response({
-                'estimated_complete_time': estimated_complete_time,
-                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.'
+                
+                'message': 'This is a multi day booking which will take more than one day to complete. You would be required to leave your vehicle at the service store for the desired time slot.',
+                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.',
+                'slots': slots
             })
 
         total_time = int(cart.total_time())
@@ -92,7 +124,6 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         print('store ending time: ', store_closing_time, add_mins_to_date_time(store_closing_time, total_time))
 
         bays = store.bays.all()
-        bays_count = bays.count()
         events = []
 
         # final_slots = defaultdict(lambda : bays_count)

@@ -9,6 +9,8 @@ class StoreServicesList(generics.ListAPIView):
     filterset_fields = ['vehicle_type',]
 
     def get_queryset(self):
-        slug = self.kwargs['slug']
-        store = get_object_or_404(Store, slug=slug)
-        return store.pricetimes.all()
+        # slug = self.kwargs['slug']
+        # store = get_object_or_404(Store, slug=slug)
+        # return store.pricetimes.all().prefetch_related('service')
+        # FUTURE: check which query is better
+        return PriceTime.objects.filter(store__slug=self.kwargs['slug']).prefetch_related('service')

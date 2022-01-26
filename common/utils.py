@@ -76,6 +76,11 @@ def distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
     d = radius * c
     return d
 
+def distanceStringFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2):
+    distance = distanceFromLatitudeAndLongitude(latitude, longitude, latitude2, longitude2)
+    distance = round(float(distance), 1)
+    return "{} km".format(str(distance))
+
 
 # random item from array
 def random_item(array):
@@ -83,9 +88,15 @@ def random_item(array):
 
 
 
-# Time Functions
+# Date Time Functions
 def dateStringToDate(dateString):
     return datetime.datetime.strptime(dateString, '%Y-%m-%d')
+
+def timeToAMPMOnlyHour(time : datetime.time) -> string:
+    return str(time.strftime('%I %p')).strip('0')
+
+def datetimeToBeautifulDateTime(datetime : datetime.datetime):
+    return datetime.strftime("%-d %B %Y, %I:%M%p")
 
 def timeStringToTime(timeString):
     if len(timeString) == 5:
@@ -113,12 +124,15 @@ def dateTimeDiffInMinutes(datetime1, datetime2):
     return newTime.seconds/60
 
 def secondsToTimeString(seconds):
-    hours = seconds // 3600
     minutes = (seconds % 3600) // 60
+    hours = seconds // 3600
+    days = hours // 24
     result = []
+    if days:
+        result.append('{} day{}'.format(days, 's' if days > 1 else ''))
     if hours:
         result.append('{} hour{}'.format(hours, 's' if hours > 1 else ''))
-    if minutes:
+    if minutes and not days:
         result.append('{} minute{}'.format(minutes, 's' if minutes > 1 else ''))
     return ' '.join(result)
 
@@ -145,6 +159,6 @@ def daterange(start_date, end_date):
         yield start_date + datetime.timedelta(n)
 
 
-DATETIME_NOW = timezone.now()
+DATETIME_NOW = datetime.datetime.now()
 DATETIME_TODAY_START = timezone.now().replace(hour=0, minute=0, second=0)
 DATETIME_TODAY_END = timezone.now().replace(hour=23, minute=59, second=59)
