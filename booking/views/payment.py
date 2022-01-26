@@ -305,6 +305,7 @@ class PaymentCallbackView(views.APIView):
             return response.Response(data) 
         else:
             print('checksum verification failed')
+            data['youare'] = 'a rendi, checksum failed'
             return response.Response(data) 
             return response.Response({
                 "you are": "a rendi"
