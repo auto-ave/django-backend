@@ -152,9 +152,11 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
             
             return response.Response({
                 "key": settings.RAZORPAY_ID,
+                "booking_id": booking.booking_id,
                 "order_id": payment['id'],
                 "amount": payment['amount'],
-                "currency": payment['currency'],
+                "name": "Autoave Private Limited",
+                "description": "Online Booking",
                 "prefill": {
                     "name": user.full_name(),
                     "email": user.email,
@@ -181,8 +183,6 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         razorpay_order_id = data.get('razorpay_order_id')
         razorpay_payment_id = data.get('razorpay_payment_id')
         razorpay_signature = data.get('razorpay_signature')
-
-        checksum = ""
 
         booking = ""
         
