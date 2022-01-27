@@ -19,6 +19,6 @@ class InitiateTransactionSerializer(serializers.Serializer):
 
 class RazorPayPaymentCallbackSerializer(serializers.Serializer):
     booking_id = serializers.CharField()
-    razorpay_order_id = serializers.CharField()
-    razorpay_payment_id = serializers.CharField()
-    razorpay_signature = serializers.CharField()
+    razorpay_order_id = serializers.CharField(required=False, allow_null=True, default=None)
+    razorpay_payment_id = serializers.CharField(required=False, allow_null=True, default=None)
+    razorpay_signature = serializers.CharField(required=False, allow_null=True, default=None)

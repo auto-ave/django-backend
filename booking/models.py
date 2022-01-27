@@ -41,6 +41,9 @@ class Booking(Model):
     vehicle_model = models.ForeignKey('vehicle.VehicleModel', on_delete=models.PROTECT, related_name='bookings', null=True)
     # invoice (File Field: To be completed by subodh)
 
+    class Meta:
+        ordering = ['-created_at']
+    
     def __str__(self):
         return "Booking: #" + self.booking_id
 
