@@ -184,16 +184,22 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         cart = user.consumer.get_cart()
         
         booking_id = data.get('booking_id')
-        razorpay_order_id = data.get('razorpay_order_id')
-        razorpay_payment_id = data.get('razorpay_payment_id')
-        razorpay_signature = data.get('razorpay_signature')
-
-        booking = ""
+        razorpay_order_id = data.get('razorpay_order_id', None) # Optional fields
+        razorpay_payment_id = data.get('razorpay_payment_id', None) # Optional fields
+        razorpay_signature = data.get('razorpay_signature', None) # Optional fields
         
         try:
             booking = Booking.objects.get(booking_id=booking_id)
+            # if is_failure:
+            #     booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+            #     booking.booking_status_changed_time = datetime.datetime.now()
+            #     booking.save()
+            #     print('order was not successful because of verification error: ') 
+            #     return response.Response({
+            #         'detail': 'Payment failed'
+            #     }, status=status.HTTP_400_BAD_REQUEST)
             
-            if razorpay_order_id != booking.razorpay_order_id:
+            if razorpay_order_id and ( razorpay_order_id != booking.razorpay_order_id ):
                 return Response({
                     "detail": "Razorpay order id is not matching with booking order id"
                 }, status=status.HTTP_400_BAD_REQUEST)
@@ -219,7 +225,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         except Exception as e:
             return response.Response({
                 'error': str(e)
-            })
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         params_dict = {
             'razorpay_order_id': razorpay_order_id,
