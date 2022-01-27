@@ -154,7 +154,8 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
                 "key": settings.RAZORPAY_ID,
                 "booking_id": booking.booking_id,
                 "order_id": payment['id'],
-                "amount": payment['amount'],
+                "amount": int(payment['amount']),
+                "timeout": 60,
                 "name": "Autoave Private Limited",
                 "description": "Online Booking",
                 "prefill": {
