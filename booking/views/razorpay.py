@@ -230,63 +230,62 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         try:
             razorpay_client.utility.verify_payment_signature(params_dict)
         except Exception as e:
+            booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+            booking.booking_status_changed_time = datetime.datetime.now()
+            booking.save()
+            print('order was not successful because of verification error: ') 
             return response.Response({
                 "error": str(e)
             })
             
-        if True:
-            booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
-            booking.booking_status_changed_time = datetime.datetime.now()
-            booking.save()
-            
-            # Payment confirmation notification for Consumer
+        booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+        booking.booking_status_changed_time = datetime.datetime.now()
+        booking.save()
+        
+        # Payment confirmation notification for Consumer
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+        )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_BOOKING_COMPLETE(booking)
+        )
+        if user.email:
+            CommunicationProvider.send_email(
+                **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
+            )
+        
+        # Payment confirmation notification for Store Owner
+        store = booking.store
+        if store.owner:
             CommunicationProvider.send_notification(
-                **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+                **NOTIFICATION_OWNER_NEW_BOOKING(booking),
             )
             CommunicationProvider.send_sms(
-                **SMS_CONSUMER_BOOKING_COMPLETE(booking)
+                **SMS_OWNER_NEW_BOOKING(booking)
             )
-            if user.email:
-                CommunicationProvider.send_email(
-                    **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
-                )
+        if store.email:
+            CommunicationProvider.send_email(
+                **EMAIL_OWNER_NEW_BOOKING(booking)
+            )
+
+
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
+            schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+        )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_2_HOURS_LEFT(booking),
+            schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+        )
+
+        booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
+
+        # clear cart after order successfull
+        user.consumer.cart.booking_completed()
+        user.consumer.cart.clear()
+        
+        print('order successful')
             
-            # Payment confirmation notification for Store Owner
-            store = booking.store
-            if store.owner:
-                CommunicationProvider.send_notification(
-                    **NOTIFICATION_OWNER_NEW_BOOKING(booking),
-                )
-                CommunicationProvider.send_sms(
-                    **SMS_OWNER_NEW_BOOKING(booking)
-                )
-            if store.email:
-                CommunicationProvider.send_email(
-                    **EMAIL_OWNER_NEW_BOOKING(booking)
-                )
-
-
-            CommunicationProvider.send_notification(
-                **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
-                schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
-            )
-            CommunicationProvider.send_sms(
-                **SMS_CONSUMER_2_HOURS_LEFT(booking),
-                schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
-            )
-
-            booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
-
-            # clear cart after order successfull
-            user.consumer.cart.booking_completed()
-            user.consumer.cart.clear()
-            
-            print('order successful')
-        else:
-            booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
-            booking.booking_status_changed_time = datetime.datetime.now()
-            booking.save()
-            print('order was not successful because' + data['RESPMSG']) 
         
         return response.Response(data) 
         
