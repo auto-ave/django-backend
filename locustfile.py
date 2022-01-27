@@ -13,10 +13,10 @@ class HelloWorldUser(HttpUser):
         self.client.get("/vehicle/type/list")
         self.client.get("/vehicle/wheel/list")
     
-    # @task
-    # def external_attack(self):
-    #     self.client.post('/consumer/login/checkOTP/', data={
-    #         'phone': '+918989820993',
-    #         'otp': '1234',
-    #         'token': '123456789'
-    #     })
+    @task
+    def external_attack(self):
+        self.client.post('/consumer/login/checkOTP/', data={
+            'phone': '+918989820993',
+            'otp': '1234',
+            'token': '123456789'
+        })
