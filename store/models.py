@@ -47,8 +47,10 @@ class Store(Model):
     display_days_open = models.CharField(max_length=100, null=True, blank=True)
 
     # time in minutes to check if total service time should make an intra day service
-    intra_day_time = models.SmallIntegerField(default=360) 
+    intra_day_time = models.SmallIntegerField(default=360)
     
+    # More the reputation better the list ranking
+    reputation = models.IntegerField(default=0, help_text="Used to order stores, higher reputation means higher priority")
     
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
@@ -56,6 +58,9 @@ class Store(Model):
     services = models.ManyToManyField(Service, related_name="stores", blank=True)
     supported_vehicle_types = models.ManyToManyField(VehicleType, blank=True, related_name= "stores") # Non-Controllable Field
 
+    class Meta():
+        ordering = ['-reputation']
+    
     def __str__(self):
         return self.name
 

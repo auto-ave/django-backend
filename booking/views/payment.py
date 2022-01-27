@@ -151,7 +151,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         ORDER_ID = booking.booking_id
         
         # Added commission amount coz currently we only using partial payment
-        PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
+        PAYMENT_AMOUNT = str("%.2f" % cart.get_partial_pay_amount())
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         
         # CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 

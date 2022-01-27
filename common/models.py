@@ -37,6 +37,9 @@ class ServiceTag(Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     thumbnail = models.ImageField(upload_to="service_tags", default="/service_tags/default.png")
+    reputation = models.IntegerField(default=0, help_text="Used to order tags, higher reputation means higher priority")
+    class Meta:
+        ordering = ['-reputation']
 
     def __str__(self):
         return self.name
@@ -53,6 +56,10 @@ class Service(Model):
     images = ArrayField(base_field=models.URLField(), null=True, blank=True)
     thumbnail = models.URLField(null=True, blank=True)
     tags = models.ManyToManyField(ServiceTag, related_name='services', blank=True)
+    reputation = models.IntegerField(default=0, help_text="Used to order services, higher reputation means higher priority")
+    
+    class Meta:
+        ordering = ['-reputation']
 
     def save(self, *args, **kwargs):
         if not self.slug:
