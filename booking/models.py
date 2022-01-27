@@ -139,6 +139,7 @@ class Payment(Model):
     gateway_name = models.CharField(max_length=100, null=True, blank=True)
     bank_name = models.CharField(max_length=100, null=True, blank=True)
     payment_mode = models.CharField(max_length=100, null=True, blank=True)
+    rp_signature = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return "#{} Payment".format(self.booking.booking_id)
