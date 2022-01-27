@@ -236,7 +236,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
             print('order was not successful because of verification error: ') 
             return response.Response({
                 "error": str(e)
-            })
+            }, status=status.HTTP_400_BAD_REQUEST)
             
         booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
         booking.booking_status_changed_time = datetime.datetime.now()
