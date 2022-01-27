@@ -1,4 +1,3 @@
-from itsdangerous import serializer
 from booking.models import Payment
 from rest_framework import serializers
 
@@ -18,7 +17,7 @@ class InitiateTransactionSerializer(serializers.Serializer):
     slot_start = serializers.TimeField()
     slot_end = serializers.TimeField(required=False, allow_null=True, default=None)
 
-class RazorPayPaymentCallbackSerializer(serializer.Serializer):
+class RazorPayPaymentCallbackSerializer(serializers.Serializer):
     booking_id = serializers.CharField()
     razorpay_order_id = serializers.CharField()
     razorpay_payment_id = serializers.CharField()

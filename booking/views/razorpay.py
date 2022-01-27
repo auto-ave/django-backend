@@ -88,10 +88,6 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
             })
         
         store = bay.store
-        if store.owner:
-            CommunicationProvider.send_notification(
-                **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
-            )
         
         # Added commission amount coz currently we only using partial payment
         PAYMENT_AMOUNT = cart.get_partial_pay_amount() * 100 # in paisa
@@ -174,7 +170,7 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
                 "detail": 'No idea what went wrong, razorpay ki booking nhi bani'
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class RazorPayPaymentCallbackView(views.APIView):
+class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = RazorPayPaymentCallbackSerializer
     permission_classes = (IsConsumer,)
 
