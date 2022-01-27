@@ -154,7 +154,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         
-        CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
+        # CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
         CALLBACK_URL = settings.PAYTM_BASE_URL + "/paytmCallback?ORDER_ID={}".format(ORDER_ID)
 
         paytmParams = dict()
@@ -304,7 +304,6 @@ class PaymentCallbackView(views.APIView):
             return response.Response(data) 
         else:
             print('checksum verification failed')
-            data['youare'] = 'a rendi, checksum failed'
             data['verificationresult'] = str(verify)
             return response.Response(data) 
             return response.Response({
