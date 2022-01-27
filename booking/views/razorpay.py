@@ -225,7 +225,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         verify = razorpay_client.utility.verify_payment_signature(params_dict)
 
         if verify:
-            if data['RESPCODE'] == '01':
+            if True:
                 booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
                 booking.booking_status_changed_time = datetime.datetime.now()
                 booking.save()
