@@ -1,4 +1,6 @@
 # pylint: disable=unused-import
+from os import stat
+from httplib2 import Response
 from booking.utils import check_event_collide_in_store, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CUSTOMER_BOOKING_INITIATED, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
@@ -8,8 +10,8 @@ from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_CO
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
-from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer
-from rest_framework import generics, permissions, response,views
+from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer, RazorPayPaymentCallbackSerializer
+from rest_framework import generics, permissions, response, views, status
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
 
@@ -20,38 +22,16 @@ from common.permissions import IsConsumer
 from paytmchecksum import PaytmChecksum
 import json, requests, datetime, uuid
 
-class PaymentChoices(generics.GenericAPIView):
-    permission_classes = (IsConsumer,)
-    serializer_class = PaymentChoicesSerializer
-    
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        cart = user.consumer.get_cart()
-        total_amount = float(cart.total)
-        commission_amount = cart.get_partial_pay_amount()
-        
-        payment_choices = [
-            {
-                "type": "FULL",
-                "title": "Pay in Full",
-                "description": "Pay the full amount right now and book the service",
-                "active": False,
-                "amount": total_amount,
-                "remaining_amount": 0
-            },
-            {
-                "type": "PARTIAL",
-                "title": "Pay Partially",
-                "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
-                "active": True,
-                "amount": commission_amount,
-                "remaining_amount": total_amount - commission_amount
-            }
-        ]
-        return response.Response(payment_choices)
+import razorpay
 
+razorpay_client = razorpay.Client(
+    auth=(
+        settings.RAZORPAY_ID,
+        settings.RAZORPAY_SECRET
+    )
+)
 
-class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
+class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
     serializer_class = InitiateTransactionSerializer
     permission_classes = (IsConsumer,)
     
@@ -65,8 +45,6 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
         slot_end = data.get('slot_end') # Required for single day bookings
         
         start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
-        
-        
         if start_datetime < datetime.datetime.now():
             return response.Response({
                 'detail': 'Booking date and time should be in the future'
@@ -108,126 +86,124 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
                 "detail": "Slot colliding with other event",
                 "event": str(colliding_event)
             })
-
-        event = Event.objects.create(
-            is_blocking=False,
-            bay=bay,
-            start_datetime=start_datetime,
-            end_datetime=end_datetime,
-        )
-
-        booking = Booking.objects.create(
-            booking_id = generate_booking_id(),
-            booked_by = user.consumer,
-            store = bay.store,
-            is_multi_day = is_multi_day,
-            booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
-            event = event,
-            amount = cart.total,
-            vehicle_model = cart.vehicle_model,
-        )
-
-        for item in cart.items.all():
-            booking.price_times.add(item)
-
-
-        # Just testing notifis
-        # Payment confirmation notification for Store Owner
-        store = booking.store
-        # CommunicationProvider.send_notification(
-        #     **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
-        # )
+        
+        store = bay.store
         if store.owner:
             CommunicationProvider.send_notification(
                 **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
             )
-            # if store.email or store.owner.user.email:
-            #     CommunicationProvider.send_email(
-            #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
-            #     )
-
-
-
-        ORDER_ID = booking.booking_id
         
         # Added commission amount coz currently we only using partial payment
-        PAYMENT_AMOUNT = str(cart.get_partial_pay_amount())
+        PAYMENT_AMOUNT = cart.get_partial_pay_amount() * 100 # in paisa
         print("PAYMENT_AMOUNT: ", PAYMENT_AMOUNT)
         
-        # CALLBACK_URL = "https://{}/payment/callback/".format(request.get_host()) 
-        CALLBACK_URL = settings.PAYTM_BASE_URL + "paytmCallback?ORDER_ID={}".format(ORDER_ID)
-
-        paytmParams = dict()
-        paytmParams["body"] = {
-            "requestType" : "Payment",
-            "mid": settings.PAYTM_MID,
-            "websiteName": settings.PAYTM_WEBSITE_NAME,
-            "orderId": ORDER_ID,
-            "callbackUrl": CALLBACK_URL,
-            "txnAmount": {
-                "value": PAYMENT_AMOUNT,
-                "currency": settings.PAYTM_CURRENCY,
-            },
-            "userInfo": {
-                "custId": user.consumer.id,
+        data = {
+            "amount": PAYMENT_AMOUNT,
+            "currency": "INR",
+            "notes": {
+                "consumerId": user.consumer.id,
                 "name": user.full_name(),
                 "mobileNumber": str(user.phone),
-                "store": bay.store.name,
+                "store": bay.store.name,    
             },
         }
+        payment = razorpay_client.order.create(data)
+        print('razorpay payment: ', json.dumps(payment, indent=4))
+        # payment response by razorpay
+        # {
+        #     "id": "order_IokNXiZnRR7rSB",
+        #     "entity": "order",
+        #     "amount": 83985,
+        #     "amount_paid": 0,
+        #     "amount_due": 83985,
+        #     "currency": "INR",
+        #     "receipt": null,
+        #     "offer_id": null,
+        #     "status": "created",
+        #     "attempts": 0,
+        #     "notes": {
+        #         "consumerId": 1,
+        #         "bookingId": "2D220DF7DB",
+        #         "name": "Subodh Verma",
+        #         "mobileNumber": "+918989820993",
+        #         "store": "A1 car wash"
+        #     },
+        #     "created_at": 1643282294
+        # }
 
-        # Generate checksum by parameters we have in body
-        # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-        checksum = PaytmChecksum.generateSignature(json.dumps(paytmParams["body"]), settings.PAYTM_MKEY)
+        if payment:
+            event = Event.objects.create(
+                is_blocking=False,
+                bay=bay,
+                start_datetime=start_datetime,
+                end_datetime=end_datetime,
+            )
 
-        paytmParams["head"] = {
-            "signature": checksum
-        }
+            booking = Booking.objects.create(
+                booking_id = generate_booking_id(),
+                razorpay_order_id=payment['id'],
+                booked_by = user.consumer,
+                store = store,
+                is_multi_day = is_multi_day,
+                booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED),
+                event = event,
+                amount = cart.total,
+                vehicle_model = cart.vehicle_model,
+            )
 
-        post_data = json.dumps(paytmParams)
-
-        url = settings.PAYTM_BASE_URL +  "api/v1/initiateTransaction?mid={}&orderId={}".format(settings.PAYTM_MID, ORDER_ID)
-
-        resp = requests.post(url, data = post_data, headers = {"Content-type": "application/json"}).json()
-        body = resp["body"]
-        print('order create body: ', body)
-
-        if body['resultInfo']['resultStatus'] == "S":
+            for item in cart.items.all():
+                booking.price_times.add(item)
+            
             return response.Response({
-                "mid": settings.PAYTM_MID,
-                "order_id": ORDER_ID,
-                "amount": PAYMENT_AMOUNT,
-                "callback_url": CALLBACK_URL,
-                "txn_token": body['txnToken']
+                "key": settings.RAZORPAY_ID,
+                "order_id": payment['id'],
+                "amount": payment['amount'],
+                "currency": payment['currency'],
+                "prefill": {
+                    "name": user.full_name(),
+                    "email": user.email,
+                    "contact": str(user.phone_without_countrycode()),
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
             })
         else:
             return response.Response({
-                'code': body['resultInfo']['resultCode'],
-                "detail": body['resultInfo']['resultMsg']
-            })
+                'code': 69,
+                "detail": 'No idea what went wrong, razorpay ki booking nhi bani'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class PaymentCallbackView(views.APIView):
+class RazorPayPaymentCallbackView(views.APIView):
+    serializer_class = RazorPayPaymentCallbackSerializer
     permission_classes = (IsConsumer,)
 
     def post(self, request):
-        data = request.data
         user = request.user
+        data = self.validate(request)
+        booking_id = data.get('booking_id')
+        razorpay_order_id = data.get('razorpay_order_id')
+        razorpay_payment_id = data.get('razorpay_payment_id')
+        razorpay_signature = data.get('razorpay_signature')
 
         checksum = ""
 
         booking = ""
         
         try:
-            checksum = data['CHECKSUMHASH']
-            orderid = data['ORDERID']
+            booking = Booking.objects.get(booking_id=booking_id)
             
-            booking = Booking.objects.get(booking_id=orderid)
+            if razorpay_order_id != booking.razorpay_order_id:
+                return Response({
+                    "detail": "Razorpay order id is not matching with booking order id"
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
             payment = Payment.objects.filter(booking=booking).exists()
             
             if payment:
                 return response.Response({
                     "detail": "Payment already done"
-                })
+                }, status=status.HTTP_400_BAD_REQUEST)
             else:
                 Payment.objects.create(
                     status=data.get('STATUS'),
@@ -244,7 +220,12 @@ class PaymentCallbackView(views.APIView):
                 'error': str(e)
             })
 
-        verify = PaytmChecksum.verifySignature(data, settings.PAYTM_MKEY, checksum)
+        params_dict = {
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_signature': razorpay_signature
+        }
+        verify = razorpay_client.utility.verify_payment_signature(params_dict)
 
         if verify:
             if data['RESPCODE'] == '01':

@@ -33,7 +33,7 @@ class User(AbstractUser):
     def full_name(self):
         return self.first_name + " " + self.last_name
     
-    def phone_sms(self):
+    def phone_without_countrycode(self):
         return str(self.phone.as_national.lstrip('0').strip().replace(' ', ''))
     
     def generate_otp(self):

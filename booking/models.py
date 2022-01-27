@@ -25,6 +25,7 @@ class BookingStatus(Model):
 
 class Booking(Model):
     booking_id = models.CharField(primary_key=True, max_length=50)
+    razorpay_order_id = models.CharField(max_length=100, null=True, blank=True)
     booked_by = models.ForeignKey('accounts.Consumer', on_delete=models.PROTECT, related_name='bookings')
     amount = models.CharField(max_length=30, null=True, blank=True)
     store = models.ForeignKey(Store, on_delete=models.PROTECT, related_name='bookings')

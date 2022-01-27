@@ -337,6 +337,11 @@ PAYTM_PROD_URL = "https://securegw.paytm.in/theia/"
 PAYTM_BASE_URL = PAYTM_STAGING_URL if DEBUG else PAYTM_PROD_URL
 PAYTM_WEBSITE_NAME = "WEBSTAGING" if DEBUG else "DEFAULT"
 
+# Hello Razorpay
+RAZORPAY_ID = env('RAZORPAY_ID')
+RAZORPAY_SECRET = env('RAZORPAY_SECRET')
+
+
 # Email Setup
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 # EMAIL_HOST = 'smtp.sendgrid.net'
@@ -396,4 +401,4 @@ SILKY_IGNORE_PATHS = [
     '/admin/'
 ]
 SILKY_AUTHENTICATION = True 
-SILKY_AUTHORISATION = True  
+SILKY_AUTHORISATION = True 
