@@ -1,5 +1,5 @@
 from django.urls import path
-from booking.views import offer, review, general, slots, payment, cancel
+from booking.views import offer, review, general, slots, payment, cancel, razorpay
 
 urlpatterns = [
     path('review/', review.ReviewListCreate.as_view()),
@@ -16,6 +16,8 @@ urlpatterns = [
     path('payment/choices/', payment.PaymentChoices.as_view()),
     path('payment/initiate/', payment.InitiateTransactionView.as_view()),
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
+    path('payment/razorpay/initiate/', razorpay.RazorPayInitiateTransactionView.as_view()),
+    path('payment/razorpay/callback/', razorpay.RazorPayPaymentCallbackView.as_view()),
 
     path('owner/bookings/today/', general.OwnerTodayBookingsList.as_view()),
     path('owner/bookings/past/', general.OwnerPastBookingsList.as_view()),

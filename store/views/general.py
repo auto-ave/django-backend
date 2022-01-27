@@ -83,10 +83,12 @@ class CityStoreList(generics.ListAPIView):
 
         queryset = city.stores.filter(is_active=True).prefetch_related('pricetimes')
         
-        latitude = float(self.request.query_params.get('latitude'))
-        longitude = float(self.request.query_params.get('longitude'))
+        latitude = self.request.query_params.get('latitude')
+        longitude = self.request.query_params.get('longitude')
         
-        print(queryset)
+        if latitude and longitude:
+            
+            print(queryset)
         
 
         tag = self.request.GET.get('tag', None)
