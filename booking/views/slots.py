@@ -87,7 +87,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     'title': 'Morning',
                     'start_time': str( breakpoint1.time() if is_today else store_opening_time.time() ),
                     'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
-                    'image': ''
+                    'image': 'https://cdn.autoave.in/population_data/sun+1.png'
                 })
             if DATETIME_NOW < breakpoint2:
                 slots.append({
@@ -95,7 +95,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     'title': 'Afternoon',
                     'start_time': str( breakpoint2.time() if is_today else breakpoint1.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
-                    'image': ''
+                    'image': 'https://cdn.autoave.in/population_data/sunset+1.png'
                 })
             if DATETIME_NOW < store_closing_time:
                 slots.append({
@@ -103,7 +103,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                     'title': 'Evening',
                     'start_time': str( store_closing_time.time() if is_today else breakpoint2.time() ),
                     'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
-                    'image': ''
+                    'image': 'https://cdn.autoave.in/population_data/night+1.png'
                 })
 
             return response.Response({
