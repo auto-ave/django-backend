@@ -77,7 +77,7 @@ class OwnerPastBookingsList(generics.ListAPIView):
             (
                 ~Q( booking_status=initiated_status ) & ~Q( booking_status=payment_failed_status )
             )
-        ).order_by('-booking_status_changed_time')
+        ).prefetch_related('vehicle_model', 'booked_by', 'payment', 'booking_status', 'event', 'price_times').order_by('-booking_status_changed_time')
 
 class OwnerUpcomingBookingsList(generics.ListAPIView):
    

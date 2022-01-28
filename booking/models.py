@@ -52,6 +52,12 @@ class Booking(Model):
             self.otp = otp_generator()
         super(Booking, self).save(*args, **kwargs)
     
+    def has_payment(self):
+        if hasattr(self, 'payment'):
+            return True
+        else:
+            return False
+    
     def get_booking_status_display(self):
         return self.booking_status.slug
     

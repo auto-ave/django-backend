@@ -35,7 +35,7 @@ class PriceTimeSerializer(serializers.ModelSerializer):
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
-        fields = "__all__"
+        exclude = ('tags', )
 
 class CreatePriceTimeSerializer(serializers.ModelSerializer):
     vehicle_type = serializers.PrimaryKeyRelatedField(queryset=VehicleType.objects.all())

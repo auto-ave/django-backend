@@ -67,8 +67,10 @@ class BookingListOwnerSerializer(serializers.ModelSerializer):
         return obj.get_booking_status_display()
     
     def get_remaining_amount(self, obj):
-        return str(float(obj.amount) - float(obj.payment.amount))
-
+        if obj.has_payment():
+            return str(float(obj.amount) - float(obj.payment.amount))
+        else:
+            return "No payment"
 
     def get_booked_by(self, obj):
         return {

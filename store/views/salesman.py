@@ -24,7 +24,7 @@ class SalesmanStoreRetrieve(generics.RetrieveAPIView):
         return user.salesman.stores.all()
 
 class SalesmanStoreServiceRetrieve(generics.GenericAPIView):
-    serializer_class = PriceTimeSerializer
+    serializer_class = SalesmanStoreServiceRetrieveSerializer
     permission_classes = (IsSalesman, )
     queryset = PriceTime.objects.all()
     
@@ -43,37 +43,37 @@ class SalesmanStoreServiceRetrieve(generics.GenericAPIView):
             },status=status.HTTP_400_BAD_REQUEST)
 
         service = get_object_or_404(Service, pk=pk)
-
-        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all(),many=True).data
+        
+        final_price_times = []
+        description = service.description
+        images = service.images
+        
+        price_times = store.pricetimes.filter(service=service).prefetch_related('vehicle_type')
+        vehicle_types = VehicleType.objects.prefetch_related('wheel').all()
+        
         for type in vehicle_types:
-            try:
-                vehicle_type = VehicleType.objects.get(model=type['model'])
-                pricetime = store.pricetimes.all().get(vehicle_type=vehicle_type, service=service)
-                print(pricetime)
-                type['id'] = pricetime.id
-                type['price'] = pricetime.price
-                type['time_interval'] = pricetime.time_interval
-            except Exception as e:
-                print('nhi mila pricetime: ', e)
-                pass
-        price_times = []
-        for item in store.pricetimes.filter(service=service):
-            price_times.append({
-                "id": item.id,
-                "vehicle_type": VehicleTypeSerializer(item.vehicle_type).data,
-                "time_interval": item.time_interval,
-                "price": item.price
-            })
+            pricetime = list( filter(lambda item: item.vehicle_type == type, list(price_times)) )
+            if len(pricetime):
+                pricetime = pricetime[0]
+                description = pricetime.description
+                images = pricetime.images
+                final_price_times.append({
+                    **VehicleTypeSerializer(type).data,
+                    "id": pricetime.id,
+                    "price": pricetime.price,
+                    "time_interval": pricetime.time_interval,
+                })
+            else:
+                final_price_times.append(VehicleTypeSerializer(type).data)
 
-        print(store.pricetimes, store.pricetimes.all().first())
         return response.Response({
             "service" : {
                 "name": service.name,
                 "pk": service.pk
             },
-            "description": store.pricetimes.all().first() and store.pricetimes.all().first().description,
-            "images": store.pricetimes.all().first() and store.pricetimes.all().first().images,
-            "price_times": vehicle_types
+            "description": description,
+            "images": images,
+            "price_times": final_price_times
         })
     
     def delete(self, request, slug, pk):
@@ -158,19 +158,27 @@ class StoreUpdateView(generics.UpdateAPIView):
 class ServiceCreationDetails(generics.GenericAPIView):
     permission_classes = (IsSalesman, ) 
     serializer_class = ServiceCreationDetailsSerializer
+    lookup_field = 'slug'
+    
+    def get_queryset(self):
+        return self.request.user.salesman.stores.all()
     
 
     def get(self, request, slug):
-        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all().order_by('position'),many=True).data
-        wheel_types = WheelSerializer(Wheel.objects.all(), many=True).data
 
-        all_services = ServiceSerializer(Service.objects.all(),many=True).data
+        all_services = Service.objects.all()
         final_services = []
-        store = Store.objects.get(slug=slug)
+        store = self.get_object()
+        all_pricetimes = store.pricetimes.all().prefetch_related('service')
         for service in all_services:
-            if not store.pricetimes.all().filter(service=service['id']):
+            pricetimes = list( filter(lambda item: item.service == service.id, list(all_pricetimes)) )
+            if not pricetimes:
                 final_services.append(service)
-    
+        final_services = ServiceSerializer(final_services, many=True).data
+        
+        vehicle_types = VehicleTypeSerializer(VehicleType.objects.all().prefetch_related('wheel').order_by('position'),many=True).data
+        wheel_types = WheelSerializer(Wheel.objects.all(), many=True).data
+        
         return response.Response({
             'wheel_types': wheel_types,
             'vehicle_types': vehicle_types,
@@ -209,14 +217,14 @@ class CreateStorePriceTimes(views.APIView):
             vehicle = VehicleType.objects.get(model=item.get('vehicle_type'))
             print(item.get('id'), item)
             price_time = {
-                    'store': store.pk,
-                    'service': service.pk,
-                    'vehicle_type': vehicle.pk,
-                    'price': int(item.get('price')),
-                    'time_interval': int(item.get('time_interval')),
-                    'images': item.get('images') or service.images, ### Add service's images if emtpy
-                    'description': item.get('description') or service.description ### Add service's description if emtpy
-                }
+                'store': store.pk,
+                'service': service.pk,
+                'vehicle_type': vehicle.pk,
+                'price': int(item.get('price')),
+                'time_interval': int(item.get('time_interval')),
+                'images': item.get('images') or service.images, ### Add service's images if emtpy
+                'description': item.get('description') or service.description ### Add service's description if emtpy
+            }
             if item.get('id'):
                 pricetimeInstance = store.pricetimes.get(pk=item.get('id'))
                 serializer = CreatePriceTimeSerializer(pricetimeInstance, data=price_time, partial=True)
@@ -243,7 +251,7 @@ class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
 
     def get(self, request, slug):
         store = self.get_object()
-        pricetimes = store.pricetimes.all()
+        pricetimes = store.pricetimes.all().prefetch_related('service')
         services = []
         store_price_times = {}
         for pricetime in pricetimes:
@@ -251,7 +259,13 @@ class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
             if not  service in services:
                 services.append(service)
         for service in services:
-            store_price_times[service.id] = {'max_price':0,'min_price':float("inf"), 'max_slot_length':0,'min_slot_length':float("inf")}
+            store_price_times[service.id] = {
+                'service': service,
+                'max_price':0,
+                'min_price':float("inf"),
+                'max_slot_length':0,
+                'min_slot_length':float("inf")
+            }
         for pricetime in pricetimes:
             price = pricetime.price
             slot_length = pricetime.time_interval
@@ -272,7 +286,8 @@ class StorePriceTimeList(generics.GenericAPIView, ValidateSerializerMixin):
         res = []
         for key in store_price_times:
             service = {}
-            service['service']=ServiceSerializer(Service.objects.get(id=key)).data
+            # service['service']=ServiceSerializer(Service.objects.get(id=key)).data
+            service['service']=ServiceSerializer(store_price_times[key]['service']).data
             service['max_price']=store_price_times[key]['max_price']
             service['min_price']=store_price_times[key]['min_price']
             service['min_slot_length']=store_price_times[key]['min_slot_length']
