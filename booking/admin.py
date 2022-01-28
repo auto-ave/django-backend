@@ -1,4 +1,5 @@
 from django.contrib.admin.decorators import action
+from django.http import HttpRequest
 from django.utils.html import format_html
 from django.contrib import admin
 from booking.static import BookingStatusSlug
@@ -34,6 +35,9 @@ class BookingAdmin(HiddenFieldsAdmin):
             return obj.event.start_datetime
         else:
             return '-'
+    
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('event', 'vehicle_model', 'store', 'booking_status')
 
 
 admin.site.register(BookingStatus)

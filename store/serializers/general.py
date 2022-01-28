@@ -107,3 +107,6 @@ class StoreRegistrationEmailSerializer(serializers.Serializer):
 
 class ServiceCreationDetailsSerializer(serializers.Serializer):
     pass
+
+class SalesmanStoreServiceRetrieveSerializer(serializers.Serializer):
+    pass

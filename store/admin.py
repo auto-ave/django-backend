@@ -1,6 +1,7 @@
 from common.admin import JsonAdmin
 from django.contrib import admin
 from store.models import *
+from django.db.models import Prefetch
 
 from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
@@ -15,6 +16,9 @@ class PriceTimeAdmin(admin.ModelAdmin):
     list_display = ( 'store', 'service', 'vehicle_type', 'price', 'time_interval' )
     list_filter = ( 'store', 'vehicle_type' )
     search_fields = ( 'store__name', 'service__name', )
+    
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('store', 'service', 'vehicle_type')
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
