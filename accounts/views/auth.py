@@ -36,7 +36,7 @@ class AuthGetOTP(generics.GenericAPIView, ValidateSerializerMixin):
             consumer = Consumer.objects.create(user=user)
             Cart.objects.create(consumer=consumer)
         try:
-            if settings.DEBUG:
+            if settings.DEBUG or user.is_staff:
                 user.otp = '1234'
                 user.save()
             else:
