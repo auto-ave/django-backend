@@ -48,29 +48,27 @@ class Cart(Model):
         
         print("request ka vehicle: ", vehicle_model)
         print("cart ka vehicle model: ", current_vehicle_model)
-
-        if current_vehicle_model != vehicle_model:
-            print('clear1')
-            self.clear()
-
-        if current_store != item.store:
-            print('clear2')
-            self.clear()
         
         old_items_vehicle_type = self.items.all().count() > 0 and self.items.all()[0].vehicle_type
-        if item_vehicle_type != old_items_vehicle_type:
-            print('clear3')
-            self.clear()
-
-        if item_vehicle_type != (current_vehicle_model and current_vehicle_model.vehicle_type):
-            print('clear4')
-            self.clear() 
-
+        
         if item_vehicle_type != (vehicle_model and vehicle_model.vehicle_type):
-            print('not clear but 5')
             raise ValidationError({
                 'error': 'Store Item cannot be added for selected vehicle model'
             })
+
+        if current_vehicle_model != vehicle_model:
+            print('clear: vehicle model changed')
+            self.clear()
+        elif current_store != item.store:
+            print('clear: store changed')
+            self.clear()
+        elif item_vehicle_type != old_items_vehicle_type:
+            print('clear: vehicle type changed wrt old items')
+            self.clear()
+        elif item_vehicle_type != (current_vehicle_model and current_vehicle_model.vehicle_type):
+            print('clear: vehicle type changed wrt current vehicle model')
+            self.clear() 
+        
         
         self.items.add(item)
         self.store = item.store
