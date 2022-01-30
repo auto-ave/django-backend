@@ -123,6 +123,6 @@ class OwnerRevenueSerializer(serializers.Serializer):
 class OwnerStoreVehicleTypesSerializer(serializers.Serializer):
     pass
 
-class CalenderBlockSerializer(serializers.Serializer):
+class CalendarBlockSerializer(serializers.Serializer):
     start_datetime = serializers.DateTimeField()
     end_datetime = serializers.DateTimeField()
