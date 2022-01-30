@@ -353,7 +353,10 @@ RAZORPAY_SECRET = env('RAZORPAY_SECRET')
 # Firebase Admin
 from firebase_admin import initialize_app, get_app
 from firebase_admin import credentials
-cred = credentials.Certificate("/etc/pki/tls/certs/autoave-global-firebase-adminsdk.json")
+try:
+    cred = credentials.Certificate("/etc/pki/tls/certs/autoave-global-firebase-adminsdk.json")
+except:
+    cred = credentials.Certificate("./autoave-global-firebase-adminsdk.json")
 try:
     FIREBASE_APP = get_app()
 except:
