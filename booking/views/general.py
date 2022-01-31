@@ -5,6 +5,7 @@ from booking.static import BookingStatusSlug
 from common.mixins import ValidateSerializerMixin
 from rest_framework import generics, permissions, response
 from django.db.models import Q
+from store.models import Event
 
 from booking.models import *
 from booking.serializers.general import *
@@ -231,7 +232,7 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
 
 
 
-class OwnerDayWiseCalender(generics.ListAPIView):
+class OwnerDayWiseCalendar(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = EventSerializer
 
@@ -255,8 +256,8 @@ class OwnerStoreDetail(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user.storeowner.store
 
-class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
-    serializer_class = CalenderBlockSerializer
+class OwnerCalendarBlock(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = CalendarBlockSerializer
     permission_classes = (IsStoreOwner,)
     
     def post(self, request):
@@ -303,3 +304,20 @@ class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
         return response.Response({
             'success': 'Event created',
         })
+
+class OwnerCalendarBlockList(generics.ListAPIView):
+    serializer_class = EventSerializer
+    permission_classes = (IsStoreOwner,)
+
+    def get_queryset(self):
+        user = self.request.user
+        store = user.storeowner.store
+        events = []
+        bays = store.bays.all()
+        events = Event.objects.filter(
+            is_blocking=True,
+            start_datetime__gte=DATETIME_TODAY_START,
+            end_datetime__lte=DATETIME_TODAY_END,
+            bay__in=bays
+        ).distinct('start_datetime', 'end_datetime')
+        return events
