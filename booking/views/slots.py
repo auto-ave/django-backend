@@ -107,9 +107,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 })
 
             return response.Response({
-                
                 'message': 'This is a multi day booking which will take more than one day to complete. You would be required to leave your vehicle at the service store for the desired time slot.',
-                'delay_message': 'There is a store holiday tommorow, due to which your service will be delayed. Sorry for the inconvenience.',
+                'delay_message': 'Exact completion time will be confirmed by the store owner.',
                 'slots': slots
             })
 
