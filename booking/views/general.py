@@ -232,7 +232,7 @@ class OwnerStoreVehicleTypes(generics.GenericAPIView):
 
 
 
-class OwnerDayWiseCalender(generics.ListAPIView):
+class OwnerDayWiseCalendar(generics.ListAPIView):
     permission_classes = (IsStoreOwner, )
     serializer_class = EventSerializer
 
@@ -256,8 +256,8 @@ class OwnerStoreDetail(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user.storeowner.store
 
-class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
-    serializer_class = CalenderBlockSerializer
+class OwnerCalendarBlock(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = CalendarBlockSerializer
     permission_classes = (IsStoreOwner,)
     
     def post(self, request):
@@ -305,7 +305,7 @@ class OwnerCalenderBlock(generics.GenericAPIView, ValidateSerializerMixin):
             'success': 'Event created',
         })
 
-class OwnerCalenderBlockList(generics.ListAPIView):
+class OwnerCalendarBlockList(generics.ListAPIView):
     serializer_class = EventSerializer
     permission_classes = (IsStoreOwner,)
 
