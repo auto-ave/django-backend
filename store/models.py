@@ -74,6 +74,8 @@ class Store(Model):
     def is_close(self, date: datetime.date):
         return (self.store_times[date.weekday()]['opening_time'] == '00:00' or self.store_times[date.weekday()]['opening_time'] == '00:00:00') and (self.store_times[date.weekday()]['closing_time'] == '00:00' or self.store_times[date.weekday()]['closing_time'] == '00:00:00')
     
+    def get_distance(self, latitude, longitude):
+        return distanceFromLatitudeAndLongitude(self.latitude, self.longitude, latitude, longitude)
     
     def updateRating(self, rating, isRemove = False):
         count = self.reviews.all().count()
