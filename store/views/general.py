@@ -67,10 +67,10 @@ class CityStoreList(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', ]
     
-    def list(self, request, *args, **kwargs):
-        response = super(CityStoreList, self).list(request, args, kwargs)
-        response.data['results'] = sorted(response.data['results'], key=lambda k: (k['distance'], ))
-        return response
+    # def list(self, request, *args, **kwargs):
+    #     response = super(CityStoreList, self).list(request, args, kwargs)
+    #     response.data['results'] = sorted(response.data['results'], key=lambda k: ( float(k['distance'].strip('km').strip()), ))
+    #     return response
 
     def get_queryset(self):
         citycode = self.kwargs['citycode']
@@ -87,8 +87,7 @@ class CityStoreList(generics.ListAPIView):
         longitude = self.request.query_params.get('longitude')
         
         if latitude and longitude:
-            
-            print(queryset)
+            queryset = sorted( queryset, key=lambda k: ( k.get_distance(latitude, longitude), ) )
         
 
         tag = self.request.GET.get('tag', None)
