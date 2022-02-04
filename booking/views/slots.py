@@ -1,5 +1,7 @@
+from tracemalloc import start
 from booking.static import BookingStatusSlug
-from common.utils import DATETIME_NOW, DATETIME_TODAY_END, combineDateAndTime, convert_date_to_datetime, daterange, datetimeToBeautifulDateTime, timeStringToTime, timeToAMPMOnlyHour
+from booking.utils import check_event_collide_in_store
+from common.utils import DATETIME_NOW, DATETIME_TODAY_END, DATETIME_TODAY_START, combineDateAndTime, convert_date_to_datetime, daterange, datetimeToBeautifulDateTime, timeStringToTime, timeToAMPMOnlyHour
 from rest_framework import generics, response, status, permissions
 
 from booking.serializers.slots import SlotCreateSerializer
@@ -76,35 +78,48 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         if cart.is_multi_day():
             estimated_complete_time = cart.get_estimate_finish_time(date)
-            estimated_complete_time = datetimeToBeautifulDateTime(estimated_complete_time)
             slots = []
             breakpoint1 = combineDateAndTime(date, timeStringToTime("12:00:00"))
             breakpoint2 = combineDateAndTime(date, timeStringToTime("16:00:00"))
             
             if DATETIME_NOW < breakpoint1:
-                slots.append({
-                    'estimated_complete_time': estimated_complete_time,
-                    'title': 'Morning',
-                    'start_time': str( breakpoint1.time() if is_today else store_opening_time.time() ),
-                    'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
-                    'image': 'https://cdn.autoave.in/population_data/sun+1.png'
-                })
+                start_datetime = breakpoint1 if is_today else store_opening_time
+                colliding_event = check_event_collide_in_store(start=start_datetime, end=estimated_complete_time, store=store, only_blocking=True)
+                # Currently giving no error for colliding events, just removing the desired time slot
+                if not colliding_event:
+                    slots.append({
+                        'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                        'title': 'Morning',
+                        'start_time': str( start_datetime.time() ),
+                        'time': f"{timeToAMPMOnlyHour(store_opening_time.time())} - {timeToAMPMOnlyHour(breakpoint1)}",
+                        'image': 'https://cdn.autoave.in/population_data/sun+1.png'
+                    })
+                
             if DATETIME_NOW < breakpoint2:
-                slots.append({
-                    'estimated_complete_time': estimated_complete_time,
-                    'title': 'Afternoon',
-                    'start_time': str( breakpoint2.time() if is_today else breakpoint1.time() ),
-                    'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
-                    'image': 'https://cdn.autoave.in/population_data/sunset+1.png'
-                })
+                start_datetime = breakpoint2 if is_today else breakpoint1
+                colliding_event = check_event_collide_in_store(start=start_datetime, end=estimated_complete_time, store=store, only_blocking=True)
+                # Currently giving no error for colliding events, just removing the desired time slot
+                if not colliding_event:
+                    slots.append({
+                        'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                        'title': 'Afternoon',
+                        'start_time': str( start_datetime.time() ),
+                        'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
+                        'image': 'https://cdn.autoave.in/population_data/sunset+1.png'
+                    })
             if DATETIME_NOW < store_closing_time:
-                slots.append({
-                    'estimated_complete_time': estimated_complete_time,
-                    'title': 'Evening',
-                    'start_time': str( store_closing_time.time() if is_today else breakpoint2.time() ),
-                    'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
-                    'image': 'https://cdn.autoave.in/population_data/night+1.png'
-                })
+                start_datetime = store_closing_time if is_today else breakpoint2
+                colliding_event = check_event_collide_in_store(start=start_datetime, end=estimated_complete_time, store=store, only_blocking=True)
+                # Currently giving no error for colliding events, just removing the desired time slot
+                if not colliding_event:
+                    slots.append({
+                        'estimated_complete_time': datetimeToBeautifulDateTime(estimated_complete_time),
+                        'title': 'Evening',
+                        'start_time': str( start_datetime.time() ),
+                        'time': f"{timeToAMPMOnlyHour(breakpoint2)} - {timeToAMPMOnlyHour(store_closing_time.time())}",
+                        'image': 'https://cdn.autoave.in/population_data/night+1.png'
+                    })
+                
 
             return response.Response({
                 'message': 'This is a multi day booking which will take more than one day to complete. You would be required to leave your vehicle at the service store for the desired time slot.',
@@ -162,13 +177,13 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 )
             )
 
-            events.extend(
+            events.extend( 
                 bay.events.prefetch_related(
                     Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
                 ).filter(
                     is_blocking=True,
                     start_datetime__gte=datetime.datetime.now(),
-                    end_datetime__gte=DATETIME_TODAY_END
+                    end_datetime__lte=DATETIME_TODAY_END
                 )
             )
             for event in events:
