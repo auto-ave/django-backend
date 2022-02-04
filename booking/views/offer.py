@@ -97,5 +97,7 @@ class OfferRemoveView(generics.GenericAPIView):
 
         return response.Response({
             'success': 'Offer removed successfully',
-            'cart': CartSerializer(cart).data
+            'cart': CartSerializer(cart, context={
+                'request': request
+            }).data
         })
