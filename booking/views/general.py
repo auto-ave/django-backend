@@ -317,7 +317,6 @@ class OwnerCalendarBlockList(generics.ListAPIView):
         events = Event.objects.filter(
             is_blocking=True,
             start_datetime__gte=DATETIME_TODAY_START,
-            end_datetime__lte=DATETIME_TODAY_END,
             bay__in=bays
         ).distinct('start_datetime', 'end_datetime')
         return events
