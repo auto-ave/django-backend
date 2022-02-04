@@ -72,14 +72,15 @@ class Cart(Model):
         
         self.items.add(item)
         self.store = item.store
-        self.vehicle_model = vehicle_model          
+        self.vehicle_model = vehicle_model
+        self.offer = None     
         self.save()
     
     def removeItem(self, item):
         self.items.remove(item)
         if not self.items.all().count():
             self.vehicle_model = None
-            self.offer = None
+        self.offer = None
         self.save()
 
     def clear(self):
