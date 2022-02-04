@@ -53,17 +53,17 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         cart = user.consumer.get_cart()
         
         store = cart.store
+        
+        if not store:
+            return response.Response({
+                "detail": "No store in cart"
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         day = date.weekday()
         store_opening_time = timeStringToTime(store.store_times[day]['opening_time'])
         store_opening_time = combineDateAndTime(date, store_opening_time)
         store_closing_time = timeStringToTime(store.store_times[day]['closing_time'])
         store_closing_time  = combineDateAndTime(date, store_closing_time)
-        
-        if not store:
-            return response.Response({
-                "detail": "No store in cart"
-            }, status=status.HTTP_400_BAD_REQUEST)
         
         if len(store.store_times) != 7:
             return response.Response({

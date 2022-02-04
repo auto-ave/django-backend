@@ -226,6 +226,9 @@ class Offer(Model):
     discount_percentage = models.IntegerField(default=10)
     max_discount = models.IntegerField(default=0)
     
+    min_booking_amount = models.IntegerField(default=0)
+    max_booking_amount = models.IntegerField(default=0)
+    
     linked_store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="offers", null=True, blank=True)
     
     max_redeem_count = models.IntegerField(default=10, help_text="Maximum number of times a offer can be used in total, 0 for unlimited")
@@ -247,6 +250,19 @@ class Offer(Model):
             if self.valid_from > datetime.datetime.now() or self.valid_to < datetime.datetime.now():
                 return False
         return True
+
+    def get_discount_amount_from_sub_total(self, subtotal):
+        offer = self
+        subtotal = float(subtotal)
+        
+        discount_percentage = offer.discount_percentage / 100 # since we store in percentage
+        max_discount = offer.max_discount
+        
+        raw_discount = round(subtotal * discount_percentage, 2)
+        if raw_discount > max_discount:
+            raw_discount = max_discount
+        
+        return raw_discount
 
     def __str__(self):
         return '{} - {}'.format(self.code, self.title)

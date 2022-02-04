@@ -8,10 +8,15 @@ from booking.models import Offer
 from booking.serializers.offer import *
 
 
-class  OfferListView(generics.ListAPIView):
+class OfferListView(generics.ListAPIView):
     serializer_class = OfferListSerializer
     permission_classes = (IsConsumer,)
     queryset = Offer.objects.filter(is_active=True)
+    
+    def get_queryset(self):
+        cart = self.request.user.consumer.cart
+        queryset = self.queryset.filter(min_booking_amount__lte=cart.subtotal, max_booking_amount__gte=cart.subtotal)
+        return queryset
 
 class OfferBannerView(generics.ListAPIView):
     serializer_class = OfferBannerSerializer
@@ -35,6 +40,7 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
             return response.Response({
                 'error': 'Invalid code'
             }, status=status.HTTP_400_BAD_REQUEST)
+        
         if not offer.is_valid():
             return response.Response({
                 'error': 'Offer has Expired'
@@ -59,12 +65,23 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
                     'error': 'You cannot use this offer more than {} times'.format(offer.max_redeem_count_per_cosumer)
                 }, status=status.HTTP_400_BAD_REQUEST)
         
+        if cart.subtotal > offer.max_booking_amount:
+            return response.Response({
+                'error': 'Offer cannot be applied on bookings greater than Rs.{}'.format(offer.max_booking_amount)
+            })
+        if cart.subtotal < offer.min_booking_amount:
+            return response.Response({
+                'error': 'Offer cannot be applied on bookings less than Rs.{}'.format(offer.min_booking_amount)
+            })
+        
         cart.offer = offer
         cart.save()
 
         return response.Response({
             'success': 'Offer applied successfully',
-            'cart': CartSerializer(cart).data
+            'cart': CartSerializer(cart, context={
+                'request': request
+            }).data
         })
 
 class OfferRemoveView(generics.GenericAPIView):

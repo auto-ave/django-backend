@@ -41,8 +41,8 @@ class PaymentChoices(generics.GenericAPIView):
             },
             {
                 "type": "PARTIAL",
-                "title": "Pay Partially",
-                "description": "Pay only the booking amount to confirm your slot. Remaining amount will be paid at the store.",
+                "title": "Pay only Booking Amount",
+                "description": "Pay Rs.{} now as booking amount and Rs.{} later at the store.".format(commission_amount, total_amount - commission_amount),
                 "active": True,
                 "amount": commission_amount,
                 "remaining_amount": total_amount - commission_amount
