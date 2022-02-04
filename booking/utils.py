@@ -32,20 +32,41 @@ def check_time_range_overlap(start1, end1, start2, end2):
         return True
     return False
 
-def check_event_collide_in_store(start, end, store):
+def check_event_collide_in_store(start, end, store, only_blocking=False):
     bays = store.bays.all()
     colliding_events = []
+    
     booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
+    booking_payment_failed_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+    booking_cancellation_approved_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_APPROVED)
+    def continue_condition(event):
+        if ( event.booking.booking_status == booking_init_status 
+                or event.booking.booking_status == booking_payment_failed_status 
+                    or event.booking.booking_status == booking_cancellation_approved_status ):
+            return True
+        else:
+            return False
+    
     count = 0
     for bay in bays:
-        events = bay.events.prefetch_related(
-            Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
-        ).filter(
-            start_datetime__gte=DATETIME_TODAY_START,
-            end_datetime__lte=DATETIME_TODAY_END
-        )
+        if only_blocking:
+            events = bay.events.prefetch_related(
+                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+            ).filter(
+                is_blocking=True,
+                start_datetime__gte=DATETIME_TODAY_START,
+                end_datetime__lte=DATETIME_TODAY_END
+            )
+        else:
+            events = bay.events.prefetch_related(
+                Prefetch( 'booking', queryset=Booking.objects.select_related('booking_status') )
+            ).filter(
+                start_datetime__gte=DATETIME_TODAY_START,
+                end_datetime__lte=DATETIME_TODAY_END
+            )
         for event in events:
-            if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
+            print(event.start_datetime, event.end_datetime)
+            if hasattr(event, 'booking') and continue_condition(event):
                 continue
             if check_time_range_overlap(start, end, event.start_datetime, event.end_datetime):
                 count = count + 1

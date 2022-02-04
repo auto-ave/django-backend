@@ -85,9 +85,15 @@ class CityStoreList(generics.ListAPIView):
         
         latitude = self.request.query_params.get('latitude')
         longitude = self.request.query_params.get('longitude')
+        search = self.request.query_params.get('search')
         
-        if latitude and longitude:
-            queryset = sorted( queryset, key=lambda k: ( k.get_distance(latitude, longitude), ) )
+        # Use in case suryansh cries that search results should also be filtered by distance
+        # if latitude and longitude:
+        #     queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
+        #     queryset = city.stores.filter(pk__in=[ store.pk for store in queryset ])
+        
+        if latitude and longitude and not search:
+            queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
         
 
         tag = self.request.GET.get('tag', None)
