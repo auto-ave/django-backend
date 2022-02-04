@@ -133,14 +133,14 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
 
         # Just testing notifis
         # Payment confirmation notification for Store Owner
-        store = booking.store
+        # store = booking.store
         # CommunicationProvider.send_notification(
         #     **NOTIFICATION_CUSTOMER_BOOKING_INITIATED(booking),
         # )
-        if store.owner:
-            CommunicationProvider.send_notification(
-                **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
-            )
+        # if store.owner:
+        #     CommunicationProvider.send_notification(
+        #         **NOTIFICATION_OWNER_BOOKING_INITIATED(booking),
+        #     )
             # if store.email or store.owner.user.email:
             #     CommunicationProvider.send_email(
             #         **EMAIL_OWNER_BOOKING_COMPLETE(booking)
