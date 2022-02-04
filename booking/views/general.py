@@ -67,17 +67,10 @@ class OwnerPastBookingsList(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         
-        initiated_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
-        payment_failed_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+        completed_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_COMPLETED)
         
         return user.storeowner.store.bookings.filter(
-            Q(
-                event__start_datetime__lt=datetime.datetime.today().date()
-            )
-            &
-            (
-                ~Q( booking_status=initiated_status ) & ~Q( booking_status=payment_failed_status )
-            )
+            booking_status=completed_status
         ).prefetch_related('vehicle_model', 'booked_by', 'payment', 'booking_status', 'event', 'price_times').order_by('-booking_status_changed_time')
 
 class OwnerUpcomingBookingsList(generics.ListAPIView):
