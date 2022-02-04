@@ -29,7 +29,7 @@ class AddItem(ValidateSerializerMixin, generics.GenericAPIView):
 
         cart.addItem(item, vehicle_model_pk)
 
-        serializer = CartSerializer(cart)
+        serializer = CartSerializer(cart, context={'request': request})
         data = serializer.data
 
         return response.Response(data, status=status.HTTP_200_OK)
@@ -47,7 +47,7 @@ class RemoveItem(ValidateSerializerMixin, generics.GenericAPIView):
 
         cart.removeItem(item)
 
-        serializer = CartSerializer(cart)
+        serializer = CartSerializer(cart, context={'request': request})
         data = serializer.data
 
         return response.Response(data, status=status.HTTP_200_OK)
