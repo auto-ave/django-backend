@@ -15,7 +15,7 @@ class OfferListView(generics.ListAPIView):
     
     def get_queryset(self):
         cart = self.request.user.consumer.cart
-        queryset = self.queryset.filter(min_booking_amount__lte=cart.subtotal, max_booking_amount__gte=cart.subtotal)
+        queryset = self.queryset.filter(min_booking_amount__lte=cart.subtotal, max_booking_amount__gt=cart.subtotal)
         return queryset
 
 class OfferBannerView(generics.ListAPIView):
@@ -65,14 +65,14 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
                     'error': 'You cannot use this offer more than {} times'.format(offer.max_redeem_count_per_cosumer)
                 }, status=status.HTTP_400_BAD_REQUEST)
         
-        if cart.subtotal > offer.max_booking_amount:
+        if cart.subtotal >= offer.max_booking_amount:
             return response.Response({
                 'error': 'Offer cannot be applied on bookings greater than Rs.{}'.format(offer.max_booking_amount)
-            })
+            }, status=status.HTTP_400_BAD_REQUEST)
         if cart.subtotal < offer.min_booking_amount:
             return response.Response({
                 'error': 'Offer cannot be applied on bookings less than Rs.{}'.format(offer.min_booking_amount)
-            })
+            }, status=status.HTTP_400_BAD_REQUEST)
         
         cart.offer = offer
         cart.save()
