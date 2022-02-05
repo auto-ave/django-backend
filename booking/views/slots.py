@@ -82,6 +82,8 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
             breakpoint1 = combineDateAndTime(date, timeStringToTime("12:00:00"))
             breakpoint2 = combineDateAndTime(date, timeStringToTime("16:00:00"))
             
+            print(DATETIME_NOW, breakpoint1, breakpoint2, estimated_complete_time)
+            
             if DATETIME_NOW < breakpoint1:
                 start_datetime = breakpoint1 if is_today else store_opening_time
                 colliding_event = check_event_collide_in_store(start=start_datetime, end=estimated_complete_time, store=store, only_blocking=True)
@@ -107,6 +109,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                         'time': f"{timeToAMPMOnlyHour(breakpoint1)} - {timeToAMPMOnlyHour(breakpoint2)}",
                         'image': 'https://cdn.autoave.in/population_data/sunset+1.png'
                     })
+
             if DATETIME_NOW < store_closing_time:
                 start_datetime = store_closing_time if is_today else breakpoint2
                 colliding_event = check_event_collide_in_store(start=start_datetime, end=estimated_complete_time, store=store, only_blocking=True)
