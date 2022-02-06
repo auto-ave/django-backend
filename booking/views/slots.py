@@ -177,6 +177,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 return True
             else:
                 return False
+
         for bay in bays:
             events = []
             
