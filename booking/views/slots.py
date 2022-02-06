@@ -168,6 +168,15 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
         
         print('pehla while loop khatam')
         booking_init_status = BookingStatus.objects.get(slug=BookingStatusSlug.INITIATED)
+        booking_payment_failed_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
+        booking_cancellation_approved_status = BookingStatus.objects.get(slug=BookingStatusSlug.CANCELLATION_REQUEST_APPROVED)
+        def continue_condition(event):
+            if ( event.booking.booking_status == booking_init_status 
+                    or event.booking.booking_status == booking_payment_failed_status 
+                        or event.booking.booking_status == booking_cancellation_approved_status ):
+                return True
+            else:
+                return False
         for bay in bays:
             events = []
             
@@ -190,7 +199,7 @@ class SlotCreate(ValidateSerializerMixin, generics.GenericAPIView):
                 )
             )
             for event in events:
-                if hasattr(event, 'booking') and event.booking.booking_status == booking_init_status:
+                if hasattr(event, 'booking') and continue_condition(event):
                     continue
                 # print('event: ', event)
                 event_start_time = event.start_datetime
