@@ -86,22 +86,21 @@ class CityStoreList(generics.ListAPIView):
         latitude = self.request.query_params.get('latitude')
         longitude = self.request.query_params.get('longitude')
         search = self.request.query_params.get('search')
+        tag = self.request.GET.get('tag', None)
         
         # Use in case suryansh cries that search results should also be filtered by distance
-        if latitude and longitude:
-            queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
-            queryset = city.stores.filter(pk__in=[ store.pk for store in queryset ])
-        
-        # if latitude and longitude and not search:
+        # if latitude and longitude:
         #     queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
+        #     queryset = city.stores.filter(pk__in=[ store.pk for store in queryset ])
         
-
-        tag = self.request.GET.get('tag', None)
+        if latitude and longitude and not search and not tag:
+            queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         if tag:
             tag = get_object_or_404(ServiceTag, slug=tag)
             services = Service.objects.filter(tags__in=[tag])
             price_times = PriceTime.objects.filter(store__in=queryset, service__in=services)
-            return [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
+            store_list = [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
+            return sorted( store_list, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         return queryset
