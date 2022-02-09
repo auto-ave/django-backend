@@ -17,9 +17,9 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
         return obj.time_interval_string
     
     def get_offer(self, obj):
-        print(obj.service)
+        print(obj.service, obj.store.offers.all())
         offers = obj.store.offers.filter(applicable_services__in=[obj.service])
-        print(offers)
+        print("offers: ", offers)
         return "Get FREE wax polish worth ₹800 with this service"
         return "D2CWAX"
 

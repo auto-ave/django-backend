@@ -75,7 +75,17 @@ class Cart(Model):
         self.items.add(item)
         self.store = item.store
         self.vehicle_model = vehicle_model
-        self.offer = None     
+        
+        offer = self.offer
+        if offer:
+            offer_services = offer.services_to_add.all()
+            
+            if offer_services.count():
+                for service in offer_services:
+                    price_time = PriceTime.objects.get(service=service, store=self.store, vehicle_type=self.vehicle_model.vehicle_type)
+                    self.items.remove(price_time)
+        self.offer = None
+            
         self.save()
     
     def removeItem(self, item):
