@@ -85,12 +85,12 @@ class Cart(Model):
         
         offer = self.offer
         if offer:
-            flag = True
+            flag = False
             applicable_services = offer.applicable_services.all()
             
             if applicable_services.count():
-                if item.service not in applicable_services:
-                    flag = False
+                if item.service in applicable_services:
+                    flag = True
             
             if flag:
                 offer_services = offer.services_to_add.all()

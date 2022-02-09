@@ -8,8 +8,7 @@ from store.models import PriceTime, Service,Store
 class PriceTimeListSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
     time_interval = serializers.SerializerMethodField()
-    offer_text = serializers.SerializerMethodField()
-    offer_code = serializers.SerializerMethodField()
+    offer = serializers.SerializerMethodField()
 
     def get_service(self, obj):
         return obj.service_name
@@ -17,10 +16,11 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
     def get_time_interval(self, obj):
         return obj.time_interval_string
     
-    def get_offer_text(self, obj):
+    def get_offer(self, obj):
+        print(obj.service)
+        offers = obj.store.offers.filter(applicable_services__in=[obj.service])
+        print(offers)
         return "Get FREE wax polish worth ₹800 with this service"
-    
-    def get_offer_code(self, obj):
         return "D2CWAX"
 
     class Meta:
