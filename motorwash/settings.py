@@ -64,7 +64,6 @@ INSTALLED_APPS = [
     'fcm_django',
     'drf_api_logger',
     'silk',
-    'django_extensions',
     
     
     'accounts',
