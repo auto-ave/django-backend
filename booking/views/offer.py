@@ -86,7 +86,7 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
         flag = False
         if len(applicable_services):
             for item in cart_items:
-                if item in applicable_services:
+                if item.service in applicable_services:
                     flag = True
                     break
             if not flag:
