@@ -46,10 +46,12 @@ class Cart(Model):
         item_vehicle_type = item.vehicle_type
         vehicle_model = VehicleModel.objects.get(pk=vehicle_model_pk)
         
-        print("request ka vehicle: ", vehicle_model)
-        print("cart ka vehicle model: ", current_vehicle_model)
-        
         old_items_vehicle_type = self.items.all().count() > 0 and self.items.all()[0].vehicle_type
+        
+        if item.is_offer:
+            raise ValidationError({
+                'error': 'You cannot add this item to cart, because it is an offer.'
+            })
         
         if item_vehicle_type != (vehicle_model and vehicle_model.vehicle_type):
             raise ValidationError({
@@ -80,6 +82,24 @@ class Cart(Model):
         self.items.remove(item)
         if not self.items.all().count():
             self.vehicle_model = None
+        
+        offer = self.offer
+        if offer:
+            flag = True
+            applicable_services = offer.applicable_services.all()
+            
+            if applicable_services.count():
+                if item.service not in applicable_services:
+                    flag = False
+            
+            if flag:
+                offer_services = offer.services_to_add.all()
+                    
+                if offer_services.count():
+                    for service in offer_services:
+                        price_time = PriceTime.objects.get(service=service, store=self.store, vehicle_type=self.vehicle_model.vehicle_type)
+                        self.items.remove(price_time)
+
         self.offer = None
         self.save()
 

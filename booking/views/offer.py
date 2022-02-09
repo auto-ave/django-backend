@@ -8,6 +8,8 @@ from booking.models import Offer
 from booking.serializers.offer import *
 from django.db.models import Q
 
+from store.models import PriceTime
+
 
 class OfferListView(generics.ListAPIView):
     serializer_class = OfferListSerializer
@@ -117,6 +119,15 @@ class OfferRemoveView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         user = request.user
         cart = user.consumer.get_cart()
+        offer = cart.offer
+        
+        if offer:
+            offer_services = offer.services_to_add.all()
+            
+            if offer_services.count():
+                for service in offer_services:
+                    price_time = PriceTime.objects.get(service=service, store=cart.store, vehicle_type=cart.vehicle_model.vehicle_type)
+                    cart.items.remove(price_time)
         
         cart.offer = None
         cart.save()
