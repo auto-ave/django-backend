@@ -28,10 +28,7 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
                 'code': first_offer.code,
             }
         else:
-            return {
-                'text': None,
-                'code': None
-            }
+            return None
 
     class Meta:
         model = PriceTime
