@@ -31,6 +31,9 @@ def updateCart(sender, instance, **kwargs):
         raw_discount = offer.get_discount_amount_from_sub_total(instance.subtotal)
         instance.discount = raw_discount
         instance.total = instance.total - raw_discount
+        for service in offer.services_to_add.all():
+            price_time = PriceTime.objects.get(service=service, store=instance.store, vehicle_type=instance.vehicle_model.vehicle_type)
+            instance.items.add(price_time)
     else:
         instance.discount = 0
         

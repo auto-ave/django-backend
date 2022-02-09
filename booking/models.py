@@ -3,7 +3,7 @@ from misc.email_contents import EMAIL_CONSUMER_CANCELLATION_REQUEST_APPROVED
 from misc.notification_contents import NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_APPROVED, NOTIFICATION_CONSUMER_CANCELLATION_REQUEST_RECIEVED, NOTIFICATION_CONSUMER_SERVICE_UNATTENDED, NOTIFICATION_CONSUMER_SERVICE_STARTED, NOTIFICATION_CONSUMER_SERVICE_COMPLETED
 from common.communication_provider import CommunicationProvider
 from django.db import models
-from common.models import Model
+from common.models import Model, Service
 from django.contrib.postgres.fields import ArrayField
 from misc.sms_contents import SMS_CONSUMER_CANCELLATION_APPROVED, SMS_CONSUMER_CANCELLATION_REQUESTED, SMS_CONSUMER_SERVICE_COMPLETE, SMS_CONSUMER_SERVICE_STARTED, SMS_CONSUMER_SERVICE_UNATTENDED
 from store.models import Store, PriceTime, Event, VehicleType
@@ -230,6 +230,8 @@ class Offer(Model):
     max_booking_amount = models.IntegerField(default=0)
     
     linked_store = models.ForeignKey(Store, on_delete=models.CASCADE, related_name="offers", null=True, blank=True)
+    applicable_services = models.ManyToManyField(Service, related_name="applicable_on_offers", blank=True) # if len more than 0 -> offer applicable on these services only
+    services_to_add = models.ManyToManyField(Service, related_name="will_be_added_on_offers", blank=True) # these services will be added to cart on applying this offer
     
     max_redeem_count = models.IntegerField(default=10, help_text="Maximum number of times a offer can be used in total, 0 for unlimited")
     max_redeem_count_per_cosumer = models.IntegerField(default=2, help_text="Maximum number of times a offer can be used by one user, 0 for unlimited")

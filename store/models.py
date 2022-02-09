@@ -102,9 +102,12 @@ class Bay(Model):
 
 
 class PriceTime(Model):
+    is_offer = models.BooleanField(default=False) # if true, then not visible to the user in UI
+     
     store = models.ForeignKey(Store, on_delete= models.CASCADE, related_name="pricetimes")
     vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="pricetimes")
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="pricetimes")
+    mrp = models.PositiveIntegerField(default=0, help_text="Display field only, if there is some mrp show striked value")
     price = models.PositiveIntegerField()
     time_interval = models.PositiveIntegerField() # Number of minutes
 

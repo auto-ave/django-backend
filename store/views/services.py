@@ -13,4 +13,4 @@ class StoreServicesList(generics.ListAPIView):
         # store = get_object_or_404(Store, slug=slug)
         # return store.pricetimes.all().prefetch_related('service')
         # FUTURE: check which query is better
-        return PriceTime.objects.filter(store__slug=self.kwargs['slug']).prefetch_related('service')
+        return PriceTime.objects.filter(store__slug=self.kwargs['slug'], is_offer=False).prefetch_related('service')

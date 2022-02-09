@@ -32,6 +32,7 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
         user = request.user
 
         cart = user.consumer.get_cart()
+        cart_items = cart.items.all()
 
         code = data.get('code')
         try:
@@ -46,9 +47,14 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
                 'error': 'Offer has Expired'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        if cart.items.all().count() == 0:
+        if cart_items.count() == 0:
             return response.Response({
                 'error': 'Cart is empty'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        if offer.linked_store and (offer.linked_store != cart.store):
+            return response.Response({
+                'error': 'Offer is not valid for this store'
             }, status=status.HTTP_400_BAD_REQUEST)
         
         if offer.max_redeem_count != 0:
@@ -65,14 +71,29 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
                     'error': 'You cannot use this offer more than {} times'.format(offer.max_redeem_count_per_cosumer)
                 }, status=status.HTTP_400_BAD_REQUEST)
         
-        if cart.subtotal >= offer.max_booking_amount:
-            return response.Response({
-                'error': 'Offer cannot be applied on bookings greater than Rs.{}'.format(offer.max_booking_amount)
-            }, status=status.HTTP_400_BAD_REQUEST)
-        if cart.subtotal < offer.min_booking_amount:
-            return response.Response({
-                'error': 'Offer cannot be applied on bookings less than Rs.{}'.format(offer.min_booking_amount)
-            }, status=status.HTTP_400_BAD_REQUEST)
+        if offer.max_booking_amount > 0:
+            if cart.subtotal >= offer.max_booking_amount:
+                return response.Response({
+                    'error': 'Offer cannot be applied on bookings greater than Rs.{}'.format(offer.max_booking_amount)
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            if cart.subtotal < offer.min_booking_amount:
+                return response.Response({
+                    'error': 'Offer cannot be applied on bookings less than Rs.{}'.format(offer.min_booking_amount)
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        applicable_services = offer.applicable_services.all()
+        flag = False
+        if len(applicable_services):
+            for item in cart_items:
+                if item in applicable_services:
+                    flag = True
+                    break
+            if not flag:
+                return response.Response({
+                    'error': 'Offer cannot be applied for selected services'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
         
         cart.offer = offer
         cart.save()
