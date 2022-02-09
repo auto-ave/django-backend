@@ -6,6 +6,7 @@ from common.mixins import ValidateSerializerMixin
 from common.permissions import *
 from booking.models import Offer
 from booking.serializers.offer import *
+from django.db.models import Q
 
 
 class OfferListView(generics.ListAPIView):
@@ -15,7 +16,11 @@ class OfferListView(generics.ListAPIView):
     
     def get_queryset(self):
         cart = self.request.user.consumer.cart
-        queryset = self.queryset.filter(min_booking_amount__lte=cart.subtotal, max_booking_amount__gt=cart.subtotal)
+        queryset = self.queryset.filter(
+            Q(min_booking_amount__lte=cart.subtotal, max_booking_amount__gt=cart.subtotal)
+            |
+            Q( max_booking_amount=0 )
+        )
         return queryset
 
 class OfferBannerView(generics.ListAPIView):

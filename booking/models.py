@@ -34,6 +34,8 @@ class Booking(Model):
     booking_status = models.ForeignKey(BookingStatus, on_delete=models.PROTECT, related_name='bookings')
     booking_status_changed_time = models.DateTimeField(default=datetime.datetime.now)
     
+    offer = models.ForeignKey('booking.Offer', on_delete=models.SET_NULL, related_name="bookings", null=True, blank=True)
+    
     otp = models.CharField(max_length=4)
     price_times = models.ManyToManyField(PriceTime, related_name='bookings')
     is_multi_day = models.BooleanField(default=False)

@@ -238,6 +238,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
         except Exception as e:
             booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_FAILED)
             booking.booking_status_changed_time = datetime.datetime.now()
+            booking.offer = cart.offer
             booking.save()
             print('order was not successful because of verification error: ') 
             return response.Response({
@@ -246,6 +247,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
             
         booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
         booking.booking_status_changed_time = datetime.datetime.now()
+        booking.offer = cart.offer
         booking.save()
         
         # Payment confirmation notification for Consumer
