@@ -95,20 +95,12 @@ class Cart(Model):
         
         offer = self.offer
         if offer:
-            flag = False
-            applicable_services = offer.applicable_services.all()
+            offer_services = offer.services_to_add.all()
             
-            if applicable_services.count():
-                if item.service in applicable_services:
-                    flag = True
-            
-            if flag:
-                offer_services = offer.services_to_add.all()
-                    
-                if offer_services.count():
-                    for service in offer_services:
-                        price_time = PriceTime.objects.get(service=service, store=self.store, vehicle_type=self.vehicle_model.vehicle_type)
-                        self.items.remove(price_time)
+            if offer_services.count():
+                for service in offer_services:
+                    price_time = PriceTime.objects.get(service=service, store=self.store, vehicle_type=self.vehicle_model.vehicle_type)
+                    self.items.remove(price_time)
 
         self.offer = None
         self.save()
