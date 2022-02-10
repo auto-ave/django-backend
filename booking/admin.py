@@ -73,3 +73,5 @@ class OfferAdmin(admin.ModelAdmin):
     )
     list_filter = ( 'is_active', 'valid_from', 'valid_to')
     search_fields = ('code', 'title', 'description')
+
+admin.site.register(OfferRedeem)
