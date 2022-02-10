@@ -24,7 +24,7 @@ class OfferListSerializer(serializers.ModelSerializer):
                 return 'Offer has been fully redeemed'
         
         if offer.max_redeem_count_per_cosumer != 0:
-            consumer_redeems_count = user.consumer.redeems.all().count()
+            consumer_redeems_count = user.consumer.redeems.filter(offer=offer).count()
             if consumer_redeems_count > offer.max_redeem_count_per_cosumer:
                 return 'You cannot use this offer more than {} times'.format(offer.max_redeem_count_per_cosumer)
         
