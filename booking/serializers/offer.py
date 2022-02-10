@@ -30,12 +30,13 @@ class OfferListSerializer(serializers.ModelSerializer):
         
         saving_amount = offer.get_discount_amount_from_sub_total(cart.subtotal)
         
-        services_to_add = offer.services_to_add.all()
-        if services_to_add.count():
-            saving_amount = 0
-            for service in services_to_add:
-                price_time = PriceTime.objects.get(store=cart.store, service=service, vehicle_type=cart.vehicle_model.vehicle_type)
-                saving_amount += ( price_time.mrp or price_time.price )
+        if offer.linked_store and (offer.linked_store == cart.store):
+            services_to_add = offer.services_to_add.all()
+            if services_to_add.count():
+                saving_amount = 0
+                for service in services_to_add:
+                    price_time = PriceTime.objects.get(store=cart.store, service=service, vehicle_type=cart.vehicle_model.vehicle_type)
+                    saving_amount += ( price_time.mrp or price_time.price )
 
         return 'You will save Rs.{} on this order'.format(saving_amount)
 

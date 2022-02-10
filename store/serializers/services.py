@@ -27,8 +27,7 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
                 'text': 'Get FREE {} worth ₹{} with this service'.format(first_service.name, int(first_pricetime.mrp - first_pricetime.price)),
                 'code': first_offer.code,
             }
-        else:
-            return None
+        return None
 
     class Meta:
         model = PriceTime
