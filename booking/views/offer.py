@@ -72,7 +72,7 @@ class OfferApplyView(generics.GenericAPIView, ValidateSerializerMixin):
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         if offer.max_redeem_count_per_cosumer != 0:
-            consumer_redeems_count = user.consumer.redeems.all().count()
+            consumer_redeems_count = user.consumer.redeems.filter(offer=offer).count()
             if consumer_redeems_count > offer.max_redeem_count_per_cosumer:
                 return response.Response({
                     'error': 'You cannot use this offer more than {} times'.format(offer.max_redeem_count_per_cosumer)
