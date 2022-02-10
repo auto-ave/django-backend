@@ -121,7 +121,7 @@ class OfferRemoveView(generics.GenericAPIView):
         cart = user.consumer.get_cart()
         offer = cart.offer
         
-        if offer:
+        if offer and offer.linked_store and (offer.linked_store == cart.store):
             offer_services = offer.services_to_add.all()
             
             if offer_services.count():
