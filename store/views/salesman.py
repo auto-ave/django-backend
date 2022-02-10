@@ -60,6 +60,7 @@ class SalesmanStoreServiceRetrieve(generics.GenericAPIView):
                 final_price_times.append({
                     **VehicleTypeSerializer(type).data,
                     "id": pricetime.id,
+                    "mrp": pricetime.mrp,
                     "price": pricetime.price,
                     "time_interval": pricetime.time_interval,
                 })
@@ -220,6 +221,7 @@ class CreateStorePriceTimes(views.APIView):
                 'store': store.pk,
                 'service': service.pk,
                 'vehicle_type': vehicle.pk,
+                'mrp': int(item.get('mrp') or item.get('price')),
                 'price': int(item.get('price')),
                 'time_interval': int(item.get('time_interval')),
                 'images': item.get('images') or service.images, ### Add service's images if emtpy

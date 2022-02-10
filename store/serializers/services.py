@@ -8,12 +8,27 @@ from store.models import PriceTime, Service,Store
 class PriceTimeListSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
     time_interval = serializers.SerializerMethodField()
+    offer = serializers.SerializerMethodField()
 
     def get_service(self, obj):
         return obj.service_name
     
     def get_time_interval(self, obj):
         return obj.time_interval_string
+    
+    def get_offer(self, obj):
+        offers = obj.store.offers.filter(applicable_services__in=[obj.service])
+        first_offer = offers.first()
+
+        if first_offer:
+            first_service = first_offer.services_to_add.first()
+            first_pricetime = PriceTime.objects.get(service=first_service, store=obj.store, vehicle_type=obj.vehicle_type)
+            return {
+                'text': 'Get FREE {} worth ₹{} with this service'.format(first_service.name, int(first_pricetime.mrp - first_pricetime.price)),
+                'code': first_offer.code,
+            }
+        else:
+            return None
 
     class Meta:
         model = PriceTime
