@@ -14,7 +14,7 @@ from store.models import PriceTime
 class OfferListView(generics.ListAPIView):
     serializer_class = OfferListSerializer
     permission_classes = (IsConsumer,)
-    queryset = Offer.objects.filter(is_active=True)
+    queryset = Offer.objects.filter(is_active=True).order_by('-priority')
     
     def get_queryset(self):
         cart = self.request.user.consumer.cart

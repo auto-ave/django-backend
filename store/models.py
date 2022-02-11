@@ -139,4 +139,4 @@ class Event(Model):
     end_datetime = models.DateTimeField()
 
     def __str__(self):
-        return "{} | {}=>{}".format(self.bay, self.start_datetime, self.end_datetime)
+        return "{}=>{}".format(self.start_datetime, self.end_datetime)
