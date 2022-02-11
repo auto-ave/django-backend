@@ -4,6 +4,8 @@ from django.utils.html import format_html
 from django.contrib import admin
 from booking.static import BookingStatusSlug
 from .models import *
+from django.core.exceptions import ValidationError
+from easy_select2 import select2_modelform
 
 import datetime
 
@@ -21,14 +23,17 @@ class HiddenFieldsAdmin(admin.ModelAdmin):
         #     # if a new object is to be created the try clause will fail due to missing _meta.fields
         #     return ""
         if obj: # editing an existing object
-            return ('booked_by', 'store')
+            return ('booking_id', 'razorpay_order_id', 'amount', 'otp', 'booked_by', 'store', 'is_multi_day', 'offer', 'vehicle_model', 'price_times', 'event')
         return self.readonly_fields
 
+BookingForm = select2_modelform(Booking, attrs={'width': '350px'})
 @admin.register(Booking)
 class BookingAdmin(HiddenFieldsAdmin):
     list_display = ( 'booking_id', 'created_at', 'store', 'booking_status', 'event_start', 'amount', 'vehicle_model' )
     list_filter = ( 'is_multi_day', 'booking_status', 'store', )
     search_fields = ( 'booking_id', 'store__name', 'booking_status__slug', 'vehicle_model__model', 'vehicle_model__brand__name' )
+    
+    # form = BookingForm
 
     def event_start(self, obj):
         if hasattr(obj, 'event'):
@@ -38,6 +43,16 @@ class BookingAdmin(HiddenFieldsAdmin):
     
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('event', 'vehicle_model', 'store', 'booking_status')
+    
+    def get_object(self, request, object_id, from_field=None):
+        queryset = self.get_queryset(request)
+        model = queryset.model
+        field = model._meta.pk if from_field is None else model._meta.get_field(from_field)
+        try:
+            object_id = field.to_python(object_id)
+            return queryset.get(**{field.name: object_id})
+        except (model.DoesNotExist, ValidationError, ValueError):
+            return None
 
 
 admin.site.register(BookingStatus)
@@ -66,6 +81,8 @@ class CancellationRequestAdmin(admin.ModelAdmin):
     list_filter = ('reason',)
     actions = (approve_cancellation,)
 
+
+OfferForm = select2_modelform(Offer, attrs={'width': '250px'})
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
     list_display = (
@@ -73,5 +90,6 @@ class OfferAdmin(admin.ModelAdmin):
     )
     list_filter = ( 'is_active', 'valid_from', 'valid_to')
     search_fields = ('code', 'title', 'description')
+    form = OfferForm
 
 admin.site.register(OfferRedeem)

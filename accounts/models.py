@@ -31,7 +31,10 @@ class User(AbstractUser):
         return self.first_name + " " + self.last_name
     
     def full_name(self):
-        return self.first_name + " " + self.last_name
+        if self.first_name or self.last_name:
+            return self.first_name + " " + self.last_name
+        else:
+            return self.phone
     
     def phone_without_countrycode(self):
         return str(self.phone.as_national.lstrip('0').strip().replace(' ', ''))
