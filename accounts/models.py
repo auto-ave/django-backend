@@ -7,8 +7,11 @@ from fcm_django.models import FCMDevice
 from phonenumber_field.modelfields import PhoneNumberField
 
 from cart.models import Cart
+from django.db.models import Prefetch
 import random
 from background_task import background
+
+from store.models import PriceTime
 
 class User(AbstractUser):
     phone = PhoneNumberField(unique=True)
@@ -123,7 +126,10 @@ class Consumer(Model):
     
     def get_cart(self):
         if hasattr(self, 'cart'):
-            return self.cart
+            return Cart.objects.prefetch_related(
+                Prefetch( 'items', queryset=PriceTime.objects.prefetch_related('service') ), 
+                'store', 'vehicle_model', 'offer'
+            ).get(id=self.cart.id)
         else:
             cart = Cart(consumer=self)
             cart.save()

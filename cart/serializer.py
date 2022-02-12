@@ -14,7 +14,7 @@ class CartItemSerializer(serializers.ModelSerializer):
     time_interval = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
-        exclude = ("description", )
+        exclude = ("description", "store", 'vehicle_type',)
     
     def get_service(self, obj):
         return obj.service.name
@@ -35,7 +35,7 @@ class CartSerializer(serializers.ModelSerializer):
         fields = "__all__"
     
     def get_item_objs(self, obj):
-        serializer = CartItemSerializer(obj.items, many=True)
+        serializer = CartItemSerializer(obj.items.all(), many=True)
         return serializer.data
     
     def get_store(self, obj):
