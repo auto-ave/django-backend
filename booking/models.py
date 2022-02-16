@@ -199,6 +199,9 @@ class CancellationRequest(Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name="cancellation_requests")
     reason = models.TextField()
     cancellation_status = models.TextField(help_text="To be filled by an Admin", blank=True, null=True)
+    approved = models.BooleanField(default=False)
+    approved_at = models.DateTimeField(blank=True, null=True)
+    approved_by = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name="approved_cancellation_requests", blank=True, null=True)
     
     def save(self, *args, **kwargs):
         if not self.id:
