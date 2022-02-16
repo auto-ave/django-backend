@@ -25,7 +25,6 @@ class CartItemSerializer(serializers.ModelSerializer):
 class CartSerializer(serializers.ModelSerializer):
     item_objs = serializers.SerializerMethodField()
     store = serializers.SerializerMethodField()
-    vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
     offer = OfferListSerializer()
     is_multi_day = serializers.SerializerMethodField()
@@ -44,12 +43,6 @@ class CartSerializer(serializers.ModelSerializer):
                 "id": obj.store.id,
                 "name": obj.store.name,
             }
-        else:
-            return None
-    
-    def get_vehicle_type(self, obj):
-        if obj.items.all().first():
-            return VehicleTypeSerializer(obj.items.all().first().vehicle_type).data
         else:
             return None
     
