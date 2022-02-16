@@ -14,7 +14,7 @@ class CartItemSerializer(serializers.ModelSerializer):
     time_interval = serializers.SerializerMethodField()
     class Meta:
         model = PriceTime
-        exclude = ("description", )
+        exclude = ("description", "store", 'vehicle_type',)
     
     def get_service(self, obj):
         return obj.service.name
@@ -25,7 +25,6 @@ class CartItemSerializer(serializers.ModelSerializer):
 class CartSerializer(serializers.ModelSerializer):
     item_objs = serializers.SerializerMethodField()
     store = serializers.SerializerMethodField()
-    vehicle_type = serializers.SerializerMethodField()
     vehicle_model = serializers.SerializerMethodField()
     offer = OfferListSerializer()
     is_multi_day = serializers.SerializerMethodField()
@@ -35,7 +34,7 @@ class CartSerializer(serializers.ModelSerializer):
         fields = "__all__"
     
     def get_item_objs(self, obj):
-        serializer = CartItemSerializer(obj.items, many=True)
+        serializer = CartItemSerializer(obj.items.all(), many=True)
         return serializer.data
     
     def get_store(self, obj):
@@ -44,12 +43,6 @@ class CartSerializer(serializers.ModelSerializer):
                 "id": obj.store.id,
                 "name": obj.store.name,
             }
-        else:
-            return None
-    
-    def get_vehicle_type(self, obj):
-        if obj.items.all().first():
-            return VehicleTypeSerializer(obj.items.all().first().vehicle_type).data
         else:
             return None
     

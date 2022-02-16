@@ -71,12 +71,17 @@ admin.site.register(Review)
 @admin.action(description="Aprove Cancellation request for the selected Bookings")
 def approve_cancellation(modeladmin, request, queryset):
     for cancellation_request in queryset:
+        # if cancellation_request.approved:
         cancellation_request.booking.approve_cancellation_request()
+        cancellation_request.approved = True
+        cancellation_request.approved_by = request.user
+        cancellation_request.approved_at = datetime.datetime.now()
+        cancellation_request.save()
 
 @admin.register(CancellationRequest)
 class CancellationRequestAdmin(admin.ModelAdmin):
     list_display = (
-        'booking', 'reason', 'cancellation_status',
+        'booking', 'reason', 'cancellation_status', 'approved', 'approved_by', 'approved_at'
     )
     list_filter = ('reason',)
     actions = (approve_cancellation,)
