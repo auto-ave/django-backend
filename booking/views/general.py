@@ -94,9 +94,10 @@ class OwnerUpcomingBookingsList(generics.ListAPIView):
             date = datetime.datetime.strptime(date, '%Y-%m-%d')
 
         payment_success_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+        service_started_status = BookingStatus.objects.get(slug=BookingStatusSlug.SERVICE_STARTED)
         
         return user.storeowner.store.bookings.filter(
-                Q( booking_status=payment_success_status )
+                ( Q( booking_status=payment_success_status ) | Q( booking_status=service_started_status ) )
             &
                 Q( event__start_datetime__contains=date.date() )
         ).order_by('event__start_datetime')
