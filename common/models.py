@@ -37,6 +37,7 @@ class ServiceTag(Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     thumbnail = models.ImageField(upload_to="service_tags", default="/service_tags/default.png")
+    banner = models.ImageField(upload_to="service_tags", default="/service_tags/banner.png")
     reputation = models.IntegerField(default=0, help_text="Used to order tags, higher reputation means higher priority")
     class Meta:
         ordering = ['-reputation']

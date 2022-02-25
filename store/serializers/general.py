@@ -57,7 +57,7 @@ class StoreListSerializer(ModelSerializer):
         return None
     
     def get_services_start(self, obj):
-        pricetimes = obj.pricetimes.all()
+        pricetimes = obj.pricetimes.filter(is_offer=False)
         min = 999999
         for pricetime in pricetimes:
             if pricetime.price <= min:
