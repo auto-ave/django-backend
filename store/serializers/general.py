@@ -79,11 +79,16 @@ class StoreListSerializer(ModelSerializer):
         tag = self.context['request'].query_params.get('tag')
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
+        results = []
         tag = get_object_or_404(ServiceTag, slug=tag)
         services = Service.objects.filter(tags__in=[tag])
-        price_times = obj.pricetimes.filter(service__in=services, vehicle_type__wheel__code__icontains='four', is_offer=False)
-        print(price_times)
-        return None
+        for service in services:
+            price_times = obj.pricetimes.filter(service=service, vehicle_type__wheel__code__icontains='four', is_offer=False)
+            if price_times.first():
+                pricetime = price_times.first()
+                results.append(f'{pricetime.service} starting at ₹{pricetime.price}')
+        print(results)
+        return results
 
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:
