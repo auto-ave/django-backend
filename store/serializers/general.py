@@ -1,6 +1,8 @@
+from django.shortcuts import get_object_or_404
 from common import fields
 from rest_framework import serializers, response, status
 from rest_framework.serializers import ModelSerializer
+from common.models import ServiceTag
 from common.utils import distanceFromLatitudeAndLongitude
 from store.models import *
 
@@ -41,10 +43,11 @@ class StoreDetailOwnerSerializer(ModelSerializer):
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
     services_start = serializers.SerializerMethodField()
+    tagged_service = serializers.SerializerMethodField()
 
     class Meta():
         model = Store
-        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address')
+        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address', 'tagged_service')
 
     def get_distance(self, obj):
         latitude = self.context['request'].query_params.get('latitude')
@@ -57,15 +60,30 @@ class StoreListSerializer(ModelSerializer):
         return None
     
     def get_services_start(self, obj):
-        pricetimes = obj.pricetimes.filter(is_offer=False)
-        min = 999999
-        for pricetime in pricetimes:
-            if pricetime.price <= min:
-                min = pricetime.price
-        if min == 999999:
-            return 499
+        tag = self.context['request'].query_params.get('tag')
+        sort = self.context['request'].query_params.get('sort')
+        if tag or sort:
+            pricetimes = obj.pricetimes.filter(is_offer=False)
+            min = 999999
+            for pricetime in pricetimes:
+                if pricetime.price <= min:
+                    min = pricetime.price
+            if min == 999999:
+                return 499
+            else:
+                return min
         else:
-            return min
+            return None
+    
+    def get_tagged_service(self, obj):
+        tag = self.context['request'].query_params.get('tag')
+        vehicle_model = self.context['request'].query_params.get('vehicle_model')
+        
+        tag = get_object_or_404(ServiceTag, slug=tag)
+        services = Service.objects.filter(tags__in=[tag])
+        price_times = obj.pricetimes.filter(service__in=services, vehicle_type__wheel__code__icontains='four', is_offer=False)
+        print(price_times)
+        return None
 
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:

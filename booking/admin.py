@@ -9,29 +9,13 @@ from easy_select2 import select2_modelform
 
 import datetime
 
-class HiddenFieldsAdmin(admin.ModelAdmin):
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('booked_by', 'store'),
-        }),
-    )
-    def get_readonly_fields(self, request, obj=None):
-        # try:
-        #     return [f.name for f in obj._meta.fields if not f.editable]
-        # except:
-        #     # if a new object is to be created the try clause will fail due to missing _meta.fields
-        #     return ""
-        if obj: # editing an existing object
-            return ('booking_id', 'razorpay_order_id', 'amount', 'otp', 'booked_by', 'store', 'is_multi_day', 'offer', 'vehicle_model', 'price_times', 'event')
-        return self.readonly_fields
-
 BookingForm = select2_modelform(Booking, attrs={'width': '350px'})
 @admin.register(Booking)
-class BookingAdmin(HiddenFieldsAdmin):
+class BookingAdmin(admin.ModelAdmin):
     list_display = ( 'booking_id', 'created_at', 'store', 'booking_status', 'event_start', 'amount', 'vehicle_model' )
     list_filter = ( 'is_multi_day', 'booking_status', 'store', )
     search_fields = ( 'booking_id', 'store__name', 'booking_status__slug', 'vehicle_model__model', 'vehicle_model__brand__name' )
+    readonly_fields = ('booking_id', 'razorpay_order_id', 'amount', 'otp', 'booked_by', 'store', 'is_multi_day', 'offer', 'vehicle_model', 'price_times', 'event')
     
     # form = BookingForm
 

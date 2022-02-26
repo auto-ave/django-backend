@@ -6,7 +6,7 @@ from store.serializers.general import *
 import haversine as hs
 from haversine import Unit
 from django.shortcuts import get_object_or_404
-from django.db.models import F
+from django.db.models import F, Sum
 from common.models import ServiceTag
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
@@ -83,10 +83,11 @@ class CityStoreList(generics.ListAPIView):
 
         queryset = city.stores.filter(is_active=True).prefetch_related('pricetimes')
         
-        latitude = self.request.query_params.get('latitude')
-        longitude = self.request.query_params.get('longitude')
-        search = self.request.query_params.get('search')
-        tag = self.request.GET.get('tag', None)
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
+        search = self.request.query_params.get('search', None)
+        tag = self.request.query_params.get('tag', None)
+        sort = self.request.query_params.get('sort', None)
         
         # Use in case suryansh cries that search results should also be filtered by distance
         # if latitude and longitude:
@@ -101,6 +102,16 @@ class CityStoreList(generics.ListAPIView):
             services = Service.objects.filter(tags__in=[tag])
             price_times = PriceTime.objects.filter(store__in=queryset, service__in=services)
             store_list = [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
+            if sort:
+                print('processing sorting: ', sort)
+                if sort == 'price_lth':
+                    return sorted( store_list, key=lambda store: ( 
+                        store.pricetimes.filter(vehicle_type__wheel__code__icontains='four', is_offer=False).aggregate(Sum('price'))['price__sum'], 
+                    ), reverse=True)
+                elif sort == 'price_htl':
+                    return sorted( store_list, key=lambda store: ( 
+                        store.pricetimes.filter(vehicle_type__wheel__code__icontains='four', is_offer=False).aggregate(Sum('price'))['price__sum'], 
+                    ), reverse=False)
             return sorted( store_list, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         return queryset
