@@ -76,13 +76,13 @@ class StoreListSerializer(ModelSerializer):
                 return min
     
     def get_tagged_services(self, obj):
-        tag = self.context['request'].query_params.get('tag')
+        tag = self.context.get('tag', None)
+        services = self.context.get('services', None)
+        
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
         results = []
         if tag:
-            tag = get_object_or_404(ServiceTag, slug=tag)
-            services = Service.objects.filter(tags__in=[tag])
             price_times = obj.pricetimes.filter(
                 service__in=services
             ).prefetch_related('service')

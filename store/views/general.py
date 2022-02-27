@@ -72,6 +72,20 @@ class CityStoreList(generics.ListAPIView):
     #     response.data['results'] = sorted(response.data['results'], key=lambda k: ( float(k['distance'].strip('km').strip()), ))
     #     return response
 
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        
+        tag = self.request.query_params.get('tag', None)
+        if tag:
+            tag = get_object_or_404(ServiceTag, slug=tag)
+            services = Service.objects.filter(tags__in=[tag])
+            ctx.update(
+                tag=tag,
+                services=services
+            )
+        
+        return ctx
+
     def get_queryset(self):
         citycode = self.kwargs['citycode']
         city = get_object_or_404(City, code__iexact=citycode)
