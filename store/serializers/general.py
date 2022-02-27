@@ -43,11 +43,11 @@ class StoreDetailOwnerSerializer(ModelSerializer):
 class StoreListSerializer(ModelSerializer):
     distance = serializers.SerializerMethodField()
     services_start = serializers.SerializerMethodField()
-    tagged_service = serializers.SerializerMethodField()
+    tagged_services = serializers.SerializerMethodField()
 
     class Meta():
         model = Store
-        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address', 'tagged_service')
+        fields = ("pk", "slug", "name", "thumbnail", "images", "rating", "distance", "services_start", 'address', 'tagged_services')
 
     def get_distance(self, obj):
         latitude = self.context['request'].query_params.get('latitude')
@@ -75,7 +75,7 @@ class StoreListSerializer(ModelSerializer):
             else:
                 return min
     
-    def get_tagged_service(self, obj):
+    def get_tagged_services(self, obj):
         tag = self.context['request'].query_params.get('tag')
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
@@ -83,12 +83,17 @@ class StoreListSerializer(ModelSerializer):
         if tag:
             tag = get_object_or_404(ServiceTag, slug=tag)
             services = Service.objects.filter(tags__in=[tag])
+            price_times = obj.pricetimes.filter(
+                service__in=services
+            ).prefetch_related('service')
             for service in services:
                 # TODO: only filter 4 wheeler prices
-                price_times = obj.pricetimes.filter(
-                    service=service
-                ).prefetch_related('service')
-                first_pricetime = price_times.first()
+                # price_times = obj.pricetimes.filter(
+                #     service=service
+                # ).prefetch_related('service')
+                filtered_pricetimes = list( filter( lambda pricetime: pricetime.service.id == service.id , price_times ) )
+                print(type(filtered_pricetimes), filtered_pricetimes)
+                first_pricetime = next(iter(filtered_pricetimes), None)
                 if first_pricetime:
                     pricetime = first_pricetime
                     results.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
