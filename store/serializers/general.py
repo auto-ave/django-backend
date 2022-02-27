@@ -63,6 +63,8 @@ class StoreListSerializer(ModelSerializer):
         tag = self.context['request'].query_params.get('tag')
         sort = self.context['request'].query_params.get('sort')
         if tag or sort:
+            return None
+        else:
             pricetimes = obj.pricetimes.filter(is_offer=False)
             min = 999999
             for pricetime in pricetimes:
@@ -72,8 +74,6 @@ class StoreListSerializer(ModelSerializer):
                 return 499
             else:
                 return min
-        else:
-            return None
     
     def get_tagged_service(self, obj):
         tag = self.context['request'].query_params.get('tag')
@@ -84,8 +84,9 @@ class StoreListSerializer(ModelSerializer):
             tag = get_object_or_404(ServiceTag, slug=tag)
             services = Service.objects.filter(tags__in=[tag])
             for service in services:
+                # TODO: only filter 4 wheeler prices
                 price_times = obj.pricetimes.filter(
-                    service=service, vehicle_type__wheel__code__icontains='four', is_offer=False
+                    service=service,is_offer=False
                 ).prefetch_related('service')
                 first_pricetime = price_times.first()
                 if first_pricetime:

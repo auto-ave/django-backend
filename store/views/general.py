@@ -111,3 +111,23 @@ class CityStoreList(generics.ListAPIView):
             return sorted( store_list, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         return queryset
+
+class CityStoreFeaturedList(generics.ListAPIView):
+    permission_classes = (ReadOnly | IsConsumer,)   
+    serializer_class = StoreListSerializer
+
+    def get_queryset(self):
+        citycode = self.kwargs['citycode']
+        city = get_object_or_404(City, code__iexact=citycode)
+
+        queryset = city.stores.filter(
+            is_active=True
+        ).prefetch_related('pricetimes').order_by('-reputation')
+        
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
+        
+        if latitude and longitude:
+            queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
+
+        return queryset
