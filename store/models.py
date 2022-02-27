@@ -120,6 +120,12 @@ class PriceTime(Model):
     
     class Meta:
         unique_together = ('vehicle_type', 'service', 'store')
+        # index_together = [
+        #     ["service", "vehicle_type", "is_offer"],
+        # ]
+        indexes = [
+            models.Index(fields=['service', 'vehicle_type', 'is_offer']),
+        ]
 
     def __str__(self):
         return "{} | {}".format(self.vehicle_type, self.service)

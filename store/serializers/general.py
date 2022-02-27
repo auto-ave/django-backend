@@ -86,12 +86,13 @@ class StoreListSerializer(ModelSerializer):
             for service in services:
                 # TODO: only filter 4 wheeler prices
                 price_times = obj.pricetimes.filter(
-                    service=service,is_offer=False
+                    service=service
                 ).prefetch_related('service')
                 first_pricetime = price_times.first()
                 if first_pricetime:
                     pricetime = first_pricetime
                     results.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
+                    break
             print(results)
         return results
 
