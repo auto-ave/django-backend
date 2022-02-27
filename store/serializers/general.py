@@ -82,7 +82,7 @@ class StoreListSerializer(ModelSerializer):
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
         results = []
-        if tag:
+        if tag or service:
             price_times = obj.pricetimes.filter(
                 service__in=services
             ).prefetch_related('service')
@@ -92,9 +92,8 @@ class StoreListSerializer(ModelSerializer):
                 #     service=service
                 # ).prefetch_related('service')
                 filtered_pricetimes = list( filter( lambda pricetime: pricetime.service.id == service.id , price_times ) )
-                first_pricetime = next(iter(filtered_pricetimes), None)
-                if first_pricetime:
-                    pricetime = first_pricetime
+                if len(filtered_pricetimes):
+                    pricetime = filtered_pricetimes[0]
                     results.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
                     break
             print(results)
