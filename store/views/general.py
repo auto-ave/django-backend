@@ -104,14 +104,10 @@ class CityStoreList(generics.ListAPIView):
             store_list = [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
             if sort:
                 print('processing sorting: ', sort)
-                if sort == 'price_lth':
-                    return sorted( store_list, key=lambda store: ( 
-                        store.pricetimes.filter(vehicle_type__wheel__code__icontains='four', is_offer=False).aggregate(Sum('price'))['price__sum'], 
-                    ), reverse=True)
-                elif sort == 'price_htl':
-                    return sorted( store_list, key=lambda store: ( 
-                        store.pricetimes.filter(vehicle_type__wheel__code__icontains='four', is_offer=False).aggregate(Sum('price'))['price__sum'], 
-                    ), reverse=False)
+                if sort == 'price_l2h':
+                    return sorted( store_list, key=lambda store: store.price_rating, reverse=False)
+                elif sort == 'price_h2l':
+                    return sorted( store_list, key=lambda store: store.price_rating, reverse=True)
             return sorted( store_list, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         return queryset

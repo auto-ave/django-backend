@@ -84,10 +84,13 @@ class StoreListSerializer(ModelSerializer):
             tag = get_object_or_404(ServiceTag, slug=tag)
             services = Service.objects.filter(tags__in=[tag])
             for service in services:
-                price_times = obj.pricetimes.filter(service=service, vehicle_type__wheel__code__icontains='four', is_offer=False)
-                if price_times.first():
-                    pricetime = price_times.first()
-                    results.append(f'{pricetime.service} starting at ₹{pricetime.price}')
+                price_times = obj.pricetimes.filter(
+                    service=service, vehicle_type__wheel__code__icontains='four', is_offer=False
+                ).prefetch_related('service')
+                first_pricetime = price_times.first()
+                if first_pricetime:
+                    pricetime = first_pricetime
+                    results.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
             print(results)
         return results
 
