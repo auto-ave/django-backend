@@ -82,10 +82,10 @@ class StoreListSerializer(ModelSerializer):
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
         results = []
-        if tag or service:
-            price_times = obj.pricetimes.filter(
+        if services or tag:
+            price_times = obj.pricetimes.prefetch_related('service').filter(
                 service__in=services
-            ).prefetch_related('service')
+            )
             for service in services:
                 # TODO: only filter 4 wheeler prices
                 # price_times = obj.pricetimes.filter(
