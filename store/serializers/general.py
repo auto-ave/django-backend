@@ -92,7 +92,6 @@ class StoreListSerializer(ModelSerializer):
                 #     service=service
                 # ).prefetch_related('service')
                 filtered_pricetimes = list( filter( lambda pricetime: pricetime.service.id == service.id , price_times ) )
-                print(type(filtered_pricetimes), filtered_pricetimes)
                 first_pricetime = next(iter(filtered_pricetimes), None)
                 if first_pricetime:
                     pricetime = first_pricetime
