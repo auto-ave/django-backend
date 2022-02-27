@@ -5,6 +5,7 @@ from rest_framework.serializers import ModelSerializer
 from common.models import ServiceTag
 from common.utils import distanceFromLatitudeAndLongitude
 from store.models import *
+from store.serializers.services import PriceTimeListSerializer, StoreListPriceTimeSerializer
 
 
 class StoreSerializer(ModelSerializer):
@@ -81,7 +82,7 @@ class StoreListSerializer(ModelSerializer):
         
         vehicle_model = self.context['request'].query_params.get('vehicle_model')
         
-        results = []
+        final_pricetimes = []
         if services or tag:
             price_times = obj.pricetimes.prefetch_related('service').filter(
                 service__in=services
@@ -92,12 +93,12 @@ class StoreListSerializer(ModelSerializer):
                 #     service=service
                 # ).prefetch_related('service')
                 filtered_pricetimes = list( filter( lambda pricetime: pricetime.service.id == service.id , price_times ) )
-                if len(filtered_pricetimes):
-                    pricetime = filtered_pricetimes[0]
-                    results.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
-                    break
-            print(results)
-        return results
+                final_pricetimes.extend(filtered_pricetimes)
+                # if len(filtered_pricetimes):
+                #     pricetime = filtered_pricetimes[0]
+                #     final_pricetimes.append(f'{pricetime.service.name} starting at ₹{pricetime.price}')
+                #     break
+        return StoreListPriceTimeSerializer(final_pricetimes, many=True).data
 
 class SalesmanStoreListSerializer(ModelSerializer):
     class Meta:

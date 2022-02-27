@@ -50,6 +50,15 @@ class PriceTimeSerializer(serializers.ModelSerializer):
     def get_time_interval(self, obj):
         return obj.time_interval_string
 
+class StoreListPriceTimeSerializer(serializers.ModelSerializer):
+    service = serializers.SerializerMethodField()
+    class Meta:
+        model = PriceTime
+        fields = ('service', 'price')
+    
+    def get_service(self, obj):
+        return obj.service_name
+
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
