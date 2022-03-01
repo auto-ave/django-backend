@@ -1,7 +1,5 @@
-from django.db.models import query
-from common.utils import minutes_to_time_string
+from common.serializers import ServiceTagSerializer, StoreServiceListTagSerializer
 from vehicle.models import VehicleType
-import vehicle
 from rest_framework import serializers
 from store.models import PriceTime, Service,Store
 
@@ -9,6 +7,7 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
     service = serializers.SerializerMethodField()
     time_interval = serializers.SerializerMethodField()
     offer = serializers.SerializerMethodField()
+    tags = serializers.SerializerMethodField()
 
     def get_service(self, obj):
         return obj.service_name
@@ -29,6 +28,11 @@ class PriceTimeListSerializer(serializers.ModelSerializer):
             }
         return None
 
+    def get_tags(self, obj):
+        service = obj.service
+        tags = service.tags.all()
+        return StoreServiceListTagSerializer(tags, many=True).data
+
     class Meta:
         model = PriceTime
         fields = "__all__"
@@ -45,6 +49,15 @@ class PriceTimeSerializer(serializers.ModelSerializer):
 
     def get_time_interval(self, obj):
         return obj.time_interval_string
+
+class StoreListPriceTimeSerializer(serializers.ModelSerializer):
+    service = serializers.SerializerMethodField()
+    class Meta:
+        model = PriceTime
+        fields = ('service', 'price')
+    
+    def get_service(self, obj):
+        return obj.service_name
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:

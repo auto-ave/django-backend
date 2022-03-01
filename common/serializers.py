@@ -17,5 +17,10 @@ class ServiceTagSerializer(serializers.ModelSerializer):
         model = ServiceTag
         fields = "__all__"
 
+class StoreServiceListTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceTag
+        fields = ( 'name', 'slug' )
+
 class CityListSerializer(serializers.Serializer):
     pass

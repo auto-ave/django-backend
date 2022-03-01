@@ -6,7 +6,7 @@ from store.serializers.general import *
 import haversine as hs
 from haversine import Unit
 from django.shortcuts import get_object_or_404
-from django.db.models import F
+from django.db.models import F, Sum
 from common.models import ServiceTag
 from rest_framework.exceptions import NotFound
 from geopy.geocoders import Nominatim, Photon
@@ -72,6 +72,20 @@ class CityStoreList(generics.ListAPIView):
     #     response.data['results'] = sorted(response.data['results'], key=lambda k: ( float(k['distance'].strip('km').strip()), ))
     #     return response
 
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        
+        tag = self.request.query_params.get('tag', None)
+        if tag:
+            tag = get_object_or_404(ServiceTag, slug=tag)
+            services = Service.objects.filter(tags__in=[tag])
+            ctx.update(
+                tag=tag,
+                services=services
+            )
+        
+        return ctx
+
     def get_queryset(self):
         citycode = self.kwargs['citycode']
         city = get_object_or_404(City, code__iexact=citycode)
@@ -83,10 +97,11 @@ class CityStoreList(generics.ListAPIView):
 
         queryset = city.stores.filter(is_active=True).prefetch_related('pricetimes')
         
-        latitude = self.request.query_params.get('latitude')
-        longitude = self.request.query_params.get('longitude')
-        search = self.request.query_params.get('search')
-        tag = self.request.GET.get('tag', None)
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
+        search = self.request.query_params.get('search', None)
+        tag = self.request.query_params.get('tag', None)
+        sort = self.request.query_params.get('sort', None)
         
         # Use in case suryansh cries that search results should also be filtered by distance
         # if latitude and longitude:
@@ -101,6 +116,32 @@ class CityStoreList(generics.ListAPIView):
             services = Service.objects.filter(tags__in=[tag])
             price_times = PriceTime.objects.filter(store__in=queryset, service__in=services)
             store_list = [ Store.objects.get(pk=store_id) for store_id in price_times.values_list('store', flat=True).distinct() ]
+            if sort:
+                print('processing sorting: ', sort)
+                if sort == 'price_l2h':
+                    return sorted( store_list, key=lambda store: store.price_rating, reverse=False)
+                elif sort == 'price_h2l':
+                    return sorted( store_list, key=lambda store: store.price_rating, reverse=True)
             return sorted( store_list, key=lambda store: ( store.get_distance(latitude, longitude), ) )
+
+        return queryset
+
+class CityStoreFeaturedList(generics.ListAPIView):
+    permission_classes = (ReadOnly | IsConsumer,)   
+    serializer_class = StoreListSerializer
+
+    def get_queryset(self):
+        citycode = self.kwargs['citycode']
+        city = get_object_or_404(City, code__iexact=citycode)
+
+        queryset = city.stores.filter(
+            is_active=True
+        ).prefetch_related('pricetimes').order_by('-reputation')
+        
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
+        
+        if latitude and longitude:
+            queryset = sorted( queryset, key=lambda store: ( store.get_distance(latitude, longitude), ) )
 
         return queryset

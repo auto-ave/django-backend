@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('store/list/',general.StoreList.as_view()),
     path('store/list/<str:citycode>/',general.CityStoreList.as_view()),
+    path('store/list/<str:citycode>/featured/',general.CityStoreFeaturedList.as_view()),
 
 
     path('salesman/store/<slug:slug>/service/<int:pk>/', salesman.SalesmanStoreServiceRetrieve.as_view()),

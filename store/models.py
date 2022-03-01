@@ -50,7 +50,10 @@ class Store(Model):
     intra_day_time = models.SmallIntegerField(default=360)
     
     # More the reputation better the list ranking
-    reputation = models.IntegerField(default=0, help_text="Used to order stores, higher reputation means higher priority")
+    reputation = models.IntegerField(default=0, db_index=True, help_text="Used to order stores, higher reputation means higher priority")
+    
+    # More the value, more expensive the store is
+    price_rating = models.IntegerField(default=0, db_index=True, help_text="Used to order stores based on pricing")
     
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     city = models.ForeignKey(City, related_name="stores", on_delete=models.CASCADE)
@@ -117,6 +120,12 @@ class PriceTime(Model):
     
     class Meta:
         unique_together = ('vehicle_type', 'service', 'store')
+        # index_together = [
+        #     ["service", "vehicle_type", "is_offer"],
+        # ]
+        indexes = [
+            models.Index(fields=['service', 'vehicle_type', 'is_offer']),
+        ]
 
     def __str__(self):
         return "{} | {}".format(self.vehicle_type, self.service)
