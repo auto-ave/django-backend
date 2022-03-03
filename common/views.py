@@ -26,7 +26,7 @@ class ServiceList(generics.ListAPIView):
     search_fields = ['name', 'description']
 
 class ServiceTagList(generics.ListAPIView):
-    queryset = ServiceTag.objects.all()
+    queryset = ServiceTag.objects.all().order_by('-reputation')
     serializer_class = ServiceTagSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'description']

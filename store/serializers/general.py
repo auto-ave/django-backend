@@ -26,7 +26,7 @@ class StoreSerializer(ModelSerializer):
         return obj.reviews.all().count()
     
     def get_services_start(self, obj):
-        pricetimes = obj.pricetimes.all()
+        pricetimes = obj.pricetimes.filter(is_offer=False)
         min = 999999
         for pricetime in pricetimes:
             if pricetime.price <= min:
@@ -85,7 +85,7 @@ class StoreListSerializer(ModelSerializer):
         final_pricetimes = []
         if services or tag:
             price_times = obj.pricetimes.prefetch_related('service').filter(
-                service__in=services
+                service__in=services, is_offer=False
             )
             for service in services:
                 # TODO: only filter 4 wheeler prices
