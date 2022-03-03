@@ -41,9 +41,14 @@ class OfferListSerializer(serializers.ModelSerializer):
         return 'You will save Rs.{} on this order'.format(saving_amount)
 
 class OfferBannerSerializer(serializers.ModelSerializer):
+    store_slug = serializers.SerializerMethodField()
     class Meta:
         model = Offer
-        fields = ('code', 'banner')
+        fields = ('code', 'banner', 'store_slug')
+    
+    def get_store_slug(self, obj):
+        if obj.linked_store:
+            return obj.linked_store.slug
 
 class OfferApplySerializer(serializers.Serializer):
     code = serializers.CharField(max_length=21)
