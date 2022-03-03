@@ -29,6 +29,12 @@ class VehicleBrand(Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['name',]),
+        ]
 
 class VehicleModel(Model):
     brand = models.ForeignKey(VehicleBrand, on_delete=models.CASCADE, related_name='vehicle_models')
@@ -39,3 +45,9 @@ class VehicleModel(Model):
 
     def __str__(self):
         return '{} : {}'.format(self.brand, self.model)
+    
+    class Meta:
+        ordering = ['model']
+        indexes = [
+            models.Index(fields=['model',]),
+        ]
