@@ -28,13 +28,13 @@ class StoreServicesList(generics.ListAPIView):
             try:
                 tag = get_object_or_404(ServiceTag, slug=first_service_tag)
                 
-                ordered_pricetimes = pricetimes.annotate(
-                    is_matching=Case(
-                        When(service__tags__in=[tag.id], then=Value(True)),
-                        default=Value(False),
-                        subquery=True,
-                    ),
-                ).order_by('is_matching')
+                tag_order_case = Case(
+                    When(service__tags__in=[tag.id], then=Value(False)),
+                    default=Value(True)
+                )
+                ordered_pricetimes = pricetimes.order_by(tag_order_case)
+
+                return ordered_pricetimes
                 
                 # unique_fields = ['id']
                 # duplicates = (
@@ -47,7 +47,9 @@ class StoreServicesList(generics.ListAPIView):
                 # print("duplicates count: ", duplicates.count())
                 
                 unique_ids = ordered_pricetimes.values_list('id', flat=True).distinct()
+                print('hopefully ordered ids: ', unique_ids)
                 final_pricetimes = PriceTime.objects.filter(id__in=unique_ids)
+                print('final ordered ids: ', final_pricetimes.values_list('id', flat=True).distinct())
                 return final_pricetimes
         
             except Exception as e:
