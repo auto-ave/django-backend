@@ -99,7 +99,7 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
             "notes": {
                 "consumerId": user.consumer.id,
                 "name": user.full_name(),
-                "mobileNumber": str(user.phone),
+                "mobileNumber": str(user.phone_without_countrycode()),
                 "store": bay.store.name,    
             },
         }
