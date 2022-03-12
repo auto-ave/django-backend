@@ -171,7 +171,7 @@ class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
             "userInfo": {
                 "custId": user.consumer.id,
                 "name": user.full_name(),
-                "mobileNumber": str(user.phone),
+                "mobileNumber": str(user.phone_without_countrycode()),
                 "store": bay.store.name,
             },
         }
