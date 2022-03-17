@@ -99,8 +99,8 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
             "notes": {
                 "consumerId": user.consumer.id,
                 "name": user.full_name(),
-                "mobileNumber": str(user.phone_without_countrycode()),
-                "store": bay.store.name,    
+                # "mobileNumber": str(user.phone_without_countrycode()),
+                "store": bay.store.name,  
             },
         }
         payment = razorpay_client.order.create(data)
