@@ -23,6 +23,7 @@ class OfferListView(generics.ListAPIView):
             |
             Q( max_booking_amount=0 )
         )
+        queryset = list( filter(lambda offer: not offer.linked_store or offer.linked_store == cart.store, queryset) )
         return queryset
 
 class OfferBannerView(generics.ListAPIView):
