@@ -22,3 +22,6 @@ class RazorPayPaymentCallbackSerializer(serializers.Serializer):
     razorpay_order_id = serializers.CharField(required=False, allow_null=True, allow_blank=True, default=None)
     razorpay_payment_id = serializers.CharField(required=False, allow_null=True, allow_blank=True, default=None)
     razorpay_signature = serializers.CharField(required=False, allow_null=True, allow_blank=True, default=None)
+
+class RazorPayWebhookSerializer(serializers.Serializer):
+    pass

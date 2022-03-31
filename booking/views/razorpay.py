@@ -10,7 +10,7 @@ from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_CO
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
-from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer, RazorPayPaymentCallbackSerializer
+from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer, RazorPayPaymentCallbackSerializer, RazorPayWebhookSerializer
 from rest_framework import generics, permissions, response, views, status
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
@@ -300,6 +300,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
 
 
 class RazorPayWebhook(generics.GenericAPIView):
+    serializer_class = RazorPayWebhookSerializer
     permission_classes = (IsConsumer,)
 
     def post(self, request):
