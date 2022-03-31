@@ -301,7 +301,7 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
 
 class RazorPayWebhook(generics.GenericAPIView):
     serializer_class = RazorPayWebhookSerializer
-    permission_classes = (IsConsumer,)
+    permission_classes = (permissions.AllowAny,)
 
     def post(self, request):
         data = request.data
