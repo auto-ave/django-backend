@@ -45,6 +45,9 @@ class Booking(Model):
 
     class Meta:
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['razorpay_order_id']),
+        ]
     
     def __str__(self):
         return "Booking: #" + self.booking_id
@@ -151,6 +154,8 @@ class Payment(Model):
     bank_name = models.CharField(max_length=100, null=True, blank=True)
     payment_mode = models.CharField(max_length=100, null=True, blank=True)
     rp_signature = models.CharField(max_length=200, null=True, blank=True)
+    
+    created_by_webhook = models.BooleanField(default=False)
 
     def __str__(self):
         return "#{} Payment".format(self.booking.booking_id)

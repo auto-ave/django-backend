@@ -32,3 +32,6 @@ BOOKING_CANCEL_REASONS = [
 ]
 
 BOOKING_CANCEL_PRIOR_HOURS = 12
+
+class RazorpayWebhookEvents():
+    PAYMENT_CAPTURED = 'payment.captured'

@@ -18,6 +18,8 @@ urlpatterns = [
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
     path('payment/razorpay/initiate/', razorpay.RazorPayInitiateTransactionView.as_view()),
     path('payment/razorpay/callback/', razorpay.RazorPayPaymentCallbackView.as_view()),
+    
+    path('payment/razorpay/webhook/', razorpay.RazorPayWebhook.as_view()),
 
     path('owner/bookings/today/', general.OwnerTodayBookingsList.as_view()),
     path('owner/bookings/past/', general.OwnerPastBookingsList.as_view()),
