@@ -392,6 +392,18 @@ class InitiateTransactionWithoutPaymentView(ValidateSerializerMixin, generics.Ge
         for item in cart.items.all():
             booking.price_times.add(item)
         
+        payment = Payment.objects.create(
+            status='offer booking',
+            booking=booking,
+            transaction_id='none',
+            mode_of_payment='will be offline',
+            amount=cart.get_partial_pay_amount(), # very important, yah allah razorpay
+            gateway_name='none',
+            bank_name='none',
+            payment_mode='will be offline',
+            rp_signature='none',
+        )
+        
         
         # Payment confirmation notification for Consumer
         CommunicationProvider.send_notification(
