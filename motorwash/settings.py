@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'drf_api_logger',
     'silk',
     'easy_select2',
+    'django_countries',
     
     
     'accounts',

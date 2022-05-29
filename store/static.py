@@ -3,3 +3,8 @@ STORE_SORT_KEYS = {
     'price_h2l': 'price_h2l',
     'distance': 'distance'
 }
+
+CURRENCY_CHOICES = (
+    ( "INR", "INR" ),
+    ( "EUR", "EUR" ),
+)
