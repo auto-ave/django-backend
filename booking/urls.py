@@ -18,6 +18,7 @@ urlpatterns = [
     path('payment/callback/', payment.PaymentCallbackView.as_view()),
     path('payment/razorpay/initiate/', razorpay.RazorPayInitiateTransactionView.as_view()),
     path('payment/razorpay/callback/', razorpay.RazorPayPaymentCallbackView.as_view()),
+    path('payment/completeofferbooking/', payment.InitiateTransactionWithoutPaymentView.as_view()),
     
     path('payment/razorpay/webhook/', razorpay.RazorPayWebhook.as_view()),
 

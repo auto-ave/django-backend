@@ -309,4 +309,132 @@ class PaymentCallbackView(views.APIView):
             return response.Response({
                 "you are": "a rendi"
             })
+
+
+## Without payment views
+
+class InitiateTransactionWithoutPaymentView(ValidateSerializerMixin, generics.GenericAPIView):
+    serializer_class = InitiateTransactionSerializer
+    permission_classes = (IsConsumer,)
+    
+    def post(self, request):
+        user = request.user
+        data = self.validate(request)
+
+        date = data.get('date') # Always Required
+        bay = data.get('bay') # Required for single day bookings
+        slot_start = data.get('slot_start') # Always required
+        slot_end = data.get('slot_end') # Required for single day bookings
         
+        start_datetime = dateAndTimeStringsToDateTime(date, slot_start)
+        
+        
+        if start_datetime < datetime.datetime.now():
+            return response.Response({
+                'detail': 'Booking date and time should be in the future'
+            })
+        
+        cart = user.consumer.get_cart()
+        is_multi_day = cart.is_multi_day()
+        
+        if is_multi_day:
+            bay = cart.store.bays.first()
+            end_datetime = cart.get_estimate_finish_time(dateStringToDate(date))
+            print('estimated finish time: ', end_datetime)
+        else:
+            if not bay:
+                return response.Response({
+                    'detail': 'Bay is required'
+                })
+            if not slot_end:
+                return response.Response({
+                    'detail': 'Slot end is required'
+                })
+            bay = Bay.objects.get(id=bay)
+            end_datetime = dateAndTimeStringsToDateTime(date, slot_end)
+        
+        print('total cart time (in mins):' ,cart.total_time())
+        if ( not is_multi_day ) and dateTimeDiffInMinutes(end_datetime, start_datetime) != cart.total_time():
+            return response.Response({
+                "detail": "Total time of booking should be equal to total time of cart"
+            })
+            
+        if bay.store != cart.store:
+            return response.Response({
+                'detail': "The selected bay is not in the cart's store"
+            })
+        
+        colliding_event = check_event_collide_in_store(start=start_datetime, end=end_datetime, store=bay.store)
+        if colliding_event:
+            return response.Response({
+                "detail": "Slot colliding with other event",
+                "event": str(colliding_event)
+            })
+
+        event = Event.objects.create(
+            is_blocking=False,
+            bay=bay,
+            start_datetime=start_datetime,
+            end_datetime=end_datetime,
+        )
+
+        booking = Booking.objects.create(
+            booking_id = generate_booking_id(),
+            booked_by = user.consumer,
+            store = bay.store,
+            is_multi_day = is_multi_day,
+            booking_status =  BookingStatus.objects.get(slug=BookingStatusSlug.SUCCESS_WITHOUT_PAYMENT),
+            event = event,
+            amount = cart.total,
+            vehicle_model = cart.vehicle_model,
+        )
+        
+        for item in cart.items.all():
+            booking.price_times.add(item)
+        
+        
+        # Payment confirmation notification for Consumer
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+        )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_BOOKING_COMPLETE(booking)
+        )
+        if user.email:
+            CommunicationProvider.send_email(
+                **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
+            )
+        
+        # Payment confirmation notification for Store Owner
+        store = booking.store
+        if store.owner:
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_OWNER_NEW_BOOKING(booking),
+            )
+            CommunicationProvider.send_sms(
+                **SMS_OWNER_NEW_BOOKING(booking)
+            )
+        if store.email:
+            CommunicationProvider.send_email(
+                **EMAIL_OWNER_NEW_BOOKING(booking)
+            )
+
+
+        CommunicationProvider.send_notification(
+            **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
+            schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+        )
+        CommunicationProvider.send_sms(
+            **SMS_CONSUMER_2_HOURS_LEFT(booking),
+            schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+        )
+        
+        booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
+
+        # clear cart after order successfull
+        user.consumer.cart.booking_completed()
+        user.consumer.cart.clear()
+        
+        return response.Response({
+            'detail': 'success'
+        })
