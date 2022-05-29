@@ -37,10 +37,10 @@ urlpatterns = [
     # path('store-owner/store/vehicles/', general.OwnerStoreVehicleTypes.as_view()),
     # path('store-owner/calendar/', general.OwnerDayWiseCalendar.as_view()),
     
-    path('ie/offer/list/', offer.OfferListView.as_view()),
-    path('ie/offer/banner/', offer.OfferBannerView.as_view()),
-    path('ie/offer/apply/', offer.OfferApplyView.as_view()),
-    path('ie/offer/remove/', offer.OfferRemoveView.as_view()),
+    path('offer/list/', offer.OfferListView.as_view()),
+    path('offer/banner/', offer.OfferBannerView.as_view()),
+    path('offer/apply/', offer.OfferApplyView.as_view()),
+    path('offer/remove/', offer.OfferRemoveView.as_view()),
     
     
     
