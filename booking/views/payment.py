@@ -436,5 +436,5 @@ class InitiateTransactionWithoutPaymentView(ValidateSerializerMixin, generics.Ge
         user.consumer.cart.clear()
         
         return response.Response({
-            'detail': 'success'
+            'booking_id': booking.booking_id,
         })
