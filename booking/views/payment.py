@@ -392,7 +392,7 @@ class InitiateTransactionWithoutPaymentView(ValidateSerializerMixin, generics.Ge
         for item in cart.items.all():
             booking.price_times.add(item)
         
-        payment = Payment.objects.create(
+        Payment.objects.create(
             status='offer booking',
             booking=booking,
             transaction_id='none',

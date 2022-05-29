@@ -36,6 +36,7 @@ django-better-admin-arrayfield==1.4.2
 django-celery-email==3.0.0
 django-compat==1.0.15
 django-cors-headers==3.7.0
+django-countries==7.3.2
 django-dbbackup==3.3.0
 django-easy-select2==1.5.8
 django-environ==0.8.1
@@ -76,6 +77,7 @@ google-cloud-storage==1.42.2
 google-crc32c==1.2.0
 google-resumable-media==2.0.3
 googleapis-common-protos==1.53.0
+googlemaps==4.6.0
 gprof2dot==2021.2.21
 greenlet==1.1.2
 grpcio==1.40.0
