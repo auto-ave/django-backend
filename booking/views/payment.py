@@ -397,7 +397,7 @@ class InitiateTransactionWithoutPaymentView(ValidateSerializerMixin, generics.Ge
             booking=booking,
             transaction_id='none',
             mode_of_payment='will be offline',
-            amount=cart.get_partial_pay_amount(), # very important, yah allah razorpay
+            amount="0", # very important, yah allah razorpay
             gateway_name='none',
             bank_name='none',
             payment_mode='will be offline',
