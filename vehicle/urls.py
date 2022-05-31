@@ -7,6 +7,7 @@ urlpatterns = [
     path('vehicle/wheel/list/', WheelListView.as_view(), name="vehicle_wheel_list"),
     path('vehicle/brand/list/', VehicleBrandsListView.as_view(), name="vehicle_brands_list"),
     path('vehicle/model/list/', VehicleModelsListView.as_view(), name="vehicle_models_list"),
+    path('vehicle/model/from-reg/', VehicleModelFromRegView.as_view(), name="vehicle_model_from_reg"),
     
     
     
@@ -15,4 +16,5 @@ urlpatterns = [
     path('ie/vehicle/wheel/list/', WheelListView.as_view(), name="vehicle_wheel_list"),
     path('ie/vehicle/brand/list/', VehicleBrandsListView.as_view(), name="vehicle_brands_list"),
     path('ie/vehicle/model/list/', VehicleModelsListView.as_view(), name="vehicle_models_list"),
+    path('ie/vehicle/model/from-reg/', VehicleModelFromRegView.as_view(), name="vehicle_model_from_reg"),
 ]

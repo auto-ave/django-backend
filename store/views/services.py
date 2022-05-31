@@ -1,3 +1,6 @@
+import re
+from textwrap import indent
+from venv import create
 from django.shortcuts import get_object_or_404
 from django.db.models import Case, Value, When, Max, Count
 from rest_framework import generics, permissions
@@ -5,8 +8,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from misc.models import ErrorLogging
 from store.models import Store
 from common.models import Service, ServiceTag
+from vehicle.models import *
 from store.serializers.services import *
 import traceback as tb
+import requests, json
 
 
 class StoreServicesList(generics.ListAPIView):
@@ -18,12 +23,14 @@ class StoreServicesList(generics.ListAPIView):
         # store = get_object_or_404(Store, slug=slug)
         # return store.pricetimes.all().prefetch_related('service')
         # FUTURE: check which query is better
-        first_service_tag = self.request.query_params.get('first_service_tag', None)
+        
         
         pricetimes = PriceTime.objects.filter(
                 store__slug=slug, is_offer=False
             ).prefetch_related('service', 'service__tags', 'store')
         
+                
+        first_service_tag = self.request.query_params.get('first_service_tag', None)
         if first_service_tag:
             try:
                 tag = get_object_or_404(ServiceTag, slug=first_service_tag)

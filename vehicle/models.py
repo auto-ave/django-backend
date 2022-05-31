@@ -51,3 +51,7 @@ class VehicleModel(Model):
         indexes = [
             models.Index(fields=['model',]),
         ]
+
+class VehicleRegistrationData(Model):
+    reg_num = models.CharField(max_length=50, primary_key=True)
+    data = models.TextField(blank=True, null=True)
