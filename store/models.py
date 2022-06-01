@@ -20,6 +20,7 @@ class Store(Model):
     is_active = models.BooleanField(default=True)
     is_verified_by_admin = models.BooleanField(default=False, verbose_name="Verified by admin")
     is_locked_for_salesman = models.BooleanField(default=False, verbose_name="Locked for salesmanm if True salesman cannot edit this")
+    is_hamper_offer = models.BooleanField(default=False)
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, null=True, blank=True)
