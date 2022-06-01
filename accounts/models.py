@@ -14,7 +14,7 @@ from background_task import background
 from store.models import PriceTime
 
 class User(AbstractUser):
-    phone = PhoneNumberField(unique=True)
+    phone = PhoneNumberField(blank=True, null=True, unique=True)
     email = models.EmailField(blank=True, null= True, unique=True)
 
     # TODO: something about the default value
