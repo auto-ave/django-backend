@@ -1,7 +1,7 @@
 from common.mixins import ValidateSerializerMixin
 from vehicle.serializers import *
 
-from rest_framework import generics, filters, response
+from rest_framework import generics, filters, response, status
 from vehicle.models import *
 from vehicle.utils import *
 
@@ -81,8 +81,8 @@ class VehicleModelFromRegView(generics.GenericAPIView, ValidateSerializerMixin):
         
         if vehicle_data.get('name') == 'NO_VEHICLE_DATA':
             return response.Response({
-                'error': 'No vehicle data found for {}'.format(reg_num)
-            })
+                'detail': 'No vehicle data found for {}'.format(reg_num)
+            }, status=status.HTTP_400_BAD_REQUEST)
         
         vehicle_model = VehicleModel.objects.filter(model=vehicle_data['model']).first()
         if vehicle_model:
