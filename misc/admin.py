@@ -1,4 +1,4 @@
-from misc.models import ErrorLogging, Feedback, Contact
+from misc.models import ErrorLogging, Feedback, Contact, SendGridEmailEvent
 from django.contrib import admin
 
 @admin.register(Feedback)
@@ -15,3 +15,9 @@ class ContactAdmin(admin.ModelAdmin):
 class ErrorLoggingAdmin(admin.ModelAdmin):
     list_display = ( 'created_at', 'exception' ,)
     search_fields = ( 'created_at', 'updated_at', 'context', 'exception', 'traceback' )
+
+@admin.register(SendGridEmailEvent)
+class SendGridEmailEventAdmin(admin.ModelAdmin):
+    list_display = ( 'email', 'timestamp', 'event', 'category', 'response', 'reason', 'status', 'useragent', 'ip', 'url' )
+    search_fields = ( 'email', 'timestamp', 'smtpId', 'event', 'category', 'sgEventId', 'sgMessageId', 'response', 'reason', 'status', 'useragent', 'ip', 'url' )
+    list_filter = ( 'event', )
