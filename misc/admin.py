@@ -1,4 +1,4 @@
-from misc.models import ErrorLogging, Feedback, Contact, SendGridEmailEvent
+from misc.models import *
 from django.contrib import admin
 
 @admin.register(Feedback)
@@ -21,3 +21,8 @@ class SendGridEmailEventAdmin(admin.ModelAdmin):
     list_display = ( 'email', 'timestamp', 'event', 'category', 'response', 'reason', 'status', 'useragent', 'ip', 'url' )
     search_fields = ( 'email', 'timestamp', 'smtpId', 'event', 'category', 'sgEventId', 'sgMessageId', 'response', 'reason', 'status', 'useragent', 'ip', 'url' )
     list_filter = ( 'event', )
+
+@admin.register(TransportEnquiry)
+class TransportEnquiryAdmin(admin.ModelAdmin):
+    list_display = ( 'from_city', 'to_city', 'name', 'contact' )
+    search_fields = ( 'from_city', 'to_city', 'name', 'contact' )

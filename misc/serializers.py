@@ -12,3 +12,8 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('name', 'email', 'message')
+
+class TransportEnquirySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TransportEnquiry
+        fields = ('from_city', 'to_city', 'name', 'contact')

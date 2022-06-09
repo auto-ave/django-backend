@@ -93,3 +93,8 @@ class SendGridEventView(views.APIView):
                 url = event.get('url'),
             )
         return HttpResponse(status=status.HTTP_200_OK)
+
+class TransportEnquiryView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny, )
+    serializer_class = TransportEnquirySerializer
+    throttle_scope = "public_post_api"

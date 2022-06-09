@@ -41,3 +41,9 @@ class SendGridEmailEvent(Model):
     useragent = models.CharField(max_length=200, null=True, blank=True)
     ip = models.CharField(max_length=200, null=True, blank=True)
     url = models.CharField(max_length=200, null=True, blank=True)
+
+class TransportEnquiry(Model):
+    from_city = models.CharField(max_length=100, null=True, blank=True)
+    to_city = models.CharField(max_length=100, null=True, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    contact = models.CharField(max_length=100, null=True, blank=True)
