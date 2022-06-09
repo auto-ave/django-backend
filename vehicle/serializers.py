@@ -27,3 +27,6 @@ class VehicleModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = VehicleModel
         fields = "__all__"
+
+class VehicleModelFromRegSerializer(serializers.Serializer):
+    reg_num = serializers.CharField(max_length=10)

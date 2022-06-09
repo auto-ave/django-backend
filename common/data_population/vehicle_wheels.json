@@ -5,8 +5,18 @@
         "image": "https://cdn.autoave.in/media/offer_banners/unnamed_1.png"
     },
     {
+        "code": "three_wheeler",
+        "name": "Three Wheeler",
+        "image": "https://cdn.autoave.in/media/offer_banners/unnamed_1.png"
+    },
+    {
         "code": "four_wheeler",
         "name": "Four Wheeler",
+        "image": "https://cdn.autoave.in/media/offer_banners/unnamed.png"
+    },
+    {
+        "code": "commercial",
+        "name": "Commercial",
         "image": "https://cdn.autoave.in/media/offer_banners/unnamed.png"
     }
 ]

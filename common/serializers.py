@@ -3,6 +3,7 @@ from rest_framework import serializers
 from common.models import City, Service, ServiceTag
 
 class CitySerializer(serializers.ModelSerializer):
+    country = serializers.CharField(source='country.name')
     class Meta:
         model = City
         fields = "__all__"

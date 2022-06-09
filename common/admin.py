@@ -35,7 +35,7 @@ from custom_admin_arrayfield.admin.mixins import DynamicArrayMixin
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ( 'code', 'name', 'latitude', 'longitude', 'upcoming',)
+    list_display = ( 'code', 'name', 'country', 'latitude', 'longitude', 'upcoming',)
     list_filter = ( 'upcoming', )
     search_fields = ( 'code', 'name' )
 

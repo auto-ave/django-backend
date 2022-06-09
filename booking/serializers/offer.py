@@ -1,13 +1,19 @@
 from rest_framework import serializers
 from booking.models import Offer
+from misc.models import ErrorLogging
 from store.models import PriceTime
+import traceback as tb
 
 class OfferListSerializer(serializers.ModelSerializer):
     saving = serializers.SerializerMethodField()
     
     class Meta:
         model = Offer
-        exclude = ('discount_percentage', 'max_discount', 'max_redeem_count', 'max_redeem_count_per_cosumer', 'valid_from', 'valid_to')
+        exclude = (
+            'discount_percentage', 'max_discount', 'max_redeem_count', 'max_redeem_count_per_cosumer',
+            'valid_from', 'valid_to', 'applicable_services', 'services_to_add', 'linked_store', 'min_booking_amount',
+            'max_booking_amount', 'priority'
+        )
 
     
     def get_saving(self, obj):
@@ -35,8 +41,16 @@ class OfferListSerializer(serializers.ModelSerializer):
             if services_to_add.count():
                 saving_amount = 0
                 for service in services_to_add:
-                    price_time = PriceTime.objects.get(store=cart.store, service=service, vehicle_type=cart.vehicle_model.vehicle_type)
-                    saving_amount += ( price_time.mrp or price_time.price )
+                    try:
+                        price_time = PriceTime.objects.get(store=cart.store, service=service, vehicle_type=cart.vehicle_model.vehicle_type)
+                        saving_amount += ( price_time.mrp or price_time.price )
+                    except Exception as e:
+                        ErrorLogging.objects.create(
+                            context=f'service: {service}, store: {cart.store}, vehicle_type: {cart.vehicle_model.vehicle_type} ki price time query nhi hui',
+                            exception=str(e),
+                            traceback=tb.format_exc()
+                        )
+                        
 
         return 'You will save Rs.{} on this order'.format(saving_amount)
 

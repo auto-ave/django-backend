@@ -1,5 +1,6 @@
 from common.utils import get_unique_slug
 from django.db import models
+from django_countries.fields import CountryField
 from custom_admin_arrayfield.models.fields import ArrayField
 # from common.constants import VEHICLE_MODELS, VEHICLE_TYPES
 
@@ -17,6 +18,7 @@ class Model(models.Model):
 class City(Model):
     code = models.CharField(max_length=20, primary_key=True)
     name = models.CharField(max_length=50)
+    country = CountryField(null=True, blank=True)
     latitude = models.DecimalField(max_digits=22, decimal_places=16)
     longitude = models.DecimalField(max_digits=22, decimal_places=16)
     upcoming = models.BooleanField(default=False)

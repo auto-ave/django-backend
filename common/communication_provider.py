@@ -60,6 +60,15 @@ class CommunicationProvider:
         else:
             print('Fast2SMS is disabled')
     
+    @background(schedule=0)
+    def send_whatsapp_message(phone_number, message):
+        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+        client.messages.create(
+            body=message,
+            from_=settings.TWILIO_WHATSAPP_NUMBER,
+            to=phone_number
+        )
+    
     
     @background(schedule=0)
     def send_otp(self, otp, number):

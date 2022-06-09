@@ -104,6 +104,43 @@ class AppLogout(generics.GenericAPIView, ValidateSerializerMixin):
             'success': True
         })
 
+class EmailLogin(generics.GenericAPIView, ValidateSerializerMixin):
+    serializer_class = EmailLoginSerializer
+    
+    def post(self, request):
+        data = self.validate(request)
+        
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        email = data.get('email')
+        token = data.get('token')
+
+        user = User.objects.filter(email=email).first()
+        created = False
+        if not user:
+            created = True
+            user = User.objects.create(email=email, username=email)
+            consumer = Consumer.objects.create(user=user)
+            Cart.objects.create(consumer=consumer)
+        if not user.is_consumer():
+            consumer = Consumer.objects.create(user=user)
+            Cart.objects.create(consumer=consumer)
+        
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        
+        if token:
+            user.register_fcm(user.id, token)
+
+        refresh = RefreshToken.for_user(user)
+
+        return response.Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            "created": created
+        }, status=status.HTTP_200_OK)
+
 class SalesmanLogin(generics.GenericAPIView, ValidateSerializerMixin):
     serializer_class = CredentialLoginSerializer
 

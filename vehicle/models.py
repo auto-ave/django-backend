@@ -8,7 +8,7 @@ class VehicleType(Model):
     # wheel = models.CharField(max_length=50, help_text='Two Wheeler, Three Wheeler, Four Wheeler, Commercial')
     wheel = models.ForeignKey('Wheel', on_delete=models.CASCADE, related_name='vehicle_types', null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+    image = models.URLField(default="https://cdn.autoave.in/population_data/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg")
     position = models.PositiveIntegerField(default=0)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class VehicleType(Model):
 class Wheel(Model):
     code = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=50, help_text='Two Wheeler, Three Wheeler, Four Wheeler, Commercial')
-    image = image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+    image = image = models.URLField(default="https://cdn.autoave.in/population_data/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg")
 
     def __str__(self):
         return self.name
@@ -25,7 +25,7 @@ class Wheel(Model):
 class VehicleBrand(Model):
     name = models.CharField(max_length=50, primary_key=True)
     description = models.TextField(blank=True, null=True)
-    image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+    image = models.URLField(default="https://cdn.autoave.in/population_data/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg")
 
     def __str__(self):
         return self.name
@@ -41,7 +41,7 @@ class VehicleModel(Model):
     vehicle_type = models.ForeignKey(VehicleType, on_delete=models.CASCADE, related_name="vehicle_models")
     model = models.CharField(max_length=50, primary_key=True)
     description = models.TextField(blank=True, null=True)
-    image = models.URLField(default="https://d3to388m2zu1ph.cloudfront.net/media/questions/g916_1_1.png")
+    image = models.URLField(default="https://cdn.autoave.in/population_data/85e5eb14-606a-4deb-8761-f548bf84dbe6.jpg")
 
     def __str__(self):
         return '{} : {}'.format(self.brand, self.model)
@@ -51,3 +51,7 @@ class VehicleModel(Model):
         indexes = [
             models.Index(fields=['model',]),
         ]
+
+class VehicleRegistrationData(Model):
+    reg_num = models.CharField(max_length=50, primary_key=True)
+    data = models.TextField(blank=True, null=True)

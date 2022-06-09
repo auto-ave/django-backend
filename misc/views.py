@@ -71,3 +71,25 @@ class HealthCheck(views.APIView):
 
     def get(self, request, format=None):
         return HttpResponse("I'm fine! How are you?", status=status.HTTP_200_OK)
+
+class SendGridEventView(views.APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request, format=None):
+        data = request.data
+        for event in data:
+            SendGridEmailEvent.objects.create(
+                email = event.get('email'),
+                smtpId = event.get('smtp-id'),
+                event = event.get('event'),
+                category = event.get('category'),
+                sgEventId = event.get('sg_event_id'),
+                sgMessageId = event.get('sg_message_id'),
+                response = event.get('response'),
+                reason = event.get('reason'),
+                status = event.get('status'),
+                useragent = event.get('useragent'),
+                ip = event.get('ip'),
+                url = event.get('url'),
+            )
+        return HttpResponse(status=status.HTTP_200_OK)

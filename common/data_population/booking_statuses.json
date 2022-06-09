@@ -9,6 +9,9 @@
         "slug": "PAYMENT_SUCCESS"
     },
     {
+        "slug": "SUCCESS_WITHOUT_PAYMENT"
+    },
+    {
         "slug": "NOT_ATTENDED"
     },
     {

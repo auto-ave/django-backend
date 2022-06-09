@@ -15,7 +15,21 @@ urlpatterns = [
     path('consumer/login/sendOTP/', auth.AuthGetOTP.as_view()),
     path('consumer/login/checkOTP/', auth.AuthCheckOTP.as_view()),
     path('consumer/logout/app/', auth.AppLogout.as_view()),
+    path('consumer/login/email/', auth.EmailLogin.as_view()),
 
     path('salesman/login/', auth.SalesmanLogin.as_view()),
-    path('store-owner/login/', auth.StoreOwnerLogin.as_view())
+    path('store-owner/login/', auth.StoreOwnerLogin.as_view()),
+    
+    
+    ## IRELAND URLS
+    path('ie/account', general.ProfileView.as_view()),
+    path('ie/account/token/refresh', TokenRefreshView.as_view()),
+    
+    path('ie/consumer/login/sendOTP/', auth.AuthGetOTP.as_view()),
+    path('ie/consumer/login/checkOTP/', auth.AuthCheckOTP.as_view()),
+    path('ie/consumer/logout/app/', auth.AppLogout.as_view()),
+    path('ie/consumer/login/email/', auth.EmailLogin.as_view()),
+
+    path('ie/salesman/login/', auth.SalesmanLogin.as_view()),
+    path('ie/store-owner/login/', auth.StoreOwnerLogin.as_view())
 ]

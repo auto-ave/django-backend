@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'drf_api_logger',
     'silk',
     'easy_select2',
+    'django_countries',
     
     
     'accounts',
@@ -341,6 +342,7 @@ PAYTM_WEBSITE_NAME = "WEBSTAGING" if DEBUG else "DEFAULT"
 # Hello Razorpay
 RAZORPAY_ID = env('RAZORPAY_ID')
 RAZORPAY_SECRET = env('RAZORPAY_SECRET')
+RAZORPAY_WEBHOOK_SECRET = env('RAZORPAY_WEBHOOK_SECRET')
 
 
 # Email Setup

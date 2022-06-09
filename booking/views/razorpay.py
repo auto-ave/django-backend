@@ -5,12 +5,12 @@ from booking.utils import check_event_collide_in_store, generate_booking_id
 from misc.email_contents import EMAIL_CONSUMER_BOOKING_COMPLETE, EMAIL_CONSUMER_BOOKING_INITIATED, EMAIL_OWNER_NEW_BOOKING
 from misc.notification_contents import NOTIFICATION_CONSUMER_2_HOURS_LEFT, NOTIFICATION_CONSUMER_BOOKING_COMPLETE, NOTIFICATION_CUSTOMER_BOOKING_INITIATED, NOTIFICATION_OWNER_NEW_BOOKING, NOTIFICATION_OWNER_BOOKING_INITIATED
 from common.communication_provider import CommunicationProvider
-from booking.static import BookingStatusSlug
+from booking.static import BookingStatusSlug, RazorpayWebhookEvents
 from misc.sms_contents import SMS_CONSUMER_2_HOURS_LEFT, SMS_CONSUMER_BOOKING_COMPLETE, SMS_OWNER_NEW_BOOKING
 from vehicle.models import VehicleType
 from common.utils import dateAndTimeStringsToDateTime, dateStringToDate, dateTimeDiffInMinutes, randomUUID
 from booking.utils import get_commission_percentage
-from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer, RazorPayPaymentCallbackSerializer
+from booking.serializers.payment import InitiateTransactionSerializer, PaymentChoicesSerializer, RazorPayPaymentCallbackSerializer, RazorPayWebhookSerializer
 from rest_framework import generics, permissions, response, views, status
 from django.conf import settings
 from common.mixins import ValidateSerializerMixin
@@ -99,8 +99,8 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
             "notes": {
                 "consumerId": user.consumer.id,
                 "name": user.full_name(),
-                "mobileNumber": str(user.phone_without_countrycode()),
-                "store": bay.store.name,    
+                # "mobileNumber": str(user.phone_without_countrycode()),
+                "store": bay.store.name,  
             },
         }
         payment = razorpay_client.order.create(data)
@@ -145,6 +145,7 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
                 event = event,
                 amount = cart.total,
                 vehicle_model = cart.vehicle_model,
+                offer = cart.offer
             )
 
             for item in cart.items.all():
@@ -296,4 +297,137 @@ class RazorPayPaymentCallbackView(generics.GenericAPIView, ValidateSerializerMix
             
         
         return response.Response(data) 
+
+
+class RazorPayWebhook(generics.GenericAPIView):
+    serializer_class = RazorPayWebhookSerializer
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request):
+        data = request.data
         
+        # razorpay_client.utility.verify_webhook_signature(data, webhook_signature, settings.RAZORPAY_WEBHOOK_SECRET                                              )
+        
+        if data['event'] == RazorpayWebhookEvents.PAYMENT_CAPTURED:
+            entity = data['payload']['payment'['entity']]
+            order_id = entity['order_id']
+            
+            try:
+                booking = Booking.objects.get(razorpay_order_id=order_id)
+                payment = Payment.objects.filter(booking=booking).exists()
+                
+                if payment:
+                    return response.Response({
+                        "detail": "Payment already done"
+                    })
+                else:
+                    Payment.objects.create(
+                        status = entity.get('status'),
+                        booking = booking,
+                        transaction_id = entity.get('id'),
+                        mode_of_payment = entity.get('method'),
+                        amount = entity.get('amount'), # very important, yah allah razorpay
+                        gateway_name = entity.get(''),
+                        bank_name = entity.get('bank'),
+                        payment_mode = entity.get('vpa'),
+                        created_by_webhook=True
+                    )
+            except Exception as e:
+                return response.Response({
+                    'error': str(e)
+                }, status=status.HTTP_400_BAD_REQUEST)
+                
+            booking.booking_status = BookingStatus.objects.get(slug=BookingStatusSlug.PAYMENT_SUCCESS)
+            booking.booking_status_changed_time = datetime.datetime.now()
+            booking.save()
+            
+            # Payment confirmation notification for Consumer
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_CONSUMER_BOOKING_COMPLETE(booking)
+            )
+            CommunicationProvider.send_sms(
+                **SMS_CONSUMER_BOOKING_COMPLETE(booking)
+            )
+            # if user.email:
+            #     CommunicationProvider.send_email(
+            #         **EMAIL_CONSUMER_BOOKING_COMPLETE(booking)
+            #     )
+            
+            # Payment confirmation notification for Store Owner
+            store = booking.store
+            if store.owner:
+                CommunicationProvider.send_notification(
+                    **NOTIFICATION_OWNER_NEW_BOOKING(booking),
+                )
+                CommunicationProvider.send_sms(
+                    **SMS_OWNER_NEW_BOOKING(booking)
+                )
+            if store.email:
+                CommunicationProvider.send_email(
+                    **EMAIL_OWNER_NEW_BOOKING(booking)
+                )
+
+
+            CommunicationProvider.send_notification(
+                **NOTIFICATION_CONSUMER_2_HOURS_LEFT(booking),
+                schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+            )
+            CommunicationProvider.send_sms(
+                **SMS_CONSUMER_2_HOURS_LEFT(booking),
+                schedule=(booking.event.start_datetime - datetime.timedelta(hours=2))
+            )
+
+            booking.booking_unattended_check(booking.booking_id, schedule=booking.event.end_datetime )
+
+            # clear cart after order successfull
+            booking.booked_by.cart.booking_completed()
+            booking.booked_by.consumer.cart.clear()
+            
+            print('webhook order successful')
+
+            return response.Response({
+                'success': True
+            })
+        
+        print('webhook invalid event')
+        
+        return response.Response({
+            'failure': f"webhook invalid event {data['event']}"
+        }) 
+        
+        # try:
+        #     razorpay_client.utility.verify_payment_signature(data)
+        # except Exception as e:
+        #     print('order was not successful because of verification error: ') 
+        #     return response.Response({
+        #         "error": str(e)
+        #     }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # booking_id = data.get('booking_id')
+        # razorpay_order_id = data.get('razorpay_order_id', None) # Optional fields
+        # razorpay_payment_id = data.get('razorpay_payment_id', None) # Optional fields
+        # razorpay_signature = data.get('razorpay_signature', None) # Optional fields
+        # try:
+        #     booking = Booking.objects.get(booking_id=booking_id)
+        # except Booking.DoesNotExist:
+        #     return response.Response({
+        #         "detail": "Booking does not exist"
+        #     }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # payment = Payment.objects.filter(booking=booking).exists()
+        # if payment:
+        #     return response.Response({
+        #         "detail": "Payment already done"
+        #     }, status=status.HTTP_400_BAD_REQUEST)
+        # else:
+        #     Payment.objects.create(
+        #         status=data.get('STATUS'),
+        #         booking=booking,
+        #         transaction_id=razorpay_payment_id,
+        #         mode_of_payment=data.get('PAYMENTMODE'),
+        #         amount=booking.cart.get_partial_pay_amount(), # very important, yah allah razorpay
+        #         gateway_name=data.get('GATEWAYNAME'),
+        #         bank_name=data.get('BANKNAME'),
+        #         payment_mode=data.get('PAYMENTMODE'),
+        #         rp_signature=razorpay_signature,
+        #     )
