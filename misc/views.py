@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 
 from rest_framework import parsers, permissions, serializers, views, exceptions, response, status, generics
+from common.communication_provider import CommunicationProvider
 from motorwash.storage_backends import MediaStorage
 
 from misc.serializers import *
@@ -98,3 +99,18 @@ class TransportEnquiryView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny, )
     serializer_class = TransportEnquirySerializer
     throttle_scope = "public_post_api"
+    
+    def perform_create(self, serializer):
+        to_city = self.request.data.get('to_city')
+        from_city = self.request.data.get('from_city')
+        serializer.save()
+        CommunicationProvider.send_email(
+            email=['d365labs@gmail.com', 'vermasubodhk@gmail.com'],
+            subject='New Transport Enquiry from {} to {}'.format(from_city, to_city),
+            html_content='''
+                <h4>New Transportation Enquiry</h4> \n\n
+                From: <strong>{}</strong> \n\n
+                To: <strong>{}</strong> \n\n
+                See all enquiries at <a href="https://api.autoave.in/admin/misc/transportenquiry/">https://api.autoave.in/admin/misc/transportenquiry/</a> \n\n
+            '''.format(from_city, to_city),
+        )
