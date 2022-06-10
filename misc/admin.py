@@ -24,5 +24,5 @@ class SendGridEmailEventAdmin(admin.ModelAdmin):
 
 @admin.register(TransportEnquiry)
 class TransportEnquiryAdmin(admin.ModelAdmin):
-    list_display = ( 'from_city', 'to_city', 'name', 'contact' )
+    list_display = ( 'time', 'from_city', 'to_city', 'name', 'contact', 'status' )
     search_fields = ( 'from_city', 'to_city', 'name', 'contact' )
