@@ -48,4 +48,7 @@ class TransportEnquiry(Model):
     to_city = models.CharField(max_length=100, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     contact = models.CharField(max_length=100, null=True, blank=True)
-    status = models.CharField(max_length=100, null=True, blank=True)
+    status = models.TextField(max_length=100, null=True, blank=True)
+    
+    whatsapp_number = models.CharField(max_length=100, null=True, blank=True)
+    whatsapp_group_id = models.CharField(max_length=200, null=True, blank=True)
