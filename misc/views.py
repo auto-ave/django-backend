@@ -3,6 +3,8 @@ from django.shortcuts import render
 
 from rest_framework import parsers, permissions, serializers, views, exceptions, response, status, generics
 from common.communication_provider import CommunicationProvider
+from common.whatsapp_provider import WhatsappProvider
+from misc.utils import clean_phone_number
 from motorwash.storage_backends import MediaStorage
 
 from misc.serializers import *
@@ -103,7 +105,46 @@ class TransportEnquiryView(generics.CreateAPIView):
     def perform_create(self, serializer):
         to_city = self.request.data.get('to_city')
         from_city = self.request.data.get('from_city')
-        serializer.save()
+        name = self.request.data.get('name')
+        contact = self.request.data.get('contact')
+        
+        contact = clean_phone_number(contact)
+        serializer.save(whatsapp_group_id="", whatsapp_number=contact)
+        
+        group_name = 'Enq - {}'.format(name)[:24]
+        group_id = WhatsappProvider.create_group(
+            group_name, 
+            ["918989820993", "917847099990"]
+        )
+        
+        if group_id:
+            serializer.save(whatsapp_group_id=group_id)
+            print("group_id: {}".format(group_id))
+
+            WhatsappProvider.change_group_profile_picture(
+                group_id,
+                "https://autoave.in/logo-square.jpg"
+            )
+            
+            add_contact = contact + "@c.us"
+            WhatsappProvider.add_participants_to_group(
+                group_id,
+                add_contact
+            )
+            
+            WhatsappProvider.send_text_message(
+                group_id,
+                "Hi, We have received your enquiry for Transportation."
+            )
+            WhatsappProvider.send_text_message(
+                group_id,
+                "Good time to reach you?"
+            )
+            
+        else:
+            print('group creation failed')
+            serializer.save(whatsapp_group_id="Unable to create group")
+        
         CommunicationProvider.send_email(
             email=['d365labs@gmail.com', 'vermasubodhk@gmail.com'],
             subject='New Transport Enquiry from {} to {}'.format(from_city, to_city),
@@ -111,6 +152,8 @@ class TransportEnquiryView(generics.CreateAPIView):
                 <h4>New Transportation Enquiry</h4> \n\n
                 From: <strong>{}</strong> \n\n
                 To: <strong>{}</strong> \n\n
+                Name: <strong>{}</strong> \n\n
+                Number: <strong>{}</strong> \n\n
                 See all enquiries at <a href="https://api.autoave.in/admin/misc/transportenquiry/">https://api.autoave.in/admin/misc/transportenquiry/</a> \n\n
-            '''.format(from_city, to_city),
+            '''.format(from_city, to_city, name, contact),
         )

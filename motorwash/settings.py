@@ -296,6 +296,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     "https://www.autoave.in",
     "https://sales.autoave.in",
     "https://owner.autoave.in",
+    
+    "https://autoave-global.web.app"
 
 ]
 
