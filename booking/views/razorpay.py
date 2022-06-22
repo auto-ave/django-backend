@@ -162,7 +162,7 @@ class RazorPayInitiateTransactionView(ValidateSerializerMixin, generics.GenericA
                 "prefill": {
                     "name": user.full_name(),
                     "email": user.email,
-                    "contact": str(user.phone_without_countrycode()),
+                    "contact": "",
                 },
                 "theme": {
                     "color": "#3570B5"
