@@ -56,7 +56,7 @@ urlpatterns = [
 
     path('ie/slots/create/', slots.SlotCreate.as_view()),
     
-    path('ie/payment/choices/', payment.PaymentChoices.as_view()),
+    path('ie/payment/choices/', payment.IrelandPaymentChoices.as_view()),
     path('ie/payment/initiate/', payment.InitiateTransactionView.as_view()),
     path('ie/payment/callback/', payment.PaymentCallbackView.as_view()),
     path('ie/payment/razorpay/initiate/', razorpay.RazorPayInitiateTransactionView.as_view()),
@@ -73,8 +73,8 @@ urlpatterns = [
     path('ie/owner/calendar/block/list/', general.OwnerCalendarBlockList.as_view()),
     path('ie/owner/store/detail/', general.OwnerStoreDetail.as_view()),
     
-    path('ie/offer/list/', offer.OfferListView.as_view()),
+    path('ie/offer/list/', offer.IrelandOfferListView.as_view()),
     path('ie/offer/banner/', offer.OfferBannerView.as_view()),
-    path('ie/offer/apply/', offer.OfferApplyView.as_view()),
+    path('ie/offer/apply/', offer.IrelandOfferApplyView.as_view()),
     path('ie/offer/remove/', offer.OfferRemoveView.as_view()),
 ]

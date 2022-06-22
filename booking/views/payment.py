@@ -49,6 +49,36 @@ class PaymentChoices(generics.GenericAPIView):
             }
         ]
         return response.Response(payment_choices)
+    
+class IrelandPaymentChoices(generics.GenericAPIView):
+    permission_classes = (IsConsumer,)
+    serializer_class = PaymentChoicesSerializer
+    
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        cart = user.consumer.get_cart()
+        total_amount = float(cart.total)
+        commission_amount = cart.get_partial_pay_amount()
+        
+        payment_choices = [
+            {
+                "type": "FULL",
+                "title": "Pay in Full",
+                "description": "Pay the full amount right now and book the service",
+                "active": False,
+                "amount": total_amount,
+                "remaining_amount": 0
+            },
+            {
+                "type": "PARTIAL",
+                "title": "Pay only Booking Amount",
+                "description": "Pay EUR.{} now as booking amount and EUR.{} later at the store.".format(commission_amount, total_amount - commission_amount),
+                "active": True,
+                "amount": commission_amount,
+                "remaining_amount": total_amount - commission_amount
+            }
+        ]
+        return response.Response(payment_choices)
 
 
 class InitiateTransactionView(ValidateSerializerMixin, generics.GenericAPIView):
