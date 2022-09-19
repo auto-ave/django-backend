@@ -2,8 +2,8 @@
 
 from store.models import Store
 
-STORE_FROM = 'clean-and-shine-car-spa-1'
-STORE_TO = 'clean-shine-car-spa-bellandur'
+STORE_FROM = 'prestige-car-spa'
+STORE_TO = 'clean-and-shine-car-spa-1'
 
 store1 = Store.objects.get(slug=STORE_FROM)
 store2 = Store.objects.get(slug=STORE_TO)
